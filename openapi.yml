@@ -1,0 +1,2785 @@
+---
+components:
+  schemas:
+    Account:
+      properties:
+        account_number:
+          example: '5366'
+          readOnly: true
+          type: string
+        apr:
+          example: 1.0
+          readOnly: true
+          type: number
+        apy:
+          example: 1.0
+          readOnly: true
+          type: number
+        available_balance:
+          example: 1000.0
+          readOnly: true
+          type: number
+        available_credit:
+          example: 1000.0
+          readOnly: true
+          type: number
+        balance:
+          example: 1000.0
+          readOnly: true
+          type: number
+        cash_balance:
+          example: 1000.0
+          readOnly: false
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          readOnly: false
+          type: number
+        created_at:
+          example: '2016-10-13T17:57:37.000Z'
+          readOnly: true
+          type: string
+        credit_limit:
+          example: 100.0
+          readOnly: true
+          type: number
+        currency_code:
+          example: USD
+          readOnly: true
+          type: string
+        day_payment_is_due:
+          example: 20
+          readOnly: true
+          type: integer
+        death_benefit:
+          example: 1000
+          readOnly: false
+          type: integer
+        guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          readOnly: true
+          type: string
+        holdings_value:
+          example: 1000.0
+          readOnly: false
+          type: number
+        id:
+          example: '1040434698'
+          readOnly: true
+          type: string
+        institution_code:
+          example: chase
+          readOnly: true
+          type: string
+        insured_name:
+          example:
+          readOnly: true
+          type: string
+        interest_rate:
+          example: 1.0
+          readOnly: true
+          type: number
+        is_closed:
+          example: false
+          readOnly: true
+          type: boolean
+        is_hidden:
+          example: false
+          readOnly: true
+          type: boolean
+        last_payment:
+          example: 100.0
+          readOnly: true
+          type: number
+        last_payment_at:
+          example: '2015-10-13T17:57:37.000Z'
+          readOnly: true
+          type: string
+        loan_amount:
+          example: 1000.0
+          readOnly: false
+          type: number
+        matures_on:
+          example:
+          readOnly: true
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          readOnly: true
+          type: string
+        minimum_balance:
+          example: 100.0
+          readOnly: true
+          type: number
+        minimum_payment:
+          example: 10.0
+          readOnly: true
+          type: number
+        name:
+          example: Test account 2
+          readOnly: true
+          type: string
+        original_balance:
+          example: 10.0
+          readOnly: true
+          type: number
+        pay_out_amount:
+          example: 10.0
+          readOnly: true
+          type: number
+        payment_due_at:
+          example:
+          readOnly: true
+          type: string
+        payoff_balance:
+          example: 10.0
+          readOnly: true
+          type: number
+        premium_amount:
+          example: 1.0
+          readOnly: true
+          type: number
+        started_on:
+          example:
+          readOnly: true
+          type: string
+        subtype:
+          example:
+          readOnly: true
+          type: string
+        total_account_value:
+          example: 1.0
+          readOnly: true
+          type: number
+        type:
+          example: SAVINGS
+          readOnly: true
+          type: string
+        updated_at:
+          example: '2016-10-13T18:08:00.000Z'
+          readOnly: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          readOnly: true
+          type: string
+      type: object
+    AccountNumber:
+      properties:
+        account_guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          readOnly: true
+          type: string
+        account_number:
+          example: '10001'
+          readOnly: true
+          type: string
+        guid:
+          example: ACN-8899832e-e5b4-42cd-aa25-bbf1dc889a8f
+          readOnly: true
+          type: string
+        institution_number:
+          example: '123'
+          readOnly: true
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          readOnly: true
+          type: string
+        routing_number:
+          example: '68899990000000'
+          readOnly: true
+          type: string
+        transit_number:
+          example: '12345'
+          readOnly: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          readOnly: true
+          type: string
+      type: object
+    AccountNumbersResponseBody:
+      properties:
+        account_numbers:
+          items:
+            "$ref": "#/components/schemas/AccountNumber"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
+    AccountOwner:
+      properties:
+        account_guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          readOnly: true
+          type: string
+        address:
+          example: 123 This Way
+          readOnly: true
+          type: string
+        city:
+          example: Middlesex
+          readOnly: true
+          type: string
+        country:
+          example: US
+          readOnly: true
+          type: string
+        email:
+          example: donnie@darko.co
+          readOnly: true
+          type: string
+        guid:
+          example: ACO-63dc7714-6fc0-4aa2-a069-c06cdccd1af9
+          readOnly: true
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          readOnly: true
+          type: string
+        owner_name:
+          example: Donnie Darko
+          readOnly: true
+          type: string
+        phone:
+          example: 555-555-5555
+          readOnly: true
+          type: string
+        postal_code:
+          example: 00000-0000
+          readOnly: true
+          type: string
+        state:
+          example: VA
+          readOnly: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          readOnly: true
+          type: string
+      type: object
+    AccountOwnersResponseBody:
+      properties:
+        account_owners:
+          items:
+            "$ref": "#/components/schemas/AccountOwner"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
+    AccountResponseBody:
+      properties:
+        account:
+          "$ref": "#/components/schemas/Account"
+      type: object
+    AccountUpdateRequest:
+      properties:
+        is_hidden:
+          example: false
+          type: boolean
+    AccountUpdateRequestBody:
+      properties:
+        account:
+          "$ref": "#/components/schemas/AccountUpdateRequest"
+      type: object
+    AccountsResponseBody:
+      properties:
+        accounts:
+          items:
+            "$ref": "#/components/schemas/Account"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
+    Challenge:
+      properties:
+        field_name:
+          example: Who is this guy?
+          readOnly: true
+          type: string
+        guid:
+          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
+          readOnly: true
+          type: string
+        label:
+          example: Who is this guy?
+          readOnly: true
+          type: string
+        type:
+          example: IMAGE_DATA
+          readOnly: true
+          type: string
+      type: object
+    ChallengeImageData:
+      allOf:
+      - "$ref": "#/components/schemas/Challenge"
+      - type: object
+        properties:
+          image_data:
+            example: Who is this guy?
+            readOnly: true
+            type: string
+    ChallengeImageOptions:
+      allOf:
+      - "$ref": "#/components/schemas/Challenge"
+      - type: object
+        properties:
+          image_options:
+            items:
+              "$ref": "#/components/schemas/ImageOption"
+            type: array
+    ChallengeOptions:
+      allOf:
+      - "$ref": "#/components/schemas/Challenge"
+      - type: object
+        properties:
+          options:
+            items:
+              "$ref": "#/components/schemas/Option"
+            type: array
+    ChallengeRequest:
+      properties:
+        guid:
+          example: CRD-2378634-33ub5bhk54kjb
+          type: string
+        value:
+          example: user-entered-value
+          type: string
+      type: object
+    ChallengesResponseBody:
+      properties:
+        challenges:
+          items:
+            discriminator:
+              mapping:
+                IMAGE_DATA: "#/components/schemas/ChallengeImageData"
+                IMAGE_OPTIONS: "#/components/schemas/ChallengeImageOptions"
+                OPTIONS: "#/components/schemas/ChallengeOptions"
+                TEXT: "#/components/schemas/Challenge"
+                TOKEN: "#/components/schemas/Challenge"
+              propertyName: type
+            oneOf:
+            - "$ref": "#/components/schemas/ChallengeImageData"
+            - "$ref": "#/components/schemas/ChallengeImageOptions"
+            - "$ref": "#/components/schemas/ChallengeOptions"
+            - "$ref": "#/components/schemas/Challenge"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
+    ConnectWidget:
+      properties:
+        connect_widget_url:
+          example: https://int-widgets.moneydesktop.com/md/connect/jb1rA14m85tw2lyvpgfx4gc6d3Z8z8Ayb8
+          readOnly: true
+          type: string
+        guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          readOnly: true
+          type: string
+      type: object
+    ConnectWidgetRequest:
+      properties:
+        color_scheme:
+          example: light
+          type: string
+        current_institution_code:
+          example: chase
+          type: string
+        current_member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        disable_institution_search:
+          example: false
+          type: boolean
+        include_transactions:
+          example: true
+          type: boolean
+        is_mobile_webview:
+          example: true
+          type: boolean
+        mode:
+          example: aggregation
+          type: string
+        ui_message_version:
+          example: 4
+          type: integer
+        ui_message_webview_url_scheme:
+          example: mx
+          type: string
+        update_credentials:
+          example: false
+          type: boolean
+        wait_for_full_aggregation:
+          example: false
+          type: boolean
+      type: object
+    ConnectWidgetRequestBody:
+      properties:
+        config:
+          "$ref": "#/components/schemas/ConnectWidgetRequest"
+      type: object
+    ConnectWidgetResponseBody:
+      properties:
+        user:
+          "$ref": "#/components/schemas/ConnectWidget"
+      type: object
+    Credential:
+      properties:
+        display_order:
+          example: 1
+          readOnly: true
+          type: integer
+        field_name:
+          example: LOGIN
+          readOnly: true
+          type: string
+        field_type:
+          example: TEXT
+          readOnly: true
+          type: string
+        guid:
+          example: CRD-1ec152cd-e628-e81a-e852-d1e7104624da
+          readOnly: true
+          type: string
+        label:
+          example: Username
+          readOnly: true
+          type: string
+      type: object
+    CredentialRequest:
+      properties:
+        guid:
+          example: CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f
+          type: string
+        value:
+          example: password
+          type: string
+      type: object
+    CredentialsResponseBody:
+      properties:
+        credentials:
+          items:
+            "$ref": "#/components/schemas/Credential"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
+    EnhanceTransaction:
+      properties:
+        amount:
+          example: 21.33
+          readOnly: true
+          type: number
+        category:
+          example: Fast Food
+          readOnly: true
+          type: string
+        description:
+          example: IN-N-OUT BURGER
+          readOnly: true
+          type: string
+        id:
+          example: ID-123
+          readOnly: true
+          type: string
+        is_bill_pay:
+          example: false
+          readOnly: true
+          type: boolean
+        is_direct_deposit:
+          example: false
+          readOnly: true
+          type: boolean
+        is_expense:
+          example:
+          readOnly: true
+          type: boolean
+        is_fee:
+          example:
+          readOnly: true
+          type: boolean
+        is_income:
+          example:
+          readOnly: true
+          type: boolean
+        is_international:
+          example:
+          readOnly: true
+          type: boolean
+        is_overdraft_fee:
+          example: false
+          readOnly: true
+          type: boolean
+        is_payroll_advance:
+          example: false
+          readOnly: true
+          type: boolean
+        merchant_category_code:
+          example: 5411
+          readOnly: true
+          type: integer
+        merchant_guid:
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          readOnly: true
+          type: string
+        original_description:
+          example: IN-N-OUT BURGER
+          readOnly: true
+          type: string
+        type:
+          example: DEBIT
+          readOnly: true
+          type: string
+      type: object
+    EnhanceTransactionRequest:
+      properties:
+        amount:
+          example: 21.33
+          type: number
+        description:
+          example: IN-N-OUT BURGER
+          type: string
+        id:
+          example: ID-123
+          type: string
+        merchant_category_code:
+          example: 123
+          type: integer
+        type:
+          example: DEBIT
+          type: string
+      type: object
+    EnhanceTransactionsRequestBody:
+      properties:
+        transactions:
+          items:
+            "$ref": "#/components/schemas/EnhanceTransactionRequest"
+          type: array
+      type: object
+    EnhanceTransactionsResponseBody:
+      properties:
+        transactions:
+          items:
+            "$ref": "#/components/schemas/EnhanceTransaction"
+          type: array
+      type: object
+    Holding:
+      properties:
+        account_guid:
+          example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
+          readOnly: true
+          type: string
+        cost_basis:
+          example: 827.0
+          readOnly: true
+          type: number
+        created_at:
+          example: '2015-04-13T18:01:23.000Z'
+          readOnly: true
+          type: string
+        currency_code:
+          example: USD
+          readOnly: true
+          type: string
+        cusip:
+          example: 18383M878
+          readOnly: true
+          type: string
+        daily_change:
+          example: 2.5
+          readOnly: true
+          type: number
+        description:
+          example: Guggenheim Defensive Equity ETF
+          readOnly: true
+          type: string
+        guid:
+          example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
+          type: string
+        holding_type:
+          example: MONEY_MARKET
+          readOnly: true
+          type: string
+        id:
+          example: ID-123
+          readOnly: true
+          type: string
+        market_value:
+          example: 989.5
+          readOnly: true
+          type: number
+        member_guid:
+          example: MBR-d65683e8-9eab-26bb-bcfd-ced159c9abe
+          readOnly: true
+          type: string
+        metadata:
+          example: metadata
+          readOnly: true
+          type: string
+        purchase_price:
+          example: 26.3
+          readOnly: true
+          type: number
+        shares:
+          example: 6.0
+          readOnly: true
+          type: number
+        symbol:
+          example: DEF
+          readOnly: true
+          type: string
+        updated_at:
+          example: '2015-04-13T18:01:23.000Z'
+          readOnly: true
+          type: string
+        user_guid:
+          example: USR-743e5d7f-1116-28fa-5de1-d3ba02e41d8d
+          readOnly: true
+          type: string
+      type: object
+    HoldingResponseBody:
+      properties:
+        holding:
+          "$ref": "#/components/schemas/Holding"
+      type: object
+    HoldingsResponseBody:
+      properties:
+        holdings:
+          items:
+            "$ref": "#/components/schemas/Holding"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
+    ImageOption:
+      properties:
+        data_uri:
+          example: data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...
+          readOnly: true
+          type: string
+        label:
+          example: IMAGE_1
+          readOnly: true
+          type: string
+        value:
+          example: image_data
+          readOnly: true
+          type: string
+      type: object
+    Institution:
+      properties:
+        code:
+          example: chase
+          readOnly: true
+          type: string
+        medium_logo_url:
+          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png
+          readOnly: true
+          type: string
+        name:
+          example: Chase Bank
+          readOnly: true
+          type: string
+        small_logo_url:
+          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png
+          readOnly: true
+          type: string
+        supports_account_identification:
+          example: true
+          readOnly: true
+          type: boolean
+        supports_account_statement:
+          example: true
+          readOnly: true
+          type: boolean
+        supports_account_verification:
+          example: true
+          readOnly: true
+          type: boolean
+        supports_oauth:
+          example: true
+          readOnly: true
+          type: boolean
+        supports_transaction_history:
+          example: true
+          readOnly: true
+          type: boolean
+        url:
+          example: https://www.chase.com
+          readOnly: true
+          type: string
+      type: object
+    InstitutionResponseBody:
+      properties:
+        institution:
+          "$ref": "#/components/schemas/Institution"
+      type: object
+    InstitutionsResponseBody:
+      properties:
+        institutions:
+          items:
+            "$ref": "#/components/schemas/Institution"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
+    Member:
+      properties:
+        aggregated_at:
+          example: '2016-10-13T18:07:57.000Z'
+          readOnly: true
+          type: string
+        connection_status:
+          example: CONNECTED
+          readOnly: true
+          type: string
+        guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          readOnly: true
+          type: string
+        id:
+          example: unique_id
+          type: string
+        institution_code:
+          example: chase
+          type: string
+        is_being_aggregated:
+          example: false
+          readOnly: true
+          type: boolean
+        is_oauth:
+          example: false
+          readOnly: true
+          type: boolean
+        metadata:
+          example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+          type: string
+        name:
+          example: Chase Bank
+          readOnly: true
+          type: string
+        successfully_aggregated_at:
+          example: '2016-10-13T17:57:38.000Z'
+          readOnly: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          readOnly: true
+          type: string
+      type: object
+    MemberCreateRequest:
+      properties:
+        background_aggregation_is_disabled:
+          example: false
+          type: boolean
+        credentials:
+          items:
+            "$ref": "#/components/schemas/CredentialRequest"
+          type: array
+        id:
+          example: unique_id
+          type: string
+        institution_code:
+          example: chase
+          type: string
+        metadata:
+          example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+          type: string
+      required:
+      - credentials
+      - institution_code
+      type: object
+    MemberCreateRequestBody:
+      properties:
+        member:
+          "$ref": "#/components/schemas/MemberCreateRequest"
+      type: object
+    MemberResponseBody:
+      properties:
+        member:
+          "$ref": "#/components/schemas/Member"
+      type: object
+    MemberResumeRequest:
+      properties:
+        challenges:
+          items:
+            "$ref": "#/components/schemas/ChallengeRequest"
+          type: array
+      type: object
+    MemberResumeRequestBody:
+      properties:
+        member:
+          "$ref": "#/components/schemas/MemberResumeRequest"
+      type: object
+    MemberStatus:
+      properties:
+        aggregated_at:
+          example: '2016-10-13T18:07:57.000Z'
+          readOnly: true
+          type: string
+        challenges:
+          items:
+            "$ref": "#/components/schemas/Challenge"
+          type: array
+        connection_status:
+          example: CONNECTED
+          readOnly: true
+          type: string
+        guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          readOnly: true
+          type: string
+        has_processed_accounts:
+          example: true
+          readOnly: true
+          type: boolean
+        has_processed_transactions:
+          example: false
+          readOnly: true
+          type: boolean
+        is_authenticated:
+          example: false
+          readOnly: true
+          type: boolean
+        is_being_aggregated:
+          example: false
+          readOnly: true
+          type: boolean
+        successfully_aggregated_at:
+          example: '2016-10-13T17:57:38.000Z'
+          readOnly: true
+          type: string
+      type: object
+    MemberStatusResponseBody:
+      properties:
+        member:
+          "$ref": "#/components/schemas/MemberStatus"
+      type: object
+    MemberUpdateRequest:
+      properties:
+        background_aggregation_is_disabled:
+          example: false
+          type: boolean
+        credentials:
+          items:
+            "$ref": "#/components/schemas/CredentialRequest"
+          type: array
+        id:
+          example: unique_id
+          type: string
+        institution_code:
+          example: chase
+          type: string
+        is_oauth:
+          example: false
+          type: boolean
+        metadata:
+          example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+          type: string
+      type: object
+    MemberUpdateRequestBody:
+      properties:
+        member:
+          "$ref": "#/components/schemas/MemberUpdateRequest"
+      type: object
+    MembersResponseBody:
+      properties:
+        members:
+          items:
+            "$ref": "#/components/schemas/Member"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
+    Merchant:
+      properties:
+        created_at:
+          example: '2017-04-20T19:30:12.000Z'
+          readOnly: true
+          type: string
+        guid:
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          type: string
+        logo_url:
+          example: https://s3.amazonaws.com/MD_Assets/merchant_logos/comcast.png
+          readOnly: true
+          type: string
+        name:
+          example: Comcast
+          readOnly: true
+          type: string
+        updated_at:
+          example: '2018-09-28T21:13:53.000Z'
+          readOnly: true
+          type: string
+        website_url:
+          example: https://www.xfinity.com
+          readOnly: true
+          type: string
+      type: object
+    MerchantResponseBody:
+      properties:
+        merchant:
+          "$ref": "#/components/schemas/Merchant"
+      type: object
+    MerchantsResponseBody:
+      properties:
+        merchants:
+          items:
+            "$ref": "#/components/schemas/Merchant"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
+    Option:
+      properties:
+        label:
+          example: IMAGE_1
+          readOnly: true
+          type: string
+        value:
+          example: image_data
+          readOnly: true
+          type: string
+      type: object
+    Pagination:
+      properties:
+        current_page:
+          example: 1
+          readOnly: true
+          type: integer
+        per_page:
+          example: 25
+          readOnly: true
+          type: integer
+        total_entries:
+          example: 1
+          readOnly: true
+          type: integer
+        total_pages:
+          example: 1
+          readOnly: true
+          type: integer
+      type: object
+    Tag:
+      properties:
+        guid:
+          example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
+          readOnly: true
+          type: string
+        name:
+          example: MY TAG
+          readOnly: true
+          type: string
+        user_guid:
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          readOnly: true
+          type: string
+      type: object
+    TagCreateRequest:
+      properties:
+        name:
+          example: MY TAG
+          type: string
+      required:
+      - name
+      type: object
+    TagCreateRequestBody:
+      properties:
+        tag:
+          "$ref": "#/components/schemas/TagCreateRequest"
+      type: object
+    TagResponseBody:
+      properties:
+        tag:
+          "$ref": "#/components/schemas/Tag"
+      type: object
+    TagUpdateRequest:
+      properties:
+        name:
+          example: MY TAG
+          type: string
+      required:
+      - name
+      type: object
+    TagUpdateRequestBody:
+      properties:
+        tag:
+          "$ref": "#/components/schemas/TagUpdateRequest"
+      type: object
+    Tagging:
+      properties:
+        guid:
+          example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
+          readOnly: true
+          type: string
+        member_is_managed_by_user:
+          example: false
+          readOnly: true
+          type: boolean
+        tag_guid:
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          readOnly: true
+          type: string
+        transaction_guid:
+          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+          readOnly: true
+          type: string
+        user_guid:
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          readOnly: true
+          type: string
+      type: object
+    TaggingCreateRequest:
+      properties:
+        tag_guid:
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type: string
+        transaction_guid:
+          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+          type: string
+      required:
+      - tag_guid
+      - transaction_guid
+      type: object
+    TaggingCreateRequestBody:
+      properties:
+        tagging:
+          "$ref": "#/components/schemas/TaggingCreateRequest"
+      type: object
+    TaggingResponseBody:
+      properties:
+        tagging:
+          "$ref": "#/components/schemas/Tagging"
+      type: object
+    TaggingUpdateRequest:
+      properties:
+        tag_guid:
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type: string
+      type: object
+    TaggingUpdateRequestBody:
+      properties:
+        tagging:
+          "$ref": "#/components/schemas/TaggingUpdateRequest"
+      type: object
+    TaggingsResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+        taggings:
+          items:
+            "$ref": "#/components/schemas/Tagging"
+          type: array
+      type: object
+    TagsResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+        tags:
+          items:
+            "$ref": "#/components/schemas/Tag"
+          type: array
+      type: object
+    Transaction:
+      properties:
+        account_guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          readOnly: true
+          type: string
+        amount:
+          example: 61.11
+          readOnly: true
+          type: number
+        category:
+          example: Groceries
+          readOnly: true
+          type: string
+        check_number_string:
+          example: '6812'
+          readOnly: true
+          type: string
+        created_at:
+          example: '2016-10-06T09:43:42.000Z'
+          readOnly: true
+          type: string
+        currency_code:
+          example: USD
+          readOnly: true
+          type: string
+        date:
+          example: '2013-09-23T00:00:00.000Z'
+          readOnly: true
+          type: string
+        description:
+          example: Whole foods
+          readOnly: true
+          type: string
+        guid:
+          example: TRN-265abee9-889b-af6a-c69b-25157db2bdd9
+          readOnly: true
+          type: string
+        id:
+          example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
+          readOnly: true
+          type: string
+        is_bill_pay:
+          example: false
+          readOnly: true
+          type: boolean
+        is_direct_deposit:
+          example: false
+          readOnly: true
+          type: boolean
+        is_expense:
+          example: true
+          readOnly: true
+          type: boolean
+        is_fee:
+          example: false
+          readOnly: true
+          type: boolean
+        is_income:
+          example: false
+          readOnly: true
+          type: boolean
+        is_international:
+          example: false
+          readOnly: true
+          type: boolean
+        is_overdraft_fee:
+          example: false
+          readOnly: true
+          type: boolean
+        is_payroll_advance:
+          example: false
+          readOnly: true
+          type: boolean
+        latitude:
+          example: -43.2075
+          readOnly: true
+          type: number
+        localized_description:
+          example:
+          readOnly: true
+          type: string
+        localized_memo:
+          example:
+          readOnly: true
+          type: string
+        longitude:
+          example: 139.691706
+          readOnly: true
+          type: number
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          readOnly: true
+          type: string
+        memo:
+          example:
+          readOnly: true
+          type: string
+        merchant_category_code:
+          example: 5411
+          readOnly: true
+          type: integer
+        merchant_guid:
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          readOnly: true
+          type: string
+        original_description:
+          example: WHOLEFDS TSQ 102
+          readOnly: true
+          type: string
+        posted_at:
+          example: '2016-10-07T06:00:00.000Z'
+          readOnly: true
+          type: string
+        status:
+          example: POSTED
+          readOnly: true
+          type: string
+        top_level_category:
+          example: Food & Dining
+          readOnly: true
+          type: string
+        transacted_at:
+          example: '2016-10-06T13:00:00.000Z'
+          readOnly: true
+          type: string
+        type:
+          example: DEBIT
+          readOnly: true
+          type: string
+        updated_at:
+          example: '2016-10-07T05:49:12.000Z'
+          readOnly: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          readOnly: true
+          type: string
+      type: object
+    TransactionResponseBody:
+      properties:
+        transaction:
+          "$ref": "#/components/schemas/Transaction"
+      type: object
+    TransactionsResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+        transactions:
+          items:
+            "$ref": "#/components/schemas/Transaction"
+          type: array
+      type: object
+    User:
+      properties:
+        email:
+          example: email@provider.com
+          type: string
+        guid:
+          example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
+          readOnly: true
+          type: string
+        id:
+          example: My-Unique-ID
+          type: string
+        is_disabled:
+          example: false
+          type: boolean
+        metadata:
+          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+          type: string
+      type: object
+    UserCreateRequest:
+      properties:
+        email:
+          example: email@provider.com
+          type: string
+        guid:
+          example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
+          readOnly: true
+          type: string
+        id:
+          example: My-Unique-ID
+          type: string
+        is_disabled:
+          example: false
+          type: boolean
+        metadata:
+          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+          type: string
+      type: object
+    UserCreateRequestBody:
+      properties:
+        user:
+          "$ref": "#/components/schemas/UserCreateRequest"
+      type: object
+    UserResponseBody:
+      properties:
+        user:
+          "$ref": "#/components/schemas/User"
+      type: object
+    UserUpdateRequest:
+      properties:
+        email:
+          example: email@provider.com
+          type: string
+        guid:
+          example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
+          readOnly: true
+          type: string
+        id:
+          example: My-Unique-ID
+          type: string
+        is_disabled:
+          example: false
+          type: boolean
+        metadata:
+          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+          type: string
+      type: object
+    UserUpdateRequestBody:
+      properties:
+        user:
+          "$ref": "#/components/schemas/UserUpdateRequest"
+      type: object
+    UsersResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+        users:
+          items:
+            "$ref": "#/components/schemas/User"
+          type: array
+      type: object
+    Widget:
+      properties:
+        type:
+          example: connect_widget
+          readOnly: true
+          type: string
+        url:
+          example: https://int-widgets.moneydesktop.com/md/connect/yxcdk7f1nb99jwApp34lA24m0AZ8rzprgmw17gm8z8h2AzjyAnd1rj42qfv42r3xnn07Amfwlg3j09hwp8bkq8tc5z21j33xjggmp2qtlpkz2v4gywfhfn31l44tx2w91bfc2thc58j4syqp0hgxcyvA4g7754hk7gjc56kt7tc36s45mmkdz2jqqqydspytmtr3dAb9jh6fkb24f3zkfpdjj0v77f0vmrtzvzxkmxz7dklsq8gd0gstkbhlw5bgpgc3m9mAtpAcr2w15gwy5xc4blgxppl42Avnm63291z3cyp0wm3lqgmvgzdAddct423gAdqxdlfx5d4mvc0ck2gt7ktqgks4vxq1pAy5
+          readOnly: true
+          type: string
+        user_id:
+          example: U-jeff-201709221210
+          type: string
+      type: object
+    WidgetRequest:
+      properties:
+        color_scheme:
+          example: light
+          type: string
+        current_institution_code:
+          example: chase
+          type: string
+        current_member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        disable_institution_search:
+          example: false
+          type: boolean
+        include_transactions:
+          example: true
+          type: boolean
+        is_mobile_webview:
+          example: true
+          type: boolean
+        mode:
+          example: aggregation
+          type: string
+        ui_message_version:
+          example: 4
+          type: integer
+        ui_message_webview_url_scheme:
+          example: mx
+          type: string
+        update_credentials:
+          example: false
+          type: boolean
+        wait_for_full_aggregation:
+          example: false
+          type: boolean
+        widget_type:
+          example: connect_widget
+          type: string
+      type: object
+    WidgetRequestBody:
+      properties:
+        widget_url:
+          "$ref": "#/components/schemas/WidgetRequest"
+      type: object
+    WidgetResponseBody:
+      properties:
+        widget_url:
+          "$ref": "#/components/schemas/Widget"
+      type: object
+  securitySchemes:
+    basicAuth:
+      scheme: basic
+      type: http
+info:
+  contact:
+    name: MX Platform API
+    url: https://www.mx.com/products/platform-api
+  description: ''
+  title: MX Platform API
+  version: 0.1.0
+openapi: 3.0.0
+paths:
+  "/institutions":
+    get:
+      description: This endpoint returns a list of institutions based on the specified
+        search term or parameter.
+      operationId: listInstitutions
+      parameters:
+      - description: This will list only institutions in which the appended string
+          appears.
+        example: chase
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter only institutions which support account identification.
+        example: true
+        in: query
+        name: supports_account_identification
+        schema:
+          type: boolean
+      - description: Filter only institutions which support account statements.
+        example: true
+        in: query
+        name: supports_account_statement
+        schema:
+          type: boolean
+      - description: Filter only institutions which support account verification.
+        example: true
+        in: query
+        name: supports_account_verification
+        schema:
+          type: boolean
+      - description: Filter only institutions which support extended transaction history.
+        example: true
+        in: query
+        name: supports_transaction_history
+        schema:
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InstitutionsResponseBody"
+          description: OK
+      summary: List institutions
+      tags:
+      - Institutions
+  "/institutions/favorites":
+    get:
+      description: |
+        This endpoint returns a paginated list containing institutions that have been set as the partner’s favorites, sorted by popularity.
+        Pleaase contact MX to set a list of favorites.
+      operationId: listFavorites
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InstitutionsResponseBody"
+          description: OK
+      summary: List favorites
+      tags:
+      - Institutions
+  "/institutions/{institution_code}":
+    get:
+      description: This endpoint returns information about the institution specified
+        by `institution_code`.
+      operationId: readInstitution
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InstitutionResponseBody"
+          description: OK
+      summary: Read institution
+      tags:
+      - Institutions
+    parameters:
+    - description: The institution_code of the institution.
+      example: chase
+      in: path
+      name: institution_code
+      required: true
+      schema:
+        type: string
+  "/institutions/{institution_code}/credentials":
+    get:
+      description: Use this endpoint to see which credentials will be needed to create
+        a member for a specific institution.
+      operationId: listInstitutionRequiredCredentials
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/CredentialsResponseBody"
+          description: OK
+      summary: List institution-required credentials
+      tags:
+      - Institutions
+    parameters:
+    - description: The institution_code of the institution.
+      example: chase
+      in: path
+      name: institution_code
+      required: true
+      schema:
+        type: string
+  "/merchants":
+    get:
+      description: This endpoint returns a paginated list of all the merchants in
+        the MX system.
+      operationId: listMerchants
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MerchantsResponseBody"
+          description: OK
+      summary: List merchants
+      tags:
+      - Merchants
+  "/merchants/{merchant_guid}":
+    get:
+      description: Returns information about a particular merchant, such as a logo,
+        name, and website.
+      operationId: readMerchant
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MerchantResponseBody"
+          description: OK
+      summary: Read merchant
+      tags:
+      - Merchants
+    parameters:
+    - description: The unique id for a `merchant`.
+      example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+      in: path
+      name: merchant_guid
+      required: true
+      schema:
+        type: string
+  "/transactions/enhance":
+    post:
+      description: Use this endpoint to categorize, cleanse, and classify transactions.
+        These transactions are not persisted or stored on the MX platform.
+      operationId: enhanceTransactions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/EnhanceTransactionsRequestBody"
+        description: User object to be created with optional parameters (amount, type)
+          amd required parameters (description, id)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/EnhanceTransactionsResponseBody"
+          description: OK
+      summary: Enhance transactions
+      tags:
+      - Enhance transactions
+  "/users":
+    get:
+      description: Use this endpoint to list every user youve created in the MX Platform
+        API.
+      operationId: listUsers
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/UsersResponseBody"
+          description: OK
+      summary: List users
+      tags:
+      - Users
+    post:
+      description: |
+        Call this endpoint to create a new user. The MX Platform API will respond with the newly-created user object if successful. This endpoint accepts several parameters: id, metadata, and is_disabled.<br>
+        Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX.
+        It will also restrict access to that users data until they are no longer disabled.
+        Users who are disabled for the entirety of an MX Platform API billing period will not be factored into that months bill.
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UserCreateRequestBody"
+        description: User object to be created with optional parameters (id, is_disabled,
+          metadata)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/UserResponseBody"
+          description: OK
+      summary: Create user
+      tags:
+      - Users
+  "/users/{user_guid}":
+    delete:
+      description: |
+        Use this endpoint to delete the specified `user`.
+        The response will have a status of `204 No Content` without an object.
+      operationId: deleteUser
+      responses:
+        '204':
+          content:
+            application/vnd.mx.api.v1+json:
+              example:
+          description: No Content
+      summary: Delete user
+      tags:
+      - Users
+    get:
+      description: Use this endpoint to read the attributes of a specific user.
+      operationId: readUser
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/UserResponseBody"
+          description: OK
+      summary: Read user
+      tags:
+      - Users
+    parameters:
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    put:
+      description: |
+        Use this endpoint to update the attributes of a specific user. The MX Platform API will respond with the updated user object.<br>
+        Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX.
+        It will also restrict access to that users data until they are no longer disabled. Users who are disabled for the entirety of an MX Platform API billing period will not be factored into that months bill.<br>
+        To disable a user, update it and set the is_disabled parameter to true. Set it to false to re-enable the user.
+      operationId: updateUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UserUpdateRequestBody"
+        description: User object to be updated with optional parameters (id, is_disabled,
+          metadata)
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/UserResponseBody"
+          description: OK
+      summary: Update user
+      tags:
+      - Users
+  "/users/{user_guid}/accounts":
+    get:
+      description: This endpoint returns a list of all the accounts associated with
+        the specified `user`.
+      operationId: listUserAccounts
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountsResponseBody"
+          description: OK
+      summary: List accounts
+      tags:
+      - Accounts
+    parameters:
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/accounts/{account_guid}":
+    get:
+      description: This endpoint returns the specified `account` resource.
+      operationId: readAccount
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountResponseBody"
+          description: OK
+      summary: Read account
+      tags:
+      - Accounts
+    parameters:
+    - description: The unique id for an `account`.
+      example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+      in: path
+      name: account_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/accounts/{account_guid}/account_numbers":
+    get:
+      description: This endpoint returns a list of account numbers associated with
+        the specified `account`.
+      operationId: listAccountNumbersByAccount
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountNumbersResponseBody"
+          description: OK
+      summary: List account numbers by account
+      tags:
+      - Account verification
+    parameters:
+    - description: The unique id for an `account`.
+      example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+      in: path
+      name: account_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/connect_widget_url":
+    parameters:
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    post:
+      description: This endpoint will return a URL for an embeddable version of MX
+        Connect.
+      operationId: getConnectWidget
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ConnectWidgetRequestBody"
+        description: Optional config options for WebView (is_mobile_webview, current_institution_code,
+          current_member_guid, update_credentials)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/ConnectWidgetResponseBody"
+          description: OK
+      summary: Request connect URL
+      tags:
+      - Users
+  "/users/{user_guid}/holdings":
+    get:
+      description: Use this endpoint to read all holdings associated with a specific
+        user.
+      operationId: listHoldingsByUser
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/HoldingsResponseBody"
+          description: OK
+      summary: List holdings by user
+      tags:
+      - Holdings
+    parameters:
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/holdings/{holding_guid}":
+    get:
+      description: Use this endpoint to read the attributes of a specific holding.
+      operationId: readHolding
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/HoldingResponseBody"
+          description: OK
+      summary: Read holding
+      tags:
+      - Holdings
+    parameters:
+    - description: The unique id for a `holding`.
+      example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
+      in: path
+      name: holding_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/members":
+    get:
+      description: This endpoint returns an array which contains information on every
+        member associated with a specific user.
+      operationId: listMembers
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MembersResponseBody"
+          description: OK
+      summary: List members
+      tags:
+      - Members
+    parameters:
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    post:
+      description: |
+        This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters id and metadata.<br>
+        When creating a member, youll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the `/institutions/{institution_code}/credentials` endpoint.<br>
+        If successful, the MX Platform API will respond with the newly-created member object.<br>
+        Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions.
+      operationId: createMember
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/MemberCreateRequestBody"
+        description: Member object to be created with optional parameters (id and
+          metadata) and required parameters (credentials and institution_code)
+        required: true
+      responses:
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: Accepted
+      summary: Create member
+      tags:
+      - Members
+  "/users/{user_guid}/members/{member_guid}":
+    delete:
+      description: Accessing this endpoint will permanently delete a member.
+      operationId: deleteMember
+      responses:
+        '204':
+          content:
+            application/vnd.mx.api.v1+json:
+              example:
+          description: No Content
+      summary: Delete member
+      tags:
+      - Members
+    get:
+      description: Use this endpoint to read the attributes of a specific member.
+      operationId: readMember
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: OK
+      summary: Read member
+      tags:
+      - Members
+    parameters:
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    put:
+      description: |
+        Use this endpoint to update a members attributes. Only the credentials,
+        id, and metadata parameters can be updated. To get a list of the required
+        credentials for the member, use the list member credentials endpoint.
+      operationId: updateMember
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/MemberUpdateRequestBody"
+        description: Member object to be updated with optional parameters (credentials,
+          id, metadata)
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: OK
+      summary: Update member
+      tags:
+      - Members
+  "/users/{user_guid}/members/{member_guid}/account_numbers":
+    get:
+      description: This endpoint returns a list of account numbers associated with
+        the specified `member`.
+      operationId: listAccountNumbersByMember
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountNumbersResponseBody"
+          description: OK
+      summary: List account numbers by member
+      tags:
+      - Account verification
+    parameters:
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/members/{member_guid}/account_owners":
+    get:
+      description: This endpoint returns an array with information about every account
+        associated with a particular member.
+      operationId: listAccountOwners
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountOwnersResponseBody"
+          description: OK
+      summary: List account owners
+      tags:
+      - Identity
+    parameters:
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}":
+    parameters:
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for an `account`.
+      example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+      in: path
+      name: account_guid
+      required: true
+      schema:
+        type: string
+    put:
+      description: This endpoint allows you to update certain attributes of an `account`
+        resource.
+      operationId: updateAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/AccountUpdateRequestBody"
+        description: Account object to be created with optional parameters (is_hidden)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountResponseBody"
+          description: OK
+      summary: Update account
+      tags:
+      - Accounts
+  "/users/{user_guid}/members/{member_guid}/aggregate":
+    parameters:
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    post:
+      description: |
+        Calling this endpoint initiates an aggregation event for the member.
+        This brings in the latest account and transaction data from the connected
+        institution. If this data has recently been updated, MX may not initiate an
+        aggregation event.
+      operationId: aggregateMember
+      responses:
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: Accepted
+      summary: Aggregate member
+      tags:
+      - Members
+  "/users/{user_guid}/members/{member_guid}/challenges":
+    get:
+      description: |
+        Use this endpoint for information on what multi-factor authentication challenges need to be answered in order to aggregate a member.<br>
+        If the aggregation is not challenged, i.e., the member does not have a connection status of `CHALLENGED`, then code `204 No Content` will be returned.<br>
+        If the aggregation has been challenged, i.e., the member does have a connection status of `CHALLENGED`, then code `200 OK` will be returned - along with the corresponding credentials.
+      operationId: listMemberChallenges
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/ChallengesResponseBody"
+          description: OK
+      summary: List member challenges
+      tags:
+      - Members
+    parameters:
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/members/{member_guid}/check_balance":
+    parameters:
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    post:
+      description: |
+        This endpoint operates much like the aggregate member endpoint
+        except that it gathers only account balance information; it does not gather
+        any transaction data.
+      operationId: checkBalances
+      responses:
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: Accepted
+      summary: Check balances
+      tags:
+      - Members
+  "/users/{user_guid}/members/{member_guid}/credentials":
+    get:
+      description: This endpoint returns an array which contains information on every
+        non-MFA credential associated with a specific member.
+      operationId: listMemberCredentials
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/CredentialsResponseBody"
+          description: OK
+      summary: List member credentials
+      tags:
+      - Members
+    parameters:
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/members/{member_guid}/extend_history":
+    parameters:
+    - description: The unique identifier for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique identifier for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    post:
+      description: |
+        Some institutions allow developers to access an extended transaction
+        history with up to 24 months of data associated with a particular member.
+        The process for fetching and then reading this extended transaction history
+        is much like standard aggregation, and it may trigger multi-factor authentication.
+      operationId: extendHistory
+      responses:
+        '200':
+          content:
+            application/vnd.mx.atrium.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: OK
+      summary: Extend history
+      tags:
+      - Extend history
+  "/users/{user_guid}/members/{member_guid}/holdings":
+    get:
+      description: Use this endpoint to read all holdings associated with a specific
+        member.
+      operationId: listHoldingsByMember
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/HoldingsResponseBody"
+          description: OK
+      summary: List holdings by member
+      tags:
+      - Holdings
+    parameters:
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/members/{member_guid}/identify":
+    parameters:
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    post:
+      description: The identify endpoint begins an identification process for an already-existing
+        member.
+      operationId: identifyMember
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: OK
+      summary: Identify member
+      tags:
+      - Identity
+  "/users/{user_guid}/members/{member_guid}/resume":
+    parameters:
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    put:
+      description: This endpoint answers the challenges needed when a member has been
+        challenged by multi-factor authentication.
+      operationId: resumeAggregation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/MemberResumeRequestBody"
+        description: Member object with MFA challenge answers
+        required: true
+      responses:
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: Accepted
+      summary: Resume aggregation
+      tags:
+      - Members
+  "/users/{user_guid}/members/{member_guid}/status":
+    get:
+      description: |
+        This endpoint provides the status of the members most recent aggregation event. This is an important step in the aggregation process, and the results returned by this endpoint should determine what you do next in order to successfully aggregate a member.<br>
+        MX has introduced new, more detailed information on the current status of a members connection to a financial institution and the state of its aggregation: the connection_status field. These are intended to replace and expand upon the information provided in the status field, which will soon be deprecated; support for the status field remains for the time being.
+      operationId: readMemberStatus
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberStatusResponseBody"
+          description: OK
+      summary: Read member status
+      tags:
+      - Members
+    parameters:
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/members/{member_guid}/transactions":
+    get:
+      description: |
+        Requests to this endpoint return a list of transactions associated
+        with the specified `member`, accross all accounts associated with that `member`.
+      operationId: listTransactionsByMember
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TransactionsResponseBody"
+          description: OK
+      summary: List transactions by member
+      tags:
+      - Transactions
+    parameters:
+    - description: Filter transactions from this date.
+      example: '2015-09-20T00:00:00.000Z'
+      in: query
+      name: from_date
+      schema:
+        type: string
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/members/{member_guid}/verify":
+    parameters:
+    - description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    post:
+      description: The verify endpoint begins a verification process for a member.
+      operationId: verifyMember
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: OK
+      summary: Verify member
+      tags:
+      - Account verification
+  "/users/{user_guid}/taggings":
+    get:
+      description: Use this endpoint to retrieve a list of all the taggings associated
+        with a specific user.
+      operationId: listTaggings
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TaggingsResponseBody"
+          description: OK
+      summary: List taggings
+      tags:
+      - Taggings
+    parameters:
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    post:
+      description: Use this endpoint to create a new association between a tag and
+        a particular transaction, according to their unique GUIDs.
+      operationId: createTagging
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/TaggingCreateRequestBody"
+        description: Tagging object to be created with required parameters (tag_guid
+          and transaction_guid)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TaggingResponseBody"
+          description: Accepted
+      summary: Create tagging
+      tags:
+      - Taggings
+  "/users/{user_guid}/taggings/{tagging_guid}":
+    delete:
+      description: Use this endpoint to delete a tagging according to its unique GUID.
+        If successful, the API will respond with an empty body and a status of 204
+        NO Content.
+      operationId: deleteTagging
+      responses:
+        '204':
+          content:
+            application/vnd.mx.api.v1+json:
+              example:
+          description: No Content
+      summary: Delete tagging
+      tags:
+      - Taggings
+    get:
+      description: Use this endpoint to read the attributes of a `tagging` according
+        to its unique GUID.
+      operationId: readTagging
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TaggingResponseBody"
+          description: OK
+      summary: Read tagging
+      tags:
+      - Taggings
+    parameters:
+    - description: The unique id for a `tagging`.
+      example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
+      in: path
+      name: tagging_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    put:
+      description: Use this endpoint to update a tagging.
+      operationId: updateTagging
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/TaggingUpdateRequestBody"
+        description: Tagging object to be updated with required parameter (tag_guid)
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TaggingResponseBody"
+          description: OK
+      summary: Update tagging
+      tags:
+      - Taggings
+  "/users/{user_guid}/tags":
+    get:
+      description: Use this endpoint to list all tags associated with the specified
+        `user`. Each user includes the `Business` tag by default.
+      operationId: listTags
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TagsResponseBody"
+          description: OK
+      summary: List tags
+      tags:
+      - Tags
+    parameters:
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    post:
+      description: Use this endpoint to create a new custom tag.
+      operationId: createTag
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/TagCreateRequestBody"
+        description: Tag object to be created with required parameters (tag_guid and
+          transaction_guid)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TagResponseBody"
+          description: Accepted
+      summary: Create tag
+      tags:
+      - Tags
+  "/users/{user_guid}/tags/{tag_guid}":
+    delete:
+      description: Use this endpoint to permanently delete a specific tag based on
+        its unique GUID. If successful, the API will respond with status of `204 No
+        Content`.
+      operationId: deleteTag
+      responses:
+        '204':
+          content:
+            application/vnd.mx.api.v1+json:
+              example:
+          description: No Content
+      summary: Delete tag
+      tags:
+      - Tags
+    get:
+      description: Use this endpoint to read the attributes of a particular tag according
+        to its unique GUID.
+      operationId: readTag
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TagResponseBody"
+          description: OK
+      summary: Read tag
+      tags:
+      - Tags
+    parameters:
+    - description: The unique id for a `tag`.
+      example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
+      in: path
+      name: tag_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    put:
+      description: Use this endpoint to update the name of a specific tag according
+        to its unique GUID.
+      operationId: updateTag
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/TagUpdateRequestBody"
+        description: Tag object to be updated with required parameter (tag_guid)
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TagResponseBody"
+          description: OK
+      summary: Update tag
+      tags:
+      - Tags
+  "/users/{user_guid}/transactions":
+    get:
+      description: |
+        Requests to this endpoint return a list of transactions associated
+        with the specified `user`, accross all members and accounts associated with
+        that `user`.
+      operationId: listTransactionsByUser
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Filter transactions from this date.
+        example: '2015-09-20T00:00:00.000Z'
+        in: query
+        name: from_date
+        schema:
+          type: string
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: Filter transactions to this date.
+        example: '2019-10-20T00:00:00.000Z'
+        in: query
+        name: to_date
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TransactionsResponseBody"
+          description: OK
+      summary: List transactions by user
+      tags:
+      - Transactions
+    parameters:
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/transactions/{transaction_guid}":
+    get:
+      description: Requests to this endpoint will return the attributes of the specified
+        `transaction`.
+      operationId: readTransaction
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TransactionResponseBody"
+          description: OK
+      summary: Read transaction
+      tags:
+      - Transactions
+    parameters:
+    - description: The unique id for a `transaction`.
+      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+      in: path
+      name: transaction_guid
+      required: true
+      schema:
+        type: string
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  "/users/{user_guid}/widget_urls":
+    parameters:
+    - description: The unique id for a `user`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    post:
+      description: |
+        This endpoint allows partners to get a URL by passing the widget type in the request body, as well as configuring it in several different ways. Partners may also pass an optional `Accept-Language` header.
+        Currently, only the Connect widget can be accessed through the MX Platform API. Other widget types will be added soon. Use the widget type `connect_widget` to request Connect.
+        Note that this is a `POST` request.
+      operationId: requestWidgetURL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/WidgetRequestBody"
+        description: ''
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/WidgetResponseBody"
+          description: OK
+      summary: Request a widget URL
+      tags:
+      - Widgets
+security:
+- basicAuth: []
+servers:
+- url: https://api.mx.com
+- url: https://int-api.mx.com
