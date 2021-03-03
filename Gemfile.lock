@@ -1,0 +1,36 @@
+GIT
+  remote: https://github.com/mxenabled/yaml_normalizer
+  revision: 0bf191ea947ee32b1f980a638e3710b32797b070
+  specs:
+    yaml_normalizer (1.2.1)
+      peach (~> 0.5)
+      psych (>= 2.2)
+      rake (~> 12.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    commonmarker (0.21.2)
+      ruby-enum (~> 0.5)
+    concurrent-ruby (1.1.8)
+    i18n (1.8.9)
+      concurrent-ruby (~> 1.0)
+    openapi3_parser (0.9.0)
+      commonmarker (~> 0.17)
+      psych (~> 3.1)
+    peach (0.5.1)
+    psych (3.3.1)
+    rake (12.3.3)
+    ruby-enum (0.9.0)
+      i18n
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  openapi3_parser
+  rake
+  yaml_normalizer!
+
+BUNDLED WITH
+   2.2.11
