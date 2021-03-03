@@ -36,5 +36,5 @@ task :validate_openapi do
     exit 1
   end
 
-  puts "[PASSED] valid OpenAPI"
+  puts "[PASSED] openapi.yml is valid OpenAPI"
 end
