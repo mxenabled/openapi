@@ -1,6 +1,6 @@
-# MX Platform API OpenAPI Specification
+# MX's OpenAPI Specification
 
-This repository contains the OpenAPI specification for the [MX Platform API](https://www.mx.com/products/platform-api/).
+This repository contains the OpenAPI specification for the [MX Platform API](https://docs.mx.com).
 
 ### Setup
 
