@@ -2588,6 +2588,14 @@ paths:
     post:
       description: Use this endpoint to create a new custom tag.
       operationId: CreateTag
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
