@@ -312,32 +312,74 @@ components:
           type: string
       type: object
     ChallengeImageData:
-      allOf:
-      - "$ref": "#/components/schemas/Challenge"
-      - type: object
-        properties:
-          image_data:
-            example: Who is this guy?
-            readOnly: true
-            type: string
+      properties:
+        field_name:
+          example: Who is this guy?
+          readOnly: true
+          type: string
+        guid:
+          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
+          readOnly: true
+          type: string
+        image_data:
+          example: Who is this guy?
+          readOnly: true
+          type: string
+        label:
+          example: Who is this guy?
+          readOnly: true
+          type: string
+        type:
+          example: IMAGE_DATA
+          readOnly: true
+          type: string
+      type: object
     ChallengeImageOptions:
-      allOf:
-      - "$ref": "#/components/schemas/Challenge"
-      - type: object
-        properties:
-          image_options:
-            items:
-              "$ref": "#/components/schemas/ImageOption"
-            type: array
+      properties:
+        field_name:
+          example: Who is this guy?
+          readOnly: true
+          type: string
+        guid:
+          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
+          readOnly: true
+          type: string
+        image_options:
+          items:
+            "$ref": "#/components/schemas/ImageOption"
+          type: array
+        label:
+          example: Who is this guy?
+          readOnly: true
+          type: string
+        type:
+          example: IMAGE_OPTIONS
+          readOnly: true
+          type: string
+      type: object
     ChallengeOptions:
-      allOf:
-      - "$ref": "#/components/schemas/Challenge"
-      - type: object
-        properties:
-          options:
-            items:
-              "$ref": "#/components/schemas/Option"
-            type: array
+      properties:
+        field_name:
+          example: Who is this guy?
+          readOnly: true
+          type: string
+        guid:
+          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
+          readOnly: true
+          type: string
+        label:
+          example: Who is this guy?
+          readOnly: true
+          type: string
+        options:
+          items:
+            "$ref": "#/components/schemas/Option"
+          type: array
+        type:
+          example: OPTIONS
+          readOnly: true
+          type: string
+      type: object
     ChallengeRequest:
       properties:
         guid:
@@ -351,19 +393,11 @@ components:
       properties:
         challenges:
           items:
-            discriminator:
-              mapping:
-                IMAGE_DATA: "#/components/schemas/ChallengeImageData"
-                IMAGE_OPTIONS: "#/components/schemas/ChallengeImageOptions"
-                OPTIONS: "#/components/schemas/ChallengeOptions"
-                TEXT: "#/components/schemas/Challenge"
-                TOKEN: "#/components/schemas/Challenge"
-              propertyName: type
             oneOf:
+            - "$ref": "#/components/schemas/Challenge"
             - "$ref": "#/components/schemas/ChallengeImageData"
             - "$ref": "#/components/schemas/ChallengeImageOptions"
             - "$ref": "#/components/schemas/ChallengeOptions"
-            - "$ref": "#/components/schemas/Challenge"
           type: array
         pagination:
           "$ref": "#/components/schemas/Pagination"
