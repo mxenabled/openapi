@@ -249,31 +249,69 @@ components:
           type: string
       type: object
     ChallengeImageData:
-      allOf:
-      - "$ref": "#/components/schemas/Challenge"
-      - type: object
-        properties:
-          image_data:
-            example: Who is this guy?
-            type: string
+      properties:
+        field_name:
+          example: Who is this guy?
+          type: string
+        guid:
+          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
+          type: string
+        image_data:
+          example: Who is this guy?
+          type: string
+        label:
+          example: Who is this guy?
+          type: string
+        type:
+          example: IMAGE_DATA
+          type: string
+      type: object
     ChallengeImageOptions:
-      allOf:
-      - "$ref": "#/components/schemas/Challenge"
-      - type: object
-        properties:
-          image_options:
-            items:
-              "$ref": "#/components/schemas/ImageOption"
-            type: array
+      properties:
+        field_name:
+          example: Who is this guy?
+          readOnly: true
+          type: string
+        guid:
+          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
+          readOnly: true
+          type: string
+        image_options:
+          items:
+            "$ref": "#/components/schemas/ImageOption"
+          type: array
+        label:
+          example: Who is this guy?
+          readOnly: true
+          type: string
+        type:
+          example: IMAGE_OPTIONS
+          readOnly: true
+          type: string
+      type: object
     ChallengeOptions:
-      allOf:
-      - "$ref": "#/components/schemas/Challenge"
-      - type: object
-        properties:
-          options:
-            items:
-              "$ref": "#/components/schemas/Option"
-            type: array
+      properties:
+        field_name:
+          example: Who is this guy?
+          readOnly: true
+          type: string
+        guid:
+          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
+          readOnly: true
+          type: string
+        label:
+          example: Who is this guy?
+          readOnly: true
+          type: string
+        options:
+          items:
+            "$ref": "#/components/schemas/Option"
+          type: array
+        type:
+          example: OPTIONS
+          readOnly: true
+          type: string
+      type: object
     ChallengeRequest:
       properties:
         guid:
@@ -287,19 +325,11 @@ components:
       properties:
         challenges:
           items:
-            discriminator:
-              mapping:
-                IMAGE_DATA: "#/components/schemas/ChallengeImageData"
-                IMAGE_OPTIONS: "#/components/schemas/ChallengeImageOptions"
-                OPTIONS: "#/components/schemas/ChallengeOptions"
-                TEXT: "#/components/schemas/Challenge"
-                TOKEN: "#/components/schemas/Challenge"
-              propertyName: type
             oneOf:
+            - "$ref": "#/components/schemas/Challenge"
             - "$ref": "#/components/schemas/ChallengeImageData"
             - "$ref": "#/components/schemas/ChallengeImageOptions"
             - "$ref": "#/components/schemas/ChallengeOptions"
-            - "$ref": "#/components/schemas/Challenge"
           type: array
         pagination:
           "$ref": "#/components/schemas/Pagination"
@@ -1206,7 +1236,7 @@ paths:
     get:
       description: This endpoint returns a list of institutions based on the specified
         search term or parameter.
-      operationId: listInstitutions
+      operationId: ListInstitutions
       parameters:
       - description: This will list only institutions in which the appended string
           appears.
@@ -1247,14 +1277,12 @@ paths:
                 "$ref": "#/components/schemas/InstitutionsResponseBody"
           description: OK
       summary: List institutions
-      tags:
-      - Institutions
   "/institutions/favorites":
     get:
       description: |
         This endpoint returns a paginated list containing institutions that have been set as the partner’s favorites, sorted by popularity.
         Pleaase contact MX to set a list of favorites.
-      operationId: listFavorites
+      operationId: ListFavorites
       responses:
         '200':
           content:
@@ -1263,13 +1291,19 @@ paths:
                 "$ref": "#/components/schemas/InstitutionsResponseBody"
           description: OK
       summary: List favorites
-      tags:
-      - Institutions
   "/institutions/{institution_code}":
     get:
       description: This endpoint returns information about the institution specified
         by `institution_code`.
-      operationId: readInstitution
+      operationId: ReadInstitution
+      parameters:
+      - description: The institution_code of the institution.
+        example: chase
+        in: path
+        name: institution_code
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1278,21 +1312,19 @@ paths:
                 "$ref": "#/components/schemas/InstitutionResponseBody"
           description: OK
       summary: Read institution
-      tags:
-      - Institutions
-    parameters:
-    - description: The institution_code of the institution.
-      example: chase
-      in: path
-      name: institution_code
-      required: true
-      schema:
-        type: string
   "/institutions/{institution_code}/credentials":
     get:
       description: Use this endpoint to see which credentials will be needed to create
         a member for a specific institution.
-      operationId: listInstitutionRequiredCredentials
+      operationId: ListInstitutionRequiredCredentials
+      parameters:
+      - description: The institution_code of the institution.
+        example: chase
+        in: path
+        name: institution_code
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1301,21 +1333,11 @@ paths:
                 "$ref": "#/components/schemas/CredentialsResponseBody"
           description: OK
       summary: List institution-required credentials
-      tags:
-      - Institutions
-    parameters:
-    - description: The institution_code of the institution.
-      example: chase
-      in: path
-      name: institution_code
-      required: true
-      schema:
-        type: string
   "/merchants":
     get:
       description: This endpoint returns a paginated list of all the merchants in
         the MX system.
-      operationId: listMerchants
+      operationId: ListMerchants
       parameters:
       - description: Specify current page.
         example: 1
@@ -1337,13 +1359,19 @@ paths:
                 "$ref": "#/components/schemas/MerchantsResponseBody"
           description: OK
       summary: List merchants
-      tags:
-      - Merchants
   "/merchants/{merchant_guid}":
     get:
       description: Returns information about a particular merchant, such as a logo,
         name, and website.
-      operationId: readMerchant
+      operationId: ReadMerchant
+      parameters:
+      - description: The unique id for a `merchant`.
+        example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+        in: path
+        name: merchant_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1352,21 +1380,11 @@ paths:
                 "$ref": "#/components/schemas/MerchantResponseBody"
           description: OK
       summary: Read merchant
-      tags:
-      - Merchants
-    parameters:
-    - description: The unique id for a `merchant`.
-      example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
-      in: path
-      name: merchant_guid
-      required: true
-      schema:
-        type: string
   "/transactions/enhance":
     post:
       description: Use this endpoint to categorize, cleanse, and classify transactions.
         These transactions are not persisted or stored on the MX platform.
-      operationId: enhanceTransactions
+      operationId: EnhanceTransactions
       requestBody:
         content:
           application/json:
@@ -1383,13 +1401,11 @@ paths:
                 "$ref": "#/components/schemas/EnhanceTransactionsResponseBody"
           description: OK
       summary: Enhance transactions
-      tags:
-      - Enhance transactions
   "/users":
     get:
       description: Use this endpoint to list every user youve created in the MX Platform
         API.
-      operationId: listUsers
+      operationId: ListUsers
       parameters:
       - description: Specify current page.
         example: 1
@@ -1411,15 +1427,13 @@ paths:
                 "$ref": "#/components/schemas/UsersResponseBody"
           description: OK
       summary: List users
-      tags:
-      - Users
     post:
       description: |
         Call this endpoint to create a new user. The MX Platform API will respond with the newly-created user object if successful. This endpoint accepts several parameters: id, metadata, and is_disabled.<br>
         Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX.
         It will also restrict access to that users data until they are no longer disabled.
         Users who are disabled for the entirety of an MX Platform API billing period will not be factored into that months bill.
-      operationId: createUser
+      operationId: CreateUser
       requestBody:
         content:
           application/json:
@@ -1436,14 +1450,20 @@ paths:
                 "$ref": "#/components/schemas/UserResponseBody"
           description: OK
       summary: Create user
-      tags:
-      - Users
   "/users/{user_guid}":
     delete:
       description: |
         Use this endpoint to delete the specified `user`.
         The response will have a status of `204 No Content` without an object.
-      operationId: deleteUser
+      operationId: DeleteUser
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '204':
           content:
@@ -1451,11 +1471,17 @@ paths:
               example:
           description: No Content
       summary: Delete user
-      tags:
-      - Users
     get:
       description: Use this endpoint to read the attributes of a specific user.
-      operationId: readUser
+      operationId: ReadUser
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1464,23 +1490,21 @@ paths:
                 "$ref": "#/components/schemas/UserResponseBody"
           description: OK
       summary: Read user
-      tags:
-      - Users
-    parameters:
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     put:
       description: |
         Use this endpoint to update the attributes of a specific user. The MX Platform API will respond with the updated user object.<br>
         Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX.
         It will also restrict access to that users data until they are no longer disabled. Users who are disabled for the entirety of an MX Platform API billing period will not be factored into that months bill.<br>
         To disable a user, update it and set the is_disabled parameter to true. Set it to false to re-enable the user.
-      operationId: updateUser
+      operationId: UpdateUser
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -1496,13 +1520,11 @@ paths:
                 "$ref": "#/components/schemas/UserResponseBody"
           description: OK
       summary: Update user
-      tags:
-      - Users
   "/users/{user_guid}/accounts":
     get:
       description: This endpoint returns a list of all the accounts associated with
         the specified `user`.
-      operationId: listUserAccounts
+      operationId: ListUserAccounts
       parameters:
       - description: Specify current page.
         example: 1
@@ -1516,6 +1538,13 @@ paths:
         name: records_per_page
         schema:
           type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1524,20 +1553,25 @@ paths:
                 "$ref": "#/components/schemas/AccountsResponseBody"
           description: OK
       summary: List accounts
-      tags:
-      - Accounts
-    parameters:
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/accounts/{account_guid}":
     get:
       description: This endpoint returns the specified `account` resource.
-      operationId: readAccount
+      operationId: ReadAccount
+      parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1546,28 +1580,26 @@ paths:
                 "$ref": "#/components/schemas/AccountResponseBody"
           description: OK
       summary: Read account
-      tags:
-      - Accounts
-    parameters:
-    - description: The unique id for an `account`.
-      example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-      in: path
-      name: account_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/accounts/{account_guid}/account_numbers":
     get:
       description: This endpoint returns a list of account numbers associated with
         the specified `account`.
-      operationId: listAccountNumbersByAccount
+      operationId: ListAccountNumbersByAccount
+      parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1576,36 +1608,19 @@ paths:
                 "$ref": "#/components/schemas/AccountNumbersResponseBody"
           description: OK
       summary: List account numbers by account
-      tags:
-      - Account verification
-    parameters:
-    - description: The unique id for an `account`.
-      example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-      in: path
-      name: account_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/connect_widget_url":
-    parameters:
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     post:
       description: This endpoint will return a URL for an embeddable version of MX
         Connect.
-      operationId: getConnectWidget
+      operationId: GetConnectWidget
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -1622,13 +1637,19 @@ paths:
                 "$ref": "#/components/schemas/ConnectWidgetResponseBody"
           description: OK
       summary: Request connect URL
-      tags:
-      - Users
   "/users/{user_guid}/holdings":
     get:
       description: Use this endpoint to read all holdings associated with a specific
         user.
-      operationId: listHoldingsByUser
+      operationId: ListHoldingsByUser
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1637,20 +1658,25 @@ paths:
                 "$ref": "#/components/schemas/HoldingsResponseBody"
           description: OK
       summary: List holdings by user
-      tags:
-      - Holdings
-    parameters:
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/holdings/{holding_guid}":
     get:
       description: Use this endpoint to read the attributes of a specific holding.
-      operationId: readHolding
+      operationId: ReadHolding
+      parameters:
+      - description: The unique id for a `holding`.
+        example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
+        in: path
+        name: holding_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1659,28 +1685,19 @@ paths:
                 "$ref": "#/components/schemas/HoldingResponseBody"
           description: OK
       summary: Read holding
-      tags:
-      - Holdings
-    parameters:
-    - description: The unique id for a `holding`.
-      example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
-      in: path
-      name: holding_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/members":
     get:
       description: This endpoint returns an array which contains information on every
         member associated with a specific user.
-      operationId: listMembers
+      operationId: ListMembers
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1689,23 +1706,21 @@ paths:
                 "$ref": "#/components/schemas/MembersResponseBody"
           description: OK
       summary: List members
-      tags:
-      - Members
-    parameters:
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     post:
       description: |
         This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters id and metadata.<br>
         When creating a member, youll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the `/institutions/{institution_code}/credentials` endpoint.<br>
         If successful, the MX Platform API will respond with the newly-created member object.<br>
         Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions.
-      operationId: createMember
+      operationId: CreateMember
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -1722,12 +1737,25 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
       summary: Create member
-      tags:
-      - Members
   "/users/{user_guid}/members/{member_guid}":
     delete:
       description: Accessing this endpoint will permanently delete a member.
-      operationId: deleteMember
+      operationId: DeleteMember
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '204':
           content:
@@ -1735,11 +1763,24 @@ paths:
               example:
           description: No Content
       summary: Delete member
-      tags:
-      - Members
     get:
       description: Use this endpoint to read the attributes of a specific member.
-      operationId: readMember
+      operationId: ReadMember
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1748,29 +1789,27 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: OK
       summary: Read member
-      tags:
-      - Members
-    parameters:
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     put:
       description: |
         Use this endpoint to update a members attributes. Only the credentials,
         id, and metadata parameters can be updated. To get a list of the required
         credentials for the member, use the list member credentials endpoint.
-      operationId: updateMember
+      operationId: UpdateMember
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -1786,13 +1825,26 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: OK
       summary: Update member
-      tags:
-      - Members
   "/users/{user_guid}/members/{member_guid}/account_numbers":
     get:
       description: This endpoint returns a list of account numbers associated with
         the specified `member`.
-      operationId: listAccountNumbersByMember
+      operationId: ListAccountNumbersByMember
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1801,28 +1853,26 @@ paths:
                 "$ref": "#/components/schemas/AccountNumbersResponseBody"
           description: OK
       summary: List account numbers by member
-      tags:
-      - Account verification
-    parameters:
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/members/{member_guid}/account_owners":
     get:
       description: This endpoint returns an array with information about every account
         associated with a particular member.
-      operationId: listAccountOwners
+      operationId: ListAccountOwners
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1831,50 +1881,33 @@ paths:
                 "$ref": "#/components/schemas/AccountOwnersResponseBody"
           description: OK
       summary: List account owners
-      tags:
-      - Identity
-    parameters:
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}":
-    parameters:
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for an `account`.
-      example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-      in: path
-      name: account_guid
-      required: true
-      schema:
-        type: string
     put:
       description: This endpoint allows you to update certain attributes of an `account`
         resource.
-      operationId: updateAccount
+      operationId: UpdateAccount
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -1890,31 +1923,29 @@ paths:
                 "$ref": "#/components/schemas/AccountResponseBody"
           description: OK
       summary: Update account
-      tags:
-      - Accounts
   "/users/{user_guid}/members/{member_guid}/aggregate":
-    parameters:
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     post:
       description: |
         Calling this endpoint initiates an aggregation event for the member.
         This brings in the latest account and transaction data from the connected
         institution. If this data has recently been updated, MX may not initiate an
         aggregation event.
-      operationId: aggregateMember
+      operationId: AggregateMember
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '202':
           content:
@@ -1923,15 +1954,28 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
       summary: Aggregate member
-      tags:
-      - Members
   "/users/{user_guid}/members/{member_guid}/challenges":
     get:
       description: |
         Use this endpoint for information on what multi-factor authentication challenges need to be answered in order to aggregate a member.<br>
         If the aggregation is not challenged, i.e., the member does not have a connection status of `CHALLENGED`, then code `204 No Content` will be returned.<br>
         If the aggregation has been challenged, i.e., the member does have a connection status of `CHALLENGED`, then code `200 OK` will be returned - along with the corresponding credentials.
-      operationId: listMemberChallenges
+      operationId: ListMemberChallenges
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1940,45 +1984,28 @@ paths:
                 "$ref": "#/components/schemas/ChallengesResponseBody"
           description: OK
       summary: List member challenges
-      tags:
-      - Members
-    parameters:
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/members/{member_guid}/check_balance":
-    parameters:
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     post:
       description: |
         This endpoint operates much like the aggregate member endpoint
         except that it gathers only account balance information; it does not gather
         any transaction data.
-      operationId: checkBalances
+      operationId: CheckBalances
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '202':
           content:
@@ -1987,13 +2014,26 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
       summary: Check balances
-      tags:
-      - Members
   "/users/{user_guid}/members/{member_guid}/credentials":
     get:
       description: This endpoint returns an array which contains information on every
         non-MFA credential associated with a specific member.
-      operationId: listMemberCredentials
+      operationId: ListMemberCredentials
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2002,46 +2042,29 @@ paths:
                 "$ref": "#/components/schemas/CredentialsResponseBody"
           description: OK
       summary: List member credentials
-      tags:
-      - Members
-    parameters:
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/members/{member_guid}/extend_history":
-    parameters:
-    - description: The unique identifier for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique identifier for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     post:
       description: |
         Some institutions allow developers to access an extended transaction
         history with up to 24 months of data associated with a particular member.
         The process for fetching and then reading this extended transaction history
         is much like standard aggregation, and it may trigger multi-factor authentication.
-      operationId: extendHistory
+      operationId: ExtendHistory
+      parameters:
+      - description: The unique identifier for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2050,13 +2073,26 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: OK
       summary: Extend history
-      tags:
-      - Extend history
   "/users/{user_guid}/members/{member_guid}/holdings":
     get:
       description: Use this endpoint to read all holdings associated with a specific
         member.
-      operationId: listHoldingsByMember
+      operationId: ListHoldingsByMember
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2065,43 +2101,26 @@ paths:
                 "$ref": "#/components/schemas/HoldingsResponseBody"
           description: OK
       summary: List holdings by member
-      tags:
-      - Holdings
-    parameters:
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/members/{member_guid}/identify":
-    parameters:
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     post:
       description: The identify endpoint begins an identification process for an already-existing
         member.
-      operationId: identifyMember
+      operationId: IdentifyMember
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2110,28 +2129,26 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: OK
       summary: Identify member
-      tags:
-      - Identity
   "/users/{user_guid}/members/{member_guid}/resume":
-    parameters:
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     put:
       description: This endpoint answers the challenges needed when a member has been
         challenged by multi-factor authentication.
-      operationId: resumeAggregation
+      operationId: ResumeAggregation
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -2147,14 +2164,27 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
       summary: Resume aggregation
-      tags:
-      - Members
   "/users/{user_guid}/members/{member_guid}/status":
     get:
       description: |
         This endpoint provides the status of the members most recent aggregation event. This is an important step in the aggregation process, and the results returned by this endpoint should determine what you do next in order to successfully aggregate a member.<br>
         MX has introduced new, more detailed information on the current status of a members connection to a financial institution and the state of its aggregation: the connection_status field. These are intended to replace and expand upon the information provided in the status field, which will soon be deprecated; support for the status field remains for the time being.
-      operationId: readMemberStatus
+      operationId: ReadMemberStatus
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2163,29 +2193,12 @@ paths:
                 "$ref": "#/components/schemas/MemberStatusResponseBody"
           description: OK
       summary: Read member status
-      tags:
-      - Members
-    parameters:
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/members/{member_guid}/transactions":
     get:
       description: |
         Requests to this endpoint return a list of transactions associated
         with the specified `member`, accross all accounts associated with that `member`.
-      operationId: listTransactionsByMember
+      operationId: ListTransactionsByMember
       parameters:
       - description: Specify current page.
         example: 1
@@ -2199,6 +2212,26 @@ paths:
         name: records_per_page
         schema:
           type: integer
+      - description: Filter transactions from this date.
+        example: '2015-09-20T00:00:00.000Z'
+        in: query
+        name: from_date
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2207,48 +2240,25 @@ paths:
                 "$ref": "#/components/schemas/TransactionsResponseBody"
           description: OK
       summary: List transactions by member
-      tags:
-      - Transactions
-    parameters:
-    - description: Filter transactions from this date.
-      example: '2015-09-20T00:00:00.000Z'
-      in: query
-      name: from_date
-      schema:
-        type: string
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/members/{member_guid}/verify":
-    parameters:
-    - description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     post:
       description: The verify endpoint begins a verification process for a member.
-      operationId: verifyMember
+      operationId: VerifyMember
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2257,13 +2267,19 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: OK
       summary: Verify member
-      tags:
-      - Account verification
   "/users/{user_guid}/taggings":
     get:
       description: Use this endpoint to retrieve a list of all the taggings associated
         with a specific user.
-      operationId: listTaggings
+      operationId: ListTaggings
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2272,20 +2288,18 @@ paths:
                 "$ref": "#/components/schemas/TaggingsResponseBody"
           description: OK
       summary: List taggings
-      tags:
-      - Taggings
-    parameters:
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     post:
       description: Use this endpoint to create a new association between a tag and
         a particular transaction, according to their unique GUIDs.
-      operationId: createTagging
+      operationId: CreateTagging
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -2302,14 +2316,27 @@ paths:
                 "$ref": "#/components/schemas/TaggingResponseBody"
           description: Accepted
       summary: Create tagging
-      tags:
-      - Taggings
   "/users/{user_guid}/taggings/{tagging_guid}":
     delete:
       description: Use this endpoint to delete a tagging according to its unique GUID.
         If successful, the API will respond with an empty body and a status of 204
         NO Content.
-      operationId: deleteTagging
+      operationId: DeleteTagging
+      parameters:
+      - description: The unique id for a `tagging`.
+        example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
+        in: path
+        name: tagging_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '204':
           content:
@@ -2317,12 +2344,25 @@ paths:
               example:
           description: No Content
       summary: Delete tagging
-      tags:
-      - Taggings
     get:
       description: Use this endpoint to read the attributes of a `tagging` according
         to its unique GUID.
-      operationId: readTagging
+      operationId: ReadTagging
+      parameters:
+      - description: The unique id for a `tagging`.
+        example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
+        in: path
+        name: tagging_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2331,26 +2371,24 @@ paths:
                 "$ref": "#/components/schemas/TaggingResponseBody"
           description: OK
       summary: Read tagging
-      tags:
-      - Taggings
-    parameters:
-    - description: The unique id for a `tagging`.
-      example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
-      in: path
-      name: tagging_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     put:
       description: Use this endpoint to update a tagging.
-      operationId: updateTagging
+      operationId: UpdateTagging
+      parameters:
+      - description: The unique id for a `tagging`.
+        example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
+        in: path
+        name: tagging_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -2365,13 +2403,19 @@ paths:
                 "$ref": "#/components/schemas/TaggingResponseBody"
           description: OK
       summary: Update tagging
-      tags:
-      - Taggings
   "/users/{user_guid}/tags":
     get:
       description: Use this endpoint to list all tags associated with the specified
         `user`. Each user includes the `Business` tag by default.
-      operationId: listTags
+      operationId: ListTags
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2380,19 +2424,17 @@ paths:
                 "$ref": "#/components/schemas/TagsResponseBody"
           description: OK
       summary: List tags
-      tags:
-      - Tags
-    parameters:
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     post:
       description: Use this endpoint to create a new custom tag.
-      operationId: createTag
+      operationId: CreateTag
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -2409,14 +2451,27 @@ paths:
                 "$ref": "#/components/schemas/TagResponseBody"
           description: Accepted
       summary: Create tag
-      tags:
-      - Tags
   "/users/{user_guid}/tags/{tag_guid}":
     delete:
       description: Use this endpoint to permanently delete a specific tag based on
         its unique GUID. If successful, the API will respond with status of `204 No
         Content`.
-      operationId: deleteTag
+      operationId: DeleteTag
+      parameters:
+      - description: The unique id for a `tag`.
+        example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
+        in: path
+        name: tag_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '204':
           content:
@@ -2424,12 +2479,25 @@ paths:
               example:
           description: No Content
       summary: Delete tag
-      tags:
-      - Tags
     get:
       description: Use this endpoint to read the attributes of a particular tag according
         to its unique GUID.
-      operationId: readTag
+      operationId: ReadTag
+      parameters:
+      - description: The unique id for a `tag`.
+        example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
+        in: path
+        name: tag_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2438,27 +2506,25 @@ paths:
                 "$ref": "#/components/schemas/TagResponseBody"
           description: OK
       summary: Read tag
-      tags:
-      - Tags
-    parameters:
-    - description: The unique id for a `tag`.
-      example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
-      in: path
-      name: tag_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     put:
       description: Use this endpoint to update the name of a specific tag according
         to its unique GUID.
-      operationId: updateTag
+      operationId: UpdateTag
+      parameters:
+      - description: The unique id for a `tag`.
+        example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
+        in: path
+        name: tag_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -2473,15 +2539,13 @@ paths:
                 "$ref": "#/components/schemas/TagResponseBody"
           description: OK
       summary: Update tag
-      tags:
-      - Tags
   "/users/{user_guid}/transactions":
     get:
       description: |
         Requests to this endpoint return a list of transactions associated
         with the specified `user`, accross all members and accounts associated with
         that `user`.
-      operationId: listTransactionsByUser
+      operationId: ListTransactionsByUser
       parameters:
       - description: Specify current page.
         example: 1
@@ -2507,6 +2571,13 @@ paths:
         name: to_date
         schema:
           type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2515,21 +2586,26 @@ paths:
                 "$ref": "#/components/schemas/TransactionsResponseBody"
           description: OK
       summary: List transactions by user
-      tags:
-      - Transactions
-    parameters:
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/transactions/{transaction_guid}":
     get:
       description: Requests to this endpoint will return the attributes of the specified
         `transaction`.
-      operationId: readTransaction
+      operationId: ReadTransaction
+      parameters:
+      - description: The unique id for a `transaction`.
+        example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+        in: path
+        name: transaction_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2538,38 +2614,21 @@ paths:
                 "$ref": "#/components/schemas/TransactionResponseBody"
           description: OK
       summary: Read transaction
-      tags:
-      - Transactions
-    parameters:
-    - description: The unique id for a `transaction`.
-      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-      in: path
-      name: transaction_guid
-      required: true
-      schema:
-        type: string
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
   "/users/{user_guid}/widget_urls":
-    parameters:
-    - description: The unique id for a `user`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     post:
       description: |
         This endpoint allows partners to get a URL by passing the widget type in the request body, as well as configuring it in several different ways. Partners may also pass an optional `Accept-Language` header.
         Currently, only the Connect widget can be accessed through the MX Platform API. Other widget types will be added soon. Use the widget type `connect_widget` to request Connect.
         Note that this is a `POST` request.
-      operationId: requestWidgetURL
+      operationId: RequestWidgetURL
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -2585,8 +2644,6 @@ paths:
                 "$ref": "#/components/schemas/WidgetResponseBody"
           description: OK
       summary: Request a widget URL
-      tags:
-      - Widgets
 security:
 - basicAuth: []
 servers:
