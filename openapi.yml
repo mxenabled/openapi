@@ -2068,7 +2068,7 @@ paths:
       responses:
         '200':
           content:
-            application/vnd.mx.atrium.v1+json:
+            application/vnd.mx.api.v1+json:
               schema:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: OK
