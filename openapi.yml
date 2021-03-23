@@ -5,198 +5,150 @@ components:
       properties:
         account_number:
           example: '5366'
-          readOnly: true
           type: string
         apr:
           example: 1.0
-          readOnly: true
           type: number
         apy:
           example: 1.0
-          readOnly: true
           type: number
         available_balance:
           example: 1000.0
-          readOnly: true
           type: number
         available_credit:
           example: 1000.0
-          readOnly: true
           type: number
         balance:
           example: 1000.0
-          readOnly: true
           type: number
         cash_balance:
           example: 1000.0
-          readOnly: false
           type: number
         cash_surrender_value:
           example: 1000.0
-          readOnly: false
           type: number
         created_at:
           example: '2016-10-13T17:57:37.000Z'
-          readOnly: true
           type: string
         credit_limit:
           example: 100.0
-          readOnly: true
           type: number
         currency_code:
           example: USD
-          readOnly: true
           type: string
         day_payment_is_due:
           example: 20
-          readOnly: true
           type: integer
         death_benefit:
           example: 1000
-          readOnly: false
           type: integer
         guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          readOnly: true
           type: string
         holdings_value:
           example: 1000.0
-          readOnly: false
           type: number
         id:
           example: '1040434698'
-          readOnly: true
           type: string
         institution_code:
           example: chase
-          readOnly: true
           type: string
         insured_name:
           example:
-          readOnly: true
           type: string
         interest_rate:
           example: 1.0
-          readOnly: true
           type: number
         is_closed:
           example: false
-          readOnly: true
           type: boolean
         is_hidden:
           example: false
-          readOnly: true
           type: boolean
         last_payment:
           example: 100.0
-          readOnly: true
           type: number
         last_payment_at:
           example: '2015-10-13T17:57:37.000Z'
-          readOnly: true
           type: string
         loan_amount:
           example: 1000.0
-          readOnly: false
           type: number
         matures_on:
           example:
-          readOnly: true
           type: string
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          readOnly: true
           type: string
         minimum_balance:
           example: 100.0
-          readOnly: true
           type: number
         minimum_payment:
           example: 10.0
-          readOnly: true
           type: number
         name:
           example: Test account 2
-          readOnly: true
           type: string
         original_balance:
           example: 10.0
-          readOnly: true
           type: number
         pay_out_amount:
           example: 10.0
-          readOnly: true
           type: number
         payment_due_at:
           example:
-          readOnly: true
           type: string
         payoff_balance:
           example: 10.0
-          readOnly: true
           type: number
         premium_amount:
           example: 1.0
-          readOnly: true
           type: number
         started_on:
           example:
-          readOnly: true
           type: string
         subtype:
           example:
-          readOnly: true
           type: string
         total_account_value:
           example: 1.0
-          readOnly: true
           type: number
         type:
           example: SAVINGS
-          readOnly: true
           type: string
         updated_at:
           example: '2016-10-13T18:08:00.000Z'
-          readOnly: true
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          readOnly: true
           type: string
       type: object
     AccountNumber:
       properties:
         account_guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          readOnly: true
           type: string
         account_number:
           example: '10001'
-          readOnly: true
           type: string
         guid:
           example: ACN-8899832e-e5b4-42cd-aa25-bbf1dc889a8f
-          readOnly: true
           type: string
         institution_number:
           example: '123'
-          readOnly: true
           type: string
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          readOnly: true
           type: string
         routing_number:
           example: '68899990000000'
-          readOnly: true
           type: string
         transit_number:
           example: '12345'
-          readOnly: true
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          readOnly: true
           type: string
       type: object
     AccountNumbersResponseBody:
@@ -212,51 +164,39 @@ components:
       properties:
         account_guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          readOnly: true
           type: string
         address:
           example: 123 This Way
-          readOnly: true
           type: string
         city:
           example: Middlesex
-          readOnly: true
           type: string
         country:
           example: US
-          readOnly: true
           type: string
         email:
           example: donnie@darko.co
-          readOnly: true
           type: string
         guid:
           example: ACO-63dc7714-6fc0-4aa2-a069-c06cdccd1af9
-          readOnly: true
           type: string
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          readOnly: true
           type: string
         owner_name:
           example: Donnie Darko
-          readOnly: true
           type: string
         phone:
           example: 555-555-5555
-          readOnly: true
           type: string
         postal_code:
           example: 00000-0000
-          readOnly: true
           type: string
         state:
           example: VA
-          readOnly: true
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          readOnly: true
           type: string
       type: object
     AccountOwnersResponseBody:
@@ -278,6 +218,7 @@ components:
         is_hidden:
           example: false
           type: boolean
+      type: object
     AccountUpdateRequestBody:
       properties:
         account:
@@ -296,19 +237,15 @@ components:
       properties:
         field_name:
           example: Who is this guy?
-          readOnly: true
           type: string
         guid:
           example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
-          readOnly: true
           type: string
         label:
           example: Who is this guy?
-          readOnly: true
           type: string
         type:
           example: IMAGE_DATA
-          readOnly: true
           type: string
       type: object
     ChallengeImageData:
@@ -318,7 +255,6 @@ components:
         properties:
           image_data:
             example: Who is this guy?
-            readOnly: true
             type: string
     ChallengeImageOptions:
       allOf:
@@ -372,11 +308,9 @@ components:
       properties:
         connect_widget_url:
           example: https://int-widgets.moneydesktop.com/md/connect/jb1rA14m85tw2lyvpgfx4gc6d3Z8z8Ayb8
-          readOnly: true
           type: string
         guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          readOnly: true
           type: string
       type: object
     ConnectWidgetRequest:
@@ -429,23 +363,18 @@ components:
       properties:
         display_order:
           example: 1
-          readOnly: true
           type: integer
         field_name:
           example: LOGIN
-          readOnly: true
           type: string
         field_type:
           example: TEXT
-          readOnly: true
           type: string
         guid:
           example: CRD-1ec152cd-e628-e81a-e852-d1e7104624da
-          readOnly: true
           type: string
         label:
           example: Username
-          readOnly: true
           type: string
       type: object
     CredentialRequest:
@@ -470,67 +399,51 @@ components:
       properties:
         amount:
           example: 21.33
-          readOnly: true
           type: number
         category:
           example: Fast Food
-          readOnly: true
           type: string
         description:
           example: IN-N-OUT BURGER
-          readOnly: true
           type: string
         id:
           example: ID-123
-          readOnly: true
           type: string
         is_bill_pay:
           example: false
-          readOnly: true
           type: boolean
         is_direct_deposit:
           example: false
-          readOnly: true
           type: boolean
         is_expense:
           example:
-          readOnly: true
           type: boolean
         is_fee:
           example:
-          readOnly: true
           type: boolean
         is_income:
           example:
-          readOnly: true
           type: boolean
         is_international:
           example:
-          readOnly: true
           type: boolean
         is_overdraft_fee:
           example: false
-          readOnly: true
           type: boolean
         is_payroll_advance:
           example: false
-          readOnly: true
           type: boolean
         merchant_category_code:
           example: 5411
-          readOnly: true
           type: integer
         merchant_guid:
           example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
-          readOnly: true
           type: string
         original_description:
           example: IN-N-OUT BURGER
-          readOnly: true
           type: string
         type:
           example: DEBIT
-          readOnly: true
           type: string
       type: object
     EnhanceTransactionRequest:
@@ -569,74 +482,57 @@ components:
       properties:
         account_guid:
           example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
-          readOnly: true
           type: string
         cost_basis:
           example: 827.0
-          readOnly: true
           type: number
         created_at:
           example: '2015-04-13T18:01:23.000Z'
-          readOnly: true
           type: string
         currency_code:
           example: USD
-          readOnly: true
           type: string
         cusip:
           example: 18383M878
-          readOnly: true
           type: string
         daily_change:
           example: 2.5
-          readOnly: true
           type: number
         description:
           example: Guggenheim Defensive Equity ETF
-          readOnly: true
           type: string
         guid:
           example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
           type: string
         holding_type:
           example: MONEY_MARKET
-          readOnly: true
           type: string
         id:
           example: ID-123
-          readOnly: true
           type: string
         market_value:
           example: 989.5
-          readOnly: true
           type: number
         member_guid:
           example: MBR-d65683e8-9eab-26bb-bcfd-ced159c9abe
-          readOnly: true
           type: string
         metadata:
           example: metadata
-          readOnly: true
           type: string
         purchase_price:
           example: 26.3
-          readOnly: true
           type: number
         shares:
           example: 6.0
-          readOnly: true
           type: number
         symbol:
           example: DEF
-          readOnly: true
           type: string
         updated_at:
           example: '2015-04-13T18:01:23.000Z'
-          readOnly: true
           type: string
         user_guid:
           example: USR-743e5d7f-1116-28fa-5de1-d3ba02e41d8d
-          readOnly: true
           type: string
       type: object
     HoldingResponseBody:
@@ -657,58 +553,45 @@ components:
       properties:
         data_uri:
           example: data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...
-          readOnly: true
           type: string
         label:
           example: IMAGE_1
-          readOnly: true
           type: string
         value:
           example: image_data
-          readOnly: true
           type: string
       type: object
     Institution:
       properties:
         code:
           example: chase
-          readOnly: true
           type: string
         medium_logo_url:
           example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png
-          readOnly: true
           type: string
         name:
           example: Chase Bank
-          readOnly: true
           type: string
         small_logo_url:
           example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png
-          readOnly: true
           type: string
         supports_account_identification:
           example: true
-          readOnly: true
           type: boolean
         supports_account_statement:
           example: true
-          readOnly: true
           type: boolean
         supports_account_verification:
           example: true
-          readOnly: true
           type: boolean
         supports_oauth:
           example: true
-          readOnly: true
           type: boolean
         supports_transaction_history:
           example: true
-          readOnly: true
           type: boolean
         url:
           example: https://www.chase.com
-          readOnly: true
           type: string
       type: object
     InstitutionResponseBody:
@@ -729,15 +612,12 @@ components:
       properties:
         aggregated_at:
           example: '2016-10-13T18:07:57.000Z'
-          readOnly: true
           type: string
         connection_status:
           example: CONNECTED
-          readOnly: true
           type: string
         guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          readOnly: true
           type: string
         id:
           example: unique_id
@@ -747,26 +627,21 @@ components:
           type: string
         is_being_aggregated:
           example: false
-          readOnly: true
           type: boolean
         is_oauth:
           example: false
-          readOnly: true
           type: boolean
         metadata:
           example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
           type: string
         name:
           example: Chase Bank
-          readOnly: true
           type: string
         successfully_aggregated_at:
           example: '2016-10-13T17:57:38.000Z'
-          readOnly: true
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          readOnly: true
           type: string
       type: object
     MemberCreateRequest:
@@ -817,7 +692,6 @@ components:
       properties:
         aggregated_at:
           example: '2016-10-13T18:07:57.000Z'
-          readOnly: true
           type: string
         challenges:
           items:
@@ -825,31 +699,24 @@ components:
           type: array
         connection_status:
           example: CONNECTED
-          readOnly: true
           type: string
         guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          readOnly: true
           type: string
         has_processed_accounts:
           example: true
-          readOnly: true
           type: boolean
         has_processed_transactions:
           example: false
-          readOnly: true
           type: boolean
         is_authenticated:
           example: false
-          readOnly: true
           type: boolean
         is_being_aggregated:
           example: false
-          readOnly: true
           type: boolean
         successfully_aggregated_at:
           example: '2016-10-13T17:57:38.000Z'
-          readOnly: true
           type: string
       type: object
     MemberStatusResponseBody:
@@ -897,26 +764,21 @@ components:
       properties:
         created_at:
           example: '2017-04-20T19:30:12.000Z'
-          readOnly: true
           type: string
         guid:
           example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
           type: string
         logo_url:
           example: https://s3.amazonaws.com/MD_Assets/merchant_logos/comcast.png
-          readOnly: true
           type: string
         name:
           example: Comcast
-          readOnly: true
           type: string
         updated_at:
           example: '2018-09-28T21:13:53.000Z'
-          readOnly: true
           type: string
         website_url:
           example: https://www.xfinity.com
-          readOnly: true
           type: string
       type: object
     MerchantResponseBody:
@@ -937,45 +799,36 @@ components:
       properties:
         label:
           example: IMAGE_1
-          readOnly: true
           type: string
         value:
           example: image_data
-          readOnly: true
           type: string
       type: object
     Pagination:
       properties:
         current_page:
           example: 1
-          readOnly: true
           type: integer
         per_page:
           example: 25
-          readOnly: true
           type: integer
         total_entries:
           example: 1
-          readOnly: true
           type: integer
         total_pages:
           example: 1
-          readOnly: true
           type: integer
       type: object
     Tag:
       properties:
         guid:
           example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
-          readOnly: true
           type: string
         name:
           example: MY TAG
-          readOnly: true
           type: string
         user_guid:
           example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
-          readOnly: true
           type: string
       type: object
     TagCreateRequest:
@@ -1013,23 +866,18 @@ components:
       properties:
         guid:
           example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
-          readOnly: true
           type: string
         member_is_managed_by_user:
           example: false
-          readOnly: true
           type: boolean
         tag_guid:
           example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
-          readOnly: true
           type: string
         transaction_guid:
           example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-          readOnly: true
           type: string
         user_guid:
           example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
-          readOnly: true
           type: string
       type: object
     TaggingCreateRequest:
@@ -1087,139 +935,105 @@ components:
       properties:
         account_guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          readOnly: true
           type: string
         amount:
           example: 61.11
-          readOnly: true
           type: number
         category:
           example: Groceries
-          readOnly: true
           type: string
         check_number_string:
           example: '6812'
-          readOnly: true
           type: string
         created_at:
           example: '2016-10-06T09:43:42.000Z'
-          readOnly: true
           type: string
         currency_code:
           example: USD
-          readOnly: true
           type: string
         date:
           example: '2013-09-23T00:00:00.000Z'
-          readOnly: true
           type: string
         description:
           example: Whole foods
-          readOnly: true
           type: string
         guid:
           example: TRN-265abee9-889b-af6a-c69b-25157db2bdd9
-          readOnly: true
           type: string
         id:
           example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
-          readOnly: true
           type: string
         is_bill_pay:
           example: false
-          readOnly: true
           type: boolean
         is_direct_deposit:
           example: false
-          readOnly: true
           type: boolean
         is_expense:
           example: true
-          readOnly: true
           type: boolean
         is_fee:
           example: false
-          readOnly: true
           type: boolean
         is_income:
           example: false
-          readOnly: true
           type: boolean
         is_international:
           example: false
-          readOnly: true
           type: boolean
         is_overdraft_fee:
           example: false
-          readOnly: true
           type: boolean
         is_payroll_advance:
           example: false
-          readOnly: true
           type: boolean
         latitude:
           example: -43.2075
-          readOnly: true
           type: number
         localized_description:
           example:
-          readOnly: true
           type: string
         localized_memo:
           example:
-          readOnly: true
           type: string
         longitude:
           example: 139.691706
-          readOnly: true
           type: number
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          readOnly: true
           type: string
         memo:
           example:
-          readOnly: true
           type: string
         merchant_category_code:
           example: 5411
-          readOnly: true
           type: integer
         merchant_guid:
           example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
-          readOnly: true
           type: string
         original_description:
           example: WHOLEFDS TSQ 102
-          readOnly: true
           type: string
         posted_at:
           example: '2016-10-07T06:00:00.000Z'
-          readOnly: true
           type: string
         status:
           example: POSTED
-          readOnly: true
           type: string
         top_level_category:
           example: Food & Dining
-          readOnly: true
           type: string
         transacted_at:
           example: '2016-10-06T13:00:00.000Z'
-          readOnly: true
           type: string
         type:
           example: DEBIT
-          readOnly: true
           type: string
         updated_at:
           example: '2016-10-07T05:49:12.000Z'
-          readOnly: true
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          readOnly: true
           type: string
       type: object
     TransactionResponseBody:
@@ -1243,7 +1057,6 @@ components:
           type: string
         guid:
           example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
-          readOnly: true
           type: string
         id:
           example: My-Unique-ID
@@ -1262,7 +1075,6 @@ components:
           type: string
         guid:
           example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
-          readOnly: true
           type: string
         id:
           example: My-Unique-ID
@@ -1291,7 +1103,6 @@ components:
           type: string
         guid:
           example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
-          readOnly: true
           type: string
         id:
           example: My-Unique-ID
@@ -1321,11 +1132,9 @@ components:
       properties:
         type:
           example: connect_widget
-          readOnly: true
           type: string
         url:
           example: https://int-widgets.moneydesktop.com/md/connect/yxcdk7f1nb99jwApp34lA24m0AZ8rzprgmw17gm8z8h2AzjyAnd1rj42qfv42r3xnn07Amfwlg3j09hwp8bkq8tc5z21j33xjggmp2qtlpkz2v4gywfhfn31l44tx2w91bfc2thc58j4syqp0hgxcyvA4g7754hk7gjc56kt7tc36s45mmkdz2jqqqydspytmtr3dAb9jh6fkb24f3zkfpdjj0v77f0vmrtzvzxkmxz7dklsq8gd0gstkbhlw5bgpgc3m9mAtpAcr2w15gwy5xc4blgxppl42Avnm63291z3cyp0wm3lqgmvgzdAddct423gAdqxdlfx5d4mvc0ck2gt7ktqgks4vxq1pAy5
-          readOnly: true
           type: string
         user_id:
           example: U-jeff-201709221210
