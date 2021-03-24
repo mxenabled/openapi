@@ -55,7 +55,7 @@ components:
           example: chase
           type: string
         insured_name:
-          example:
+          example: Frodo Baggins
           type: string
         interest_rate:
           example: 1.0
@@ -76,7 +76,7 @@ components:
           example: 1000.0
           type: number
         matures_on:
-          example:
+          example: '2015-10-13T17:57:37.000Z'
           type: string
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -97,7 +97,7 @@ components:
           example: 10.0
           type: number
         payment_due_at:
-          example:
+          example: '2015-10-13T17:57:37.000Z'
           type: string
         payoff_balance:
           example: 10.0
@@ -106,10 +106,10 @@ components:
           example: 1.0
           type: number
         started_on:
-          example:
+          example: '2015-10-13T17:57:37.000Z'
           type: string
         subtype:
-          example:
+          example: NONE
           type: string
         total_account_value:
           example: 1.0
@@ -438,16 +438,16 @@ components:
           example: false
           type: boolean
         is_expense:
-          example:
+          example: false
           type: boolean
         is_fee:
-          example:
+          example: false
           type: boolean
         is_income:
-          example:
+          example: false
           type: boolean
         is_international:
-          example:
+          example: false
           type: boolean
         is_overdraft_fee:
           example: false
@@ -1013,10 +1013,10 @@ components:
           example: -43.2075
           type: number
         localized_description:
-          example:
+          example: This is a localized_description
           type: string
         localized_memo:
-          example:
+          example: This is a localized_memo
           type: string
         longitude:
           example: 139.691706
@@ -1025,7 +1025,7 @@ components:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
         memo:
-          example:
+          example: This is a memo
           type: string
         merchant_category_code:
           example: 5411
