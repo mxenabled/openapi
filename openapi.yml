@@ -270,11 +270,9 @@ components:
       properties:
         field_name:
           example: Who is this guy?
-          readOnly: true
           type: string
         guid:
           example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
-          readOnly: true
           type: string
         image_options:
           items:
@@ -282,26 +280,21 @@ components:
           type: array
         label:
           example: Who is this guy?
-          readOnly: true
           type: string
         type:
           example: IMAGE_OPTIONS
-          readOnly: true
           type: string
       type: object
     ChallengeOptions:
       properties:
         field_name:
           example: Who is this guy?
-          readOnly: true
           type: string
         guid:
           example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
-          readOnly: true
           type: string
         label:
           example: Who is this guy?
-          readOnly: true
           type: string
         options:
           items:
@@ -309,7 +302,6 @@ components:
           type: array
         type:
           example: OPTIONS
-          readOnly: true
           type: string
       type: object
     ChallengeRequest:
