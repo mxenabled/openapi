@@ -909,8 +909,8 @@ paths:
                     type: object
                   type: array
               type: object
-        description: User object to be created with optional parameters (amount, type)
-          amd required parameters (description, id)
+        description: Transaction object to be created with optional parameters (amount,
+          type) and required parameters (description, id)
         required: true
       responses:
         '200':
