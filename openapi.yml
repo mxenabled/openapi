@@ -151,15 +151,6 @@ components:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
       type: object
-    AccountNumbersResponseBody:
-      properties:
-        account_numbers:
-          items:
-            "$ref": "#/components/schemas/AccountNumber"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
-      type: object
     AccountOwner:
       properties:
         account_guid:
@@ -199,56 +190,7 @@ components:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
       type: object
-    AccountOwnersResponseBody:
-      properties:
-        account_owners:
-          items:
-            "$ref": "#/components/schemas/AccountOwner"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
-      type: object
-    AccountResponseBody:
-      properties:
-        account:
-          "$ref": "#/components/schemas/Account"
-      type: object
-    AccountUpdateRequest:
-      properties:
-        is_hidden:
-          example: false
-          type: boolean
-      type: object
-    AccountUpdateRequestBody:
-      properties:
-        account:
-          "$ref": "#/components/schemas/AccountUpdateRequest"
-      type: object
-    AccountsResponseBody:
-      properties:
-        accounts:
-          items:
-            "$ref": "#/components/schemas/Account"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
-      type: object
     Challenge:
-      properties:
-        field_name:
-          example: Who is this guy?
-          type: string
-        guid:
-          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
-          type: string
-        label:
-          example: Who is this guy?
-          type: string
-        type:
-          example: IMAGE_DATA
-          type: string
-      type: object
-    ChallengeImageData:
       properties:
         field_name:
           example: Who is this guy?
@@ -259,72 +201,38 @@ components:
         image_data:
           example: Who is this guy?
           type: string
-        label:
-          example: Who is this guy?
-          type: string
-        type:
-          example: IMAGE_DATA
-          type: string
-      type: object
-    ChallengeImageOptions:
-      properties:
-        field_name:
-          example: Who is this guy?
-          type: string
-        guid:
-          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
-          type: string
         image_options:
           items:
-            "$ref": "#/components/schemas/ImageOption"
+            properties:
+              data_uri:
+                example: data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image
+                  data ...
+                type: string
+              label:
+                example: IMAGE_1
+                type: string
+              value:
+                example: image_data
+                type: string
+            type: object
           type: array
-        label:
-          example: Who is this guy?
-          type: string
-        type:
-          example: IMAGE_OPTIONS
-          type: string
-      type: object
-    ChallengeOptions:
-      properties:
-        field_name:
-          example: Who is this guy?
-          type: string
-        guid:
-          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
-          type: string
         label:
           example: Who is this guy?
           type: string
         options:
           items:
-            "$ref": "#/components/schemas/Option"
+            properties:
+              label:
+                example: IMAGE_1
+                type: string
+              value:
+                example: image_data
+                type: string
+            type: object
           type: array
         type:
-          example: OPTIONS
+          example: IMAGE_DATA
           type: string
-      type: object
-    ChallengeRequest:
-      properties:
-        guid:
-          example: CRD-2378634-33ub5bhk54kjb
-          type: string
-        value:
-          example: user-entered-value
-          type: string
-      type: object
-    ChallengesResponseBody:
-      properties:
-        challenges:
-          items:
-            oneOf:
-            - "$ref": "#/components/schemas/Challenge"
-            - "$ref": "#/components/schemas/ChallengeImageData"
-            - "$ref": "#/components/schemas/ChallengeImageOptions"
-            - "$ref": "#/components/schemas/ChallengeOptions"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
       type: object
     ConnectWidget:
       properties:
@@ -334,52 +242,6 @@ components:
         guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
-      type: object
-    ConnectWidgetRequest:
-      properties:
-        color_scheme:
-          example: light
-          type: string
-        current_institution_code:
-          example: chase
-          type: string
-        current_member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type: string
-        disable_institution_search:
-          example: false
-          type: boolean
-        include_transactions:
-          example: true
-          type: boolean
-        is_mobile_webview:
-          example: true
-          type: boolean
-        mode:
-          example: aggregation
-          type: string
-        ui_message_version:
-          example: 4
-          type: integer
-        ui_message_webview_url_scheme:
-          example: mx
-          type: string
-        update_credentials:
-          example: false
-          type: boolean
-        wait_for_full_aggregation:
-          example: false
-          type: boolean
-      type: object
-    ConnectWidgetRequestBody:
-      properties:
-        config:
-          "$ref": "#/components/schemas/ConnectWidgetRequest"
-      type: object
-    ConnectWidgetResponseBody:
-      properties:
-        user:
-          "$ref": "#/components/schemas/ConnectWidget"
       type: object
     Credential:
       properties:
@@ -398,24 +260,6 @@ components:
         label:
           example: Username
           type: string
-      type: object
-    CredentialRequest:
-      properties:
-        guid:
-          example: CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f
-          type: string
-        value:
-          example: password
-          type: string
-      type: object
-    CredentialsResponseBody:
-      properties:
-        credentials:
-          items:
-            "$ref": "#/components/schemas/Credential"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
       type: object
     EnhanceTransaction:
       properties:
@@ -467,38 +311,6 @@ components:
         type:
           example: DEBIT
           type: string
-      type: object
-    EnhanceTransactionRequest:
-      properties:
-        amount:
-          example: 21.33
-          type: number
-        description:
-          example: IN-N-OUT BURGER
-          type: string
-        id:
-          example: ID-123
-          type: string
-        merchant_category_code:
-          example: 123
-          type: integer
-        type:
-          example: DEBIT
-          type: string
-      type: object
-    EnhanceTransactionsRequestBody:
-      properties:
-        transactions:
-          items:
-            "$ref": "#/components/schemas/EnhanceTransactionRequest"
-          type: array
-      type: object
-    EnhanceTransactionsResponseBody:
-      properties:
-        transactions:
-          items:
-            "$ref": "#/components/schemas/EnhanceTransaction"
-          type: array
       type: object
     Holding:
       properties:
@@ -557,32 +369,6 @@ components:
           example: USR-743e5d7f-1116-28fa-5de1-d3ba02e41d8d
           type: string
       type: object
-    HoldingResponseBody:
-      properties:
-        holding:
-          "$ref": "#/components/schemas/Holding"
-      type: object
-    HoldingsResponseBody:
-      properties:
-        holdings:
-          items:
-            "$ref": "#/components/schemas/Holding"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
-      type: object
-    ImageOption:
-      properties:
-        data_uri:
-          example: data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...
-          type: string
-        label:
-          example: IMAGE_1
-          type: string
-        value:
-          example: image_data
-          type: string
-      type: object
     Institution:
       properties:
         code:
@@ -615,20 +401,6 @@ components:
         url:
           example: https://www.chase.com
           type: string
-      type: object
-    InstitutionResponseBody:
-      properties:
-        institution:
-          "$ref": "#/components/schemas/Institution"
-      type: object
-    InstitutionsResponseBody:
-      properties:
-        institutions:
-          items:
-            "$ref": "#/components/schemas/Institution"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
       type: object
     Member:
       properties:
@@ -666,56 +438,13 @@ components:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
       type: object
-    MemberCreateRequest:
-      properties:
-        background_aggregation_is_disabled:
-          example: false
-          type: boolean
-        credentials:
-          items:
-            "$ref": "#/components/schemas/CredentialRequest"
-          type: array
-        id:
-          example: unique_id
-          type: string
-        institution_code:
-          example: chase
-          type: string
-        metadata:
-          example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
-          type: string
-      required:
-      - credentials
-      - institution_code
-      type: object
-    MemberCreateRequestBody:
-      properties:
-        member:
-          "$ref": "#/components/schemas/MemberCreateRequest"
-      type: object
-    MemberResponseBody:
-      properties:
-        member:
-          "$ref": "#/components/schemas/Member"
-      type: object
-    MemberResumeRequest:
-      properties:
-        challenges:
-          items:
-            "$ref": "#/components/schemas/ChallengeRequest"
-          type: array
-      type: object
-    MemberResumeRequestBody:
-      properties:
-        member:
-          "$ref": "#/components/schemas/MemberResumeRequest"
-      type: object
     MemberStatus:
       properties:
         aggregated_at:
           example: '2016-10-13T18:07:57.000Z'
           type: string
         challenges:
+          example: challenges
           items:
             "$ref": "#/components/schemas/Challenge"
           type: array
@@ -741,47 +470,6 @@ components:
           example: '2016-10-13T17:57:38.000Z'
           type: string
       type: object
-    MemberStatusResponseBody:
-      properties:
-        member:
-          "$ref": "#/components/schemas/MemberStatus"
-      type: object
-    MemberUpdateRequest:
-      properties:
-        background_aggregation_is_disabled:
-          example: false
-          type: boolean
-        credentials:
-          items:
-            "$ref": "#/components/schemas/CredentialRequest"
-          type: array
-        id:
-          example: unique_id
-          type: string
-        institution_code:
-          example: chase
-          type: string
-        is_oauth:
-          example: false
-          type: boolean
-        metadata:
-          example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
-          type: string
-      type: object
-    MemberUpdateRequestBody:
-      properties:
-        member:
-          "$ref": "#/components/schemas/MemberUpdateRequest"
-      type: object
-    MembersResponseBody:
-      properties:
-        members:
-          items:
-            "$ref": "#/components/schemas/Member"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
-      type: object
     Merchant:
       properties:
         created_at:
@@ -801,29 +489,6 @@ components:
           type: string
         website_url:
           example: https://www.xfinity.com
-          type: string
-      type: object
-    MerchantResponseBody:
-      properties:
-        merchant:
-          "$ref": "#/components/schemas/Merchant"
-      type: object
-    MerchantsResponseBody:
-      properties:
-        merchants:
-          items:
-            "$ref": "#/components/schemas/Merchant"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
-      type: object
-    Option:
-      properties:
-        label:
-          example: IMAGE_1
-          type: string
-        value:
-          example: image_data
           type: string
       type: object
     Pagination:
@@ -853,37 +518,6 @@ components:
           example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
           type: string
       type: object
-    TagCreateRequest:
-      properties:
-        name:
-          example: MY TAG
-          type: string
-      required:
-      - name
-      type: object
-    TagCreateRequestBody:
-      properties:
-        tag:
-          "$ref": "#/components/schemas/TagCreateRequest"
-      type: object
-    TagResponseBody:
-      properties:
-        tag:
-          "$ref": "#/components/schemas/Tag"
-      type: object
-    TagUpdateRequest:
-      properties:
-        name:
-          example: MY TAG
-          type: string
-      required:
-      - name
-      type: object
-    TagUpdateRequestBody:
-      properties:
-        tag:
-          "$ref": "#/components/schemas/TagUpdateRequest"
-      type: object
     Tagging:
       properties:
         guid:
@@ -901,57 +535,6 @@ components:
         user_guid:
           example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
           type: string
-      type: object
-    TaggingCreateRequest:
-      properties:
-        tag_guid:
-          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
-          type: string
-        transaction_guid:
-          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-          type: string
-      required:
-      - tag_guid
-      - transaction_guid
-      type: object
-    TaggingCreateRequestBody:
-      properties:
-        tagging:
-          "$ref": "#/components/schemas/TaggingCreateRequest"
-      type: object
-    TaggingResponseBody:
-      properties:
-        tagging:
-          "$ref": "#/components/schemas/Tagging"
-      type: object
-    TaggingUpdateRequest:
-      properties:
-        tag_guid:
-          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
-          type: string
-      type: object
-    TaggingUpdateRequestBody:
-      properties:
-        tagging:
-          "$ref": "#/components/schemas/TaggingUpdateRequest"
-      type: object
-    TaggingsResponseBody:
-      properties:
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
-        taggings:
-          items:
-            "$ref": "#/components/schemas/Tagging"
-          type: array
-      type: object
-    TagsResponseBody:
-      properties:
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
-        tags:
-          items:
-            "$ref": "#/components/schemas/Tag"
-          type: array
       type: object
     Transaction:
       properties:
@@ -1058,20 +641,6 @@ components:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
       type: object
-    TransactionResponseBody:
-      properties:
-        transaction:
-          "$ref": "#/components/schemas/Transaction"
-      type: object
-    TransactionsResponseBody:
-      properties:
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
-        transactions:
-          items:
-            "$ref": "#/components/schemas/Transaction"
-          type: array
-      type: object
     User:
       properties:
         email:
@@ -1090,66 +659,6 @@ components:
           example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
           type: string
       type: object
-    UserCreateRequest:
-      properties:
-        email:
-          example: email@provider.com
-          type: string
-        guid:
-          example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
-          type: string
-        id:
-          example: My-Unique-ID
-          type: string
-        is_disabled:
-          example: false
-          type: boolean
-        metadata:
-          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
-          type: string
-      type: object
-    UserCreateRequestBody:
-      properties:
-        user:
-          "$ref": "#/components/schemas/UserCreateRequest"
-      type: object
-    UserResponseBody:
-      properties:
-        user:
-          "$ref": "#/components/schemas/User"
-      type: object
-    UserUpdateRequest:
-      properties:
-        email:
-          example: email@provider.com
-          type: string
-        guid:
-          example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
-          type: string
-        id:
-          example: My-Unique-ID
-          type: string
-        is_disabled:
-          example: false
-          type: boolean
-        metadata:
-          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
-          type: string
-      type: object
-    UserUpdateRequestBody:
-      properties:
-        user:
-          "$ref": "#/components/schemas/UserUpdateRequest"
-      type: object
-    UsersResponseBody:
-      properties:
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
-        users:
-          items:
-            "$ref": "#/components/schemas/User"
-          type: array
-      type: object
     Widget:
       properties:
         type:
@@ -1161,55 +670,6 @@ components:
         user_id:
           example: U-jeff-201709221210
           type: string
-      type: object
-    WidgetRequest:
-      properties:
-        color_scheme:
-          example: light
-          type: string
-        current_institution_code:
-          example: chase
-          type: string
-        current_member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type: string
-        disable_institution_search:
-          example: false
-          type: boolean
-        include_transactions:
-          example: true
-          type: boolean
-        is_mobile_webview:
-          example: true
-          type: boolean
-        mode:
-          example: aggregation
-          type: string
-        ui_message_version:
-          example: 4
-          type: integer
-        ui_message_webview_url_scheme:
-          example: mx
-          type: string
-        update_credentials:
-          example: false
-          type: boolean
-        wait_for_full_aggregation:
-          example: false
-          type: boolean
-        widget_type:
-          example: connect_widget
-          type: string
-      type: object
-    WidgetRequestBody:
-      properties:
-        widget_url:
-          "$ref": "#/components/schemas/WidgetRequest"
-      type: object
-    WidgetResponseBody:
-      properties:
-        widget_url:
-          "$ref": "#/components/schemas/Widget"
       type: object
   securitySchemes:
     basicAuth:
@@ -1266,9 +726,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/InstitutionsResponseBody"
+                properties:
+                  institutions:
+                    items:
+                      "$ref": "#/components/schemas/Institution"
+                    type: array
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                type: object
           description: OK
       summary: List institutions
+      tags:
+      - Institution
   "/institutions/favorites":
     get:
       description: |
@@ -1280,9 +749,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/InstitutionsResponseBody"
+                properties:
+                  institutions:
+                    items:
+                      "$ref": "#/components/schemas/Institution"
+                    type: array
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                type: object
           description: OK
       summary: List favorites
+      tags:
+      - Institution
   "/institutions/{institution_code}":
     get:
       description: This endpoint returns information about the institution specified
@@ -1301,9 +779,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/InstitutionResponseBody"
+                properties:
+                  institution:
+                    "$ref": "#/components/schemas/Institution"
+                type: object
           description: OK
       summary: Read institution
+      tags:
+      - Institution
   "/institutions/{institution_code}/credentials":
     get:
       description: Use this endpoint to see which credentials will be needed to create
@@ -1322,9 +805,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/CredentialsResponseBody"
+                properties:
+                  credentials:
+                    items:
+                      "$ref": "#/components/schemas/Credential"
+                    type: array
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                type: object
           description: OK
       summary: List institution-required credentials
+      tags:
+      - Credential
   "/merchants":
     get:
       description: This endpoint returns a paginated list of all the merchants in
@@ -1348,9 +840,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/MerchantsResponseBody"
+                properties:
+                  merchants:
+                    items:
+                      "$ref": "#/components/schemas/Merchant"
+                    type: array
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                type: object
           description: OK
       summary: List merchants
+      tags:
+      - Merchant
   "/merchants/{merchant_guid}":
     get:
       description: Returns information about a particular merchant, such as a logo,
@@ -1369,9 +870,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/MerchantResponseBody"
+                properties:
+                  merchant:
+                    "$ref": "#/components/schemas/Merchant"
+                type: object
           description: OK
       summary: Read merchant
+      tags:
+      - Merchant
   "/transactions/enhance":
     post:
       description: Use this endpoint to categorize, cleanse, and classify transactions.
@@ -1381,7 +887,28 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/EnhanceTransactionsRequestBody"
+              properties:
+                transactions:
+                  items:
+                    properties:
+                      amount:
+                        example: 21.33
+                        type: number
+                      description:
+                        example: IN-N-OUT BURGER
+                        type: string
+                      id:
+                        example: ID-123
+                        type: string
+                      merchant_category_code:
+                        example: 123
+                        type: integer
+                      type:
+                        example: DEBIT
+                        type: string
+                    type: object
+                  type: array
+              type: object
         description: User object to be created with optional parameters (amount, type)
           amd required parameters (description, id)
         required: true
@@ -1390,9 +917,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/EnhanceTransactionsResponseBody"
+                properties:
+                  transactions:
+                    items:
+                      "$ref": "#/components/schemas/EnhanceTransaction"
+                    type: array
+                type: object
           description: OK
       summary: Enhance transactions
+      tags:
+      - EnhanceTransaction
   "/users":
     get:
       description: Use this endpoint to list every user youve created in the MX Platform
@@ -1416,9 +950,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/UsersResponseBody"
+                properties:
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                  users:
+                    items:
+                      "$ref": "#/components/schemas/User"
+                    type: array
+                type: object
           description: OK
       summary: List users
+      tags:
+      - User
     post:
       description: |
         Call this endpoint to create a new user. The MX Platform API will respond with the newly-created user object if successful. This endpoint accepts several parameters: id, metadata, and is_disabled.<br>
@@ -1430,7 +973,23 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/UserCreateRequestBody"
+              properties:
+                user:
+                  properties:
+                    email:
+                      example: email@provider.com
+                      type: string
+                    id:
+                      example: My-Unique-ID
+                      type: string
+                    is_disabled:
+                      example: false
+                      type: boolean
+                    metadata:
+                      example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+                      type: string
+                  type: object
+              type: object
         description: User object to be created with optional parameters (id, is_disabled,
           metadata)
         required: true
@@ -1439,9 +998,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/UserResponseBody"
+                properties:
+                  user:
+                    "$ref": "#/components/schemas/User"
+                type: object
           description: OK
       summary: Create user
+      tags:
+      - User
   "/users/{user_guid}":
     delete:
       description: |
@@ -1463,6 +1027,8 @@ paths:
               example:
           description: No Content
       summary: Delete user
+      tags:
+      - User
     get:
       description: Use this endpoint to read the attributes of a specific user.
       operationId: ReadUser
@@ -1479,9 +1045,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/UserResponseBody"
+                properties:
+                  user:
+                    "$ref": "#/components/schemas/User"
+                type: object
           description: OK
       summary: Read user
+      tags:
+      - User
     put:
       description: |
         Use this endpoint to update the attributes of a specific user. The MX Platform API will respond with the updated user object.<br>
@@ -1501,7 +1072,23 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/UserUpdateRequestBody"
+              properties:
+                user:
+                  properties:
+                    email:
+                      example: email@provider.com
+                      type: string
+                    id:
+                      example: My-Unique-ID
+                      type: string
+                    is_disabled:
+                      example: false
+                      type: boolean
+                    metadata:
+                      example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+                      type: string
+                  type: object
+              type: object
         description: User object to be updated with optional parameters (id, is_disabled,
           metadata)
       responses:
@@ -1509,9 +1096,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/UserResponseBody"
+                properties:
+                  user:
+                    "$ref": "#/components/schemas/User"
+                type: object
           description: OK
       summary: Update user
+      tags:
+      - User
   "/users/{user_guid}/accounts":
     get:
       description: This endpoint returns a list of all the accounts associated with
@@ -1542,9 +1134,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/AccountsResponseBody"
+                properties:
+                  accounts:
+                    items:
+                      "$ref": "#/components/schemas/Account"
+                    type: array
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                type: object
           description: OK
       summary: List accounts
+      tags:
+      - Account
   "/users/{user_guid}/accounts/{account_guid}":
     get:
       description: This endpoint returns the specified `account` resource.
@@ -1569,9 +1170,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/AccountResponseBody"
+                properties:
+                  account:
+                    "$ref": "#/components/schemas/Account"
+                type: object
           description: OK
       summary: Read account
+      tags:
+      - Account
   "/users/{user_guid}/accounts/{account_guid}/account_numbers":
     get:
       description: This endpoint returns a list of account numbers associated with
@@ -1597,9 +1203,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/AccountNumbersResponseBody"
+                properties:
+                  account_numbers:
+                    items:
+                      "$ref": "#/components/schemas/AccountNumber"
+                    type: array
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                type: object
           description: OK
       summary: List account numbers by account
+      tags:
+      - AccountNumber
   "/users/{user_guid}/connect_widget_url":
     post:
       description: This endpoint will return a URL for an embeddable version of MX
@@ -1617,7 +1232,44 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/ConnectWidgetRequestBody"
+              properties:
+                config:
+                  properties:
+                    color_scheme:
+                      example: light
+                      type: string
+                    current_institution_code:
+                      example: chase
+                      type: string
+                    current_member_guid:
+                      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+                      type: string
+                    disable_institution_search:
+                      example: false
+                      type: boolean
+                    include_transactions:
+                      example: true
+                      type: boolean
+                    is_mobile_webview:
+                      example: true
+                      type: boolean
+                    mode:
+                      example: aggregation
+                      type: string
+                    ui_message_version:
+                      example: 4
+                      type: integer
+                    ui_message_webview_url_scheme:
+                      example: mx
+                      type: string
+                    update_credentials:
+                      example: false
+                      type: boolean
+                    wait_for_full_aggregation:
+                      example: false
+                      type: boolean
+                  type: object
+              type: object
         description: Optional config options for WebView (is_mobile_webview, current_institution_code,
           current_member_guid, update_credentials)
         required: true
@@ -1626,9 +1278,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/ConnectWidgetResponseBody"
+                properties:
+                  user:
+                    "$ref": "#/components/schemas/ConnectWidget"
+                type: object
           description: OK
       summary: Request connect URL
+      tags:
+      - ConnectWidget
   "/users/{user_guid}/holdings":
     get:
       description: Use this endpoint to read all holdings associated with a specific
@@ -1647,9 +1304,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/HoldingsResponseBody"
+                properties:
+                  holdings:
+                    items:
+                      "$ref": "#/components/schemas/Holding"
+                    type: array
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                type: object
           description: OK
       summary: List holdings by user
+      tags:
+      - Holding
   "/users/{user_guid}/holdings/{holding_guid}":
     get:
       description: Use this endpoint to read the attributes of a specific holding.
@@ -1674,9 +1340,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/HoldingResponseBody"
+                properties:
+                  holding:
+                    "$ref": "#/components/schemas/Holding"
+                type: object
           description: OK
       summary: Read holding
+      tags:
+      - Holding
   "/users/{user_guid}/members":
     get:
       description: This endpoint returns an array which contains information on every
@@ -1695,9 +1366,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/MembersResponseBody"
+                properties:
+                  members:
+                    items:
+                      "$ref": "#/components/schemas/Member"
+                    type: array
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                type: object
           description: OK
       summary: List members
+      tags:
+      - Member
     post:
       description: |
         This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters id and metadata.<br>
@@ -1717,7 +1397,37 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/MemberCreateRequestBody"
+              properties:
+                member:
+                  properties:
+                    background_aggregation_is_disabled:
+                      example: false
+                      type: boolean
+                    credentials:
+                      items:
+                        properties:
+                          guid:
+                            example: CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f
+                            type: string
+                          value:
+                            example: password
+                            type: string
+                        type: object
+                      type: array
+                    id:
+                      example: unique_id
+                      type: string
+                    institution_code:
+                      example: chase
+                      type: string
+                    metadata:
+                      example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+                      type: string
+                  required:
+                  - credentials
+                  - institution_code
+                  type: object
+              type: object
         description: Member object to be created with optional parameters (id and
           metadata) and required parameters (credentials and institution_code)
         required: true
@@ -1726,9 +1436,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/MemberResponseBody"
+                properties:
+                  member:
+                    "$ref": "#/components/schemas/Member"
+                type: object
           description: Accepted
       summary: Create member
+      tags:
+      - Member
   "/users/{user_guid}/members/{member_guid}":
     delete:
       description: Accessing this endpoint will permanently delete a member.
@@ -1755,6 +1470,8 @@ paths:
               example:
           description: No Content
       summary: Delete member
+      tags:
+      - Member
     get:
       description: Use this endpoint to read the attributes of a specific member.
       operationId: ReadMember
@@ -1778,9 +1495,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/MemberResponseBody"
+                properties:
+                  member:
+                    "$ref": "#/components/schemas/Member"
+                type: object
           description: OK
       summary: Read member
+      tags:
+      - Member
     put:
       description: |
         Use this endpoint to update a members attributes. Only the credentials,
@@ -1806,7 +1528,37 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/MemberUpdateRequestBody"
+              properties:
+                member:
+                  properties:
+                    background_aggregation_is_disabled:
+                      example: false
+                      type: boolean
+                    credentials:
+                      items:
+                        properties:
+                          guid:
+                            example: CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f
+                            type: string
+                          value:
+                            example: password
+                            type: string
+                        type: object
+                      type: array
+                    id:
+                      example: unique_id
+                      type: string
+                    institution_code:
+                      example: chase
+                      type: string
+                    is_oauth:
+                      example: false
+                      type: boolean
+                    metadata:
+                      example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+                      type: string
+                  type: object
+              type: object
         description: Member object to be updated with optional parameters (credentials,
           id, metadata)
       responses:
@@ -1814,9 +1566,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/MemberResponseBody"
+                properties:
+                  member:
+                    "$ref": "#/components/schemas/Member"
+                type: object
           description: OK
       summary: Update member
+      tags:
+      - Member
   "/users/{user_guid}/members/{member_guid}/account_numbers":
     get:
       description: This endpoint returns a list of account numbers associated with
@@ -1842,9 +1599,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/AccountNumbersResponseBody"
+                properties:
+                  account_numbers:
+                    items:
+                      "$ref": "#/components/schemas/AccountNumber"
+                    type: array
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                type: object
           description: OK
       summary: List account numbers by member
+      tags:
+      - AccountNumber
   "/users/{user_guid}/members/{member_guid}/account_owners":
     get:
       description: This endpoint returns an array with information about every account
@@ -1870,9 +1636,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/AccountOwnersResponseBody"
+                properties:
+                  account_owners:
+                    items:
+                      "$ref": "#/components/schemas/AccountOwner"
+                    type: array
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                type: object
           description: OK
       summary: List account owners
+      tags:
+      - AccountOwner
   "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}":
     put:
       description: This endpoint allows you to update certain attributes of an `account`
@@ -1904,7 +1679,14 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/AccountUpdateRequestBody"
+              properties:
+                account:
+                  properties:
+                    is_hidden:
+                      example: false
+                      type: boolean
+                  type: object
+              type: object
         description: Account object to be created with optional parameters (is_hidden)
         required: true
       responses:
@@ -1912,9 +1694,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/AccountResponseBody"
+                properties:
+                  account:
+                    "$ref": "#/components/schemas/Account"
+                type: object
           description: OK
       summary: Update account
+      tags:
+      - Account
   "/users/{user_guid}/members/{member_guid}/aggregate":
     post:
       description: |
@@ -1943,9 +1730,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/MemberResponseBody"
+                properties:
+                  member:
+                    "$ref": "#/components/schemas/Member"
+                type: object
           description: Accepted
       summary: Aggregate member
+      tags:
+      - Member
   "/users/{user_guid}/members/{member_guid}/challenges":
     get:
       description: |
@@ -1973,9 +1765,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/ChallengesResponseBody"
+                properties:
+                  challenges:
+                    items:
+                      "$ref": "#/components/schemas/Challenge"
+                    type: array
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                type: object
           description: OK
       summary: List member challenges
+      tags:
+      - Challenge
   "/users/{user_guid}/members/{member_guid}/check_balance":
     post:
       description: |
@@ -2003,9 +1804,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/MemberResponseBody"
+                properties:
+                  member:
+                    "$ref": "#/components/schemas/Member"
+                type: object
           description: Accepted
       summary: Check balances
+      tags:
+      - Member
   "/users/{user_guid}/members/{member_guid}/credentials":
     get:
       description: This endpoint returns an array which contains information on every
@@ -2031,9 +1837,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/CredentialsResponseBody"
+                properties:
+                  credentials:
+                    items:
+                      "$ref": "#/components/schemas/Credential"
+                    type: array
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                type: object
           description: OK
       summary: List member credentials
+      tags:
+      - Credential
   "/users/{user_guid}/members/{member_guid}/extend_history":
     post:
       description: |
@@ -2062,9 +1877,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/MemberResponseBody"
+                properties:
+                  member:
+                    "$ref": "#/components/schemas/Member"
+                type: object
           description: OK
       summary: Extend history
+      tags:
+      - Member
   "/users/{user_guid}/members/{member_guid}/holdings":
     get:
       description: Use this endpoint to read all holdings associated with a specific
@@ -2090,9 +1910,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/HoldingsResponseBody"
+                properties:
+                  holdings:
+                    items:
+                      "$ref": "#/components/schemas/Holding"
+                    type: array
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                type: object
           description: OK
       summary: List holdings by member
+      tags:
+      - Holding
   "/users/{user_guid}/members/{member_guid}/identify":
     post:
       description: The identify endpoint begins an identification process for an already-existing
@@ -2118,9 +1947,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/MemberResponseBody"
+                properties:
+                  member:
+                    "$ref": "#/components/schemas/Member"
+                type: object
           description: OK
       summary: Identify member
+      tags:
+      - Member
   "/users/{user_guid}/members/{member_guid}/resume":
     put:
       description: This endpoint answers the challenges needed when a member has been
@@ -2145,7 +1979,22 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/MemberResumeRequestBody"
+              properties:
+                member:
+                  properties:
+                    challenges:
+                      items:
+                        properties:
+                          guid:
+                            example: CRD-2378634-33ub5bhk54kjb
+                            type: string
+                          value:
+                            example: user-entered-value
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+              type: object
         description: Member object with MFA challenge answers
         required: true
       responses:
@@ -2153,9 +2002,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/MemberResponseBody"
+                properties:
+                  member:
+                    "$ref": "#/components/schemas/Member"
+                type: object
           description: Accepted
       summary: Resume aggregation
+      tags:
+      - Member
   "/users/{user_guid}/members/{member_guid}/status":
     get:
       description: |
@@ -2182,9 +2036,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/MemberStatusResponseBody"
+                properties:
+                  member:
+                    "$ref": "#/components/schemas/MemberStatus"
+                type: object
           description: OK
       summary: Read member status
+      tags:
+      - MemberStatus
   "/users/{user_guid}/members/{member_guid}/transactions":
     get:
       description: |
@@ -2229,9 +2088,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TransactionsResponseBody"
+                properties:
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                  transactions:
+                    items:
+                      "$ref": "#/components/schemas/Transaction"
+                    type: array
+                type: object
           description: OK
       summary: List transactions by member
+      tags:
+      - Transaction
   "/users/{user_guid}/members/{member_guid}/verify":
     post:
       description: The verify endpoint begins a verification process for a member.
@@ -2256,9 +2124,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/MemberResponseBody"
+                properties:
+                  member:
+                    "$ref": "#/components/schemas/Member"
+                type: object
           description: OK
       summary: Verify member
+      tags:
+      - Member
   "/users/{user_guid}/taggings":
     get:
       description: Use this endpoint to retrieve a list of all the taggings associated
@@ -2277,9 +2150,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TaggingsResponseBody"
+                properties:
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                  taggings:
+                    items:
+                      "$ref": "#/components/schemas/Tagging"
+                    type: array
+                type: object
           description: OK
       summary: List taggings
+      tags:
+      - Tagging
     post:
       description: Use this endpoint to create a new association between a tag and
         a particular transaction, according to their unique GUIDs.
@@ -2296,7 +2178,20 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/TaggingCreateRequestBody"
+              properties:
+                tagging:
+                  properties:
+                    tag_guid:
+                      example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+                      type: string
+                    transaction_guid:
+                      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+                      type: string
+                  required:
+                  - tag_guid
+                  - transaction_guid
+                  type: object
+              type: object
         description: Tagging object to be created with required parameters (tag_guid
           and transaction_guid)
         required: true
@@ -2305,9 +2200,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TaggingResponseBody"
+                properties:
+                  tagging:
+                    "$ref": "#/components/schemas/Tagging"
+                type: object
           description: Accepted
       summary: Create tagging
+      tags:
+      - Tagging
   "/users/{user_guid}/taggings/{tagging_guid}":
     delete:
       description: Use this endpoint to delete a tagging according to its unique GUID.
@@ -2336,6 +2236,8 @@ paths:
               example:
           description: No Content
       summary: Delete tagging
+      tags:
+      - Tagging
     get:
       description: Use this endpoint to read the attributes of a `tagging` according
         to its unique GUID.
@@ -2360,9 +2262,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TaggingResponseBody"
+                properties:
+                  tagging:
+                    "$ref": "#/components/schemas/Tagging"
+                type: object
           description: OK
       summary: Read tagging
+      tags:
+      - Tagging
     put:
       description: Use this endpoint to update a tagging.
       operationId: UpdateTagging
@@ -2385,16 +2292,28 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/TaggingUpdateRequestBody"
+              properties:
+                tagging:
+                  properties:
+                    tag_guid:
+                      example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+                      type: string
+                  type: object
+              type: object
         description: Tagging object to be updated with required parameter (tag_guid)
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TaggingResponseBody"
+                properties:
+                  tagging:
+                    "$ref": "#/components/schemas/Tagging"
+                type: object
           description: OK
       summary: Update tagging
+      tags:
+      - Tagging
   "/users/{user_guid}/tags":
     get:
       description: Use this endpoint to list all tags associated with the specified
@@ -2413,9 +2332,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TagsResponseBody"
+                properties:
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                  tags:
+                    items:
+                      "$ref": "#/components/schemas/Tag"
+                    type: array
+                type: object
           description: OK
       summary: List tags
+      tags:
+      - Tag
     post:
       description: Use this endpoint to create a new custom tag.
       operationId: CreateTag
@@ -2431,7 +2359,16 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/TagCreateRequestBody"
+              properties:
+                tag:
+                  properties:
+                    name:
+                      example: MY TAG
+                      type: string
+                  required:
+                  - name
+                  type: object
+              type: object
         description: Tag object to be created with required parameters (tag_guid and
           transaction_guid)
         required: true
@@ -2440,9 +2377,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TagResponseBody"
+                properties:
+                  tag:
+                    "$ref": "#/components/schemas/Tag"
+                type: object
           description: Accepted
       summary: Create tag
+      tags:
+      - Tag
   "/users/{user_guid}/tags/{tag_guid}":
     delete:
       description: Use this endpoint to permanently delete a specific tag based on
@@ -2471,6 +2413,8 @@ paths:
               example:
           description: No Content
       summary: Delete tag
+      tags:
+      - Tag
     get:
       description: Use this endpoint to read the attributes of a particular tag according
         to its unique GUID.
@@ -2495,9 +2439,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TagResponseBody"
+                properties:
+                  tag:
+                    "$ref": "#/components/schemas/Tag"
+                type: object
           description: OK
       summary: Read tag
+      tags:
+      - Tag
     put:
       description: Use this endpoint to update the name of a specific tag according
         to its unique GUID.
@@ -2521,16 +2470,30 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/TagUpdateRequestBody"
+              properties:
+                tag:
+                  properties:
+                    name:
+                      example: MY TAG
+                      type: string
+                  required:
+                  - name
+                  type: object
+              type: object
         description: Tag object to be updated with required parameter (tag_guid)
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TagResponseBody"
+                properties:
+                  tag:
+                    "$ref": "#/components/schemas/Tag"
+                type: object
           description: OK
       summary: Update tag
+      tags:
+      - Tag
   "/users/{user_guid}/transactions":
     get:
       description: |
@@ -2575,9 +2538,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TransactionsResponseBody"
+                properties:
+                  pagination:
+                    "$ref": "#/components/schemas/Pagination"
+                  transactions:
+                    items:
+                      "$ref": "#/components/schemas/Transaction"
+                    type: array
+                type: object
           description: OK
       summary: List transactions by user
+      tags:
+      - Transaction
   "/users/{user_guid}/transactions/{transaction_guid}":
     get:
       description: Requests to this endpoint will return the attributes of the specified
@@ -2603,9 +2575,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TransactionResponseBody"
+                properties:
+                  transaction:
+                    "$ref": "#/components/schemas/Transaction"
+                type: object
           description: OK
       summary: Read transaction
+      tags:
+      - Transaction
   "/users/{user_guid}/widget_urls":
     post:
       description: |
@@ -2625,7 +2602,47 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/WidgetRequestBody"
+              properties:
+                widget_url:
+                  properties:
+                    color_scheme:
+                      example: light
+                      type: string
+                    current_institution_code:
+                      example: chase
+                      type: string
+                    current_member_guid:
+                      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+                      type: string
+                    disable_institution_search:
+                      example: false
+                      type: boolean
+                    include_transactions:
+                      example: true
+                      type: boolean
+                    is_mobile_webview:
+                      example: true
+                      type: boolean
+                    mode:
+                      example: aggregation
+                      type: string
+                    ui_message_version:
+                      example: 4
+                      type: integer
+                    ui_message_webview_url_scheme:
+                      example: mx
+                      type: string
+                    update_credentials:
+                      example: false
+                      type: boolean
+                    wait_for_full_aggregation:
+                      example: false
+                      type: boolean
+                    widget_type:
+                      example: connect_widget
+                      type: string
+                  type: object
+              type: object
         description: ''
         required: true
       responses:
@@ -2633,9 +2650,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/WidgetResponseBody"
+                properties:
+                  widget_url:
+                    "$ref": "#/components/schemas/Widget"
+                type: object
           description: OK
       summary: Request a widget URL
+      tags:
+      - Widget
 security:
 - basicAuth: []
 servers:
