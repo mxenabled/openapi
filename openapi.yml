@@ -2663,3 +2663,21 @@ security:
 servers:
 - url: https://api.mx.com
 - url: https://int-api.mx.com
+tags:
+- name: Account
+- name: AccountNumber
+- name: AccountOwner
+- name: Challenge
+- name: ConnectWidget
+- name: Credential
+- name: EnhanceTransaction
+- name: Holding
+- name: Institution
+- name: Member
+- name: MemberStatus
+- name: Merchant
+- name: Tag
+- name: Tagging
+- name: Transaction
+- name: User
+- name: Widget
