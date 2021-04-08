@@ -444,7 +444,6 @@ components:
           example: '2016-10-13T18:07:57.000Z'
           type: string
         challenges:
-          example: challenges
           items:
             "$ref": "#/components/schemas/Challenge"
           type: array
