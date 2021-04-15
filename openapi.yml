@@ -743,6 +743,19 @@ paths:
         This endpoint returns a paginated list containing institutions that have been set as the partner’s favorites, sorted by popularity.
         Pleaase contact MX to set a list of favorites.
       operationId: ListFavorites
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
       responses:
         '200':
           content:
