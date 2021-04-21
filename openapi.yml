@@ -953,7 +953,7 @@ paths:
       - EnhanceTransaction
   "/users":
     get:
-      description: Use this endpoint to list every user youve created in the MX Platform
+      description: Use this endpoint to list every user you've created in the MX Platform
         API.
       operationId: ListUsers
       parameters:
