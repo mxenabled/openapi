@@ -2282,7 +2282,7 @@ paths:
             application/vnd.mx.api.v1+json:
               schema:
                 properties:
-                  member:
+                  statement:
                     "$ref": "#/components/schemas/Statement"
                 type: object
           description: OK
