@@ -2052,7 +2052,7 @@ paths:
           description: OK
       summary: Fetch statements by member
       tags:
-      - Statement
+      - Member
   "/users/{user_guid}/members/{member_guid}/holdings":
     get:
       description: Use this endpoint to read all holdings associated with a specific
