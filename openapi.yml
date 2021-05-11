@@ -2318,7 +2318,7 @@ paths:
       responses:
         '200':
           content:
-            application/vnd.mx.atrium.v1+pdf:
+            application/vnd.mx.api.v2+pdf:
               schema:
                 format: binary
                 type: string
