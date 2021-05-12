@@ -2052,7 +2052,7 @@ paths:
           description: OK
       summary: Fetch statements by member
       tags:
-      - Statement
+      - Member
   "/users/{user_guid}/members/{member_guid}/holdings":
     get:
       description: Use this endpoint to read all holdings associated with a specific
@@ -2282,7 +2282,7 @@ paths:
             application/vnd.mx.api.v1+json:
               schema:
                 properties:
-                  member:
+                  statement:
                     "$ref": "#/components/schemas/Statement"
                 type: object
           description: OK
@@ -2318,7 +2318,7 @@ paths:
       responses:
         '200':
           content:
-            application/vnd.mx.atrium.v1+pdf:
+            application/vnd.mx.api.v2+pdf:
               schema:
                 format: binary
                 type: string
