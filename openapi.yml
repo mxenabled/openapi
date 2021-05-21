@@ -1028,11 +1028,13 @@ paths:
                       type:
                         example: DEBIT
                         type: string
+                    required:
+                    - description
+                    - id
                     type: object
                   type: array
               type: object
-        description: Transaction object to be created with optional parameters (amount,
-          type) and required parameters (description, id)
+        description: Transaction object to be enhanced
         required: true
       responses:
         '200':
@@ -1114,8 +1116,8 @@ paths:
                       type: string
                   type: object
               type: object
-        description: User object to be created with optional parameters (email, id,
-          is_disabled, metadata)
+        description: User object to be created. (None of these parameters are required,
+          but the user object cannot be empty)
         required: true
       responses:
         '200':
@@ -1215,8 +1217,9 @@ paths:
                       type: string
                   type: object
               type: object
-        description: User object to be updated with optional parameters (id, is_disabled,
-          metadata)
+        description: User object to be updated (None of these parameters are required,
+          but the user object cannot be empty.)
+        required: true
       responses:
         '200':
           content:
@@ -1484,10 +1487,11 @@ paths:
                     parent_guid:
                       example: CAT-aad51b46-d6f7-3da5-fd6e-492328b3023f
                       type: string
+                  required:
+                  - name
                   type: object
               type: object
-        description: Custom category object to be created with optional parameter
-          (metadata) and required parameters (name and parent_guid)
+        description: Custom category object to be created
         required: true
       responses:
         '200':
@@ -1529,8 +1533,9 @@ paths:
                       type: string
                   type: object
               type: object
-        description: Category object to be updated with optional parameters (metadata
-          and name)
+        description: Category object to be updated (While no single parameter is required,
+          the `category` object cannot be empty)
+        required: true
       responses:
         '200':
           content:
@@ -1692,7 +1697,6 @@ paths:
               type: object
         description: Optional config options for WebView (is_mobile_webview, current_institution_code,
           current_member_guid, update_credentials)
-        required: true
       responses:
         '200':
           content:
@@ -2033,8 +2037,9 @@ paths:
                       type: boolean
                   type: object
               type: object
-        description: Member object to be updated with optional parameters (credentials,
-          id, metadata)
+        description: Member object to be updated (While no single parameter is required,
+          the request body can't be empty)
+        required: true
       responses:
         '200':
           content:
@@ -3070,9 +3075,12 @@ paths:
                     tag_guid:
                       example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
                       type: string
+                  required:
+                  - tag_guid
                   type: object
               type: object
         description: Tagging object to be updated with required parameter (tag_guid)
+        required: true
       responses:
         '200':
           content:
@@ -3264,6 +3272,7 @@ paths:
                   type: object
               type: object
         description: Tag object to be updated with required parameter (tag_guid)
+        required: true
       responses:
         '200':
           content:
@@ -3416,6 +3425,7 @@ paths:
                   type: object
               type: object
         description: TransactionRule object to be updated
+        required: true
       responses:
         '200':
           content:
@@ -3637,9 +3647,12 @@ paths:
                     description:
                       example: new description
                       type: string
+                  required:
+                  - description
                   type: object
               type: object
         description: Transaction object to be updated with a new description
+        required: true
       responses:
         '200':
           content:
@@ -3720,6 +3733,8 @@ paths:
                     widget_type:
                       example: connect_widget
                       type: string
+                  required:
+                  - widget_type
                   type: object
               type: object
         description: The widget url configuration options.
