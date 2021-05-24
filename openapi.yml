@@ -718,7 +718,7 @@ components:
           example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
           type: string
         created_at:
-          example: 2018-10-02 22:00:50.000000000 +00:00
+          example: '2018-10-02T22:00:50+00:00'
           type: string
         description:
           example: Wal-mart food storage
@@ -730,7 +730,7 @@ components:
           example: Wal-mart
           type: string
         updated_at:
-          example: 2018-10-02 23:54:40.000000000 +00:00
+          example: '2018-10-02T23:54:40+00:00'
           type: string
         user_guid:
           example: USR-22fc3203-b3e6-8340-43db-8e50b2f56995
