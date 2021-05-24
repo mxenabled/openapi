@@ -3683,6 +3683,7 @@ paths:
         schema:
           type: string
       - description: The desired language of the widget.
+        example: en-US
         in: header
         name: Accept-Language
         schema:
