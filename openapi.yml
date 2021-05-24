@@ -553,7 +553,7 @@ components:
           example: ca53785b812d00ef821c3d94bfd6e5bbc0020504410589b7ea8552169f021981
           type: string
         created_at:
-          example: 22016-10-13T18:08:00+00:00
+          example: '2016-10-13T18:08:00+00:00'
           type: string
         guid:
           example: STA-737a344b-caae-0f6e-1384-01f52e75dcb1
@@ -562,7 +562,7 @@ components:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
         updated_at:
-          example: 2016-10-13 18:09:00.000000000 +00:00
+          example: '2016-10-13T18:09:00+00:00'
           type: string
         uri:
           example: uri/to/statement
