@@ -288,7 +288,7 @@ components:
           example: Username
           type: string
       type: object
-    EnhanceTransaction:
+    EnhancedTransaction:
       properties:
         amount:
           example: 21.33
@@ -1004,7 +1004,7 @@ paths:
     post:
       description: Use this endpoint to categorize, cleanse, and classify transactions.
         These transactions are not persisted or stored on the MX platform.
-      operationId: EnhanceTransactions
+      operationId: EnhancedTransactions
       requestBody:
         content:
           application/json:
@@ -1044,13 +1044,13 @@ paths:
                 properties:
                   transactions:
                     items:
-                      "$ref": "#/components/schemas/EnhanceTransaction"
+                      "$ref": "#/components/schemas/EnhancedTransaction"
                     type: array
                 type: object
           description: OK
       summary: Enhance transactions
       tags:
-      - EnhanceTransaction
+      - EnhancedTransaction
   "/users":
     get:
       description: Use this endpoint to list every user you've created in the MX Platform
@@ -3766,7 +3766,7 @@ tags:
 - name: Challenge
 - name: ConnectWidget
 - name: Credential
-- name: EnhanceTransaction
+- name: EnhancedTransaction
 - name: Holding
 - name: Institution
 - name: Member
