@@ -1506,49 +1506,6 @@ paths:
       summary: Create category
       tags:
       - Category
-    put:
-      description: Use this endpoint to update the attributes of a custom category
-        according to its unique GUID.
-      operationId: UpdateCategory
-      parameters:
-      - description: The unique id for a `user`.
-        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              properties:
-                category:
-                  properties:
-                    metadata:
-                      example: some metadata
-                      type: string
-                    name:
-                      example: Web shopping
-                      type: string
-                  type: object
-              type: object
-        description: Category object to be updated (While no single parameter is required,
-          the `category` object cannot be empty)
-        required: true
-      responses:
-        '200':
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                properties:
-                  category:
-                    "$ref": "#/components/schemas/Category"
-                type: object
-          description: OK
-      summary: Update category
-      tags:
-      - Category
   "/users/{user_guid}/categories/default":
     get:
       description: Use this endpoint to read the attributes of a specific user.
@@ -1638,6 +1595,56 @@ paths:
                 type: object
           description: OK
       summary: Read category
+      tags:
+      - Category
+    put:
+      description: Use this endpoint to update the attributes of a custom category
+        according to its unique GUID.
+      operationId: UpdateCategory
+      parameters:
+      - description: The unique id for a `category`.
+        example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
+        in: path
+        name: category_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                category:
+                  properties:
+                    metadata:
+                      example: some metadata
+                      type: string
+                    name:
+                      example: Web shopping
+                      type: string
+                  type: object
+              type: object
+        description: Category object to be updated (While no single parameter is required,
+          the `category` object cannot be empty)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                properties:
+                  category:
+                    "$ref": "#/components/schemas/Category"
+                type: object
+          description: OK
+      summary: Update category
       tags:
       - Category
   "/users/{user_guid}/connect_widget_url":
