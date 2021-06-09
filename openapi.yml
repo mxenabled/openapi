@@ -3505,7 +3505,7 @@ paths:
           application/json:
             schema:
               properties:
-                member:
+                transaction_rule:
                   properties:
                     category_guid:
                       example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
