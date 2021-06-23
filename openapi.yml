@@ -1004,7 +1004,7 @@ paths:
     post:
       description: Use this endpoint to categorize, cleanse, and classify transactions.
         These transactions are not persisted or stored on the MX platform.
-      operationId: EnhancedTransactions
+      operationId: EnhanceTransactions
       requestBody:
         content:
           application/json:
