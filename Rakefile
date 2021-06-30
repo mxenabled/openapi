@@ -1,40 +1,56 @@
-require "openapi3_parser"
-require "yaml_normalizer"
+# frozen_string_literal: true
 
-task :default => [:validate_openapi, :normalize_yaml]
+require 'openapi3_parser'
+require 'rubocop/rake_task'
+require 'yaml_normalizer'
+
+::RuboCop::RakeTask.new(:rubocop)
+
+OPENAPI_YML_FILES = ::Dir.glob('openapi/*.yml')
+
+def print_validation_errors(file, openapi)
+  errors_count = openapi.errors.count
+
+  puts "#{errors_count} validation error(s) found in #{file}"
+  openapi.errors.each_with_index do |error, index|
+    context = error.context.source_location.pointer.fragment
+    current_index = index + 1
+    error_message = error.message
+    unescaped_context = ::CGI.unescape(context)
+
+    puts "\n#{current_index})\n  Message: #{error_message}\n  Context: #{unescaped_context}"
+  end
+  exit 1
+end
+
+def yaml_normalizer_check(file)
+  check_passed = ::YamlNormalizer::Services::Check.call(file)
+
+  return if check_passed
+
+  puts "Please normalize /openapi/*.yml files with 'bundle exec rake normalize'"
+  exit 1
+end
+
+def validate_openapi(file)
+  openapi = ::Openapi3Parser.load_file(file)
+
+  print_validation_errors(file, openapi) unless openapi.valid?
+  puts "[PASSED] #{file} is valid OpenAPI"
+end
+
+task default: %i[rubocop validate]
 
 task :normalize do
-  ::YamlNormalizer::Services::Normalize.call("openapi.yml")
-end
-
-task :normalize_yaml do
-  check_passed = ::YamlNormalizer::Services::Check.call("openapi.yml")
-
-  unless check_passed
-    puts "Please normalize openapi.yml with 'bundle exec rake normalize'"
-    exit 1
+  OPENAPI_YML_FILES.each do |file|
+    ::YamlNormalizer::Services::Normalize.call(file)
   end
 end
 
-task :validate_openapi do
-  openapi = ::Openapi3Parser.load_file("openapi.yml")
-
-  unless openapi.valid?
-    errors_count = openapi.errors.count
-
-    puts "#{errors_count} validation error(s) found."
-    openapi.errors.each_with_index do |error, index|
-      context = error.context.source_location.pointer.fragment
-      error_message = error.message
-      unescaped_context = ::CGI.unescape(context)
-
-      puts ""
-      puts "#{index + 1})"
-      puts "   Message: #{error_message}"
-      puts "   Context: #{unescaped_context}"
-    end
-    exit 1
+task :validate do
+  OPENAPI_YML_FILES.each do |file|
+    puts "\nValidating #{file}"
+    validate_openapi(file)
+    yaml_normalizer_check(file)
   end
-
-  puts "[PASSED] openapi.yml is valid OpenAPI"
 end
