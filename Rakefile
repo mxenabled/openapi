@@ -1,14 +1,19 @@
-require "openapi3_parser"
-require "yaml_normalizer"
+# frozen_string_literal: true
 
-task :default => [:validate_openapi, :normalize_yaml]
+require 'openapi3_parser'
+require 'rubocop/rake_task'
+require 'yaml_normalizer'
+
+::RuboCop::RakeTask.new(:rubocop)
+
+task default: %i[rubocop validate_openapi normalize_yaml]
 
 task :normalize do
-  ::YamlNormalizer::Services::Normalize.call("openapi.yml")
+  ::YamlNormalizer::Services::Normalize.call('openapi.yml')
 end
 
 task :normalize_yaml do
-  check_passed = ::YamlNormalizer::Services::Check.call("openapi.yml")
+  check_passed = ::YamlNormalizer::Services::Check.call('openapi.yml')
 
   unless check_passed
     puts "Please normalize openapi.yml with 'bundle exec rake normalize'"
@@ -17,7 +22,7 @@ task :normalize_yaml do
 end
 
 task :validate_openapi do
-  openapi = ::Openapi3Parser.load_file("openapi.yml")
+  openapi = ::Openapi3Parser.load_file('openapi.yml')
 
   unless openapi.valid?
     errors_count = openapi.errors.count
@@ -28,7 +33,7 @@ task :validate_openapi do
       error_message = error.message
       unescaped_context = ::CGI.unescape(context)
 
-      puts ""
+      puts ''
       puts "#{index + 1})"
       puts "   Message: #{error_message}"
       puts "   Context: #{unescaped_context}"
@@ -36,5 +41,5 @@ task :validate_openapi do
     exit 1
   end
 
-  puts "[PASSED] openapi.yml is valid OpenAPI"
+  puts '[PASSED] openapi.yml is valid OpenAPI'
 end
