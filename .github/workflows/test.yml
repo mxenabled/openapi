@@ -1,9 +1,9 @@
-name: Ruby
+name: Test
 
 on: [push]
 
 jobs:
-  validate_openapi:
+  Test:
 
     runs-on: ubuntu-latest
 
