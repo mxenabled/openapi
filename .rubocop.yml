@@ -1,0 +1,4 @@
+AllCops:
+  NewCops: disable # Disabling pending cops
+  SuggestExtensions: false # Disabling extension suggestions
+  TargetRubyVersion: 3.0

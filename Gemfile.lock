@@ -10,6 +10,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    ast (2.4.2)
     commonmarker (0.21.2)
       ruby-enum (~> 0.5)
     concurrent-ruby (1.1.8)
@@ -18,11 +19,30 @@ GEM
     openapi3_parser (0.9.0)
       commonmarker (~> 0.17)
       psych (~> 3.1)
+    parallel (1.20.1)
+    parser (3.0.1.1)
+      ast (~> 2.4.1)
     peach (0.5.1)
     psych (3.3.1)
+    rainbow (3.0.0)
     rake (12.3.3)
+    regexp_parser (2.1.1)
+    rexml (3.2.5)
+    rubocop (1.18.1)
+      parallel (~> 1.10)
+      parser (>= 3.0.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml
+      rubocop-ast (>= 1.7.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.7.0)
+      parser (>= 3.0.1.1)
     ruby-enum (0.9.0)
       i18n
+    ruby-progressbar (1.11.0)
+    unicode-display_width (2.0.0)
 
 PLATFORMS
   ruby
@@ -30,7 +50,8 @@ PLATFORMS
 DEPENDENCIES
   openapi3_parser
   rake
+  rubocop
   yaml_normalizer!
 
 BUNDLED WITH
-   2.2.13
+   2.2.14
