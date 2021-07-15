@@ -2030,12 +2030,6 @@ paths:
                     id:
                       example: unique_id
                       type: string
-                    institution_code:
-                      example: chase
-                      type: string
-                    is_oauth:
-                      example: false
-                      type: boolean
                     metadata:
                       example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
                       type: string
