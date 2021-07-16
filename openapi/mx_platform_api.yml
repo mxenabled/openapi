@@ -1897,19 +1897,19 @@ paths:
                     metadata:
                       example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
                       type: string
-                    referral_source:
-                      example: APP
-                      type: string
                     skip_aggregation:
                       example: false
                       type: boolean
-                    ui_message_webview_url_scheme:
-                      example: mx
-                      type: string
                   required:
                   - credentials
                   - institution_code
                   type: object
+                referral_source:
+                  example: APP
+                  type: string
+                ui_message_webview_url_scheme:
+                  example: mx
+                  type: string
               type: object
         description: Member object to be created with optional parameters (id and
           metadata) and required parameters (credentials and institution_code)
