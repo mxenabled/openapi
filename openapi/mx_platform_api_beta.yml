@@ -1449,7 +1449,7 @@ paths:
           description: OK
       summary: List institutions
       tags:
-      - Institution
+      - mx_platform
   "/institutions/favorites":
     get:
       description: This endpoint returns a paginated list containing institutions
@@ -1478,7 +1478,7 @@ paths:
           description: OK
       summary: List favorites
       tags:
-      - Institution
+      - mx_platform
   "/institutions/{institution_code}":
     get:
       description: This endpoint returns information about the institution specified
@@ -1501,7 +1501,7 @@ paths:
           description: OK
       summary: Read institution
       tags:
-      - Institution
+      - mx_platform
   "/institutions/{institution_code}/credentials":
     get:
       description: Use this endpoint to see which credentials will be needed to create
@@ -1536,7 +1536,7 @@ paths:
           description: OK
       summary: List institution-required credentials
       tags:
-      - Credential
+      - mx_platform
   "/merchants":
     get:
       description: This endpoint returns a paginated list of all the merchants in
@@ -1564,7 +1564,7 @@ paths:
           description: OK
       summary: List merchants
       tags:
-      - Merchant
+      - mx_platform
   "/merchants/{merchant_guid}":
     get:
       description: Returns information about a particular merchant, such as a logo,
@@ -1587,7 +1587,7 @@ paths:
           description: OK
       summary: Read merchant
       tags:
-      - Merchant
+      - mx_platform
   "/transactions/enhance":
     post:
       description: Use this endpoint to categorize, cleanse, and classify transactions.
@@ -1609,7 +1609,7 @@ paths:
           description: OK
       summary: Enhance transactions
       tags:
-      - EnhancedTransaction
+      - mx_platform
   "/users":
     get:
       description: Use this endpoint to list every user you've created in the MX Platform
@@ -1637,7 +1637,7 @@ paths:
           description: OK
       summary: List users
       tags:
-      - User
+      - mx_platform
     post:
       description: Call this endpoint to create a new user. The MX Platform API will
         respond with the newly-created user object if successful. This endpoint accepts
@@ -1664,7 +1664,7 @@ paths:
           description: OK
       summary: Create user
       tags:
-      - User
+      - mx_platform
   "/users/{user_guid}":
     delete:
       description: Use this endpoint to delete the specified `user`. The response
@@ -1686,7 +1686,7 @@ paths:
           description: No Content
       summary: Delete user
       tags:
-      - User
+      - mx_platform
     get:
       description: Use this endpoint to read the attributes of a specific user.
       operationId: ReadUser
@@ -1707,7 +1707,7 @@ paths:
           description: OK
       summary: Read user
       tags:
-      - User
+      - mx_platform
     put:
       description: Use this endpoint to update the attributes of a specific user.
         The MX Platform API will respond with the updated user object. Disabling a
@@ -1743,7 +1743,7 @@ paths:
           description: OK
       summary: Update user
       tags:
-      - User
+      - mx_platform
   "/users/{user_guid}/accounts":
     get:
       description: This endpoint returns a list of all the accounts associated with
@@ -1778,7 +1778,7 @@ paths:
           description: OK
       summary: List accounts
       tags:
-      - Account
+      - mx_platform
   "/users/{user_guid}/accounts/{account_guid}":
     get:
       description: This endpoint returns the specified `account` resource.
@@ -1807,7 +1807,7 @@ paths:
           description: OK
       summary: Read account
       tags:
-      - Account
+      - mx_platform
   "/users/{user_guid}/accounts/{account_guid}/account_numbers":
     get:
       description: This endpoint returns a list of account numbers associated with
@@ -1849,7 +1849,7 @@ paths:
           description: OK
       summary: List account numbers by account
       tags:
-      - AccountNumber
+      - mx_platform
   "/users/{user_guid}/accounts/{account_guid}/transactions":
     get:
       description: This endpoint returns a list of the last 90 days of transactions
@@ -1903,7 +1903,7 @@ paths:
           description: OK
       summary: List transactions by account
       tags:
-      - Transaction
+      - mx_platform
   "/users/{user_guid}/categories":
     get:
       description: Use this endpoint to list all categories associated with a `user`,
@@ -1938,7 +1938,7 @@ paths:
           description: OK
       summary: List categories
       tags:
-      - Category
+      - mx_platform
     post:
       description: Use this endpoint to create a new custom category for a specific
         `user`.
@@ -1967,7 +1967,7 @@ paths:
           description: OK
       summary: Create category
       tags:
-      - Category
+      - mx_platform
   "/users/{user_guid}/categories/default":
     get:
       description: Use this endpoint to read the attributes of a specific user.
@@ -1989,7 +1989,7 @@ paths:
           description: OK
       summary: List default categories
       tags:
-      - Category
+      - mx_platform
   "/users/{user_guid}/categories/{category_guid}":
     delete:
       description: Use this endpoint to delete a specific custom category according
@@ -2019,7 +2019,7 @@ paths:
           description: No Content
       summary: Delete category
       tags:
-      - Category
+      - mx_platform
     get:
       description: Use this endpoint to read the attributes of either a default category
         or a custom category.
@@ -2048,7 +2048,7 @@ paths:
           description: OK
       summary: Read category
       tags:
-      - Category
+      - mx_platform
     put:
       description: Use this endpoint to update the attributes of a custom category
         according to its unique GUID.
@@ -2085,7 +2085,7 @@ paths:
           description: OK
       summary: Update category
       tags:
-      - Category
+      - mx_platform
   "/users/{user_guid}/connect_widget_url":
     post:
       description: This endpoint will return a URL for an embeddable version of MX
@@ -2115,7 +2115,7 @@ paths:
           description: OK
       summary: Request connect widget URL
       tags:
-      - ConnectWidget
+      - mx_platform
   "/users/{user_guid}/holdings":
     get:
       description: This endpoint returns all holdings associated with the specified
@@ -2162,7 +2162,7 @@ paths:
           description: OK
       summary: List holdings by user
       tags:
-      - Holding
+      - mx_platform
   "/users/{user_guid}/holdings/{holding_guid}":
     get:
       description: Use this endpoint to read the attributes of a specific `holding`.
@@ -2191,7 +2191,7 @@ paths:
           description: OK
       summary: Read holding
       tags:
-      - Holding
+      - mx_platform
   "/users/{user_guid}/members":
     get:
       description: This endpoint returns an array which contains information on every
@@ -2226,7 +2226,7 @@ paths:
           description: OK
       summary: List members
       tags:
-      - Member
+      - mx_platform
     post:
       description: This endpoint allows you to create a new member. Members are created
         with the required parameters credentials and institution_code, and the optional
@@ -2263,7 +2263,7 @@ paths:
           description: Accepted
       summary: Create member
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}":
     delete:
       description: Accessing this endpoint will permanently delete a member.
@@ -2291,7 +2291,7 @@ paths:
           description: No Content
       summary: Delete member
       tags:
-      - Member
+      - mx_platform
     get:
       description: Use this endpoint to read the attributes of a specific member.
       operationId: ReadMember
@@ -2319,7 +2319,7 @@ paths:
           description: OK
       summary: Read member
       tags:
-      - Member
+      - mx_platform
     put:
       description: Use this endpoint to update a members attributes. Only the credentials,
         id, and metadata parameters can be updated. To get a list of the required
@@ -2357,7 +2357,7 @@ paths:
           description: OK
       summary: Update member
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/account_numbers":
     get:
       description: This endpoint returns a list of account numbers associated with
@@ -2399,7 +2399,7 @@ paths:
           description: OK
       summary: List account numbers by member
       tags:
-      - AccountNumber
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/account_owners":
     get:
       description: This endpoint returns an array with information about every account
@@ -2441,7 +2441,7 @@ paths:
           description: OK
       summary: List account owners
       tags:
-      - AccountOwner
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}":
     put:
       description: This endpoint allows you to update certain attributes of an `account`
@@ -2485,7 +2485,7 @@ paths:
           description: OK
       summary: Update account
       tags:
-      - Account
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/aggregate":
     post:
       description: Calling this endpoint initiates an aggregation event for the member.
@@ -2517,7 +2517,7 @@ paths:
           description: Accepted
       summary: Aggregate member
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/challenges":
     get:
       description: Use this endpoint for information on what multi-factor authentication
@@ -2563,7 +2563,7 @@ paths:
           description: OK
       summary: List member challenges
       tags:
-      - Challenge
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/check_balance":
     post:
       description: This endpoint operates much like the aggregate member endpoint
@@ -2594,7 +2594,7 @@ paths:
           description: Accepted
       summary: Check balances
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/credentials":
     get:
       description: This endpoint returns an array which contains information on every
@@ -2636,7 +2636,7 @@ paths:
           description: OK
       summary: List member credentials
       tags:
-      - Credential
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/extend_history":
     post:
       description: Some institutions allow developers to access an extended transaction
@@ -2668,7 +2668,7 @@ paths:
           description: Accepted
       summary: Extend history
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/fetch_statements":
     post:
       description: Use this endpoint to fetch the statements associated with a particular
@@ -2698,7 +2698,7 @@ paths:
           description: Accepted
       summary: Fetch statements by member
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/holdings":
     get:
       description: This endpoint returns all holdings associated with the specified
@@ -2752,7 +2752,7 @@ paths:
           description: OK
       summary: List holdings by member
       tags:
-      - Holding
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/identify":
     post:
       description: The identify endpoint begins an identification process for an already-existing
@@ -2782,7 +2782,7 @@ paths:
           description: Accepted
       summary: Identify member
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/oauth_window_uri":
     get:
       description: This endpoint will generate an `oauth_window_uri` for the specified
@@ -2826,7 +2826,7 @@ paths:
           description: OK
       summary: Read member
       tags:
-      - OAuthWindow
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/resume":
     put:
       description: This endpoint answers the challenges needed when a member has been
@@ -2863,7 +2863,7 @@ paths:
           description: Accepted
       summary: Resume aggregation
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/statements":
     get:
       description: Use this endpoint to get an array of available statements.
@@ -2904,7 +2904,7 @@ paths:
           description: OK
       summary: List statements by member
       tags:
-      - Statement
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/statements/{statement_guid}":
     get:
       description: Use this endpoint to read a JSON representation of the statement.
@@ -2940,7 +2940,7 @@ paths:
           description: OK
       summary: Read statement by member
       tags:
-      - Statement
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/statements/{statement_guid}.pdf":
     get:
       description: Use this endpoint to download a specified statement PDF.
@@ -2977,7 +2977,7 @@ paths:
           description: OK
       summary: Download statement PDF
       tags:
-      - Statement
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/status":
     get:
       description: This endpoint provides the status of the members most recent aggregation
@@ -3014,7 +3014,7 @@ paths:
           description: OK
       summary: Read member status
       tags:
-      - MemberStatus
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/transactions":
     get:
       description: Requests to this endpoint return a list of transactions associated
@@ -3068,7 +3068,7 @@ paths:
           description: OK
       summary: List transactions by member
       tags:
-      - Transaction
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/verify":
     post:
       description: The verify endpoint begins a verification process for a member.
@@ -3097,7 +3097,7 @@ paths:
           description: OK
       summary: Verify member
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/taggings":
     get:
       description: Use this endpoint to retrieve a list of all the taggings associated
@@ -3132,7 +3132,7 @@ paths:
           description: OK
       summary: List taggings
       tags:
-      - Tagging
+      - mx_platform
     post:
       description: Use this endpoint to create a new association between a tag and
         a particular transaction, according to their unique GUIDs.
@@ -3162,7 +3162,7 @@ paths:
           description: Accepted
       summary: Create tagging
       tags:
-      - Tagging
+      - mx_platform
   "/users/{user_guid}/taggings/{tagging_guid}":
     delete:
       description: Use this endpoint to delete a tagging according to its unique GUID.
@@ -3192,7 +3192,7 @@ paths:
           description: No Content
       summary: Delete tagging
       tags:
-      - Tagging
+      - mx_platform
     get:
       description: Use this endpoint to read the attributes of a `tagging` according
         to its unique GUID.
@@ -3221,7 +3221,7 @@ paths:
           description: OK
       summary: Read tagging
       tags:
-      - Tagging
+      - mx_platform
     put:
       description: Use this endpoint to update a tagging.
       operationId: UpdateTagging
@@ -3256,7 +3256,7 @@ paths:
           description: OK
       summary: Update tagging
       tags:
-      - Tagging
+      - mx_platform
   "/users/{user_guid}/tags":
     get:
       description: Use this endpoint to list all tags associated with the specified
@@ -3291,7 +3291,7 @@ paths:
           description: OK
       summary: List tags
       tags:
-      - Tag
+      - mx_platform
     post:
       description: Use this endpoint to create a new custom tag.
       operationId: CreateTag
@@ -3322,7 +3322,7 @@ paths:
           description: OK
       summary: Create tag
       tags:
-      - Tag
+      - mx_platform
   "/users/{user_guid}/tags/{tag_guid}":
     delete:
       description: Use this endpoint to permanently delete a specific tag based on
@@ -3352,7 +3352,7 @@ paths:
           description: No Content
       summary: Delete tag
       tags:
-      - Tag
+      - mx_platform
     get:
       description: Use this endpoint to read the attributes of a particular tag according
         to its unique GUID.
@@ -3381,7 +3381,7 @@ paths:
           description: OK
       summary: Read tag
       tags:
-      - Tag
+      - mx_platform
     put:
       description: Use this endpoint to update the name of a specific tag according
         to its unique GUID.
@@ -3420,7 +3420,7 @@ paths:
           description: OK
       summary: Update tag
       tags:
-      - Tag
+      - mx_platform
   "/users/{user_guid}/tags/{tag_guid}/transactions":
     get:
       description: Use this endpoint to get a list of all transactions associated
@@ -3452,7 +3452,7 @@ paths:
           description: OK
       summary: List transactions by tag
       tags:
-      - Transaction
+      - mx_platform
   "/users/{user_guid}/transaction_rules":
     get:
       description: Use this endpoint to read the attributes of all existing transaction
@@ -3487,7 +3487,7 @@ paths:
           description: OK
       summary: List transaction rules by user
       tags:
-      - TransactionRule
+      - mx_platform
     post:
       description: Use this endpoint to create a new transaction rule. The newly-created
         `transaction_rule` object will be returned if successful.
@@ -3517,7 +3517,7 @@ paths:
           description: OK
       summary: Create transaction rule
       tags:
-      - TransactionRule
+      - mx_platform
   "/users/{user_guid}/transaction_rules/{transaction_rule_guid}":
     delete:
       description: Use this endpoint to permanently delete a transaction rule based
@@ -3546,7 +3546,7 @@ paths:
           description: No Content
       summary: Delete transaction rule
       tags:
-      - TransactionRule
+      - mx_platform
     get:
       description: Use this endpoint to read the attributes of an existing transaction
         rule based on the rule’s unique GUID.
@@ -3575,7 +3575,7 @@ paths:
           description: OK
       summary: Read transaction rule
       tags:
-      - TransactionRule
+      - mx_platform
     put:
       description: Use this endpoint to update the attributes of a specific transaction
         rule based on its unique GUID. The API will respond with the updated transaction_rule
@@ -3612,7 +3612,7 @@ paths:
           description: OK
       summary: Update transaction_rule
       tags:
-      - TransactionRule
+      - mx_platform
   "/users/{user_guid}/transactions":
     get:
       description: Requests to this endpoint return a list of transactions associated
@@ -3660,7 +3660,7 @@ paths:
           description: OK
       summary: List transactions by user
       tags:
-      - Transaction
+      - mx_platform
   "/users/{user_guid}/transactions/{transaction_guid}":
     get:
       description: Requests to this endpoint will return the attributes of the specified
@@ -3690,7 +3690,7 @@ paths:
           description: OK
       summary: Read transaction
       tags:
-      - Transaction
+      - mx_platform
     put:
       description: Use this endpoint to update the `description` of a specific transaction
         according to its unique GUID.
@@ -3726,7 +3726,7 @@ paths:
           description: OK
       summary: Update transaction
       tags:
-      - Transaction
+      - mx_platform
   "/users/{user_guid}/widget_urls":
     post:
       description: This endpoint allows partners to get a URL by passing the `widget_type`
@@ -3765,31 +3765,11 @@ paths:
           description: OK
       summary: Request a widget URL
       tags:
-      - Widget
+      - mx_platform
 security:
 - basicAuth: []
 servers:
 - url: https://api.mx.com
 - url: https://int-api.mx.com
 tags:
-- name: Account
-- name: AccountNumber
-- name: AccountOwner
-- name: Category
-- name: Challenge
-- name: ConnectWidget
-- name: Credential
-- name: EnhancedTransaction
-- name: Holding
-- name: Institution
-- name: Member
-- name: MemberStatus
-- name: Merchant
-- name: OAuthWindow
-- name: Statement
-- name: Tag
-- name: Tagging
-- name: Transaction
-- name: TransactionRule
-- name: User
-- name: Widget
+- name: mx_platform
