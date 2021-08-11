@@ -1455,7 +1455,7 @@ paths:
       description: This endpoint returns a paginated list containing institutions
         that have been set as the partner’s favorites, sorted by popularity. Please
         contact MX to set a list of favorites.
-      operationId: listFavorites
+      operationId: listFavoriteInstiutions
       parameters:
       - description: Specify current page.
         example: 1
@@ -1476,7 +1476,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/InstitutionsResponseBody"
           description: OK
-      summary: List favorites
+      summary: List favorite institutions
       tags:
       - mx_platform
   "/institutions/{institution_code}":
@@ -1506,7 +1506,7 @@ paths:
     get:
       description: Use this endpoint to see which credentials will be needed to create
         a member for a specific institution.
-      operationId: listInstitutionRequiredCredentials
+      operationId: listInstitutionCredentials
       parameters:
       - description: The institution_code of the institution.
         example: chase
@@ -1534,7 +1534,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/CredentialsResponseBody"
           description: OK
-      summary: List institution-required credentials
+      summary: List institution credentials
       tags:
       - mx_platform
   "/merchants":
@@ -2113,14 +2113,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/ConnectWidgetResponseBody"
           description: OK
-      summary: Request connect widget URL
+      summary: Request connect widget url
       tags:
       - mx_platform
   "/users/{user_guid}/holdings":
     get:
       description: This endpoint returns all holdings associated with the specified
         `user` across all accounts and members.
-      operationId: listHoldingsByUser
+      operationId: listHoldings
       parameters:
       - description: Filter holdings from this date.
         example: '2015-09-20'
@@ -2160,7 +2160,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/HoldingsResponseBody"
           description: OK
-      summary: List holdings by user
+      summary: List holdings
       tags:
       - mx_platform
   "/users/{user_guid}/holdings/{holding_guid}":
@@ -2404,7 +2404,7 @@ paths:
     get:
       description: This endpoint returns an array with information about every account
         associated with a particular member.
-      operationId: listAccountOwners
+      operationId: listAccountOwnersByMember
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2439,14 +2439,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/AccountOwnersResponseBody"
           description: OK
-      summary: List account owners
+      summary: List account owners by member
       tags:
       - mx_platform
   "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}":
     put:
       description: This endpoint allows you to update certain attributes of an `account`
         resource.
-      operationId: updateAccount
+      operationId: updateAccountByMember
       parameters:
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -2483,7 +2483,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/AccountResponseBody"
           description: OK
-      summary: Update account
+      summary: Update account by member
       tags:
       - mx_platform
   "/users/{user_guid}/members/{member_guid}/aggregate":
@@ -2673,7 +2673,7 @@ paths:
     post:
       description: Use this endpoint to fetch the statements associated with a particular
         member.
-      operationId: fetchStatementsByMember
+      operationId: fetchStatements
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2696,7 +2696,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
-      summary: Fetch statements by member
+      summary: Fetch statements
       tags:
       - mx_platform
   "/users/{user_guid}/members/{member_guid}/holdings":
@@ -2787,7 +2787,7 @@ paths:
     get:
       description: This endpoint will generate an `oauth_window_uri` for the specified
         `member`.
-      operationId: requestOAuthWindow
+      operationId: requestOAuthWindowURI
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2824,7 +2824,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/OAuthWindowResponseBody"
           description: OK
-      summary: Read member
+      summary: Request oauth window uri
       tags:
       - mx_platform
   "/users/{user_guid}/members/{member_guid}/resume":
@@ -2975,7 +2975,7 @@ paths:
                 format: binary
                 type: string
           description: OK
-      summary: Download statement PDF
+      summary: Download statement pdf
       tags:
       - mx_platform
   "/users/{user_guid}/members/{member_guid}/status":
@@ -3457,7 +3457,7 @@ paths:
     get:
       description: Use this endpoint to read the attributes of all existing transaction
         rules belonging to the user.
-      operationId: listTransactionRulesByUser
+      operationId: listTransactionRules
       parameters:
       - description: Specify current page.
         example: 1
@@ -3485,7 +3485,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/TransactionRulesResponseBody"
           description: OK
-      summary: List transaction rules by user
+      summary: List transaction rules
       tags:
       - mx_platform
     post:
@@ -3618,7 +3618,7 @@ paths:
       description: Requests to this endpoint return a list of transactions associated
         with the specified `user`, accross all members and accounts associated with
         that `user`.
-      operationId: listTransactionsByUser
+      operationId: listTransactions
       parameters:
       - description: Filter transactions from this date.
         example: '2015-09-20'
@@ -3658,7 +3658,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/TransactionsResponseBody"
           description: OK
-      summary: List transactions by user
+      summary: List transactions
       tags:
       - mx_platform
   "/users/{user_guid}/transactions/{transaction_guid}":
@@ -3763,7 +3763,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/WidgetResponseBody"
           description: OK
-      summary: Request a widget URL
+      summary: Request widget url
       tags:
       - mx_platform
 security:
