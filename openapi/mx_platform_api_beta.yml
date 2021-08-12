@@ -1,7 +1,91 @@
 ---
 components:
   schemas:
-    Account:
+    AccountNumberResponse:
+      properties:
+        account_guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        account_number:
+          example: '10001'
+          type: string
+        guid:
+          example: ACN-8899832e-e5b4-42cd-aa25-bbf1dc889a8f
+          type: string
+        institution_number:
+          example: '123'
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        routing_number:
+          example: '68899990000000'
+          type: string
+        transit_number:
+          example: '12345'
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+      type: object
+    AccountNumbersResponseBody:
+      properties:
+        account_numbers:
+          items:
+            "$ref": "#/components/schemas/AccountNumberResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    AccountOwnerResponse:
+      properties:
+        account_guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        address:
+          example: 123 This Way
+          type: string
+        city:
+          example: Middlesex
+          type: string
+        country:
+          example: US
+          type: string
+        email:
+          example: donnie@darko.co
+          type: string
+        guid:
+          example: ACO-63dc7714-6fc0-4aa2-a069-c06cdccd1af9
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        owner_name:
+          example: Donnie Darko
+          type: string
+        phone:
+          example: 555-555-5555
+          type: string
+        postal_code:
+          example: 00000-0000
+          type: string
+        state:
+          example: VA
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+      type: object
+    AccountOwnersResponseBody:
+      properties:
+        account_owners:
+          items:
+            "$ref": "#/components/schemas/AccountOwnerResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    AccountResponse:
       properties:
         account_number:
           example: '5366'
@@ -124,94 +208,10 @@ components:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
       type: object
-    AccountNumber:
-      properties:
-        account_guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          type: string
-        account_number:
-          example: '10001'
-          type: string
-        guid:
-          example: ACN-8899832e-e5b4-42cd-aa25-bbf1dc889a8f
-          type: string
-        institution_number:
-          example: '123'
-          type: string
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type: string
-        routing_number:
-          example: '68899990000000'
-          type: string
-        transit_number:
-          example: '12345'
-          type: string
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type: string
-      type: object
-    AccountNumbersResponseBody:
-      properties:
-        account_numbers:
-          items:
-            "$ref": "#/components/schemas/AccountNumber"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
-      type: object
-    AccountOwner:
-      properties:
-        account_guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          type: string
-        address:
-          example: 123 This Way
-          type: string
-        city:
-          example: Middlesex
-          type: string
-        country:
-          example: US
-          type: string
-        email:
-          example: donnie@darko.co
-          type: string
-        guid:
-          example: ACO-63dc7714-6fc0-4aa2-a069-c06cdccd1af9
-          type: string
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type: string
-        owner_name:
-          example: Donnie Darko
-          type: string
-        phone:
-          example: 555-555-5555
-          type: string
-        postal_code:
-          example: 00000-0000
-          type: string
-        state:
-          example: VA
-          type: string
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type: string
-      type: object
-    AccountOwnersResponseBody:
-      properties:
-        account_owners:
-          items:
-            "$ref": "#/components/schemas/AccountOwner"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/Pagination"
-      type: object
     AccountResponseBody:
       properties:
         account:
-          "$ref": "#/components/schemas/Account"
+          "$ref": "#/components/schemas/AccountResponse"
       type: object
     AccountUpdateRequest:
       properties:
@@ -227,21 +227,40 @@ components:
       properties:
         accounts:
           items:
-            "$ref": "#/components/schemas/Account"
+            "$ref": "#/components/schemas/AccountResponse"
           type: array
         pagination:
-          "$ref": "#/components/schemas/Pagination"
+          "$ref": "#/components/schemas/PaginationResponse"
       type: object
     CategoriesResponseBody:
       properties:
         categories:
           items:
-            "$ref": "#/components/schemas/Category"
+            "$ref": "#/components/schemas/CategoryResponse"
           type: array
         pagination:
-          "$ref": "#/components/schemas/Pagination"
+          "$ref": "#/components/schemas/PaginationResponse"
       type: object
-    Category:
+    CategoryCreateRequest:
+      properties:
+        metadata:
+          example: some metadata
+          type: string
+        name:
+          example: Online Shopping
+          type: string
+        parent_guid:
+          example: CAT-aad51b46-d6f7-3da5-fd6e-492328b3023f
+          type: string
+      required:
+      - name
+      type: object
+    CategoryCreateRequestBody:
+      properties:
+        category:
+          "$ref": "#/components/schemas/CategoryCreateRequest"
+      type: object
+    CategoryResponse:
       properties:
         created_at:
           example: '2015-04-13T18:01:23.000Z'
@@ -268,29 +287,10 @@ components:
           example: '2015-05-13T18:01:23.000Z'
           type: string
       type: object
-    CategoryCreateRequest:
-      properties:
-        metadata:
-          example: some metadata
-          type: string
-        name:
-          example: Online Shopping
-          type: string
-        parent_guid:
-          example: CAT-aad51b46-d6f7-3da5-fd6e-492328b3023f
-          type: string
-      required:
-      - name
-      type: object
-    CategoryCreateRequestBody:
-      properties:
-        category:
-          "$ref": "#/components/schemas/CategoryCreateRequest"
-      type: object
     CategoryResponseBody:
       properties:
         category:
-          "$ref": "#/components/schemas/Category"
+          "$ref": "#/components/schemas/CategoryResponse"
       type: object
     CategoryUpdateRequest:
       properties:
@@ -306,7 +306,7 @@ components:
         category:
           "$ref": "#/components/schemas/CategoryUpdateRequest"
       type: object
-    Challenge:
+    ChallengeResponse:
       properties:
         field_name:
           example: Who is this guy?
@@ -354,19 +354,10 @@ components:
       properties:
         challenges:
           items:
-            "$ref": "#/components/schemas/Challenge"
+            "$ref": "#/components/schemas/ChallengeResponse"
           type: array
         pagination:
-          "$ref": "#/components/schemas/Pagination"
-      type: object
-    ConnectWidget:
-      properties:
-        connect_widget_url:
-          example: https://int-widgets.moneydesktop.com/md/connect/jb1rA14m85tw2lyvpgfx4gc6d3Z8z8Ayb8
-          type: string
-        guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type: string
+          "$ref": "#/components/schemas/PaginationResponse"
       type: object
     ConnectWidgetRequest:
       properties:
@@ -409,12 +400,30 @@ components:
         config:
           "$ref": "#/components/schemas/ConnectWidgetRequest"
       type: object
+    ConnectWidgetResponse:
+      properties:
+        connect_widget_url:
+          example: https://int-widgets.moneydesktop.com/md/connect/jb1rA14m85tw2lyvpgfx4gc6d3Z8z8Ayb8
+          type: string
+        guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+      type: object
     ConnectWidgetResponseBody:
       properties:
         user:
-          "$ref": "#/components/schemas/ConnectWidget"
+          "$ref": "#/components/schemas/ConnectWidgetResponse"
       type: object
-    Credential:
+    CredentialRequest:
+      properties:
+        guid:
+          example: CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f
+          type: string
+        value:
+          example: password
+          type: string
+      type: object
+    CredentialResponse:
       properties:
         display_order:
           example: 1
@@ -432,25 +441,16 @@ components:
           example: Username
           type: string
       type: object
-    CredentialRequest:
-      properties:
-        guid:
-          example: CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f
-          type: string
-        value:
-          example: password
-          type: string
-      type: object
     CredentialsResponseBody:
       properties:
         credentials:
           items:
-            "$ref": "#/components/schemas/Credential"
+            "$ref": "#/components/schemas/CredentialResponse"
           type: array
         pagination:
-          "$ref": "#/components/schemas/Pagination"
+          "$ref": "#/components/schemas/PaginationResponse"
       type: object
-    EnhanceTransaction:
+    EnhanceTransactionResponse:
       properties:
         amount:
           example: 21.33
@@ -533,10 +533,10 @@ components:
       properties:
         transactions:
           items:
-            "$ref": "#/components/schemas/EnhanceTransaction"
+            "$ref": "#/components/schemas/EnhanceTransactionResponse"
           type: array
       type: object
-    Holding:
+    HoldingResponse:
       properties:
         account_guid:
           example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
@@ -596,18 +596,18 @@ components:
     HoldingResponseBody:
       properties:
         holding:
-          "$ref": "#/components/schemas/Holding"
+          "$ref": "#/components/schemas/HoldingResponse"
       type: object
     HoldingsResponseBody:
       properties:
         holdings:
           items:
-            "$ref": "#/components/schemas/Holding"
+            "$ref": "#/components/schemas/HoldingResponse"
           type: array
         pagination:
-          "$ref": "#/components/schemas/Pagination"
+          "$ref": "#/components/schemas/PaginationResponse"
       type: object
-    Institution:
+    InstitutionResponse:
       properties:
         code:
           example: chase
@@ -643,55 +643,16 @@ components:
     InstitutionResponseBody:
       properties:
         institution:
-          "$ref": "#/components/schemas/Institution"
+          "$ref": "#/components/schemas/InstitutionResponse"
       type: object
     InstitutionsResponseBody:
       properties:
         institutions:
           items:
-            "$ref": "#/components/schemas/Institution"
+            "$ref": "#/components/schemas/InstitutionResponse"
           type: array
         pagination:
-          "$ref": "#/components/schemas/Pagination"
-      type: object
-    Member:
-      properties:
-        aggregated_at:
-          example: '2016-10-13T18:07:57.000Z'
-          type: string
-        connection_status:
-          example: CONNECTED
-          type: string
-        guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type: string
-        id:
-          example: unique_id
-          type: string
-        institution_code:
-          example: chase
-          type: string
-        is_being_aggregated:
-          example: false
-          type: boolean
-        is_oauth:
-          example: false
-          type: boolean
-        metadata:
-          example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
-          type: string
-        name:
-          example: Chase Bank
-          type: string
-        oauth_window_uri:
-          example: int-widgets.moneydesktop.com/oauth/predirect_to/MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f/p8v7rxpxg3pdAsfgwxcrwxwhz3Zbygxfr6wAb931qv91hpb57k6bkr6t6m9djrfrfd467p8xkgqp6w7k1r9g8k8bfxqbfw2lq5tdwjq2sngAx76fm0jrw0dpmbtlkxchgjsw3r7r0hhq6A8sshqptfxql2rt123shfpkyhhpfvy67yvprbkb7lmlyrpwsd9yj0s22pmsyjhcw7d2q44d9fsxn5kfsmr2zqc79c2AxAx5gkjgbczf22A1sjx70t2pvnggzyh55s7bh62dd5wq7f1r4x90mcxn1tfhhrq5b09mjkt5hg66cjn700pcf6fgA42lbsp7v1pdch85mswycrp21c6j2sxffm14Asg3?skip_aggregation=false&referral_source=APP&ui_message_webview_url_scheme=myapp
-          type: string
-        successfully_aggregated_at:
-          example: '2016-10-13T17:57:38.000Z'
-          type: string
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type: string
+          "$ref": "#/components/schemas/PaginationResponse"
       type: object
     MemberCreateRequest:
       properties:
@@ -732,10 +693,49 @@ components:
           example: mx
           type: string
       type: object
+    MemberResponse:
+      properties:
+        aggregated_at:
+          example: '2016-10-13T18:07:57.000Z'
+          type: string
+        connection_status:
+          example: CONNECTED
+          type: string
+        guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        id:
+          example: unique_id
+          type: string
+        institution_code:
+          example: chase
+          type: string
+        is_being_aggregated:
+          example: false
+          type: boolean
+        is_oauth:
+          example: false
+          type: boolean
+        metadata:
+          example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+          type: string
+        name:
+          example: Chase Bank
+          type: string
+        oauth_window_uri:
+          example: int-widgets.moneydesktop.com/oauth/predirect_to/MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f/p8v7rxpxg3pdAsfgwxcrwxwhz3Zbygxfr6wAb931qv91hpb57k6bkr6t6m9djrfrfd467p8xkgqp6w7k1r9g8k8bfxqbfw2lq5tdwjq2sngAx76fm0jrw0dpmbtlkxchgjsw3r7r0hhq6A8sshqptfxql2rt123shfpkyhhpfvy67yvprbkb7lmlyrpwsd9yj0s22pmsyjhcw7d2q44d9fsxn5kfsmr2zqc79c2AxAx5gkjgbczf22A1sjx70t2pvnggzyh55s7bh62dd5wq7f1r4x90mcxn1tfhhrq5b09mjkt5hg66cjn700pcf6fgA42lbsp7v1pdch85mswycrp21c6j2sxffm14Asg3?skip_aggregation=false&referral_source=APP&ui_message_webview_url_scheme=myapp
+          type: string
+        successfully_aggregated_at:
+          example: '2016-10-13T17:57:38.000Z'
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+      type: object
     MemberResponseBody:
       properties:
         member:
-          "$ref": "#/components/schemas/Member"
+          "$ref": "#/components/schemas/MemberResponse"
       type: object
     MemberResumeRequest:
       properties:
@@ -749,14 +749,14 @@ components:
         member:
           "$ref": "#/components/schemas/MemberResumeRequest"
       type: object
-    MemberStatus:
+    MemberStatusResponse:
       properties:
         aggregated_at:
           example: '2016-10-13T18:07:57.000Z'
           type: string
         challenges:
           items:
-            "$ref": "#/components/schemas/Challenge"
+            "$ref": "#/components/schemas/ChallengeResponse"
           type: array
         connection_status:
           example: CONNECTED
@@ -783,7 +783,7 @@ components:
     MemberStatusResponseBody:
       properties:
         member:
-          "$ref": "#/components/schemas/MemberStatus"
+          "$ref": "#/components/schemas/MemberStatusResponse"
       type: object
     MemberUpdateRequest:
       properties:
@@ -813,12 +813,12 @@ components:
       properties:
         members:
           items:
-            "$ref": "#/components/schemas/Member"
+            "$ref": "#/components/schemas/MemberResponse"
           type: array
         pagination:
-          "$ref": "#/components/schemas/Pagination"
+          "$ref": "#/components/schemas/PaginationResponse"
       type: object
-    Merchant:
+    MerchantResponse:
       properties:
         created_at:
           example: '2017-04-20T19:30:12.000Z'
@@ -842,18 +842,18 @@ components:
     MerchantResponseBody:
       properties:
         merchant:
-          "$ref": "#/components/schemas/Merchant"
+          "$ref": "#/components/schemas/MerchantResponse"
       type: object
     MerchantsResponseBody:
       properties:
         merchants:
           items:
-            "$ref": "#/components/schemas/Merchant"
+            "$ref": "#/components/schemas/MerchantResponse"
           type: array
         pagination:
-          "$ref": "#/components/schemas/Pagination"
+          "$ref": "#/components/schemas/PaginationResponse"
       type: object
-    OAuthWindow:
+    OAuthWindowResponse:
       properties:
         guid:
           example: MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f
@@ -865,9 +865,9 @@ components:
     OAuthWindowResponseBody:
       properties:
         member:
-          "$ref": "#/components/schemas/OAuthWindow"
+          "$ref": "#/components/schemas/OAuthWindowResponse"
       type: object
-    Pagination:
+    PaginationResponse:
       properties:
         current_page:
           example: 1
@@ -882,7 +882,7 @@ components:
           example: 1
           type: integer
       type: object
-    Statement:
+    StatementResponse:
       properties:
         account_guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
@@ -912,28 +912,16 @@ components:
     StatementResponseBody:
       properties:
         statement:
-          "$ref": "#/components/schemas/Statement"
+          "$ref": "#/components/schemas/StatementResponse"
       type: object
     StatementsResponseBody:
       properties:
         pagination:
-          "$ref": "#/components/schemas/Pagination"
+          "$ref": "#/components/schemas/PaginationResponse"
         statements:
           items:
-            "$ref": "#/components/schemas/Statement"
+            "$ref": "#/components/schemas/StatementResponse"
           type: array
-      type: object
-    Tag:
-      properties:
-        guid:
-          example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
-          type: string
-        name:
-          example: MY TAG
-          type: string
-        user_guid:
-          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
-          type: string
       type: object
     TagCreateRequest:
       properties:
@@ -948,10 +936,22 @@ components:
         tag:
           "$ref": "#/components/schemas/TagCreateRequest"
       type: object
+    TagResponse:
+      properties:
+        guid:
+          example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
+          type: string
+        name:
+          example: MY TAG
+          type: string
+        user_guid:
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          type: string
+      type: object
     TagResponseBody:
       properties:
         tag:
-          "$ref": "#/components/schemas/Tag"
+          "$ref": "#/components/schemas/TagResponse"
       type: object
     TagUpdateRequest:
       properties:
@@ -965,24 +965,6 @@ components:
       properties:
         tag:
           "$ref": "#/components/schemas/TagUpdateRequest"
-      type: object
-    Tagging:
-      properties:
-        guid:
-          example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
-          type: string
-        member_is_managed_by_user:
-          example: false
-          type: boolean
-        tag_guid:
-          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
-          type: string
-        transaction_guid:
-          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-          type: string
-        user_guid:
-          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
-          type: string
       type: object
     TaggingCreateRequest:
       properties:
@@ -1001,10 +983,28 @@ components:
         tagging:
           "$ref": "#/components/schemas/TaggingCreateRequest"
       type: object
+    TaggingResponse:
+      properties:
+        guid:
+          example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
+          type: string
+        member_is_managed_by_user:
+          example: false
+          type: boolean
+        tag_guid:
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type: string
+        transaction_guid:
+          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+          type: string
+        user_guid:
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          type: string
+      type: object
     TaggingResponseBody:
       properties:
         tagging:
-          "$ref": "#/components/schemas/Tagging"
+          "$ref": "#/components/schemas/TaggingResponse"
       type: object
     TaggingUpdateRequest:
       properties:
@@ -1022,22 +1022,22 @@ components:
     TaggingsResponseBody:
       properties:
         pagination:
-          "$ref": "#/components/schemas/Pagination"
+          "$ref": "#/components/schemas/PaginationResponse"
         taggings:
           items:
-            "$ref": "#/components/schemas/Tagging"
+            "$ref": "#/components/schemas/TaggingResponse"
           type: array
       type: object
     TagsResponseBody:
       properties:
         pagination:
-          "$ref": "#/components/schemas/Pagination"
+          "$ref": "#/components/schemas/PaginationResponse"
         tags:
           items:
-            "$ref": "#/components/schemas/Tag"
+            "$ref": "#/components/schemas/TagResponse"
           type: array
       type: object
-    Transaction:
+    TransactionResponse:
       properties:
         account_guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
@@ -1151,9 +1151,29 @@ components:
     TransactionResponseBody:
       properties:
         transaction:
-          "$ref": "#/components/schemas/Transaction"
+          "$ref": "#/components/schemas/TransactionResponse"
       type: object
-    TransactionRule:
+    TransactionRuleCreateRequest:
+      properties:
+        category_guid:
+          example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
+          type: string
+        description:
+          example: Wal-mart food storage
+          type: string
+        match_description:
+          example: Wal-mart
+          type: string
+      required:
+      - category_guid
+      - match_description
+      type: object
+    TransactionRuleCreateRequestBody:
+      properties:
+        transaction_rule:
+          "$ref": "#/components/schemas/TransactionRuleCreateRequest"
+      type: object
+    TransactionRuleResponse:
       properties:
         category_guid:
           example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
@@ -1177,30 +1197,10 @@ components:
           example: USR-22fc3203-b3e6-8340-43db-8e50b2f56995
           type: string
       type: object
-    TransactionRuleCreateRequest:
-      properties:
-        category_guid:
-          example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
-          type: string
-        description:
-          example: Wal-mart food storage
-          type: string
-        match_description:
-          example: Wal-mart
-          type: string
-      required:
-      - category_guid
-      - match_description
-      type: object
-    TransactionRuleCreateRequestBody:
-      properties:
-        transaction_rule:
-          "$ref": "#/components/schemas/TransactionRuleCreateRequest"
-      type: object
     TransactionRuleResponseBody:
       properties:
         transaction_rule:
-          "$ref": "#/components/schemas/TransactionRule"
+          "$ref": "#/components/schemas/TransactionRuleResponse"
       type: object
     TransactionRuleUpdateRequest:
       properties:
@@ -1222,10 +1222,10 @@ components:
     TransactionRulesResponseBody:
       properties:
         pagination:
-          "$ref": "#/components/schemas/Pagination"
+          "$ref": "#/components/schemas/PaginationResponse"
         transaction_rules:
           items:
-            "$ref": "#/components/schemas/TransactionRule"
+            "$ref": "#/components/schemas/TransactionRuleResponse"
           type: array
       type: object
     TransactionUpdateRequest:
@@ -1244,29 +1244,11 @@ components:
     TransactionsResponseBody:
       properties:
         pagination:
-          "$ref": "#/components/schemas/Pagination"
+          "$ref": "#/components/schemas/PaginationResponse"
         transactions:
           items:
-            "$ref": "#/components/schemas/Transaction"
+            "$ref": "#/components/schemas/TransactionResponse"
           type: array
-      type: object
-    User:
-      properties:
-        email:
-          example: email@provider.com
-          type: string
-        guid:
-          example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
-          type: string
-        id:
-          example: My-Unique-ID
-          type: string
-        is_disabled:
-          example: false
-          type: boolean
-        metadata:
-          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
-          type: string
       type: object
     UserCreateRequest:
       properties:
@@ -1288,10 +1270,28 @@ components:
         user:
           "$ref": "#/components/schemas/UserCreateRequest"
       type: object
+    UserResponse:
+      properties:
+        email:
+          example: email@provider.com
+          type: string
+        guid:
+          example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
+          type: string
+        id:
+          example: My-Unique-ID
+          type: string
+        is_disabled:
+          example: false
+          type: boolean
+        metadata:
+          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+          type: string
+      type: object
     UserResponseBody:
       properties:
         user:
-          "$ref": "#/components/schemas/User"
+          "$ref": "#/components/schemas/UserResponse"
       type: object
     UserUpdateRequest:
       properties:
@@ -1316,23 +1316,11 @@ components:
     UsersResponseBody:
       properties:
         pagination:
-          "$ref": "#/components/schemas/Pagination"
+          "$ref": "#/components/schemas/PaginationResponse"
         users:
           items:
-            "$ref": "#/components/schemas/User"
+            "$ref": "#/components/schemas/UserResponse"
           type: array
-      type: object
-    Widget:
-      properties:
-        type:
-          example: connect_widget
-          type: string
-        url:
-          example: https://int-widgets.moneydesktop.com/md/connect/yxcdk7f1nb99jwApp34lA24m0AZ8rzprgmw17gm8z8h2AzjyAnd1rj42qfv42r3xnn07Amfwlg3j09hwp8bkq8tc5z21j33xjggmp2qtlpkz2v4gywfhfn31l44tx2w91bfc2thc58j4syqp0hgxcyvA4g7754hk7gjc56kt7tc36s45mmkdz2jqqqydspytmtr3dAb9jh6fkb24f3zkfpdjj0v77f0vmrtzvzxkmxz7dklsq8gd0gstkbhlw5bgpgc3m9mAtpAcr2w15gwy5xc4blgxppl42Avnm63291z3cyp0wm3lqgmvgzdAddct423gAdqxdlfx5d4mvc0ck2gt7ktqgks4vxq1pAy5
-          type: string
-        user_id:
-          example: U-jeff-201709221210
-          type: string
       type: object
     WidgetRequest:
       properties:
@@ -1383,10 +1371,22 @@ components:
         widget_url:
           "$ref": "#/components/schemas/WidgetRequest"
       type: object
+    WidgetResponse:
+      properties:
+        type:
+          example: connect_widget
+          type: string
+        url:
+          example: https://int-widgets.moneydesktop.com/md/connect/yxcdk7f1nb99jwApp34lA24m0AZ8rzprgmw17gm8z8h2AzjyAnd1rj42qfv42r3xnn07Amfwlg3j09hwp8bkq8tc5z21j33xjggmp2qtlpkz2v4gywfhfn31l44tx2w91bfc2thc58j4syqp0hgxcyvA4g7754hk7gjc56kt7tc36s45mmkdz2jqqqydspytmtr3dAb9jh6fkb24f3zkfpdjj0v77f0vmrtzvzxkmxz7dklsq8gd0gstkbhlw5bgpgc3m9mAtpAcr2w15gwy5xc4blgxppl42Avnm63291z3cyp0wm3lqgmvgzdAddct423gAdqxdlfx5d4mvc0ck2gt7ktqgks4vxq1pAy5
+          type: string
+        user_id:
+          example: U-jeff-201709221210
+          type: string
+      type: object
     WidgetResponseBody:
       properties:
         widget_url:
-          "$ref": "#/components/schemas/Widget"
+          "$ref": "#/components/schemas/WidgetResponse"
       type: object
   securitySchemes:
     basicAuth:
@@ -3315,10 +3315,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tag:
-                    "$ref": "#/components/schemas/Tag"
-                type: object
+                "$ref": "#/components/schemas/TagResponseBody"
           description: OK
       summary: Create tag
       tags:
@@ -3413,10 +3410,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tag:
-                    "$ref": "#/components/schemas/Tag"
-                type: object
+                "$ref": "#/components/schemas/TagResponseBody"
           description: OK
       summary: Update tag
       tags:
