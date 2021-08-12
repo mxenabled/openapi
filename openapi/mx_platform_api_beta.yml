@@ -1455,7 +1455,7 @@ paths:
       description: This endpoint returns a paginated list containing institutions
         that have been set as the partner’s favorites, sorted by popularity. Please
         contact MX to set a list of favorites.
-      operationId: listFavoriteInstiutions
+      operationId: listFavoriteInstitutions
       parameters:
       - description: Specify current page.
         example: 1
