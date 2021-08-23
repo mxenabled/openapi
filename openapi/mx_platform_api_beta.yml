@@ -319,32 +319,14 @@ components:
           type: string
         image_options:
           items:
-            properties:
-              data_uri:
-                example: data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image
-                  data ...
-                type: string
-              label:
-                example: IMAGE_1
-                type: string
-              value:
-                example: image_data
-                type: string
-            type: object
+            "$ref": "#/components/schemas/ImageOptionResponse"
           type: array
         label:
           example: Who is this guy?
           type: string
         options:
           items:
-            properties:
-              label:
-                example: IMAGE_1
-                type: string
-              value:
-                example: image_data
-                type: string
-            type: object
+            "$ref": "#/components/schemas/OptionResponse"
           type: array
         type:
           example: IMAGE_DATA
@@ -607,6 +589,18 @@ components:
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
       type: object
+    ImageOptionResponse:
+      properties:
+        data_uri:
+          example: data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...
+          type: string
+        label:
+          example: IMAGE_1
+          type: string
+        value:
+          example: image_data
+          type: string
+      type: object
     InstitutionResponse:
       properties:
         code:
@@ -866,6 +860,15 @@ components:
       properties:
         member:
           "$ref": "#/components/schemas/OAuthWindowResponse"
+      type: object
+    OptionResponse:
+      properties:
+        label:
+          example: IMAGE_1
+          type: string
+        value:
+          example: image_data
+          type: string
       type: object
     PaginationResponse:
       properties:
