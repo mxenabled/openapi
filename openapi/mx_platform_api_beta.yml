@@ -223,6 +223,7 @@ components:
       properties:
         account:
           "$ref": "#/components/schemas/AccountUpdateRequest"
+      type: object
     AccountsResponseBody:
       properties:
         accounts:
