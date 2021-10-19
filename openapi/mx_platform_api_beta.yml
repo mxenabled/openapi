@@ -2821,6 +2821,14 @@ paths:
         name: ui_message_webview_url_scheme
         schema:
           type: string
+      - description: Setting this parameter to `true` will prevent the member from
+          automatically aggregating after being redirected from the authorization
+          page.
+        example: false
+        in: query
+        name: skip_aggregation
+        schema:
+          type: boolean
       responses:
         '200':
           content:
