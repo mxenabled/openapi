@@ -813,6 +813,50 @@ components:
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
       type: object
+    MerchantLocationResponse:
+      properties:
+        city:
+          example: Greenwood Village
+          type: string
+        country:
+          example: US
+          type: string
+        created_at:
+          example: 2020-04-13 21:05:09.000000000 Z
+          type: string
+        guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type: string
+        latitude:
+          example: 39.5963005
+          type: number
+        longitude:
+          example: -104.89158799999998
+          type: number
+        merchant_guid:
+          example: MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621
+          type: string
+        phone_number:
+          example: "(303) 689-0728"
+          type: string
+        postal_code:
+          example: 801121436
+          type: string
+        state:
+          example: CO
+          type: string
+        street_address:
+          example: 8547 E Arapahoe Rd, Ste 1
+          type: string
+        updated_at:
+          example: 2020-04-13 21:05:09.000000000 Z
+          type: string
+      type: object
+    MerchantLocationResponseBody:
+      properties:
+        merchant_location:
+          "$ref": "#/components/schemas/MerchantLocationResponse"
+      type: object
     MerchantResponse:
       properties:
         created_at:
@@ -1539,6 +1583,28 @@ paths:
                 "$ref": "#/components/schemas/CredentialsResponseBody"
           description: OK
       summary: List institution credentials
+      tags:
+      - mx_platform
+  "/merchant_locations/{merchant_location_guid}":
+    get:
+      description: This endpoint returns the specified merchant_location resource.
+      operationId: readMerchantLocation
+      parameters:
+      - description: The unique id for a `merchant_location`.
+        example: MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621
+        in: path
+        name: merchant_location_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MerchantLocationResponseBody"
+          description: OK
+      summary: Read merchant location
       tags:
       - mx_platform
   "/merchants":
