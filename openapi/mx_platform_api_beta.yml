@@ -135,6 +135,9 @@ components:
         id:
           example: '1040434698'
           type: string
+        imported_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
         institution_code:
           example: chase
           type: string
@@ -165,6 +168,15 @@ components:
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
+        member_id:
+          example: member123
+          type: string
+        member_is_managed_by_user:
+          example: false
+          type: boolean
+        metadata:
+          example: some metadata
+          type: string
         minimum_balance:
           example: 100.0
           type: number
@@ -173,6 +185,9 @@ components:
           type: number
         name:
           example: Test account 2
+          type: string
+        nickname:
+          example: My Checking
           type: string
         original_balance:
           example: 10.0
@@ -189,6 +204,9 @@ components:
         premium_amount:
           example: 1.0
           type: number
+        routing_number:
+          example: '68899990000000'
+          type: string
         started_on:
           example: '2015-10-13T17:57:37.000Z'
           type: string
@@ -206,6 +224,9 @@ components:
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+        user_id:
+          example: user123
           type: string
       type: object
     AccountResponseBody:
@@ -754,155 +775,6 @@ components:
         account:
           "$ref": "#/components/schemas/ManagedAccountCreateRequest"
       type: object
-    ManagedAccountResponse:
-      properties:
-        account_number:
-          example: '5366'
-          type: string
-        apr:
-          example: 1.0
-          type: number
-        apy:
-          example: 1.0
-          type: number
-        available_balance:
-          example: 1000.0
-          type: number
-        available_credit:
-          example: 1000.0
-          type: number
-        balance:
-          example: 1000.0
-          type: number
-        cash_balance:
-          example: 1000.0
-          type: number
-        cash_surrender_value:
-          example: 1000.0
-          type: number
-        created_at:
-          example: '2016-10-13T17:57:37.000Z'
-          type: string
-        credit_limit:
-          example: 100.0
-          type: number
-        currency_code:
-          example: USD
-          type: string
-        day_payment_is_due:
-          example: 20
-          type: integer
-        death_benefit:
-          example: 1000
-          type: integer
-        guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          type: string
-        holdings_value:
-          example: 1000.0
-          type: number
-        id:
-          example: '1040434698'
-          type: string
-        imported_at:
-          example: '2015-10-13T17:57:37.000Z'
-          type: string
-        institution_code:
-          example: chase
-          type: string
-        insured_name:
-          example: Frodo Baggins
-          type: string
-        interest_rate:
-          example: 1.0
-          type: number
-        is_closed:
-          example: false
-          type: boolean
-        is_hidden:
-          example: false
-          type: boolean
-        last_payment:
-          example: 100.0
-          type: number
-        last_payment_at:
-          example: '2015-10-13T17:57:37.000Z'
-          type: string
-        loan_amount:
-          example: 1000.0
-          type: number
-        matures_on:
-          example: '2015-10-13T17:57:37.000Z'
-          type: string
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type: string
-        member_id:
-          example: member123
-          type: string
-        member_is_managed_by_user:
-          example: false
-          type: boolean
-        metadata:
-          example: some metadata
-          type: string
-        minimum_balance:
-          example: 100.0
-          type: number
-        minimum_payment:
-          example: 10.0
-          type: number
-        name:
-          example: Test account 2
-          type: string
-        nickname:
-          example: My Savings
-          type: string
-        original_balance:
-          example: 10.0
-          type: number
-        pay_out_amount:
-          example: 10.0
-          type: number
-        payment_due_at:
-          example: '2015-10-13T17:57:37.000Z'
-          type: string
-        payoff_balance:
-          example: 10.0
-          type: number
-        premium_amount:
-          example: 1.0
-          type: number
-        routing_number:
-          example: '68899990000000'
-          type: string
-        started_on:
-          example: '2015-10-13T17:57:37.000Z'
-          type: string
-        subtype:
-          example: NONE
-          type: string
-        total_account_value:
-          example: 1.0
-          type: number
-        type:
-          example: SAVINGS
-          type: string
-        updated_at:
-          example: '2016-10-13T18:08:00.000Z'
-          type: string
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type: string
-        user_id:
-          example: user123
-          type: string
-      type: object
-    ManagedAccountResponseBody:
-      properties:
-        account:
-          "$ref": "#/components/schemas/ManagedAccountResponse"
-      type: object
     ManagedAccountUpdateRequest:
       properties:
         account_number:
@@ -1004,14 +876,147 @@ components:
         account:
           "$ref": "#/components/schemas/ManagedAccountUpdateRequest"
       type: object
-    ManagedAccountsResponseBody:
+    ManagedTransactionCreateRequest:
       properties:
-        accounts:
-          items:
-            "$ref": "#/components/schemas/ManagedAccountResponse"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/PaginationResponse"
+        amount:
+          example: 61.11
+          type: string
+        category:
+          example: Groceries
+          type: string
+        check_number_string:
+          example: '6812'
+          type: string
+        currency_code:
+          example: USD
+          type: string
+        description:
+          example: Whole foods
+          type: string
+        id:
+          example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
+          type: string
+        is_international:
+          example: false
+          type: boolean
+        latitude:
+          example: -43.2075
+          type: number
+        localized_description:
+          example: This is a localized_description
+          type: string
+        localized_memo:
+          example: This is a localized_memo
+          type: string
+        longitude:
+          example: 139.691706
+          type: number
+        memo:
+          example: This is a memo
+          type: string
+        merchant_category_code:
+          example: 5411
+          type: integer
+        merchant_guid:
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          type: string
+        merchant_location_guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        posted_at:
+          example: '2016-10-07T06:00:00.000Z'
+          type: string
+        status:
+          example: POSTED
+          type: string
+        transacted_at:
+          example: '2016-10-06T13:00:00.000Z'
+          type: string
+        type:
+          example: DEBIT
+          type: string
+      required:
+      - amount
+      - description
+      - status
+      - transacted_at
+      - type
+      type: object
+    ManagedTransactionCreateRequestBody:
+      properties:
+        transaction:
+          "$ref": "#/components/schemas/ManagedTransactionCreateRequest"
+      type: object
+    ManagedTransactionUpdateRequest:
+      properties:
+        amount:
+          example: 61.11
+          type: string
+        category:
+          example: Groceries
+          type: string
+        check_number_string:
+          example: '6812'
+          type: string
+        currency_code:
+          example: USD
+          type: string
+        description:
+          example: Whole foods
+          type: string
+        id:
+          example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
+          type: string
+        is_international:
+          example: false
+          type: boolean
+        latitude:
+          example: -43.2075
+          type: number
+        localized_description:
+          example: This is a localized_description
+          type: string
+        localized_memo:
+          example: This is a localized_memo
+          type: string
+        longitude:
+          example: 139.691706
+          type: number
+        memo:
+          example: This is a memo
+          type: string
+        merchant_category_code:
+          example: 5411
+          type: integer
+        merchant_guid:
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          type: string
+        merchant_location_guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        posted_at:
+          example: '2016-10-07T06:00:00.000Z'
+          type: string
+        status:
+          example: POSTED
+          type: string
+        transacted_at:
+          example: '2016-10-06T13:00:00.000Z'
+          type: string
+        type:
+          example: DEBIT
+          type: string
+      type: object
+    ManagedTransactionUpdateRequestBody:
+      properties:
+        transaction:
+          "$ref": "#/components/schemas/ManagedTransactionUpdateRequest"
       type: object
     MemberCreateRequest:
       properties:
@@ -1454,6 +1459,9 @@ components:
         account_guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
           type: string
+        account_id:
+          example: account123
+          type: string
         amount:
           example: 61.11
           type: number
@@ -1526,6 +1534,9 @@ components:
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
+        member_is_managed_by_user:
+          example: false
+          type: boolean
         memo:
           example: This is a memo
           type: string
@@ -1534,6 +1545,12 @@ components:
           type: integer
         merchant_guid:
           example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          type: string
+        merchant_location_guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type: string
+        metadata:
+          example: some metadata
           type: string
         original_description:
           example: WHOLEFDS TSQ 102
@@ -1558,6 +1575,9 @@ components:
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+        user_id:
+          example: user123
           type: string
       type: object
     TransactionResponseBody:
@@ -2663,7 +2683,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/ManagedAccountsResponseBody"
+                "$ref": "#/components/schemas/AccountsResponseBody"
           description: OK
       summary: List managed accounts
       tags:
@@ -2698,7 +2718,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/ManagedAccountResponseBody"
+                "$ref": "#/components/schemas/AccountResponseBody"
           description: OK
       summary: Create managed account
       tags:
@@ -2771,7 +2791,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/ManagedAccountResponseBody"
+                "$ref": "#/components/schemas/AccountResponseBody"
           description: OK
       summary: Read managed account
       tags:
@@ -2815,9 +2835,202 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/ManagedAccountResponseBody"
+                "$ref": "#/components/schemas/AccountResponseBody"
           description: OK
       summary: Update managed account
+      tags:
+      - mx_platform
+  "/users/{user_guid}/managed_members/{member_guid}/transactions":
+    get:
+      description: This endpoint returns a list of all the partner-managed transactions
+        associated with the specified `account`, scoped through a `user` and a `member`.
+      operationId: listManagedTransactions
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TransactionsResponseBody"
+          description: OK
+      summary: List managed transactions
+      tags:
+      - mx_platform
+    post:
+      description: Use this endpoint to create a new partner-managed `transaction`.
+      operationId: createManagedTransaction
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ManagedTransactionCreateRequestBody"
+        description: Managed transaction to be created.
+        required: true
+      responses:
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TransactionResponseBody"
+          description: OK
+      summary: Create managed transaction
+      tags:
+      - mx_platform
+  "/users/{user_guid}/managed_members/{member_guid}/transactions/{transaction_guid}":
+    delete:
+      description: Use this endpoint to delete the specified partner-managed `transaction`.
+        The endpoint will respond with a status of `204 No Content` without a resource.
+      operationId: deleteManagedTransaction
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `transaction`.
+        example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+        in: path
+        name: transaction_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content:
+            application/vnd.mx.api.v1+json:
+              example:
+          description: No Content
+      summary: Delete managed transaction
+      tags:
+      - mx_platform
+    get:
+      description: Requests to this endpoint will return the attributes of the specified
+        partner-managed `transaction`.
+      operationId: readManagedTransaction
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `transaction`.
+        example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+        in: path
+        name: transaction_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TransactionResponseBody"
+          description: OK
+      summary: Read managed transaction
+      tags:
+      - mx_platform
+    put:
+      description: Use this endpoint to update the attributes of the specified partner_managed
+        `transaction`.
+      operationId: updateManagedTransaction
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `transaction`.
+        example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+        in: path
+        name: transaction_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ManagedTransactionUpdateRequestBody"
+        description: Managed transaction object to be updated (While no single parameter
+          is required, the request body can't be empty)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TransactionResponseBody"
+          description: OK
+      summary: Update managed transaction
       tags:
       - mx_platform
   "/users/{user_guid}/members":
