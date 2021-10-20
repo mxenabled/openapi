@@ -649,6 +649,370 @@ components:
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
       type: object
+    ManagedAccountCreateRequest:
+      properties:
+        account_number:
+          example: '5366'
+          type: string
+        apr:
+          example: 1.0
+          type: number
+        apy:
+          example: 1.0
+          type: number
+        available_balance:
+          example: 1000.0
+          type: number
+        available_credit:
+          example: 1000.0
+          type: number
+        balance:
+          example: 1000.0
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          type: number
+        credit_limit:
+          example: 100.0
+          type: number
+        currency_code:
+          example: USD
+          type: string
+        day_payment_is_due:
+          example: 20
+          type: integer
+        death_benefit:
+          example: 1000
+          type: integer
+        id:
+          example: '1040434698'
+          type: string
+        interest_rate:
+          example: 1.0
+          type: number
+        is_closed:
+          example: false
+          type: boolean
+        is_hidden:
+          example: false
+          type: boolean
+        last_payment:
+          example: 100.0
+          type: number
+        last_payment_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        loan_amount:
+          example: 1000.0
+          type: number
+        matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        minimum_balance:
+          example: 100.0
+          type: number
+        minimum_payment:
+          example: 10.0
+          type: number
+        name:
+          example: Test account 2
+          type: string
+        nickname:
+          example: Swiss Account
+          type: string
+        original_balance:
+          example: 10.0
+          type: number
+        payment_due_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        payoff_balance:
+          example: 10.0
+          type: number
+        routing_number:
+          example: '68899990000000'
+          type: string
+        started_on:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        subtype:
+          example: NONE
+          type: string
+        type:
+          example: SAVINGS
+          type: string
+      required:
+      - balance
+      - name
+      - type
+      type: object
+    ManagedAccountCreateRequestBody:
+      properties:
+        account:
+          "$ref": "#/components/schemas/ManagedAccountCreateRequest"
+      type: object
+    ManagedAccountResponse:
+      properties:
+        account_number:
+          example: '5366'
+          type: string
+        apr:
+          example: 1.0
+          type: number
+        apy:
+          example: 1.0
+          type: number
+        available_balance:
+          example: 1000.0
+          type: number
+        available_credit:
+          example: 1000.0
+          type: number
+        balance:
+          example: 1000.0
+          type: number
+        cash_balance:
+          example: 1000.0
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          type: number
+        created_at:
+          example: '2016-10-13T17:57:37.000Z'
+          type: string
+        credit_limit:
+          example: 100.0
+          type: number
+        currency_code:
+          example: USD
+          type: string
+        day_payment_is_due:
+          example: 20
+          type: integer
+        death_benefit:
+          example: 1000
+          type: integer
+        guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        holdings_value:
+          example: 1000.0
+          type: number
+        id:
+          example: '1040434698'
+          type: string
+        imported_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        institution_code:
+          example: chase
+          type: string
+        insured_name:
+          example: Frodo Baggins
+          type: string
+        interest_rate:
+          example: 1.0
+          type: number
+        is_closed:
+          example: false
+          type: boolean
+        is_hidden:
+          example: false
+          type: boolean
+        last_payment:
+          example: 100.0
+          type: number
+        last_payment_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        loan_amount:
+          example: 1000.0
+          type: number
+        matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        member_id:
+          example: member123
+          type: string
+        member_is_managed_by_user:
+          example: false
+          type: boolean
+        metadata:
+          example: some metadata
+          type: string
+        minimum_balance:
+          example: 100.0
+          type: number
+        minimum_payment:
+          example: 10.0
+          type: number
+        name:
+          example: Test account 2
+          type: string
+        nickname:
+          example: My Savings
+          type: string
+        original_balance:
+          example: 10.0
+          type: number
+        pay_out_amount:
+          example: 10.0
+          type: number
+        payment_due_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        payoff_balance:
+          example: 10.0
+          type: number
+        premium_amount:
+          example: 1.0
+          type: number
+        routing_number:
+          example: '68899990000000'
+          type: string
+        started_on:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        subtype:
+          example: NONE
+          type: string
+        total_account_value:
+          example: 1.0
+          type: number
+        type:
+          example: SAVINGS
+          type: string
+        updated_at:
+          example: '2016-10-13T18:08:00.000Z'
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+        user_id:
+          example: user123
+          type: string
+      type: object
+    ManagedAccountResponseBody:
+      properties:
+        account:
+          "$ref": "#/components/schemas/ManagedAccountResponse"
+      type: object
+    ManagedAccountUpdateRequest:
+      properties:
+        account_number:
+          example: '5366'
+          type: string
+        apr:
+          example: 1.0
+          type: number
+        apy:
+          example: 1.0
+          type: number
+        available_balance:
+          example: 1000.0
+          type: number
+        available_credit:
+          example: 1000.0
+          type: number
+        balance:
+          example: 1000.0
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          type: number
+        credit_limit:
+          example: 100.0
+          type: number
+        currency_code:
+          example: USD
+          type: string
+        day_payment_is_due:
+          example: 20
+          type: integer
+        death_benefit:
+          example: 1000
+          type: integer
+        id:
+          example: '1040434698'
+          type: string
+        interest_rate:
+          example: 1.0
+          type: number
+        is_closed:
+          example: false
+          type: boolean
+        is_hidden:
+          example: false
+          type: boolean
+        last_payment:
+          example: 100.0
+          type: number
+        last_payment_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        loan_amount:
+          example: 1000.0
+          type: number
+        matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        minimum_balance:
+          example: 100.0
+          type: number
+        minimum_payment:
+          example: 10.0
+          type: number
+        name:
+          example: Test account 2
+          type: string
+        nickname:
+          example: Swiss Account
+          type: string
+        original_balance:
+          example: 10.0
+          type: number
+        payment_due_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        payoff_balance:
+          example: 10.0
+          type: number
+        routing_number:
+          example: '68899990000000'
+          type: string
+        started_on:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        subtype:
+          example: NONE
+          type: string
+        type:
+          example: SAVINGS
+          type: string
+      type: object
+    ManagedAccountUpdateRequestBody:
+      properties:
+        account:
+          "$ref": "#/components/schemas/ManagedAccountUpdateRequest"
+      type: object
+    ManagedAccountsResponseBody:
+      properties:
+        accounts:
+          items:
+            "$ref": "#/components/schemas/ManagedAccountResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
     MemberCreateRequest:
       properties:
         background_aggregation_is_disabled:
@@ -2260,6 +2624,200 @@ paths:
                 "$ref": "#/components/schemas/HoldingResponseBody"
           description: OK
       summary: Read holding
+      tags:
+      - mx_platform
+  "/users/{user_guid}/managed_members/{member_guid}/accounts":
+    get:
+      description: Use this endpoint to retrieve a list of all the partner-managed
+        accounts associated with the given partner-manage member.
+      operationId: listManagedAccounts
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/ManagedAccountsResponseBody"
+          description: OK
+      summary: List managed accounts
+      tags:
+      - mx_platform
+    post:
+      description: Use this endpoint to create a partner-managed account.
+      operationId: createManagedAccount
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ManagedAccountCreateRequestBody"
+        description: Managed account to be created.
+        required: true
+      responses:
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/ManagedAccountResponseBody"
+          description: OK
+      summary: Create managed account
+      tags:
+      - mx_platform
+  "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}":
+    delete:
+      description: Use this endpoint to delete a partner-managed account according
+        to its unique GUID. If successful, the API will respond with a status of `204
+        No Content`.
+      operationId: deleteManagedAccount
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content:
+            application/vnd.mx.api.v1+json:
+              example:
+          description: No Content
+      summary: Delete managed account
+      tags:
+      - mx_platform
+    get:
+      description: Use this endpoint to read the attributes of a partner-managed account
+        according to its unique guid.
+      operationId: readManagedAccount
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/ManagedAccountResponseBody"
+          description: OK
+      summary: Read managed account
+      tags:
+      - mx_platform
+    put:
+      description: Use this endpoint to update the attributes of a partner-managed
+        account according to its unique GUID.
+      operationId: updateManagedAccount
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ManagedAccountUpdateRequestBody"
+        description: Managed account object to be updated (While no single parameter
+          is required, the request body can't be empty)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/ManagedAccountResponseBody"
+          description: OK
+      summary: Update managed account
       tags:
       - mx_platform
   "/users/{user_guid}/members":
