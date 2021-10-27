@@ -1886,6 +1886,18 @@ paths:
         search term or parameter.
       operationId: listInstitutions
       parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
       - description: This will list only institutions in which the appended string
           appears.
         example: chase
@@ -2500,6 +2512,18 @@ paths:
       description: Use this endpoint to read the attributes of a specific user.
       operationId: listDefaultCategories
       parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
         in: path
@@ -4503,6 +4527,18 @@ paths:
         the create a tagging endpoint.
       operationId: listTransactionsByTag
       parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
       - description: The unique id for a `tag`.
         example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
         in: path
