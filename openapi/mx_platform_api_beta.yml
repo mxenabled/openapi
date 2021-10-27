@@ -1886,6 +1886,13 @@ paths:
         search term or parameter.
       operationId: listInstitutions
       parameters:
+      - description: This will list only institutions in which the appended string
+          appears.
+        example: chase
+        in: query
+        name: name
+        schema:
+          type: string
       - description: Specify current page.
         example: 1
         in: query
@@ -1898,13 +1905,6 @@ paths:
         name: records_per_page
         schema:
           type: integer
-      - description: This will list only institutions in which the appended string
-          appears.
-        example: chase
-        in: query
-        name: name
-        schema:
-          type: string
       - description: Filter only institutions which support account identification.
         example: true
         in: query
@@ -4527,6 +4527,12 @@ paths:
         the create a tagging endpoint.
       operationId: listTransactionsByTag
       parameters:
+      - description: Filter transactions from this date.
+        example: '2015-09-20'
+        in: query
+        name: from_date
+        schema:
+          type: string
       - description: Specify current page.
         example: 1
         in: query
@@ -4544,6 +4550,12 @@ paths:
         in: path
         name: tag_guid
         required: true
+        schema:
+          type: string
+      - description: Filter transactions to this date.
+        example: '2019-10-20'
+        in: query
+        name: to_date
         schema:
           type: string
       - description: The unique id for a `user`.
