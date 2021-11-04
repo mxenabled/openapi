@@ -8,21 +8,25 @@ components:
           type: string
         account_number:
           example: '10001'
+          nullable: true
           type: string
         guid:
           example: ACN-8899832e-e5b4-42cd-aa25-bbf1dc889a8f
           type: string
         institution_number:
           example: '123'
+          nullable: true
           type: string
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
         routing_number:
           example: '68899990000000'
+          nullable: true
           type: string
         transit_number:
           example: '12345'
+          nullable: true
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -44,15 +48,19 @@ components:
           type: string
         address:
           example: 123 This Way
+          nullable: true
           type: string
         city:
           example: Middlesex
+          nullable: true
           type: string
         country:
           example: US
+          nullable: true
           type: string
         email:
           example: donnie@darko.co
+          nullable: true
           type: string
         guid:
           example: ACO-63dc7714-6fc0-4aa2-a069-c06cdccd1af9
@@ -62,15 +70,19 @@ components:
           type: string
         owner_name:
           example: Donnie Darko
+          nullable: true
           type: string
         phone:
           example: 555-555-5555
+          nullable: true
           type: string
         postal_code:
           example: 00000-0000
+          nullable: true
           type: string
         state:
           example: VA
+          nullable: true
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -89,144 +101,188 @@ components:
       properties:
         account_number:
           example: '5366'
+          nullable: true
           type: string
         apr:
           example: 1.0
+          nullable: true
           type: number
         apy:
           example: 1.0
+          nullable: true
           type: number
         available_balance:
           example: 1000.0
+          nullable: true
           type: number
         available_credit:
           example: 1000.0
+          nullable: true
           type: number
         balance:
           example: 1000.0
+          nullable: true
           type: number
         cash_balance:
           example: 1000.0
+          nullable: true
           type: number
         cash_surrender_value:
           example: 1000.0
+          nullable: true
           type: number
         created_at:
           example: '2016-10-13T17:57:37.000Z'
+          nullable: true
           type: string
         credit_limit:
           example: 100.0
+          nullable: true
           type: number
         currency_code:
           example: USD
+          nullable: true
           type: string
         day_payment_is_due:
           example: 20
+          nullable: true
           type: integer
         death_benefit:
           example: 1000
+          nullable: true
           type: integer
         guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
           type: string
         holdings_value:
           example: 1000.0
+          nullable: true
           type: number
         id:
           example: '1040434698'
+          nullable: true
           type: string
         imported_at:
           example: '2015-10-13T17:57:37.000Z'
+          nullable: true
           type: string
         institution_code:
           example: chase
+          nullable: true
           type: string
         insured_name:
           example: Frodo Baggins
+          nullable: true
           type: string
         interest_rate:
           example: 1.0
+          nullable: true
           type: number
         is_closed:
           example: false
+          nullable: true
           type: boolean
         is_hidden:
           example: false
+          nullable: true
           type: boolean
         last_payment:
           example: 100.0
+          nullable: true
           type: number
         last_payment_at:
           example: '2015-10-13T17:57:37.000Z'
+          nullable: true
           type: string
         loan_amount:
           example: 1000.0
+          nullable: true
           type: number
         matures_on:
           example: '2015-10-13T17:57:37.000Z'
+          nullable: true
           type: string
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
         member_id:
           example: member123
+          nullable: true
           type: string
         member_is_managed_by_user:
           example: false
+          nullable: true
           type: boolean
         metadata:
           example: some metadata
+          nullable: true
           type: string
         minimum_balance:
           example: 100.0
+          nullable: true
           type: number
         minimum_payment:
           example: 10.0
+          nullable: true
           type: number
         name:
           example: Test account 2
+          nullable: true
           type: string
         nickname:
           example: My Checking
+          nullable: true
           type: string
         original_balance:
           example: 10.0
+          nullable: true
           type: number
         pay_out_amount:
           example: 10.0
+          nullable: true
           type: number
         payment_due_at:
           example: '2015-10-13T17:57:37.000Z'
+          nullable: true
           type: string
         payoff_balance:
           example: 10.0
+          nullable: true
           type: number
         premium_amount:
           example: 1.0
+          nullable: true
           type: number
         routing_number:
           example: '68899990000000'
+          nullable: true
           type: string
         started_on:
           example: '2015-10-13T17:57:37.000Z'
+          nullable: true
           type: string
         subtype:
           example: NONE
+          nullable: true
           type: string
         total_account_value:
           example: 1.0
+          nullable: true
           type: number
         type:
           example: SAVINGS
+          nullable: true
           type: string
         updated_at:
           example: '2016-10-13T18:08:00.000Z'
+          nullable: true
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
         user_id:
           example: user123
+          nullable: true
           type: string
       type: object
     AccountResponseBody:
@@ -286,27 +342,33 @@ components:
       properties:
         created_at:
           example: '2015-04-13T18:01:23.000Z'
+          nullable: true
           type: string
         guid:
           example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
           type: string
         is_default:
           example: true
+          nullable: true
           type: boolean
         is_income:
           example: false
+          nullable: true
           type: boolean
         metadata:
           example: some metadata
+          nullable: true
           type: string
         name:
           example: Auto Insurance
+          nullable: true
           type: string
         parent_guid:
           example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
           type: string
         updated_at:
           example: '2015-05-13T18:01:23.000Z'
+          nullable: true
           type: string
       type: object
     CategoryResponseBody:
@@ -332,12 +394,14 @@ components:
       properties:
         field_name:
           example: Who is this guy?
+          nullable: true
           type: string
         guid:
           example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
           type: string
         image_data:
           example: Who is this guy?
+          nullable: true
           type: string
         image_options:
           items:
@@ -345,6 +409,7 @@ components:
           type: array
         label:
           example: Who is this guy?
+          nullable: true
           type: string
         options:
           items:
@@ -352,6 +417,7 @@ components:
           type: array
         type:
           example: IMAGE_DATA
+          nullable: true
           type: string
       type: object
     ChallengesResponseBody:
@@ -408,6 +474,7 @@ components:
       properties:
         connect_widget_url:
           example: https://int-widgets.moneydesktop.com/md/connect/jb1rA14m85tw2lyvpgfx4gc6d3Z8z8Ayb8
+          nullable: true
           type: string
         guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -425,18 +492,22 @@ components:
           type: string
         value:
           example: password
+          nullable: true
           type: string
       type: object
     CredentialResponse:
       properties:
         display_order:
           example: 1
+          nullable: true
           type: integer
         field_name:
           example: LOGIN
+          nullable: true
           type: string
         field_type:
           example: TEXT
+          nullable: true
           type: string
         guid:
           example: CRD-1ec152cd-e628-e81a-e852-d1e7104624da
@@ -458,51 +529,66 @@ components:
       properties:
         amount:
           example: 21.33
+          nullable: true
           type: number
         category:
           example: Fast Food
+          nullable: true
           type: string
         description:
           example: IN-N-OUT BURGER
+          nullable: true
           type: string
         id:
           example: ID-123
+          nullable: true
           type: string
         is_bill_pay:
           example: false
+          nullable: true
           type: boolean
         is_direct_deposit:
           example: false
+          nullable: true
           type: boolean
         is_expense:
           example: false
+          nullable: true
           type: boolean
         is_fee:
           example: false
+          nullable: true
           type: boolean
         is_income:
           example: false
+          nullable: true
           type: boolean
         is_international:
           example: false
+          nullable: true
           type: boolean
         is_overdraft_fee:
           example: false
+          nullable: true
           type: boolean
         is_payroll_advance:
           example: false
+          nullable: true
           type: boolean
         merchant_category_code:
           example: 5411
+          nullable: true
           type: integer
         merchant_guid:
           example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
           type: string
         original_description:
           example: IN-N-OUT BURGER
+          nullable: true
           type: string
         type:
           example: DEBIT
+          nullable: true
           type: string
       type: object
     EnhanceTransactionsRequest:
@@ -547,51 +633,65 @@ components:
           type: string
         cost_basis:
           example: 827.0
+          nullable: true
           type: number
         created_at:
           example: '2015-04-13T18:01:23.000Z'
+          nullable: true
           type: string
         currency_code:
           example: USD
+          nullable: true
           type: string
         cusip:
           example: 18383M878
+          nullable: true
           type: string
         daily_change:
           example: 2.5
+          nullable: true
           type: number
         description:
           example: Guggenheim Defensive Equity ETF
+          nullable: true
           type: string
         guid:
           example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
           type: string
         holding_type:
           example: MONEY_MARKET
+          nullable: true
           type: string
         id:
           example: ID-123
+          nullable: true
           type: string
         market_value:
           example: 989.5
+          nullable: true
           type: number
         member_guid:
           example: MBR-d65683e8-9eab-26bb-bcfd-ced159c9abe
           type: string
         metadata:
           example: metadata
+          nullable: true
           type: string
         purchase_price:
           example: 26.3
+          nullable: true
           type: number
         shares:
           example: 6.0
+          nullable: true
           type: number
         symbol:
           example: DEF
+          nullable: true
           type: string
         updated_at:
           example: '2015-04-13T18:01:23.000Z'
+          nullable: true
           type: string
         user_guid:
           example: USR-743e5d7f-1116-28fa-5de1-d3ba02e41d8d
@@ -615,45 +715,58 @@ components:
       properties:
         data_uri:
           example: data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...
+          nullable: true
           type: string
         label:
           example: IMAGE_1
+          nullable: true
           type: string
         value:
           example: image_data
+          nullable: true
           type: string
       type: object
     InstitutionResponse:
       properties:
         code:
           example: chase
+          nullable: true
           type: string
         medium_logo_url:
           example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png
+          nullable: true
           type: string
         name:
           example: Chase Bank
+          nullable: true
           type: string
         small_logo_url:
           example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png
+          nullable: true
           type: string
         supports_account_identification:
           example: true
+          nullable: true
           type: boolean
         supports_account_statement:
           example: true
+          nullable: true
           type: boolean
         supports_account_verification:
           example: true
+          nullable: true
           type: boolean
         supports_oauth:
           example: true
+          nullable: true
           type: boolean
         supports_transaction_history:
           example: true
+          nullable: true
           type: boolean
         url:
           example: https://www.chase.com
+          nullable: true
           type: string
       type: object
     InstitutionResponseBody:
@@ -1100,45 +1213,57 @@ components:
       properties:
         aggregated_at:
           example: '2016-10-13T18:07:57.000Z'
+          nullable: true
           type: string
         connection_status:
           example: CONNECTED
+          nullable: true
           type: string
         guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
         id:
           example: unique_id
+          nullable: true
           type: string
         institution_code:
           example: chase
+          nullable: true
           type: string
         is_being_aggregated:
           example: false
+          nullable: true
           type: boolean
         is_managed_by_user:
           example: false
+          nullable: true
           type: boolean
         is_oauth:
           example: false
+          nullable: true
           type: boolean
         metadata:
           example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+          nullable: true
           type: string
         name:
           example: Chase Bank
+          nullable: true
           type: string
         oauth_window_uri:
           example: int-widgets.moneydesktop.com/oauth/predirect_to/MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f/p8v7rxpxg3pdAsfgwxcrwxwhz3Zbygxfr6wAb931qv91hpb57k6bkr6t6m9djrfrfd467p8xkgqp6w7k1r9g8k8bfxqbfw2lq5tdwjq2sngAx76fm0jrw0dpmbtlkxchgjsw3r7r0hhq6A8sshqptfxql2rt123shfpkyhhpfvy67yvprbkb7lmlyrpwsd9yj0s22pmsyjhcw7d2q44d9fsxn5kfsmr2zqc79c2AxAx5gkjgbczf22A1sjx70t2pvnggzyh55s7bh62dd5wq7f1r4x90mcxn1tfhhrq5b09mjkt5hg66cjn700pcf6fgA42lbsp7v1pdch85mswycrp21c6j2sxffm14Asg3?skip_aggregation=false&referral_source=APP&ui_message_webview_url_scheme=myapp
+          nullable: true
           type: string
         successfully_aggregated_at:
           example: '2016-10-13T17:57:38.000Z'
+          nullable: true
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
         user_id:
           example: user123
+          nullable: true
           type: string
       type: object
     MemberResponseBody:
@@ -1162,6 +1287,7 @@ components:
       properties:
         aggregated_at:
           example: '2016-10-13T18:07:57.000Z'
+          nullable: true
           type: string
         challenges:
           items:
@@ -1169,24 +1295,30 @@ components:
           type: array
         connection_status:
           example: CONNECTED
+          nullable: true
           type: string
         guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
         has_processed_accounts:
           example: true
+          nullable: true
           type: boolean
         has_processed_transactions:
           example: false
+          nullable: true
           type: boolean
         is_authenticated:
           example: false
+          nullable: true
           type: boolean
         is_being_aggregated:
           example: false
+          nullable: true
           type: boolean
         successfully_aggregated_at:
           example: '2016-10-13T17:57:38.000Z'
+          nullable: true
           type: string
       type: object
     MemberStatusResponseBody:
@@ -1231,39 +1363,49 @@ components:
       properties:
         city:
           example: Greenwood Village
+          nullable: true
           type: string
         country:
           example: US
+          nullable: true
           type: string
         created_at:
           example: 2020-04-13 21:05:09.000000000 Z
+          nullable: true
           type: string
         guid:
           example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
           type: string
         latitude:
           example: 39.5963005
+          nullable: true
           type: number
         longitude:
           example: -104.89158799999998
+          nullable: true
           type: number
         merchant_guid:
           example: MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621
           type: string
         phone_number:
           example: "(303) 689-0728"
+          nullable: true
           type: string
         postal_code:
           example: 801121436
+          nullable: true
           type: string
         state:
           example: CO
+          nullable: true
           type: string
         street_address:
           example: 8547 E Arapahoe Rd, Ste 1
+          nullable: true
           type: string
         updated_at:
           example: 2020-04-13 21:05:09.000000000 Z
+          nullable: true
           type: string
       type: object
     MerchantLocationResponseBody:
@@ -1275,21 +1417,26 @@ components:
       properties:
         created_at:
           example: '2017-04-20T19:30:12.000Z'
+          nullable: true
           type: string
         guid:
           example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
           type: string
         logo_url:
           example: https://s3.amazonaws.com/MD_Assets/merchant_logos/comcast.png
+          nullable: true
           type: string
         name:
           example: Comcast
+          nullable: true
           type: string
         updated_at:
           example: '2018-09-28T21:13:53.000Z'
+          nullable: true
           type: string
         website_url:
           example: https://www.xfinity.com
+          nullable: true
           type: string
       type: object
     MerchantResponseBody:
@@ -1313,6 +1460,7 @@ components:
           type: string
         oauth_window_uri:
           example: int-widgets.moneydesktop.com/oauth/predirect_to/MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f/zgknnw5k7dmztn2njmwlgz574mZlnft6vdrv7kzn9ptj325th6c5p0w6c7j83Ap1bqg01mhsr1bqjgf2fry3ly9wff497c6fcczbyrfgj7s39cygw95Akl7vlpmcAy2kmvh1mlkytg7jA1z3vnw1w3zx2r1wt65s6f6r3ryqqrysl9qA1kr6cAj6vhr1zl325Azz6hx52j1ll3vwbvvbv5xzy7d6csplyw25brA7147vAfq29ArjjAj4qmc6r6h457hkcj2946m0kjp2xzpkz6hz55lsp3Avmdb8dsq4xzqmzzqk68s6bp5tj9jsskw4wvcb95vm4fwh9w8phgp67hfj2flrtwcy5bxbtk74?skip_aggregation=false
+          nullable: true
           type: string
       type: object
     OAuthWindowResponseBody:
@@ -1324,9 +1472,11 @@ components:
       properties:
         label:
           example: IMAGE_1
+          nullable: true
           type: string
         value:
           example: image_data
+          nullable: true
           type: string
       type: object
     PaginationResponse:
@@ -1351,9 +1501,11 @@ components:
           type: string
         content_hash:
           example: ca53785b812d00ef821c3d94bfd6e5bbc0020504410589b7ea8552169f021981
+          nullable: true
           type: string
         created_at:
           example: '2016-10-13T18:08:00+00:00'
+          nullable: true
           type: string
         guid:
           example: STA-737a344b-caae-0f6e-1384-01f52e75dcb1
@@ -1363,9 +1515,11 @@ components:
           type: string
         updated_at:
           example: '2016-10-13T18:09:00+00:00'
+          nullable: true
           type: string
         uri:
           example: uri/to/statement
+          nullable: true
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -1405,6 +1559,7 @@ components:
           type: string
         name:
           example: MY TAG
+          nullable: true
           type: string
         user_guid:
           example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
@@ -1452,6 +1607,7 @@ components:
           type: string
         member_is_managed_by_user:
           example: false
+          nullable: true
           type: boolean
         tag_guid:
           example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
@@ -1506,87 +1662,113 @@ components:
           type: string
         account_id:
           example: account123
+          nullable: true
           type: string
         amount:
           example: 61.11
+          nullable: true
           type: number
         category:
           example: Groceries
+          nullable: true
           type: string
         check_number_string:
           example: '6812'
+          nullable: true
           type: string
         created_at:
           example: '2016-10-06T09:43:42.000Z'
+          nullable: true
           type: string
         currency_code:
           example: USD
+          nullable: true
           type: string
         date:
           example: '2013-09-23T00:00:00.000Z'
+          nullable: true
           type: string
         description:
           example: Whole foods
+          nullable: true
           type: string
         guid:
           example: TRN-265abee9-889b-af6a-c69b-25157db2bdd9
           type: string
         id:
           example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
+          nullable: true
           type: string
         is_bill_pay:
           example: false
+          nullable: true
           type: boolean
         is_direct_deposit:
           example: false
+          nullable: true
           type: boolean
         is_expense:
           example: true
+          nullable: true
           type: boolean
         is_fee:
           example: false
+          nullable: true
           type: boolean
         is_income:
           example: false
+          nullable: true
           type: boolean
         is_international:
           example: false
+          nullable: true
           type: boolean
         is_overdraft_fee:
           example: false
+          nullable: true
           type: boolean
         is_payroll_advance:
           example: false
+          nullable: true
           type: boolean
         is_recurring:
           example: false
+          nullable: true
           type: boolean
         is_subscription:
           example: false
+          nullable: true
           type: boolean
         latitude:
           example: -43.2075
+          nullable: true
           type: number
         localized_description:
           example: This is a localized_description
+          nullable: true
           type: string
         localized_memo:
           example: This is a localized_memo
+          nullable: true
           type: string
         longitude:
           example: 139.691706
+          nullable: true
           type: number
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
         member_is_managed_by_user:
           example: false
+          nullable: true
           type: boolean
         memo:
           example: This is a memo
+          nullable: true
           type: string
         merchant_category_code:
           example: 5411
+          nullable: true
           type: integer
         merchant_guid:
           example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
@@ -1596,33 +1778,42 @@ components:
           type: string
         metadata:
           example: some metadata
+          nullable: true
           type: string
         original_description:
           example: WHOLEFDS TSQ 102
+          nullable: true
           type: string
         posted_at:
           example: '2016-10-07T06:00:00.000Z'
+          nullable: true
           type: string
         status:
           example: POSTED
+          nullable: true
           type: string
         top_level_category:
           example: Food & Dining
+          nullable: true
           type: string
         transacted_at:
           example: '2016-10-06T13:00:00.000Z'
+          nullable: true
           type: string
         type:
           example: DEBIT
+          nullable: true
           type: string
         updated_at:
           example: '2016-10-07T05:49:12.000Z'
+          nullable: true
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
         user_id:
           example: user123
+          nullable: true
           type: string
       type: object
     TransactionResponseBody:
@@ -1657,18 +1848,22 @@ components:
           type: string
         created_at:
           example: '2018-10-02T22:00:50+00:00'
+          nullable: true
           type: string
         description:
           example: Wal-mart food storage
+          nullable: true
           type: string
         guid:
           example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
           type: string
         match_description:
           example: Wal-mart
+          nullable: true
           type: string
         updated_at:
           example: '2018-10-02T23:54:40+00:00'
+          nullable: true
           type: string
         user_guid:
           example: USR-22fc3203-b3e6-8340-43db-8e50b2f56995
@@ -1686,9 +1881,11 @@ components:
           type: string
         description:
           example: Wal-mart food storage
+          nullable: true
           type: string
         match_description:
           example: Wal-mart
+          nullable: true
           type: string
       type: object
     TransactionRuleUpdateRequestBody:
@@ -1751,18 +1948,22 @@ components:
       properties:
         email:
           example: email@provider.com
+          nullable: true
           type: string
         guid:
           example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
           type: string
         id:
           example: My-Unique-ID
+          nullable: true
           type: string
         is_disabled:
           example: false
+          nullable: true
           type: boolean
         metadata:
           example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+          nullable: true
           type: string
       type: object
     UserResponseBody:
@@ -1852,12 +2053,15 @@ components:
       properties:
         type:
           example: connect_widget
+          nullable: true
           type: string
         url:
           example: https://int-widgets.moneydesktop.com/md/connect/yxcdk7f1nb99jwApp34lA24m0AZ8rzprgmw17gm8z8h2AzjyAnd1rj42qfv42r3xnn07Amfwlg3j09hwp8bkq8tc5z21j33xjggmp2qtlpkz2v4gywfhfn31l44tx2w91bfc2thc58j4syqp0hgxcyvA4g7754hk7gjc56kt7tc36s45mmkdz2jqqqydspytmtr3dAb9jh6fkb24f3zkfpdjj0v77f0vmrtzvzxkmxz7dklsq8gd0gstkbhlw5bgpgc3m9mAtpAcr2w15gwy5xc4blgxppl42Avnm63291z3cyp0wm3lqgmvgzdAddct423gAdqxdlfx5d4mvc0ck2gt7ktqgks4vxq1pAy5
+          nullable: true
           type: string
         user_id:
           example: U-jeff-201709221210
+          nullable: true
           type: string
       type: object
     WidgetResponseBody:
