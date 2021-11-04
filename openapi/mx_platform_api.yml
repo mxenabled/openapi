@@ -1,5 +1,60 @@
 ---
 components:
+  responses:
+    NotFound:
+      description: Invalid item/id/URL requested.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Invalid MX-API-Key or MX-Client-ID provided.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Conflict:
+      description: An object with the given attributes already exists. When attempting an aggregation on a member, the member already has an an aggregation of a different type running; e.g., calling the verify endpoint while a standard aggregation is already running, or calling fetch statements while an identification aggregation is already running.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    MethodNotAllowed:
+      description: A constraint on the requested endpoint wasn’t met.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: The request was made from a non-whitelisted address or the feature is not available to the client.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Required parameter was missing.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: The data provided cannot be processed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServiceUnavailable:
+      description: We are improving our MX Platform, please bear with us.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Something went wrong with MX’s servers.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Account:
       properties:
@@ -124,6 +179,20 @@ components:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
       type: object
+    AccountArray:
+      properties:
+        accounts:
+          items:
+            "$ref": "#/components/schemas/Account"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
+    AccountItem:
+      properties:
+        account:
+          "$ref": "#/components/schemas/Account"
+      type: object
     AccountNumber:
       properties:
         account_guid:
@@ -150,6 +219,15 @@ components:
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
+      type: object
+    AccountNumberArray:
+      properties:
+        account_numbers:
+          items:
+            "$ref": "#/components/schemas/AccountNumber"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
       type: object
     AccountOwner:
       properties:
@@ -190,6 +268,15 @@ components:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
       type: object
+    AccountOwnerArray:
+      properties:
+        account_owners:
+          items:
+            "$ref": "#/components/schemas/AccountOwner"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
     Category:
       properties:
         created_at:
@@ -216,6 +303,56 @@ components:
         updated_at:
           example: '2015-05-13T18:01:23.000Z'
           type: string
+      type: object
+    CategoryItem:
+      properties:
+        category:
+          "$ref": "#/components/schemas/Category"
+      type: object
+    CategoryArray:
+      properties:
+        categories:
+          items:
+            "$ref": "#/components/schemas/Category"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
+    CategoryCreateRequest:
+      properties:
+        category:
+            $ref: '#/components/schemas/UserCategory'
+            required:
+            - name
+            - parent_guid
+            type: object
+      type: object
+    CategoryUpdateRequest:
+      properties:
+        category:
+            $ref: '#/components/schemas/UserCategoryRequest'
+            type: object
+      type: object
+    UserCategory:
+      properties:
+        metadata:
+          example: some metadata
+          type: string
+        name:
+          example: Auto Insurance
+          type: string
+        parent_guid:
+          example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
+          type: string
+      type: object
+    UserCategoryRequest:
+      properties:
+        metadata:
+            example: some metadata
+            type: string
+        name:
+            example: Web shopping
+            type: string
       type: object
     Challenge:
       properties:
@@ -261,6 +398,15 @@ components:
           example: IMAGE_DATA
           type: string
       type: object
+    ChallengeArray:
+      properties:
+        challenges:
+          items:
+            "$ref": "#/components/schemas/Challenge"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
     ConnectWidget:
       properties:
         connect_widget_url:
@@ -269,6 +415,11 @@ components:
         guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
+      type: object
+    ConnectWidgetItem:
+      properties:
+        user:
+          "$ref": "#/components/schemas/ConnectWidget"
       type: object
     Credential:
       properties:
@@ -287,6 +438,15 @@ components:
         label:
           example: Username
           type: string
+      type: object
+    CredentialArray:
+      properties:
+        credentials:
+          items:
+            "$ref": "#/components/schemas/Credential"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
       type: object
     EnhancedTransaction:
       properties:
@@ -338,6 +498,13 @@ components:
         type:
           example: DEBIT
           type: string
+      type: object
+    EnhancedTransactionArray:
+      properties:
+        transactions:
+          items:
+            "$ref": "#/components/schemas/EnhancedTransaction"
+          type: array
       type: object
     Holding:
       properties:
@@ -396,6 +563,20 @@ components:
           example: USR-743e5d7f-1116-28fa-5de1-d3ba02e41d8d
           type: string
       type: object
+    HoldingItem:
+      properties:
+        holding:
+          "$ref": "#/components/schemas/Holding"
+      type: object
+    HoldingArray:
+      properties:
+        holdings:
+          items:
+            "$ref": "#/components/schemas/Holding"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
     Institution:
       properties:
         code:
@@ -428,6 +609,20 @@ components:
         url:
           example: https://www.chase.com
           type: string
+      type: object
+    InstitutionArray:
+      properties:
+        institutions:
+          items:
+            "$ref": "#/components/schemas/Institution"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
+    InstitutionItem:
+      properties:
+        institution:
+            "$ref": "#/components/schemas/Institution"
       type: object
     Member:
       properties:
@@ -468,6 +663,20 @@ components:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
       type: object
+    MemberItem:
+      properties:
+        member:
+          "$ref": "#/components/schemas/Member"
+      type: object
+    MemberArray:
+      properties:
+        members:
+          items:
+            "$ref": "#/components/schemas/Member"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
     MemberStatus:
       properties:
         aggregated_at:
@@ -499,6 +708,11 @@ components:
           example: '2016-10-13T17:57:38.000Z'
           type: string
       type: object
+    MemberStatusItem:
+      properties:
+        member:
+          "$ref": "#/components/schemas/MemberStatus"
+      type: object
     Merchant:
       properties:
         created_at:
@@ -520,6 +734,20 @@ components:
           example: https://www.xfinity.com
           type: string
       type: object
+    MerchantItem:
+      properties:
+        merchant:
+          "$ref": "#/components/schemas/Merchant"
+      type: object
+    MerchantArray:
+      properties:
+        merchants:
+          items:
+            "$ref": "#/components/schemas/Merchant"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+      type: object
     OAuthWindow:
       properties:
         guid:
@@ -528,6 +756,11 @@ components:
         oauth_window_uri:
           example: int-widgets.moneydesktop.com/oauth/predirect_to/MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f/zgknnw5k7dmztn2njmwlgz574mZlnft6vdrv7kzn9ptj325th6c5p0w6c7j83Ap1bqg01mhsr1bqjgf2fry3ly9wff497c6fcczbyrfgj7s39cygw95Akl7vlpmcAy2kmvh1mlkytg7jA1z3vnw1w3zx2r1wt65s6f6r3ryqqrysl9qA1kr6cAj6vhr1zl325Azz6hx52j1ll3vwbvvbv5xzy7d6csplyw25brA7147vAfq29ArjjAj4qmc6r6h457hkcj2946m0kjp2xzpkz6hz55lsp3Avmdb8dsq4xzqmzzqk68s6bp5tj9jsskw4wvcb95vm4fwh9w8phgp67hfj2flrtwcy5bxbtk74?skip_aggregation=false
           type: string
+      type: object
+    OAuthWindowItem:
+      properties:
+        member:
+          "$ref": "#/components/schemas/OAuthWindow"
       type: object
     Pagination:
       properties:
@@ -571,6 +804,20 @@ components:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
       type: object
+    StatementItem:
+      properties:
+        statement:
+          "$ref": "#/components/schemas/Statement"
+      type: object
+    StatementArray:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+        statements:
+          items:
+            "$ref": "#/components/schemas/Statement"
+          type: array
+      type: object
     Tag:
       properties:
         guid:
@@ -582,6 +829,34 @@ components:
         user_guid:
           example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
           type: string
+      type: object
+    TagResponseItem:
+      properties:
+        tag:
+          "$ref": "#/components/schemas/Tag"
+      type: object
+    TagArray:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+        tags:
+          items:
+            "$ref": "#/components/schemas/Tag"
+          type: array
+      type: object
+    TagItem:
+      properties:
+        name:
+          example: MY TAG
+          type: string
+      type: object
+    TagItemRequest:
+      properties:
+        tag:
+            $ref: '#/components/schemas/TagItem'
+            required:
+            - name
+            type: object
       type: object
     Tagging:
       properties:
@@ -600,6 +875,52 @@ components:
         user_guid:
           example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
           type: string
+      type: object
+    TaggingItem:
+      properties:
+        tagging:
+          "$ref": "#/components/schemas/Tagging"
+      type: object
+    TaggingArray:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+        taggings:
+          items:
+            "$ref": "#/components/schemas/Tagging"
+          type: array
+      type: object
+    TaggingCreate:
+      properties:
+        tag_guid:
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type: string
+        transaction_guid:
+          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+          type: string
+      type: object
+    TaggingCreateRequest:
+      properties:
+        tagging:
+            $ref: '#/components/schemas/TaggingCreate'
+            required:
+            - tag_guid
+            - transaction_guid
+            type: object
+      type: object
+    TaggingUpdate:
+      properties:
+        tag_guid:
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type: string
+      type: object
+    TaggingUpdateRequest:
+      properties:
+        tagging:
+            $ref: '#/components/schemas/TaggingUpdate'
+            required:
+            - tag_guid
+            type: object
       type: object
     Transaction:
       properties:
@@ -712,6 +1033,63 @@ components:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
       type: object
+    TransactionArray:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+        transactions:
+          items:
+            "$ref": "#/components/schemas/Transaction"
+          type: array
+      type: object
+    TransactionResponseItem:
+      properties:
+        transaction:
+          "$ref": "#/components/schemas/Transaction"
+      type: object
+    TransactionItem:
+      properties:
+        description:
+          example: new description
+          type: string
+      type: object
+    TransactionItemRequest:
+      properties:
+        transaction:
+            $ref: '#/components/schemas/TransactionItem'
+            required:
+            - description
+            type: object
+      type: object
+    TransactionEnhance:
+      properties:
+        amount:
+            example: 21.33
+            type: number
+        description:
+            example: IN-N-OUT BURGER
+            type: string
+        id:
+            example: ID-123
+            type: string
+        merchant_category_code:
+            example: 123
+            type: integer
+        type:
+            example: DEBIT
+            type: string
+      type: object
+    TransactionEnhanceRequest:
+      properties:
+        transactions:
+            items:
+                $ref: '#/components/schemas/TransactionEnhance'
+                required:
+                - description
+                - id
+                type: object
+            type: array
+      type: object
     TransactionRule:
       properties:
         category_guid:
@@ -736,6 +1114,38 @@ components:
           example: USR-22fc3203-b3e6-8340-43db-8e50b2f56995
           type: string
       type: object
+    TransactionRuleResponseItem:
+      properties:
+        transaction_rule:
+          "$ref": "#/components/schemas/TransactionRule"
+      type: object
+    TransactionRuleArray:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+        transaction_rules:
+          items:
+            "$ref": "#/components/schemas/TransactionRule"
+          type: array
+      type: object
+    TransactionRuleItem:
+      properties:
+        category_guid:
+            example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
+            type: string
+        description:
+            example: Wal-mart food storage
+            type: string
+        match_description:
+            example: Wal-mart
+            type: string
+      type: object
+    TransactionRuleItemRequest:
+      properties:
+        transaction_rule:
+            $ref: '#/components/schemas/TransactionRuleItem'
+            type: object
+      type: object
     User:
       properties:
         email:
@@ -754,6 +1164,47 @@ components:
           example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
           type: string
       type: object
+    UserItem:
+      properties:
+        user:
+          "$ref": "#/components/schemas/User"
+      type: object
+    UserArray:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/Pagination"
+        users:
+          items:
+            "$ref": "#/components/schemas/User"
+          type: array
+      type: object
+    UserRequestItem:
+      properties:
+        email:
+          example: email@provider.com
+          type: string
+        id:
+          example: My-Unique-ID
+          type: string
+        is_disabled:
+          example: false
+          type: boolean
+        metadata:
+          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+          type: string
+      type: object
+    UserCreateRequest:
+      properties:
+        user:
+            $ref: '#/components/schemas/UserRequestItem'
+            type: object
+      type: object
+    UserUpdateRequest:
+      properties:
+        user:
+            $ref: '#/components/schemas/UserRequestItem'
+            type: object
+      type: object
     Widget:
       properties:
         type:
@@ -766,6 +1217,448 @@ components:
           example: U-jeff-201709221210
           type: string
       type: object
+    WidgetResponseItem:
+      properties:
+        widget_url:
+          "$ref": "#/components/schemas/Widget"
+      type: object
+    WidgetItem:
+      properties:
+        color_scheme:
+            example: light
+            type: string
+        current_institution_code:
+            example: chase
+            type: string
+        current_institution_guid:
+            example: INS-f1a3285d-e855-b61f-6aa7-8ae575c0e0e9
+            type: string
+        current_member_guid:
+            example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+            type: string
+        disable_institution_search:
+            example: false
+            type: boolean
+        include_transactions:
+            example: true
+            type: boolean
+        is_mobile_webview:
+            example: true
+            type: boolean
+        mode:
+            example: aggregation
+            type: string
+        ui_message_version:
+            example: 4
+            type: integer
+        ui_message_webview_url_scheme:
+            example: mx
+            type: string
+        update_credentials:
+            example: false
+            type: boolean
+        wait_for_full_aggregation:
+            example: false
+            type: boolean
+        widget_type:
+            example: connect_widget
+            type: string
+      type: object
+    WidgetItemRequest:
+      properties:
+        widget_url:
+            $ref: '#/components/schemas/WidgetItem'
+            required:
+            - widget_type
+            type: object
+      type: object
+    ConnectWidgetConfig:
+      properties:
+        color_scheme:
+            example: light
+            type: string
+        current_institution_code:
+            example: chase
+            type: string
+        current_member_guid:
+            example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+            type: string
+        disable_institution_search:
+            example: false
+            type: boolean
+        include_transactions:
+            example: true
+            type: boolean
+        is_mobile_webview:
+            example: true
+            type: boolean
+        mode:
+            example: aggregation
+            type: string
+        ui_message_version:
+            example: 4
+            type: integer
+        ui_message_webview_url_scheme:
+            example: mx
+            type: string
+        update_credentials:
+            example: false
+            type: boolean
+        wait_for_full_aggregation:
+            example: false
+            type: boolean
+      type: object
+    ConnectWidgetConfigRequest:
+      properties:
+        config:
+            $ref: '#/components/schemas/ConnectWidgetConfig'
+            type: object
+      type: object
+    UserMember:
+      properties:
+        background_aggregation_is_disabled:
+            example: false
+            type: boolean
+        credentials:
+          items:
+            properties:
+              guid:
+                example: CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f
+                type: string
+              value:
+                example: password
+                type: string
+            type: object
+          type: array
+        id:
+            example: unique_id
+            type: string
+        institution_code:
+            example: chase
+            type: string
+        is_oauth:
+            example: false
+            type: boolean
+        metadata:
+            example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+            type: string
+        skip_aggregation:
+            example: false
+            type: boolean
+      type: object
+    UserMemberRequest:
+      properties:
+        member:
+            $ref: '#/components/schemas/UserMember'
+            required:
+            - credentials
+            - institution_code
+            type: object
+        referral_source:
+            example: APP
+            type: string
+        ui_message_webview_url_scheme:
+            example: mx
+            type: string
+      type: object
+    UserMemberAccount:
+      properties:
+        is_hidden:
+            example: false
+            type: boolean
+      type: object
+    UserMemberAccountRequest:
+      properties:
+        account:
+            $ref: '#/components/schemas/UserMemberAccount'
+            type: object
+      type: object
+    UserMemberResume:
+      properties:
+        challenges:
+            items:
+              properties:
+                guid:
+                    example: CRD-2378634-33ub5bhk54kjb
+                    type: string
+                value:
+                    example: user-entered-value
+                    type: string
+              type: object
+            type: array
+      type: object
+    UserMemberResumeRequest:
+      properties:
+        member:
+            $ref: '#/components/schemas/UserMemberResume'
+            type: object
+      type: object
+    UserMemberUpdate:
+      properties:
+        background_aggregation_is_disabled:
+            example: false
+            type: boolean
+        credentials:
+          items:
+            properties:
+              guid:
+                example: CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f
+                type: string
+              value:
+                example: password
+                type: string
+            type: object
+          type: array
+        id:
+            example: unique_id
+            type: string
+        metadata:
+            example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+            type: string
+        skip_aggregation:
+            example: false
+            type: boolean
+      type: object
+    UserMemberUpdateRequest:
+      properties:
+        member:
+            $ref: '#/components/schemas/UserMemberUpdate'
+            type: object
+      type: object
+
+    # Schema for error response body
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+          - message
+
+    #WebHooks Definitions
+    ConnectionStatusWebhook:
+      title: ConnectionStatusWebhook
+      description: A partner subscribed to the connection status webhook will be notified whenever a member’s connection_status field enters into an end-user-actionable state.
+      type: object
+      #additionalProperties: true
+      properties:
+        type:
+          type: string
+          description: The type of webhook being delivered.
+        action:
+          type: string
+          description: This value should always equal CHANGED.
+        connection_status:
+          type: string
+          description: This field indicates the state of a member’s aggregation, provided as a string.
+        connection_status_id:
+          type: integer
+          description: This field indicates the state of a member’s aggregation, provided as an integer.
+        connection_status_message:
+          type: string
+          description: A message that can be displayed to the end user to help them navigate the connection and aggregation process.
+        member_guid:
+          type: string
+          description: Unique identifier for the member that triggered the webhook. Defined by MX.
+        user_guid:
+          type: string
+          description: The unique identifier for the user with which the member is associated. Defined by MX.
+      required:
+      - type
+      - action
+      - connection_status
+      - connection_status_id
+      - connection_status_message
+      - member_guid
+      - user_guid
+      x-examples:
+        example-1:
+          type: CONNECTION_STATUS
+          action: CHANGED
+          connection_status: CHALLENGED
+          connection_status_id: 3
+          connection_status_message: To authenticate your connection to Chase Bank, please answer the following challenge(s).
+          member_guid: MBR-48d9a481-f2a2-7e13-2685-62869cf0d33a
+          user_guid: USR-eaf4ac68-d17d-5e9b-7b46-959a5b315a9e
+    AggregationWebhook:
+      title: AggregationWebhook
+      description: A partner subscribed to the aggregation webhook will be notified when any new data is available after a successful aggregation. The webhook will include a count of new transactions and updated transactions. These webhooks fire only after a completed aggregation, including background aggregations. Actions performed on the member through other endpoints will not trigger the webhook.
+      type: object
+      properties:
+        type:
+          type: string
+          description: The type of webhook being delivered. Current possible values are AGGREGATION, BALANCE, HISTORY, and STATEMENT; however, additional values may be added at any time.
+        action:
+          type: string
+          description: The action that triggered the webhook, e.g., member_data_updated.
+        completed_at:
+          type: integer
+          description: The date and time at which the process that triggered the webhook was finished. Given in Unix time.
+        completed_on:
+          type: string
+          description: The date on which the process that triggered the webhook was finished. Given in ISO 8601 without a timestamp.
+        transactions_created_count:
+          type: integer
+          description: The number of newly created transactions.
+        transactions_updated_count:
+          type: integer
+          description: The number of newly updated transactions.
+        member_guid:
+          type: string
+          description: Unique identifier for the member that triggered the webhook. Defined by MX.
+        user_guid:
+          type: string
+          description: The unique identifier for the user with which the member is associated. Defined by MX.
+      required:
+      - type
+      - action
+      - completed_at
+      - completed_on
+      - transactions_created_count
+      - transactions_updated_count
+      - member_guid
+      - user_guid
+      x-examples:
+        example-1:
+          type: AGGREGATION
+          action: member_data_updated
+          completed_at: 1531947410
+          completed_on: 2018-07-18
+          transactions_created_count: 3
+          transactions_updated_count: 2
+          member_guid: MBR-48d9a481-f2a2-7e13-2685-62869cf0d33a
+          user_guid: USR-eaf4ac68-d17d-5e9b-7b46-959a5b315a9e
+    BalanceWebhook:
+      title: BalanceWebhook
+      description: A partner subscribed to the balance webhook will be notified when any new data is available after a successful balance fetch. The webhook will include a count of new transactions and updated transactions. These webhooks fire only after a completed balance fetch. Actions performed on the member through other endpoints will not trigger the webhook.
+      type: object
+      properties:
+        type:
+          type: string
+          description: The type of webhook being delivered. Current possible values are AGGREGATION, BALANCE, HISTORY, and STATEMENT; however, additional values may be added at any time.
+        action:
+          type: string
+          description: The action that triggered the webhook, e.g., member_data_updated.
+        completed_at:
+          type: integer
+          description: The date and time at which the process that triggered the webhook was finished. Given in Unix time.
+        completed_on:
+          type: string
+          description: The date on which the process that triggered the webhook was finished. Given in ISO 8601 without a timestamp.
+        member_guid:
+          type: string
+          description: Unique identifier for the member that triggered the webhook. Defined by MX.
+        user_guid:
+          type: string
+          description: The unique identifier for the user with which the member is associated. Defined by MX.
+      required:
+      - type
+      - action
+      - completed_at
+      - completed_on
+      - member_guid
+      - user_guid
+      x-examples:
+        example-1:
+          type: BALANCE
+          action: member_data_updated
+          completed_at: 1531947410
+          completed_on: 2018-07-18
+          transactions_created_count: 3
+          transactions_updated_count: 2
+          member_guid: MBR-48d9a481-f2a2-7e13-2685-62869cf0d33a
+          user_guid: USR-eaf4ac68-d17d-5e9b-7b46-959a5b315a9e
+    HistoryWebhook:
+      title: HistoryWebhook
+      description: A partner subscribed to the history webhook will be notified when any new data is available after a successful history fetch. The webhook will include a count of new transactions and updated transactions. These webhooks fire only after a completed history fetch. Actions performed on the member through other endpoints will not trigger the webhook.
+      type: object
+      properties:
+        type:
+          type: string
+          description: The type of webhook being delivered. Current possible values are AGGREGATION, BALANCE, HISTORY, and STATEMENT; however, additional values may be added at any time.
+        action:
+          type: string
+          description: The action that triggered the webhook, e.g., member_data_updated.
+        completed_at:
+          type: integer
+          description: The date and time at which the process that triggered the webhook was finished. Given in Unix time.
+        completed_on:
+          type: string
+          description: The date on which the process that triggered the webhook was finished. Given in ISO 8601 without a timestamp.
+        transactions_created_count:
+          type: integer
+          description: The number of newly created transactions.
+        transactions_updated_count:
+          type: integer
+          description: The number of newly updated transactions.
+        member_guid:
+          type: string
+          description: Unique identifier for the member that triggered the webhook. Defined by MX.
+        user_guid:
+          type: string
+          description: The unique identifier for the user with which the member is associated. Defined by MX.
+      required:
+      - type
+      - action
+      - completed_at
+      - completed_on
+      - transactions_created_count
+      - transactions_updated_count
+      - member_guid
+      - user_guid
+      x-examples:
+        example-1:
+          type: HISTORY
+          action: member_data_updated
+          completed_at: 1531947410
+          completed_on: 2018-07-18
+          transactions_created_count: 3
+          transactions_updated_count: 2
+          member_guid: MBR-48d9a481-f2a2-7e13-2685-62869cf0d33a
+          user_guid: USR-eaf4ac68-d17d-5e9b-7b46-959a5b315a9e
+    StatementWebhook:
+      title: StatementWebhook
+      description: A partner subscribed to the statement webhook will be notified when any new data is available after a successful statement fetch. The webhook will include a count of new statements. These webhooks fire only after a completed statement fetch. Actions performed on the member through other endpoints will not trigger the webhook.
+      type: object
+      properties:
+        type:
+          type: string
+          description: The type of webhook being delivered. Current possible values are AGGREGATION, BALANCE, HISTORY, and STATEMENT; however, additional values may be added at any time.
+        action:
+          type: string
+          description: The action that triggered the webhook, e.g., member_data_updated.
+        completed_at:
+          type: integer
+          description: The date and time at which the process that triggered the webhook was finished. Given in Unix time.
+        completed_on:
+          type: string
+          description: The date on which the process that triggered the webhook was finished. Given in ISO 8601 without a timestamp.
+        statements_created_count:
+          type: integer
+          description: The number of newly created transactions.
+        member_guid:
+          type: string
+          description: Unique identifier for the member that triggered the webhook. Defined by MX.
+        user_guid:
+          type: string
+          description: The unique identifier for the user with which the member is associated. Defined by MX.
+      required:
+      - type
+      - action
+      - completed_at
+      - completed_on
+      - statements_created_count
+      - member_guid
+      - user_guid
+      x-examples:
+        example-1:
+          type: STATEMENT
+          action: member_data_updated
+          completed_at: 1531947410
+          completed_on: 2018-07-18
+          statements_created_count: 3
+          member_guid: MBR-48d9a481-f2a2-7e13-2685-62869cf0d33a
+          user_guid: USR-eaf4ac68-d17d-5e9b-7b46-959a5b315a9e
   securitySchemes:
     basicAuth:
       scheme: basic
@@ -823,13 +1716,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  institutions:
-                    items:
-                      "$ref": "#/components/schemas/Institution"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/InstitutionArray"
                 type: object
           description: OK
       summary: List institutions
@@ -859,13 +1746,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  institutions:
-                    items:
-                      "$ref": "#/components/schemas/Institution"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/InstitutionArray"
                 type: object
           description: OK
       summary: List favorites
@@ -889,9 +1770,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  institution:
-                    "$ref": "#/components/schemas/Institution"
+                "$ref": "#/components/schemas/InstitutionItem"
                 type: object
           description: OK
       summary: Read institution
@@ -927,13 +1806,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  credentials:
-                    items:
-                      "$ref": "#/components/schemas/Credential"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/CredentialArray"
                 type: object
           description: OK
       summary: List institution-required credentials
@@ -962,13 +1835,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  merchants:
-                    items:
-                      "$ref": "#/components/schemas/Merchant"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/MerchantArray"
                 type: object
           description: OK
       summary: List merchants
@@ -992,9 +1859,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  merchant:
-                    "$ref": "#/components/schemas/Merchant"
+                "$ref": "#/components/schemas/MerchantItem"
                 type: object
           description: OK
       summary: Read merchant
@@ -1009,30 +1874,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                transactions:
-                  items:
-                    properties:
-                      amount:
-                        example: 21.33
-                        type: number
-                      description:
-                        example: IN-N-OUT BURGER
-                        type: string
-                      id:
-                        example: ID-123
-                        type: string
-                      merchant_category_code:
-                        example: 123
-                        type: integer
-                      type:
-                        example: DEBIT
-                        type: string
-                    required:
-                    - description
-                    - id
-                    type: object
-                  type: array
+              $ref: '#/components/schemas/TransactionEnhanceRequest'
               type: object
         description: Transaction object to be enhanced
         required: true
@@ -1041,11 +1883,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  transactions:
-                    items:
-                      "$ref": "#/components/schemas/EnhancedTransaction"
-                    type: array
+                "$ref": "#/components/schemas/EnhancedTransactionArray"
                 type: object
           description: OK
       summary: Enhance transactions
@@ -1074,13 +1912,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  users:
-                    items:
-                      "$ref": "#/components/schemas/User"
-                    type: array
+                "$ref": "#/components/schemas/UserArray"
                 type: object
           description: OK
       summary: List users
@@ -1099,22 +1931,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                user:
-                  properties:
-                    email:
-                      example: email@provider.com
-                      type: string
-                    id:
-                      example: My-Unique-ID
-                      type: string
-                    is_disabled:
-                      example: false
-                      type: boolean
-                    metadata:
-                      example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
-                      type: string
-                  type: object
+              $ref: '#/components/schemas/UserCreateRequest'
               type: object
         description: User object to be created. (None of these parameters are required,
           but the user object cannot be empty)
@@ -1124,9 +1941,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  user:
-                    "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserItem"
                 type: object
           description: OK
       summary: Create user
@@ -1170,9 +1985,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  user:
-                    "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserItem"
                 type: object
           description: OK
       summary: Read user
@@ -1200,22 +2013,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                user:
-                  properties:
-                    email:
-                      example: email@provider.com
-                      type: string
-                    id:
-                      example: My-Unique-ID
-                      type: string
-                    is_disabled:
-                      example: false
-                      type: boolean
-                    metadata:
-                      example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
-                      type: string
-                  type: object
+              $ref: '#/components/schemas/UserUpdateRequest'
               type: object
         description: User object to be updated (None of these parameters are required,
           but the user object cannot be empty.)
@@ -1225,9 +2023,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  user:
-                    "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserItem"
                 type: object
           description: OK
       summary: Update user
@@ -1263,13 +2059,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  accounts:
-                    items:
-                      "$ref": "#/components/schemas/Account"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/AccountArray"
                 type: object
           description: OK
       summary: List accounts
@@ -1299,9 +2089,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  account:
-                    "$ref": "#/components/schemas/Account"
+                "$ref": "#/components/schemas/AccountItem"
                 type: object
           description: OK
       summary: Read account
@@ -1344,13 +2132,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  account_numbers:
-                    items:
-                      "$ref": "#/components/schemas/AccountNumber"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/AccountNumberArray"
                 type: object
           description: OK
       summary: List account numbers by account
@@ -1405,13 +2187,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  transactions:
-                    items:
-                      "$ref": "#/components/schemas/Transaction"
-                    type: array
+                "$ref": "#/components/schemas/TransactionArray"
                 type: object
           description: OK
       summary: List transactions by account
@@ -1447,13 +2223,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  categories:
-                    items:
-                      "$ref": "#/components/schemas/Category"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/CategoryArray"
                 type: object
           description: OK
       summary: List categories
@@ -1475,21 +2245,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                category:
-                  properties:
-                    metadata:
-                      example: some metadata
-                      type: string
-                    name:
-                      example: Online Shopping
-                      type: string
-                    parent_guid:
-                      example: CAT-aad51b46-d6f7-3da5-fd6e-492328b3023f
-                      type: string
-                  required:
-                  - name
-                  type: object
+              $ref: '#/components/schemas/CategoryCreateRequest'
               type: object
         description: Custom category object to be created
         required: true
@@ -1498,9 +2254,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  category:
-                    "$ref": "#/components/schemas/Category"
+                "$ref": "#/components/schemas/CategoryItem"
                 type: object
           description: OK
       summary: Create category
@@ -1523,13 +2277,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  categories:
-                    items:
-                      "$ref": "#/components/schemas/Category"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/CategoryArray"
                 type: object
           description: OK
       summary: List default categories
@@ -1589,9 +2337,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  category:
-                    "$ref": "#/components/schemas/Category"
+                "$ref": "#/components/schemas/CategoryItem"
                 type: object
           description: OK
       summary: Read category
@@ -1620,16 +2366,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                category:
-                  properties:
-                    metadata:
-                      example: some metadata
-                      type: string
-                    name:
-                      example: Web shopping
-                      type: string
-                  type: object
+              $ref: '#/components/schemas/CategoryUpdateRequest'
               type: object
         description: Category object to be updated (While no single parameter is required,
           the `category` object cannot be empty)
@@ -1639,9 +2376,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  category:
-                    "$ref": "#/components/schemas/Category"
+                "$ref": "#/components/schemas/CategoryItem"
                 type: object
           description: OK
       summary: Update category
@@ -1664,43 +2399,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                config:
-                  properties:
-                    color_scheme:
-                      example: light
-                      type: string
-                    current_institution_code:
-                      example: chase
-                      type: string
-                    current_member_guid:
-                      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-                      type: string
-                    disable_institution_search:
-                      example: false
-                      type: boolean
-                    include_transactions:
-                      example: true
-                      type: boolean
-                    is_mobile_webview:
-                      example: true
-                      type: boolean
-                    mode:
-                      example: aggregation
-                      type: string
-                    ui_message_version:
-                      example: 4
-                      type: integer
-                    ui_message_webview_url_scheme:
-                      example: mx
-                      type: string
-                    update_credentials:
-                      example: false
-                      type: boolean
-                    wait_for_full_aggregation:
-                      example: false
-                      type: boolean
-                  type: object
+              $ref: '#/components/schemas/ConnectWidgetConfigRequest'
               type: object
         description: Optional config options for WebView (is_mobile_webview, current_institution_code,
           current_member_guid, update_credentials)
@@ -1709,9 +2408,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  user:
-                    "$ref": "#/components/schemas/ConnectWidget"
+                "$ref": "#/components/schemas/ConnectWidgetItem"
                 type: object
           description: OK
       summary: Request connect widget URL
@@ -1759,13 +2456,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  holdings:
-                    items:
-                      "$ref": "#/components/schemas/Holding"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/HoldingArray"
                 type: object
           description: OK
       summary: List holdings by user
@@ -1795,9 +2486,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  holding:
-                    "$ref": "#/components/schemas/Holding"
+                "$ref": "#/components/schemas/HoldingItem"
                 type: object
           description: OK
       summary: Read holding
@@ -1833,13 +2522,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  members:
-                    items:
-                      "$ref": "#/components/schemas/Member"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/MemberArray"
                 type: object
           description: OK
       summary: List members
@@ -1868,48 +2551,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                member:
-                  properties:
-                    background_aggregation_is_disabled:
-                      example: false
-                      type: boolean
-                    credentials:
-                      items:
-                        properties:
-                          guid:
-                            example: CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f
-                            type: string
-                          value:
-                            example: password
-                            type: string
-                        type: object
-                      type: array
-                    id:
-                      example: unique_id
-                      type: string
-                    institution_code:
-                      example: chase
-                      type: string
-                    is_oauth:
-                      example: false
-                      type: boolean
-                    metadata:
-                      example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
-                      type: string
-                    skip_aggregation:
-                      example: false
-                      type: boolean
-                  required:
-                  - credentials
-                  - institution_code
-                  type: object
-                referral_source:
-                  example: APP
-                  type: string
-                ui_message_webview_url_scheme:
-                  example: mx
-                  type: string
+              $ref: '#/components/schemas/UserMemberRequest'
               type: object
         description: Member object to be created with optional parameters (id and
           metadata) and required parameters (credentials and institution_code)
@@ -1919,11 +2561,23 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
+                "$ref": "#/components/schemas/MemberItem"
                 type: object
           description: Accepted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          $ref: '#/components/responses/ServerError'
+        '504':
+          $ref: '#/components/responses/ServerError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
       summary: Create member
       tags:
       - Member
@@ -1978,9 +2632,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
+                "$ref": "#/components/schemas/MemberItem"
                 type: object
           description: OK
       summary: Read member
@@ -2010,33 +2662,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                member:
-                  properties:
-                    background_aggregation_is_disabled:
-                      example: false
-                      type: boolean
-                    credentials:
-                      items:
-                        properties:
-                          guid:
-                            example: CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f
-                            type: string
-                          value:
-                            example: password
-                            type: string
-                        type: object
-                      type: array
-                    id:
-                      example: unique_id
-                      type: string
-                    metadata:
-                      example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
-                      type: string
-                    skip_aggregation:
-                      example: false
-                      type: boolean
-                  type: object
+              $ref: '#/components/schemas/UserMemberUpdateRequest'
               type: object
         description: Member object to be updated (While no single parameter is required,
           the request body can't be empty)
@@ -2046,9 +2672,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
+                "$ref": "#/components/schemas/MemberItem"
                 type: object
           description: OK
       summary: Update member
@@ -2091,13 +2715,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  account_numbers:
-                    items:
-                      "$ref": "#/components/schemas/AccountNumber"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/AccountNumberArray"
                 type: object
           description: OK
       summary: List account numbers by member
@@ -2140,13 +2758,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  account_owners:
-                    items:
-                      "$ref": "#/components/schemas/AccountOwner"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/AccountOwnerArray"
                 type: object
           description: OK
       summary: List account owners
@@ -2183,13 +2795,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                account:
-                  properties:
-                    is_hidden:
-                      example: false
-                      type: boolean
-                  type: object
+              $ref: '#/components/schemas/UserMemberAccountRequest'
               type: object
         description: Account object to be created with optional parameters (is_hidden)
         required: true
@@ -2198,9 +2804,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  account:
-                    "$ref": "#/components/schemas/Account"
+                "$ref": "#/components/schemas/AccountItem"
                 type: object
           description: OK
       summary: Update account
@@ -2233,11 +2837,23 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
+                "$ref": "#/components/schemas/MemberItem"
                 type: object
           description: Accepted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          $ref: '#/components/responses/ServerError'
+        '504':
+          $ref: '#/components/responses/ServerError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
       summary: Aggregate member
       tags:
       - Member
@@ -2282,13 +2898,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  challenges:
-                    items:
-                      "$ref": "#/components/schemas/Challenge"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/ChallengeArray"
                 type: object
           description: OK
       summary: List member challenges
@@ -2320,11 +2930,23 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
+                "$ref": "#/components/schemas/MemberItem"
                 type: object
           description: Accepted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          $ref: '#/components/responses/ServerError'
+        '504':
+          $ref: '#/components/responses/ServerError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
       summary: Check balances
       tags:
       - Member
@@ -2365,13 +2987,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  credentials:
-                    items:
-                      "$ref": "#/components/schemas/Credential"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/CredentialArray"
                 type: object
           description: OK
       summary: List member credentials
@@ -2404,11 +3020,23 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
+                "$ref": "#/components/schemas/MemberItem"
                 type: object
           description: Accepted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          $ref: '#/components/responses/ServerError'
+        '504':
+          $ref: '#/components/responses/ServerError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
       summary: Extend history
       tags:
       - Member
@@ -2437,11 +3065,23 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
+                "$ref": "#/components/schemas/MemberItem"
                 type: object
           description: Accepted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          $ref: '#/components/responses/ServerError'
+        '504':
+          $ref: '#/components/responses/ServerError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
       summary: Fetch statements by member
       tags:
       - Member
@@ -2494,13 +3134,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  holdings:
-                    items:
-                      "$ref": "#/components/schemas/Holding"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
+                "$ref": "#/components/schemas/HoldingArray"
                 type: object
           description: OK
       summary: List holdings by member
@@ -2531,11 +3165,25 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
+                "$ref": "#/components/schemas/MemberItem"
                 type: object
           description: Accepted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          $ref: '#/components/responses/ServerError'
+        '504':
+          $ref: '#/components/responses/ServerError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '403':
+          $ref: '#/components/responses/Forbidden'
       summary: Identify member
       tags:
       - Member
@@ -2578,9 +3226,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/OAuthWindow"
+                "$ref": "#/components/schemas/OAuthWindowItem"
                 type: object
           description: OK
       summary: Read member
@@ -2610,21 +3256,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                member:
-                  properties:
-                    challenges:
-                      items:
-                        properties:
-                          guid:
-                            example: CRD-2378634-33ub5bhk54kjb
-                            type: string
-                          value:
-                            example: user-entered-value
-                            type: string
-                        type: object
-                      type: array
-                  type: object
+              $ref: '#/components/schemas/UserMemberResumeRequest'
               type: object
         description: Member object with MFA challenge answers
         required: true
@@ -2633,9 +3265,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
+                "$ref": "#/components/schemas/MemberItem"
                 type: object
           description: Accepted
       summary: Resume aggregation
@@ -2677,13 +3307,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  statements:
-                    items:
-                      "$ref": "#/components/schemas/Statement"
-                    type: array
+                "$ref": "#/components/schemas/StatementArray"
                 type: object
           description: OK
       summary: List statements by member
@@ -2720,9 +3344,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  statement:
-                    "$ref": "#/components/schemas/Statement"
+                "$ref": "#/components/schemas/StatementItem"
                 type: object
           description: OK
       summary: Read statement by member
@@ -2797,9 +3419,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/MemberStatus"
+                "$ref": "#/components/schemas/MemberStatusItem"
                 type: object
           description: OK
       summary: Read member status
@@ -2854,13 +3474,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  transactions:
-                    items:
-                      "$ref": "#/components/schemas/Transaction"
-                    type: array
+                "$ref": "#/components/schemas/TransactionArray"
                 type: object
           description: OK
       summary: List transactions by member
@@ -2890,9 +3504,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
+                "$ref": "#/components/schemas/MemberItem"
                 type: object
           description: OK
       summary: Verify member
@@ -2928,13 +3540,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  taggings:
-                    items:
-                      "$ref": "#/components/schemas/Tagging"
-                    type: array
+                "$ref": "#/components/schemas/TaggingArray"
                 type: object
           description: OK
       summary: List taggings
@@ -2956,19 +3562,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                tagging:
-                  properties:
-                    tag_guid:
-                      example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
-                      type: string
-                    transaction_guid:
-                      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-                      type: string
-                  required:
-                  - tag_guid
-                  - transaction_guid
-                  type: object
+              $ref: '#/components/schemas/TaggingCreateRequest'
               type: object
         description: Tagging object to be created with required parameters (tag_guid
           and transaction_guid)
@@ -2978,9 +3572,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tagging:
-                    "$ref": "#/components/schemas/Tagging"
+                "$ref": "#/components/schemas/TaggingItem"
                 type: object
           description: Accepted
       summary: Create tagging
@@ -3040,9 +3632,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tagging:
-                    "$ref": "#/components/schemas/Tagging"
+                "$ref": "#/components/schemas/TaggingItem"
                 type: object
           description: OK
       summary: Read tagging
@@ -3070,15 +3660,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                tagging:
-                  properties:
-                    tag_guid:
-                      example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
-                      type: string
-                  required:
-                  - tag_guid
-                  type: object
+              $ref: '#/components/schemas/TaggingUpdateRequest'
               type: object
         description: Tagging object to be updated with required parameter (tag_guid)
         required: true
@@ -3087,9 +3669,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tagging:
-                    "$ref": "#/components/schemas/Tagging"
+                "$ref": "#/components/schemas/TaggingItem"
                 type: object
           description: OK
       summary: Update tagging
@@ -3125,13 +3705,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  tags:
-                    items:
-                      "$ref": "#/components/schemas/Tag"
-                    type: array
+                "$ref": "#/components/schemas/TagArray"
                 type: object
           description: OK
       summary: List tags
@@ -3152,15 +3726,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                tag:
-                  properties:
-                    name:
-                      example: MY TAG
-                      type: string
-                  required:
-                  - name
-                  type: object
+              $ref: '#/components/schemas/TagItemRequest'
               type: object
         description: Tag object to be created with required parameters (tag_guid)
         required: true
@@ -3169,9 +3735,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tag:
-                    "$ref": "#/components/schemas/Tag"
+                "$ref": "#/components/schemas/TagResponseItem"
                 type: object
           description: OK
       summary: Create tag
@@ -3231,9 +3795,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tag:
-                    "$ref": "#/components/schemas/Tag"
+                "$ref": "#/components/schemas/TagResponseItem"
                 type: object
           description: OK
       summary: Read tag
@@ -3262,15 +3824,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                tag:
-                  properties:
-                    name:
-                      example: MY TAG
-                      type: string
-                  required:
-                  - name
-                  type: object
+              $ref: '#/components/schemas/TagItemRequest'
               type: object
         description: Tag object to be updated with required parameter (tag_guid)
         required: true
@@ -3279,9 +3833,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tag:
-                    "$ref": "#/components/schemas/Tag"
+                "$ref": "#/components/schemas/TagResponseItem"
                 type: object
           description: OK
       summary: Update tag
@@ -3314,13 +3866,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  transactions:
-                    items:
-                      "$ref": "#/components/schemas/Transaction"
-                    type: array
+                "$ref": "#/components/schemas/TransactionArray"
                 type: object
           description: OK
       summary: List transactions by tag
@@ -3356,13 +3902,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  transaction_rules:
-                    items:
-                      "$ref": "#/components/schemas/TransactionRule"
-                    type: array
+                "$ref": "#/components/schemas/TransactionRuleArray"
                 type: object
           description: OK
       summary: List transaction rules by user
@@ -3384,22 +3924,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                transaction_rule:
-                  properties:
-                    category_guid:
-                      example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
-                      type: string
-                    description:
-                      example: Wal-mart food storage
-                      type: string
-                    match_description:
-                      example: Wal-mart
-                      type: string
-                  required:
-                  - category_guid
-                  - match_description
-                  type: object
+              $ref: '#/components/schemas/TransactionRuleItemRequest'
               type: object
         description: TransactionRule object to be created with optional parameters
           (description) and required parameters (category_guid and match_description)
@@ -3409,9 +3934,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  transaction_rule:
-                    "$ref": "#/components/schemas/TransactionRule"
+                "$ref": "#/components/schemas/TransactionRuleResponseItem"
                 type: object
           description: OK
       summary: Create transaction rule
@@ -3470,9 +3993,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  transaction_rule:
-                    "$ref": "#/components/schemas/TransactionRule"
+                "$ref": "#/components/schemas/TransactionRuleResponseItem"
                 type: object
           description: OK
       summary: Read transaction rule
@@ -3502,19 +4023,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                transaction_rule:
-                  properties:
-                    category_guid:
-                      example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
-                      type: string
-                    description:
-                      example: Wal-mart food storage
-                      type: string
-                    match_description:
-                      example: Wal-mart
-                      type: string
-                  type: object
+              $ref: '#/components/schemas/TransactionRuleItemRequest'
               type: object
         description: TransactionRule object to be updated
         required: true
@@ -3523,9 +4032,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  transaction_rule:
-                    "$ref": "#/components/schemas/TransactionRule"
+                "$ref": "#/components/schemas/TransactionRuleResponseItem"
                 type: object
           description: OK
       summary: Update transaction_rule
@@ -3574,13 +4081,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  transactions:
-                    items:
-                      "$ref": "#/components/schemas/Transaction"
-                    type: array
+                "$ref": "#/components/schemas/TransactionArray"
                 type: object
           description: OK
       summary: List transactions by user
@@ -3611,9 +4112,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  transaction:
-                    "$ref": "#/components/schemas/Transaction"
+                "$ref": "#/components/schemas/TransactionResponseItem"
                 type: object
           description: OK
       summary: Read transaction
@@ -3642,15 +4141,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                transaction:
-                  properties:
-                    description:
-                      example: new description
-                      type: string
-                  required:
-                  - description
-                  type: object
+              $ref: '#/components/schemas/TransactionItemRequest'
               type: object
         description: Transaction object to be updated with a new description
         required: true
@@ -3659,9 +4150,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  transaction:
-                    "$ref": "#/components/schemas/Transaction"
+                "$ref": "#/components/schemas/TransactionResponseItem"
                 type: object
           description: OK
       summary: Update transaction
@@ -3693,51 +4182,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                widget_url:
-                  properties:
-                    color_scheme:
-                      example: light
-                      type: string
-                    current_institution_code:
-                      example: chase
-                      type: string
-                    current_institution_guid:
-                      example: INS-f1a3285d-e855-b61f-6aa7-8ae575c0e0e9
-                      type: string
-                    current_member_guid:
-                      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-                      type: string
-                    disable_institution_search:
-                      example: false
-                      type: boolean
-                    include_transactions:
-                      example: true
-                      type: boolean
-                    is_mobile_webview:
-                      example: true
-                      type: boolean
-                    mode:
-                      example: aggregation
-                      type: string
-                    ui_message_version:
-                      example: 4
-                      type: integer
-                    ui_message_webview_url_scheme:
-                      example: mx
-                      type: string
-                    update_credentials:
-                      example: false
-                      type: boolean
-                    wait_for_full_aggregation:
-                      example: false
-                      type: boolean
-                    widget_type:
-                      example: connect_widget
-                      type: string
-                  required:
-                  - widget_type
-                  type: object
+              $ref: '#/components/schemas/WidgetItemRequest'
               type: object
         description: The widget url configuration options.
         required: true
@@ -3746,9 +4191,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  widget_url:
-                    "$ref": "#/components/schemas/Widget"
+                "$ref": "#/components/schemas/WidgetResponseItem"
                 type: object
           description: OK
       summary: Request a widget URL
