@@ -535,6 +535,9 @@ components:
           example: Fast Food
           nullable: true
           type: string
+        category_guid:
+          example: CAT-b4789667-6acc-a112-975e-15746003ed61
+          type: string
         description:
           example: IN-N-OUT BURGER
           nullable: true
@@ -1671,6 +1674,9 @@ components:
         category:
           example: Groceries
           nullable: true
+          type: string
+        category_guid:
+          example: CAT-b4789667-6acc-a112-975e-15746003ed61
           type: string
         check_number_string:
           example: '6812'
