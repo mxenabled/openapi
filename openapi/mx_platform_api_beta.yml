@@ -1706,6 +1706,10 @@ components:
           example: Groceries
           nullable: true
           type: string
+        category_guid:
+          example: CAT-9588eaad-90a4-bb5c-66c8-1812503d0db8
+          nullable: true
+          type: string
         check_number_string:
           example: '6812'
           nullable: true
@@ -1724,6 +1728,10 @@ components:
           type: string
         description:
           example: Whole foods
+          nullable: true
+          type: string
+        extended_transaction_type:
+          example: partner_transaction_type
           nullable: true
           type: string
         guid:
