@@ -531,12 +531,28 @@ components:
           example: 21.33
           nullable: true
           type: number
+        categorized_by:
+          example: 13
+          nullable: true
+          type: integer
         category:
-          example: Fast Food
+          example: Rental Car & Taxi
           nullable: true
           type: string
+        category_guid:
+          example: CAT-9588eaad-90a4-bb5c-66c8-1812503d0db8
+          nullable: true
+          type: string
+        described_by:
+          example: 6
+          nullable: true
+          type: integer
         description:
-          example: IN-N-OUT BURGER
+          example: Uber
+          nullable: true
+          type: string
+        extended_transaction_type:
+          example: partner_transaction_type
           nullable: true
           type: string
         id:
@@ -575,15 +591,27 @@ components:
           example: false
           nullable: true
           type: boolean
+        is_subscription:
+          example: null
+          nullable: true
+          type: boolean
+        memo:
+          example: Additional-information*on_transaction
+          nullable: true
+          type: string
         merchant_category_code:
           example: 5411
           nullable: true
           type: integer
         merchant_guid:
-          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          example: MCH-14f25b63-ef47-a38e-b2b6-d02b280b6e4e
+          type: string
+        merchant_location_guid:
+          example: null
+          nullable: true
           type: string
         original_description:
-          example: IN-N-OUT BURGER
+          example: ubr* pending.uber.com
           nullable: true
           type: string
         type:
@@ -597,10 +625,16 @@ components:
           example: 21.33
           type: number
         description:
-          example: IN-N-OUT BURGER
+          example: ubr* pending.uber.com
+          type: string
+        extended_transaction_type:
+          example: partner_transaction_type
           type: string
         id:
           example: ID-123
+          type: string
+        memo:
+          example: Additional-information*on_transaction
           type: string
         merchant_category_code:
           example: 123
