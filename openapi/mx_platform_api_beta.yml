@@ -592,7 +592,7 @@ components:
           nullable: true
           type: boolean
         is_subscription:
-          example: null
+          example:
           nullable: true
           type: boolean
         memo:
@@ -607,7 +607,7 @@ components:
           example: MCH-14f25b63-ef47-a38e-b2b6-d02b280b6e4e
           type: string
         merchant_location_guid:
-          example: null
+          example:
           nullable: true
           type: string
         original_description:
