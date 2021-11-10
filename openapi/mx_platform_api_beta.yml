@@ -2717,10 +2717,66 @@ paths:
       summary: Create category
       tags:
       - mx_platform
+  "/categories/{category_guid}":
+    get:
+      description: Use this endpoint to read the attributes of a default category.
+      operationId: readDefaultCategory
+      parameters:
+      - description: The unique id for a `category`.
+        example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
+        in: path
+        name: category_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/CategoryResponseBody"
+          description: OK
+      summary: Read a default category
+      tags:
+      - mx_platform
+  "/categories/default":
+    get:
+      description: Use this endpoint to retrieve a list of all the default categories and subcategories offered within the MX Platform API. In other words, each item in the returned list will have its `is_default` field set to `true`. There are currently 119 default categories and subcategories. Both the _list default categories_ and _list default categories by user_ endpoints return the same results. The different routes are provided for convenience.
+      operationId: listDefaultCategories
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/CategoriesResponseBody"
+          description: OK
+      summary: List default categories
+      tags:
+      - mx_platform
   "/users/{user_guid}/categories/default":
     get:
-      description: Use this endpoint to read the attributes of a specific user.
-      operationId: listDefaultCategories
+      description: Use this endpoint to retrieve a list of all the default categories and subcategories, scoped by user, offered within the MX Platform API. In other words, each item in the returned list will have its `is_default` field set to `true`. There are currently 119 default categories and subcategories. Both the _list default categories_ and _list default categories by user_ endpoints return the same results. The different routes are provided for convenience.
+      operationId: listDefaultCategoriesByUser
       parameters:
       - description: Specify current page.
         example: 1
@@ -2748,7 +2804,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/CategoriesResponseBody"
           description: OK
-      summary: List default categories
+      summary: List default categories by user
       tags:
       - mx_platform
   "/users/{user_guid}/categories/{category_guid}":
@@ -2784,7 +2840,7 @@ paths:
     get:
       description: Use this endpoint to read the attributes of either a default category
         or a custom category.
-      operationId: readCategory
+      operationId: readCustomCategory
       parameters:
       - description: The unique id for a `category`.
         example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
@@ -2807,7 +2863,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/CategoryResponseBody"
           description: OK
-      summary: Read category
+      summary: Read a custom category
       tags:
       - mx_platform
     put:
