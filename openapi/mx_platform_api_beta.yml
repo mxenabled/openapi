@@ -531,15 +531,28 @@ components:
           example: 21.33
           nullable: true
           type: number
+        categorized_by:
+          example: 13
+          nullable: true
+          type: integer
         category:
-          example: Fast Food
+          example: Rental Car & Taxi
           nullable: true
           type: string
         category_guid:
-          example: CAT-b4789667-6acc-a112-975e-15746003ed61
+          example: CAT-9588eaad-90a4-bb5c-66c8-1812503d0db8
+          nullable: true
           type: string
+        described_by:
+          example: 6
+          nullable: true
+          type: integer
         description:
-          example: IN-N-OUT BURGER
+          example: Uber
+          nullable: true
+          type: string
+        extended_transaction_type:
+          example: partner_transaction_type
           nullable: true
           type: string
         id:
@@ -578,15 +591,27 @@ components:
           example: false
           nullable: true
           type: boolean
+        is_subscription:
+          example: false
+          nullable: true
+          type: boolean
+        memo:
+          example: Additional-information*on_transaction
+          nullable: true
+          type: string
         merchant_category_code:
           example: 5411
           nullable: true
           type: integer
         merchant_guid:
-          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          example: MCH-14f25b63-ef47-a38e-b2b6-d02b280b6e4e
+          type: string
+        merchant_location_guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          nullable: true
           type: string
         original_description:
-          example: IN-N-OUT BURGER
+          example: ubr* pending.uber.com
           nullable: true
           type: string
         type:
@@ -600,10 +625,16 @@ components:
           example: 21.33
           type: number
         description:
-          example: IN-N-OUT BURGER
+          example: ubr* pending.uber.com
+          type: string
+        extended_transaction_type:
+          example: partner_transaction_type
           type: string
         id:
           example: ID-123
+          type: string
+        memo:
+          example: Additional-information*on_transaction
           type: string
         merchant_category_code:
           example: 123
@@ -1676,7 +1707,8 @@ components:
           nullable: true
           type: string
         category_guid:
-          example: CAT-b4789667-6acc-a112-975e-15746003ed61
+          example: CAT-9588eaad-90a4-bb5c-66c8-1812503d0db8
+          nullable: true
           type: string
         check_number_string:
           example: '6812'
@@ -1696,6 +1728,10 @@ components:
           type: string
         description:
           example: Whole foods
+          nullable: true
+          type: string
+        extended_transaction_type:
+          example: partner_transaction_type
           nullable: true
           type: string
         guid:
