@@ -2886,7 +2886,7 @@ paths:
     get:
       description: Use this endpoint to read the attributes of either a default category
         or a custom category.
-      operationId: readCustomCategory
+      operationId: readCategory
       parameters:
       - description: The unique id for a `category`.
         example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
