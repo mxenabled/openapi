@@ -600,7 +600,7 @@ components:
           nullable: true
           type: string
         merchant_category_code:
-          example: 5411
+          example: 4121
           nullable: true
           type: integer
         merchant_guid:
@@ -637,7 +637,7 @@ components:
           example: Additional-information*on_transaction
           type: string
         merchant_category_code:
-          example: 123
+          example: 4121
           type: integer
         type:
           example: DEBIT
