@@ -2526,9 +2526,6 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete user
       tags:
@@ -2876,9 +2873,6 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete category
       tags:
@@ -3140,9 +3134,6 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete managed member
       tags:
@@ -3320,9 +3311,6 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete managed account
       tags:
@@ -3513,9 +3501,6 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete managed transaction
       tags:
@@ -3693,9 +3678,6 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete member
       tags:
@@ -4602,9 +4584,6 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete tagging
       tags:
@@ -4759,9 +4738,6 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete tag
       tags:
@@ -4974,9 +4950,6 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete transaction rule
       tags:
