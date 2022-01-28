@@ -2699,6 +2699,13 @@ paths:
         `account`.
       operationId: listHoldingsByAccount
       parameters:
+      - description: The unique id for the `account`.
+        example: ACT-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
       - description: Filter holdings from this date.
         example: '2015-09-20'
         in: query
@@ -2727,13 +2734,6 @@ paths:
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
         in: path
         name: user_guid
-        required: true
-        schema:
-          type: string
-      - description: The unique id for the `account`.
-        example: ACT-7c6f361b-e582-15b6-60c0-358f12466b4b
-        in: path
-        name: account_guid
         required: true
         schema:
           type: string
