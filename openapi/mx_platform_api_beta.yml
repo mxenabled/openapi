@@ -2693,6 +2693,60 @@ paths:
       summary: List account numbers by account
       tags:
       - mx_platform
+  "/users/{user_guid}/accounts/{account_guid}/holdings":
+    get:
+      description: This endpoint returns all holdings associated with the specified
+        `account`.
+      operationId: listHoldingsByAccount
+      parameters:
+      - description: Filter holdings from this date.
+        example: '2015-09-20'
+        in: query
+        name: from_date
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: Filter holdings to this date.
+        example: '2019-10-20'
+        in: query
+        name: to_date
+        schema:
+          type: string
+      - description: The unique id for the `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for the `account`.
+        example: ACT-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/HoldingsResponseBody"
+          description: OK
+      summary: List holdings by account
+      tags:
+      - mx_platform
   "/users/{user_guid}/accounts/{account_guid}/transactions":
     get:
       description: This endpoint returns a list of the last 90 days of transactions
