@@ -1,7 +1,823 @@
 ---
 components:
   schemas:
-    Account:
+    AccountNumberResponse:
+      properties:
+        account_guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        account_number:
+          example: '10001'
+          nullable: true
+          type: string
+        guid:
+          example: ACN-8899832e-e5b4-42cd-aa25-bbf1dc889a8f
+          type: string
+        institution_number:
+          example: '123'
+          nullable: true
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        routing_number:
+          example: '68899990000000'
+          nullable: true
+          type: string
+        transit_number:
+          example: '12345'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+      type: object
+    AccountNumbersResponseBody:
+      properties:
+        account_numbers:
+          items:
+            "$ref": "#/components/schemas/AccountNumberResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    AccountOwnerResponse:
+      properties:
+        account_guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        address:
+          example: 123 This Way
+          nullable: true
+          type: string
+        city:
+          example: Middlesex
+          nullable: true
+          type: string
+        country:
+          example: US
+          nullable: true
+          type: string
+        email:
+          example: donnie@darko.co
+          nullable: true
+          type: string
+        guid:
+          example: ACO-63dc7714-6fc0-4aa2-a069-c06cdccd1af9
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        owner_name:
+          example: Donnie Darko
+          nullable: true
+          type: string
+        phone:
+          example: 555-555-5555
+          nullable: true
+          type: string
+        postal_code:
+          example: 00000-0000
+          nullable: true
+          type: string
+        state:
+          example: VA
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+      type: object
+    AccountOwnersResponseBody:
+      properties:
+        account_owners:
+          items:
+            "$ref": "#/components/schemas/AccountOwnerResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    AccountResponse:
+      properties:
+        account_number:
+          example: '5366'
+          nullable: true
+          type: string
+        apr:
+          example: 1.0
+          nullable: true
+          type: number
+        apy:
+          example: 1.0
+          nullable: true
+          type: number
+        available_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        available_credit:
+          example: 1000.0
+          nullable: true
+          type: number
+        balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        cash_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          nullable: true
+          type: number
+        created_at:
+          example: '2016-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        credit_limit:
+          example: 100.0
+          nullable: true
+          type: number
+        currency_code:
+          example: USD
+          nullable: true
+          type: string
+        day_payment_is_due:
+          example: 20
+          nullable: true
+          type: integer
+        death_benefit:
+          example: 1000
+          nullable: true
+          type: integer
+        guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        holdings_value:
+          example: 1000.0
+          nullable: true
+          type: number
+        id:
+          example: '1040434698'
+          nullable: true
+          type: string
+        imported_at:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        institution_code:
+          example: chase
+          nullable: true
+          type: string
+        insured_name:
+          example: Frodo Baggins
+          nullable: true
+          type: string
+        interest_rate:
+          example: 1.0
+          nullable: true
+          type: number
+        is_closed:
+          example: false
+          nullable: true
+          type: boolean
+        is_hidden:
+          example: false
+          nullable: true
+          type: boolean
+        last_payment:
+          example: 100.0
+          nullable: true
+          type: number
+        last_payment_at:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        loan_amount:
+          example: 1000.0
+          nullable: true
+          type: number
+        matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        member_id:
+          example: member123
+          nullable: true
+          type: string
+        member_is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        metadata:
+          example: some metadata
+          nullable: true
+          type: string
+        minimum_balance:
+          example: 100.0
+          nullable: true
+          type: number
+        minimum_payment:
+          example: 10.0
+          nullable: true
+          type: number
+        name:
+          example: Test account 2
+          nullable: true
+          type: string
+        nickname:
+          example: My Checking
+          nullable: true
+          type: string
+        original_balance:
+          example: 10.0
+          nullable: true
+          type: number
+        pay_out_amount:
+          example: 10.0
+          nullable: true
+          type: number
+        payment_due_at:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        payoff_balance:
+          example: 10.0
+          nullable: true
+          type: number
+        premium_amount:
+          example: 1.0
+          nullable: true
+          type: number
+        routing_number:
+          example: '68899990000000'
+          nullable: true
+          type: string
+        started_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        subtype:
+          example: NONE
+          nullable: true
+          type: string
+        total_account_value:
+          example: 1.0
+          nullable: true
+          type: number
+        type:
+          example: SAVINGS
+          nullable: true
+          type: string
+        updated_at:
+          example: '2016-10-13T18:08:00.000Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+        user_id:
+          example: user123
+          nullable: true
+          type: string
+      type: object
+    AccountResponseBody:
+      properties:
+        account:
+          "$ref": "#/components/schemas/AccountResponse"
+      type: object
+    AccountUpdateRequest:
+      properties:
+        is_hidden:
+          example: false
+          type: boolean
+      type: object
+    AccountUpdateRequestBody:
+      properties:
+        account:
+          "$ref": "#/components/schemas/AccountUpdateRequest"
+      type: object
+    AccountsResponseBody:
+      properties:
+        accounts:
+          items:
+            "$ref": "#/components/schemas/AccountResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    CategoriesResponseBody:
+      properties:
+        categories:
+          items:
+            "$ref": "#/components/schemas/CategoryResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    CategoryCreateRequest:
+      properties:
+        metadata:
+          example: some metadata
+          type: string
+        name:
+          example: Online Shopping
+          type: string
+        parent_guid:
+          example: CAT-aad51b46-d6f7-3da5-fd6e-492328b3023f
+          type: string
+      required:
+      - name
+      type: object
+    CategoryCreateRequestBody:
+      properties:
+        category:
+          "$ref": "#/components/schemas/CategoryCreateRequest"
+      type: object
+    CategoryResponse:
+      properties:
+        created_at:
+          example: '2015-04-13T18:01:23.000Z'
+          nullable: true
+          type: string
+        guid:
+          example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
+          type: string
+        is_default:
+          example: true
+          nullable: true
+          type: boolean
+        is_income:
+          example: false
+          nullable: true
+          type: boolean
+        metadata:
+          example: some metadata
+          nullable: true
+          type: string
+        name:
+          example: Auto Insurance
+          nullable: true
+          type: string
+        parent_guid:
+          example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
+          type: string
+        updated_at:
+          example: '2015-05-13T18:01:23.000Z'
+          nullable: true
+          type: string
+      type: object
+    CategoryResponseBody:
+      properties:
+        category:
+          "$ref": "#/components/schemas/CategoryResponse"
+      type: object
+    CategoryUpdateRequest:
+      properties:
+        metadata:
+          example: some metadata
+          type: string
+        name:
+          example: Web shopping
+          type: string
+      type: object
+    CategoryUpdateRequestBody:
+      properties:
+        category:
+          "$ref": "#/components/schemas/CategoryUpdateRequest"
+      type: object
+    ChallengeResponse:
+      properties:
+        field_name:
+          example: Who is this guy?
+          nullable: true
+          type: string
+        guid:
+          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
+          type: string
+        image_data:
+          example: Who is this guy?
+          nullable: true
+          type: string
+        image_options:
+          items:
+            "$ref": "#/components/schemas/ImageOptionResponse"
+          type: array
+        label:
+          example: Who is this guy?
+          nullable: true
+          type: string
+        options:
+          items:
+            "$ref": "#/components/schemas/OptionResponse"
+          type: array
+        type:
+          example: IMAGE_DATA
+          nullable: true
+          type: string
+      type: object
+    ChallengesResponseBody:
+      properties:
+        challenges:
+          items:
+            "$ref": "#/components/schemas/ChallengeResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    ConnectWidgetRequest:
+      properties:
+        color_scheme:
+          example: light
+          type: string
+        current_institution_code:
+          example: chase
+          type: string
+        current_member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        disable_institution_search:
+          example: false
+          type: boolean
+        include_transactions:
+          example: true
+          type: boolean
+        is_mobile_webview:
+          example: true
+          type: boolean
+        mode:
+          example: aggregation
+          type: string
+        ui_message_version:
+          example: 4
+          type: integer
+        ui_message_webview_url_scheme:
+          example: mx
+          type: string
+        update_credentials:
+          example: false
+          type: boolean
+        wait_for_full_aggregation:
+          example: false
+          type: boolean
+      type: object
+    ConnectWidgetRequestBody:
+      properties:
+        config:
+          "$ref": "#/components/schemas/ConnectWidgetRequest"
+      type: object
+    ConnectWidgetResponse:
+      properties:
+        connect_widget_url:
+          example: https://int-widgets.moneydesktop.com/md/connect/jb1rA14m85tw2lyvpgfx4gc6d3Z8z8Ayb8
+          nullable: true
+          type: string
+        guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+      type: object
+    ConnectWidgetResponseBody:
+      properties:
+        user:
+          "$ref": "#/components/schemas/ConnectWidgetResponse"
+      type: object
+    CredentialRequest:
+      properties:
+        guid:
+          example: CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f
+          type: string
+        value:
+          example: password
+          nullable: true
+          type: string
+      type: object
+    CredentialResponse:
+      properties:
+        display_order:
+          example: 1
+          nullable: true
+          type: integer
+        field_name:
+          example: LOGIN
+          nullable: true
+          type: string
+        field_type:
+          example: TEXT
+          nullable: true
+          type: string
+        guid:
+          example: CRD-1ec152cd-e628-e81a-e852-d1e7104624da
+          type: string
+        label:
+          example: Username
+          type: string
+      type: object
+    CredentialsResponseBody:
+      properties:
+        credentials:
+          items:
+            "$ref": "#/components/schemas/CredentialResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    EnhanceTransactionResponse:
+      properties:
+        amount:
+          example: 21.33
+          nullable: true
+          type: number
+        categorized_by:
+          example: 13
+          nullable: true
+          type: integer
+        category:
+          example: Rental Car & Taxi
+          nullable: true
+          type: string
+        category_guid:
+          example: CAT-9588eaad-90a4-bb5c-66c8-1812503d0db8
+          nullable: true
+          type: string
+        described_by:
+          example: 6
+          nullable: true
+          type: integer
+        description:
+          example: Uber
+          nullable: true
+          type: string
+        extended_transaction_type:
+          example: partner_transaction_type
+          nullable: true
+          type: string
+        id:
+          example: ID-123
+          nullable: true
+          type: string
+        is_bill_pay:
+          example: false
+          nullable: true
+          type: boolean
+        is_direct_deposit:
+          example: false
+          nullable: true
+          type: boolean
+        is_expense:
+          example: false
+          nullable: true
+          type: boolean
+        is_fee:
+          example: false
+          nullable: true
+          type: boolean
+        is_income:
+          example: false
+          nullable: true
+          type: boolean
+        is_international:
+          example: false
+          nullable: true
+          type: boolean
+        is_overdraft_fee:
+          example: false
+          nullable: true
+          type: boolean
+        is_payroll_advance:
+          example: false
+          nullable: true
+          type: boolean
+        is_subscription:
+          example: false
+          nullable: true
+          type: boolean
+        memo:
+          example: Additional-information*on_transaction
+          nullable: true
+          type: string
+        merchant_category_code:
+          example: 4121
+          nullable: true
+          type: integer
+        merchant_guid:
+          example: MCH-14f25b63-ef47-a38e-b2b6-d02b280b6e4e
+          type: string
+        merchant_location_guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          nullable: true
+          type: string
+        original_description:
+          example: ubr* pending.uber.com
+          nullable: true
+          type: string
+        type:
+          example: DEBIT
+          nullable: true
+          type: string
+      type: object
+    EnhanceTransactionsRequest:
+      properties:
+        amount:
+          example: 21.33
+          type: number
+        description:
+          example: ubr* pending.uber.com
+          type: string
+        extended_transaction_type:
+          example: partner_transaction_type
+          type: string
+        id:
+          example: ID-123
+          type: string
+        memo:
+          example: Additional-information*on_transaction
+          type: string
+        merchant_category_code:
+          example: 4121
+          type: integer
+        type:
+          example: DEBIT
+          type: string
+      required:
+      - description
+      - id
+      type: object
+    EnhanceTransactionsRequestBody:
+      properties:
+        transactions:
+          items:
+            "$ref": "#/components/schemas/EnhanceTransactionsRequest"
+          type: array
+      type: object
+    EnhanceTransactionsResponseBody:
+      properties:
+        transactions:
+          items:
+            "$ref": "#/components/schemas/EnhanceTransactionResponse"
+          type: array
+      type: object
+    HoldingResponse:
+      properties:
+        account_guid:
+          example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
+          type: string
+        cost_basis:
+          example: 827.0
+          nullable: true
+          type: number
+        created_at:
+          example: '2015-04-13T18:01:23.000Z'
+          nullable: true
+          type: string
+        currency_code:
+          example: USD
+          nullable: true
+          type: string
+        cusip:
+          example: 18383M878
+          nullable: true
+          type: string
+        daily_change:
+          example: 2.5
+          nullable: true
+          type: number
+        description:
+          example: Guggenheim Defensive Equity ETF
+          nullable: true
+          type: string
+        guid:
+          example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
+          type: string
+        holding_type:
+          example: MONEY_MARKET
+          nullable: true
+          type: string
+        id:
+          example: ID-123
+          nullable: true
+          type: string
+        market_value:
+          example: 989.5
+          nullable: true
+          type: number
+        member_guid:
+          example: MBR-d65683e8-9eab-26bb-bcfd-ced159c9abe
+          type: string
+        metadata:
+          example: metadata
+          nullable: true
+          type: string
+        purchase_price:
+          example: 26.3
+          nullable: true
+          type: number
+        shares:
+          example: 6.0
+          nullable: true
+          type: number
+        symbol:
+          example: DEF
+          nullable: true
+          type: string
+        updated_at:
+          example: '2015-04-13T18:01:23.000Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-743e5d7f-1116-28fa-5de1-d3ba02e41d8d
+          type: string
+      type: object
+    HoldingResponseBody:
+      properties:
+        holding:
+          "$ref": "#/components/schemas/HoldingResponse"
+      type: object
+    HoldingsResponseBody:
+      properties:
+        holdings:
+          items:
+            "$ref": "#/components/schemas/HoldingResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    ImageOptionResponse:
+      properties:
+        data_uri:
+          example: data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...
+          nullable: true
+          type: string
+        label:
+          example: IMAGE_1
+          nullable: true
+          type: string
+        value:
+          example: image_data
+          nullable: true
+          type: string
+      type: object
+    InstitutionResponse:
+      properties:
+        code:
+          example: chase
+          nullable: true
+          type: string
+        medium_logo_url:
+          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png
+          nullable: true
+          type: string
+        name:
+          example: Chase Bank
+          nullable: true
+          type: string
+        small_logo_url:
+          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png
+          nullable: true
+          type: string
+        supports_account_identification:
+          example: true
+          nullable: true
+          type: boolean
+        supports_account_statement:
+          example: true
+          nullable: true
+          type: boolean
+        supports_account_verification:
+          example: true
+          nullable: true
+          type: boolean
+        supports_oauth:
+          example: true
+          nullable: true
+          type: boolean
+        supports_transaction_history:
+          example: true
+          nullable: true
+          type: boolean
+        url:
+          example: https://www.chase.com
+          nullable: true
+          type: string
+      type: object
+    InstitutionResponseBody:
+      properties:
+        institution:
+          "$ref": "#/components/schemas/InstitutionResponse"
+      type: object
+    InstitutionsResponseBody:
+      properties:
+        institutions:
+          items:
+            "$ref": "#/components/schemas/InstitutionResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    ManagedAccountCreateRequest:
       properties:
         account_number:
           example: '5366'
@@ -21,15 +837,9 @@ components:
         balance:
           example: 1000.0
           type: number
-        cash_balance:
-          example: 1000.0
-          type: number
         cash_surrender_value:
           example: 1000.0
           type: number
-        created_at:
-          example: '2016-10-13T17:57:37.000Z'
-          type: string
         credit_limit:
           example: 100.0
           type: number
@@ -42,20 +852,8 @@ components:
         death_benefit:
           example: 1000
           type: integer
-        guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          type: string
-        holdings_value:
-          example: 1000.0
-          type: number
         id:
           example: '1040434698'
-          type: string
-        institution_code:
-          example: chase
-          type: string
-        insured_name:
-          example: Frodo Baggins
           type: string
         interest_rate:
           example: 1.0
@@ -78,8 +876,8 @@ components:
         matures_on:
           example: '2015-10-13T17:57:37.000Z'
           type: string
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        metadata:
+          example: some metadata
           type: string
         minimum_balance:
           example: 100.0
@@ -90,10 +888,10 @@ components:
         name:
           example: Test account 2
           type: string
+        nickname:
+          example: Swiss Account
+          type: string
         original_balance:
-          example: 10.0
-          type: number
-        pay_out_amount:
           example: 10.0
           type: number
         payment_due_at:
@@ -102,565 +900,189 @@ components:
         payoff_balance:
           example: 10.0
           type: number
-        premium_amount:
-          example: 1.0
-          type: number
+        routing_number:
+          example: '68899990000000'
+          type: string
         started_on:
           example: '2015-10-13T17:57:37.000Z'
           type: string
         subtype:
           example: NONE
           type: string
-        total_account_value:
-          example: 1.0
-          type: number
         type:
           example: SAVINGS
           type: string
-        updated_at:
-          example: '2016-10-13T18:08:00.000Z'
-          type: string
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type: string
+      required:
+      - balance
+      - name
+      - type
       type: object
-    AccountNumber:
+    ManagedAccountCreateRequestBody:
       properties:
-        account_guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          type: string
+        account:
+          "$ref": "#/components/schemas/ManagedAccountCreateRequest"
+      type: object
+    ManagedAccountUpdateRequest:
+      properties:
         account_number:
-          example: '10001'
+          example: '5366'
           type: string
-        guid:
-          example: ACN-8899832e-e5b4-42cd-aa25-bbf1dc889a8f
+        apr:
+          example: 1.0
+          type: number
+        apy:
+          example: 1.0
+          type: number
+        available_balance:
+          example: 1000.0
+          type: number
+        available_credit:
+          example: 1000.0
+          type: number
+        balance:
+          example: 1000.0
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          type: number
+        credit_limit:
+          example: 100.0
+          type: number
+        currency_code:
+          example: USD
           type: string
-        institution_number:
-          example: '123'
+        day_payment_is_due:
+          example: 20
+          type: integer
+        death_benefit:
+          example: 1000
+          type: integer
+        id:
+          example: '1040434698'
           type: string
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        interest_rate:
+          example: 1.0
+          type: number
+        is_closed:
+          example: false
+          type: boolean
+        is_hidden:
+          example: false
+          type: boolean
+        last_payment:
+          example: 100.0
+          type: number
+        last_payment_at:
+          example: '2015-10-13T17:57:37.000Z'
           type: string
+        loan_amount:
+          example: 1000.0
+          type: number
+        matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        minimum_balance:
+          example: 100.0
+          type: number
+        minimum_payment:
+          example: 10.0
+          type: number
+        name:
+          example: Test account 2
+          type: string
+        nickname:
+          example: Swiss Account
+          type: string
+        original_balance:
+          example: 10.0
+          type: number
+        payment_due_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        payoff_balance:
+          example: 10.0
+          type: number
         routing_number:
           example: '68899990000000'
           type: string
-        transit_number:
-          example: '12345'
+        started_on:
+          example: '2015-10-13T17:57:37.000Z'
           type: string
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        subtype:
+          example: NONE
           type: string
-      type: object
-    AccountOwner:
-      properties:
-        account_guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          type: string
-        address:
-          example: 123 This Way
-          type: string
-        city:
-          example: Middlesex
-          type: string
-        country:
-          example: US
-          type: string
-        email:
-          example: donnie@darko.co
-          type: string
-        guid:
-          example: ACO-63dc7714-6fc0-4aa2-a069-c06cdccd1af9
-          type: string
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type: string
-        owner_name:
-          example: Donnie Darko
-          type: string
-        phone:
-          example: 555-555-5555
-          type: string
-        postal_code:
-          example: 00000-0000
-          type: string
-        state:
-          example: VA
-          type: string
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        type:
+          example: SAVINGS
           type: string
       type: object
-    Category:
+    ManagedAccountUpdateRequestBody:
       properties:
-        created_at:
-          example: '2015-04-13T18:01:23.000Z'
+        account:
+          "$ref": "#/components/schemas/ManagedAccountUpdateRequest"
+      type: object
+    ManagedMemberCreateRequest:
+      properties:
+        id:
+          example: member123
           type: string
-        guid:
-          example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
+        institution_code:
+          example: mxbank
           type: string
-        is_default:
-          example: true
-          type: boolean
-        is_income:
-          example: false
-          type: boolean
         metadata:
           example: some metadata
           type: string
         name:
-          example: Auto Insurance
+          example: MX Bank
           type: string
-        parent_guid:
-          example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
-          type: string
-        updated_at:
-          example: '2015-05-13T18:01:23.000Z'
-          type: string
+      required:
+      - institution_code
       type: object
-    Challenge:
+    ManagedMemberCreateRequestBody:
       properties:
-        field_name:
-          example: Who is this guy?
-          type: string
-        guid:
-          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
-          type: string
-        image_data:
-          example: Who is this guy?
-          type: string
-        image_options:
-          items:
-            properties:
-              data_uri:
-                example: data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image
-                  data ...
-                type: string
-              label:
-                example: IMAGE_1
-                type: string
-              value:
-                example: image_data
-                type: string
-            type: object
-          type: array
-        label:
-          example: Who is this guy?
-          type: string
-        options:
-          items:
-            properties:
-              label:
-                example: IMAGE_1
-                type: string
-              value:
-                example: image_data
-                type: string
-            type: object
-          type: array
-        type:
-          example: IMAGE_DATA
-          type: string
+        member:
+          "$ref": "#/components/schemas/ManagedMemberCreateRequest"
       type: object
-    ConnectWidget:
+    ManagedMemberUpdateRequest:
       properties:
-        connect_widget_url:
-          example: https://int-widgets.moneydesktop.com/md/connect/jb1rA14m85tw2lyvpgfx4gc6d3Z8z8Ayb8
-          type: string
-        guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type: string
-      type: object
-    Credential:
-      properties:
-        display_order:
-          example: 1
-          type: integer
-        field_name:
-          example: LOGIN
-          type: string
-        field_type:
-          example: TEXT
-          type: string
-        guid:
-          example: CRD-1ec152cd-e628-e81a-e852-d1e7104624da
-          type: string
-        label:
-          example: Username
-          type: string
-      type: object
-    EnhancedTransaction:
-      properties:
-        amount:
-          example: 21.33
-          type: number
-        category:
-          example: Fast Food
-          type: string
-        description:
-          example: IN-N-OUT BURGER
-          type: string
         id:
-          example: ID-123
-          type: string
-        is_bill_pay:
-          example: false
-          type: boolean
-        is_direct_deposit:
-          example: false
-          type: boolean
-        is_expense:
-          example: false
-          type: boolean
-        is_fee:
-          example: false
-          type: boolean
-        is_income:
-          example: false
-          type: boolean
-        is_international:
-          example: false
-          type: boolean
-        is_overdraft_fee:
-          example: false
-          type: boolean
-        is_payroll_advance:
-          example: false
-          type: boolean
-        merchant_category_code:
-          example: 5411
-          type: integer
-        merchant_guid:
-          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
-          type: string
-        original_description:
-          example: IN-N-OUT BURGER
-          type: string
-        type:
-          example: DEBIT
-          type: string
-      type: object
-    Holding:
-      properties:
-        account_guid:
-          example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
-          type: string
-        cost_basis:
-          example: 827.0
-          type: number
-        created_at:
-          example: '2015-04-13T18:01:23.000Z'
-          type: string
-        currency_code:
-          example: USD
-          type: string
-        cusip:
-          example: 18383M878
-          type: string
-        daily_change:
-          example: 2.5
-          type: number
-        description:
-          example: Guggenheim Defensive Equity ETF
-          type: string
-        guid:
-          example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
-          type: string
-        holding_type:
-          example: MONEY_MARKET
-          type: string
-        id:
-          example: ID-123
-          type: string
-        market_value:
-          example: 989.5
-          type: number
-        member_guid:
-          example: MBR-d65683e8-9eab-26bb-bcfd-ced159c9abe
+          example: member123
           type: string
         metadata:
-          example: metadata
-          type: string
-        purchase_price:
-          example: 26.3
-          type: number
-        shares:
-          example: 6.0
-          type: number
-        symbol:
-          example: DEF
-          type: string
-        updated_at:
-          example: '2015-04-13T18:01:23.000Z'
-          type: string
-        user_guid:
-          example: USR-743e5d7f-1116-28fa-5de1-d3ba02e41d8d
-          type: string
-      type: object
-    Institution:
-      properties:
-        code:
-          example: chase
-          type: string
-        medium_logo_url:
-          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png
+          example: some metadata
           type: string
         name:
-          example: Chase Bank
-          type: string
-        small_logo_url:
-          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png
-          type: string
-        supports_account_identification:
-          example: true
-          type: boolean
-        supports_account_statement:
-          example: true
-          type: boolean
-        supports_account_verification:
-          example: true
-          type: boolean
-        supports_oauth:
-          example: true
-          type: boolean
-        supports_transaction_history:
-          example: true
-          type: boolean
-        url:
-          example: https://www.chase.com
+          example: MX Bank
           type: string
       type: object
-    Member:
+    ManagedMemberUpdateRequestBody:
       properties:
-        aggregated_at:
-          example: '2016-10-13T18:07:57.000Z'
-          type: string
-        connection_status:
-          example: CONNECTED
-          type: string
-        guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type: string
-        id:
-          example: unique_id
-          type: string
-        institution_code:
-          example: chase
-          type: string
-        is_being_aggregated:
-          example: false
-          type: boolean
-        is_oauth:
-          example: false
-          type: boolean
-        metadata:
-          example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
-          type: string
-        name:
-          example: Chase Bank
-          type: string
-        oauth_window_uri:
-          example: int-widgets.moneydesktop.com/oauth/predirect_to/MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f/p8v7rxpxg3pdAsfgwxcrwxwhz3Zbygxfr6wAb931qv91hpb57k6bkr6t6m9djrfrfd467p8xkgqp6w7k1r9g8k8bfxqbfw2lq5tdwjq2sngAx76fm0jrw0dpmbtlkxchgjsw3r7r0hhq6A8sshqptfxql2rt123shfpkyhhpfvy67yvprbkb7lmlyrpwsd9yj0s22pmsyjhcw7d2q44d9fsxn5kfsmr2zqc79c2AxAx5gkjgbczf22A1sjx70t2pvnggzyh55s7bh62dd5wq7f1r4x90mcxn1tfhhrq5b09mjkt5hg66cjn700pcf6fgA42lbsp7v1pdch85mswycrp21c6j2sxffm14Asg3?skip_aggregation=false&referral_source=APP&ui_message_webview_url_scheme=myapp
-          type: string
-        successfully_aggregated_at:
-          example: '2016-10-13T17:57:38.000Z'
-          type: string
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type: string
+        member:
+          "$ref": "#/components/schemas/ManagedMemberUpdateRequest"
       type: object
-    MemberStatus:
+    ManagedTransactionCreateRequest:
       properties:
-        aggregated_at:
-          example: '2016-10-13T18:07:57.000Z'
-          type: string
-        challenges:
-          items:
-            "$ref": "#/components/schemas/Challenge"
-          type: array
-        connection_status:
-          example: CONNECTED
-          type: string
-        guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type: string
-        has_processed_accounts:
-          example: true
-          type: boolean
-        has_processed_transactions:
-          example: false
-          type: boolean
-        is_authenticated:
-          example: false
-          type: boolean
-        is_being_aggregated:
-          example: false
-          type: boolean
-        successfully_aggregated_at:
-          example: '2016-10-13T17:57:38.000Z'
-          type: string
-      type: object
-    Merchant:
-      properties:
-        created_at:
-          example: '2017-04-20T19:30:12.000Z'
-          type: string
-        guid:
-          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
-          type: string
-        logo_url:
-          example: https://s3.amazonaws.com/MD_Assets/merchant_logos/comcast.png
-          type: string
-        name:
-          example: Comcast
-          type: string
-        updated_at:
-          example: '2018-09-28T21:13:53.000Z'
-          type: string
-        website_url:
-          example: https://www.xfinity.com
-          type: string
-      type: object
-    OAuthWindow:
-      properties:
-        guid:
-          example: MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f
-          type: string
-        oauth_window_uri:
-          example: int-widgets.moneydesktop.com/oauth/predirect_to/MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f/zgknnw5k7dmztn2njmwlgz574mZlnft6vdrv7kzn9ptj325th6c5p0w6c7j83Ap1bqg01mhsr1bqjgf2fry3ly9wff497c6fcczbyrfgj7s39cygw95Akl7vlpmcAy2kmvh1mlkytg7jA1z3vnw1w3zx2r1wt65s6f6r3ryqqrysl9qA1kr6cAj6vhr1zl325Azz6hx52j1ll3vwbvvbv5xzy7d6csplyw25brA7147vAfq29ArjjAj4qmc6r6h457hkcj2946m0kjp2xzpkz6hz55lsp3Avmdb8dsq4xzqmzzqk68s6bp5tj9jsskw4wvcb95vm4fwh9w8phgp67hfj2flrtwcy5bxbtk74?skip_aggregation=false
-          type: string
-      type: object
-    Pagination:
-      properties:
-        current_page:
-          example: 1
-          type: integer
-        per_page:
-          example: 25
-          type: integer
-        total_entries:
-          example: 1
-          type: integer
-        total_pages:
-          example: 1
-          type: integer
-      type: object
-    Statement:
-      properties:
-        account_guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          type: string
-        content_hash:
-          example: ca53785b812d00ef821c3d94bfd6e5bbc0020504410589b7ea8552169f021981
-          type: string
-        created_at:
-          example: '2016-10-13T18:08:00+00:00'
-          type: string
-        guid:
-          example: STA-737a344b-caae-0f6e-1384-01f52e75dcb1
-          type: string
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type: string
-        updated_at:
-          example: '2016-10-13T18:09:00+00:00'
-          type: string
-        uri:
-          example: uri/to/statement
-          type: string
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type: string
-      type: object
-    Tag:
-      properties:
-        guid:
-          example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
-          type: string
-        name:
-          example: MY TAG
-          type: string
-        user_guid:
-          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
-          type: string
-      type: object
-    Tagging:
-      properties:
-        guid:
-          example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
-          type: string
-        member_is_managed_by_user:
-          example: false
-          type: boolean
-        tag_guid:
-          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
-          type: string
-        transaction_guid:
-          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-          type: string
-        user_guid:
-          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
-          type: string
-      type: object
-    Transaction:
-      properties:
-        account_guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          type: string
         amount:
           example: 61.11
-          type: number
+          type: string
         category:
           example: Groceries
           type: string
         check_number_string:
           example: '6812'
           type: string
-        created_at:
-          example: '2016-10-06T09:43:42.000Z'
-          type: string
         currency_code:
           example: USD
-          type: string
-        date:
-          example: '2013-09-23T00:00:00.000Z'
           type: string
         description:
           example: Whole foods
           type: string
-        guid:
-          example: TRN-265abee9-889b-af6a-c69b-25157db2bdd9
-          type: string
         id:
           example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
           type: string
-        is_bill_pay:
-          example: false
-          type: boolean
-        is_direct_deposit:
-          example: false
-          type: boolean
-        is_expense:
-          example: true
-          type: boolean
-        is_fee:
-          example: false
-          type: boolean
-        is_income:
-          example: false
-          type: boolean
         is_international:
-          example: false
-          type: boolean
-        is_overdraft_fee:
-          example: false
-          type: boolean
-        is_payroll_advance:
-          example: false
-          type: boolean
-        is_recurring:
-          example: false
-          type: boolean
-        is_subscription:
           example: false
           type: boolean
         latitude:
@@ -675,9 +1097,6 @@ components:
         longitude:
           example: 139.691706
           type: number
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type: string
         memo:
           example: This is a memo
           type: string
@@ -687,8 +1106,11 @@ components:
         merchant_guid:
           example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
           type: string
-        original_description:
-          example: WHOLEFDS TSQ 102
+        merchant_location_guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type: string
+        metadata:
+          example: some metadata
           type: string
         posted_at:
           example: '2016-10-07T06:00:00.000Z'
@@ -696,8 +1118,79 @@ components:
         status:
           example: POSTED
           type: string
-        top_level_category:
-          example: Food & Dining
+        transacted_at:
+          example: '2016-10-06T13:00:00.000Z'
+          type: string
+        type:
+          example: DEBIT
+          type: string
+      required:
+      - amount
+      - description
+      - status
+      - transacted_at
+      - type
+      type: object
+    ManagedTransactionCreateRequestBody:
+      properties:
+        transaction:
+          "$ref": "#/components/schemas/ManagedTransactionCreateRequest"
+      type: object
+    ManagedTransactionUpdateRequest:
+      properties:
+        amount:
+          example: 61.11
+          type: string
+        category:
+          example: Groceries
+          type: string
+        check_number_string:
+          example: '6812'
+          type: string
+        currency_code:
+          example: USD
+          type: string
+        description:
+          example: Whole foods
+          type: string
+        id:
+          example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
+          type: string
+        is_international:
+          example: false
+          type: boolean
+        latitude:
+          example: -43.2075
+          type: number
+        localized_description:
+          example: This is a localized_description
+          type: string
+        localized_memo:
+          example: This is a localized_memo
+          type: string
+        longitude:
+          example: 139.691706
+          type: number
+        memo:
+          example: This is a memo
+          type: string
+        merchant_category_code:
+          example: 5411
+          type: integer
+        merchant_guid:
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          type: string
+        merchant_location_guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        posted_at:
+          example: '2016-10-07T06:00:00.000Z'
+          type: string
+        status:
+          example: POSTED
           type: string
         transacted_at:
           example: '2016-10-06T13:00:00.000Z'
@@ -705,44 +1198,778 @@ components:
         type:
           example: DEBIT
           type: string
+      type: object
+    ManagedTransactionUpdateRequestBody:
+      properties:
+        transaction:
+          "$ref": "#/components/schemas/ManagedTransactionUpdateRequest"
+      type: object
+    MemberCreateRequest:
+      properties:
+        background_aggregation_is_disabled:
+          example: false
+          type: boolean
+        credentials:
+          items:
+            "$ref": "#/components/schemas/CredentialRequest"
+          type: array
+        id:
+          example: unique_id
+          type: string
+        institution_code:
+          example: chase
+          type: string
+        is_oauth:
+          example: false
+          type: boolean
+        metadata:
+          example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+          type: string
+        skip_aggregation:
+          example: false
+          type: boolean
+      required:
+      - credentials
+      - institution_code
+      type: object
+    MemberCreateRequestBody:
+      properties:
+        member:
+          "$ref": "#/components/schemas/MemberCreateRequest"
+        referral_source:
+          example: APP
+          type: string
+        ui_message_webview_url_scheme:
+          example: mx
+          type: string
+      type: object
+    MemberResponse:
+      properties:
+        aggregated_at:
+          example: '2016-10-13T18:07:57.000Z'
+          nullable: true
+          type: string
+        connection_status:
+          example: CONNECTED
+          nullable: true
+          type: string
+        guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        id:
+          example: unique_id
+          nullable: true
+          type: string
+        institution_code:
+          example: chase
+          nullable: true
+          type: string
+        is_being_aggregated:
+          example: false
+          nullable: true
+          type: boolean
+        is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        is_oauth:
+          example: false
+          nullable: true
+          type: boolean
+        metadata:
+          example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+          nullable: true
+          type: string
+        name:
+          example: Chase Bank
+          nullable: true
+          type: string
+        oauth_window_uri:
+          example: int-widgets.moneydesktop.com/oauth/predirect_to/MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f/p8v7rxpxg3pdAsfgwxcrwxwhz3Zbygxfr6wAb931qv91hpb57k6bkr6t6m9djrfrfd467p8xkgqp6w7k1r9g8k8bfxqbfw2lq5tdwjq2sngAx76fm0jrw0dpmbtlkxchgjsw3r7r0hhq6A8sshqptfxql2rt123shfpkyhhpfvy67yvprbkb7lmlyrpwsd9yj0s22pmsyjhcw7d2q44d9fsxn5kfsmr2zqc79c2AxAx5gkjgbczf22A1sjx70t2pvnggzyh55s7bh62dd5wq7f1r4x90mcxn1tfhhrq5b09mjkt5hg66cjn700pcf6fgA42lbsp7v1pdch85mswycrp21c6j2sxffm14Asg3?skip_aggregation=false&referral_source=APP&ui_message_webview_url_scheme=myapp
+          nullable: true
+          type: string
+        successfully_aggregated_at:
+          example: '2016-10-13T17:57:38.000Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+        user_id:
+          example: user123
+          nullable: true
+          type: string
+      type: object
+    MemberResponseBody:
+      properties:
+        member:
+          "$ref": "#/components/schemas/MemberResponse"
+      type: object
+    MemberResumeRequest:
+      properties:
+        challenges:
+          items:
+            "$ref": "#/components/schemas/CredentialRequest"
+          type: array
+      type: object
+    MemberResumeRequestBody:
+      properties:
+        member:
+          "$ref": "#/components/schemas/MemberResumeRequest"
+      type: object
+    MemberStatusResponse:
+      properties:
+        aggregated_at:
+          example: '2016-10-13T18:07:57.000Z'
+          nullable: true
+          type: string
+        challenges:
+          items:
+            "$ref": "#/components/schemas/ChallengeResponse"
+          type: array
+        connection_status:
+          example: CONNECTED
+          nullable: true
+          type: string
+        guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        has_processed_accounts:
+          example: true
+          nullable: true
+          type: boolean
+        has_processed_transactions:
+          example: false
+          nullable: true
+          type: boolean
+        is_authenticated:
+          example: false
+          nullable: true
+          type: boolean
+        is_being_aggregated:
+          example: false
+          nullable: true
+          type: boolean
+        successfully_aggregated_at:
+          example: '2016-10-13T17:57:38.000Z'
+          nullable: true
+          type: string
+      type: object
+    MemberStatusResponseBody:
+      properties:
+        member:
+          "$ref": "#/components/schemas/MemberStatusResponse"
+      type: object
+    MemberUpdateRequest:
+      properties:
+        background_aggregation_is_disabled:
+          example: false
+          type: boolean
+        credentials:
+          items:
+            "$ref": "#/components/schemas/CredentialRequest"
+          type: array
+        id:
+          example: unique_id
+          type: string
+        metadata:
+          example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+          type: string
+        skip_aggregation:
+          example: false
+          type: boolean
+      type: object
+    MemberUpdateRequestBody:
+      properties:
+        member:
+          "$ref": "#/components/schemas/MemberUpdateRequest"
+      type: object
+    MembersResponseBody:
+      properties:
+        members:
+          items:
+            "$ref": "#/components/schemas/MemberResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    MerchantLocationResponse:
+      properties:
+        city:
+          example: Greenwood Village
+          nullable: true
+          type: string
+        country:
+          example: US
+          nullable: true
+          type: string
+        created_at:
+          example: 2020-04-13 21:05:09.000000000 Z
+          nullable: true
+          type: string
+        guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type: string
+        latitude:
+          example: 39.5963005
+          nullable: true
+          type: number
+        longitude:
+          example: -104.89158799999998
+          nullable: true
+          type: number
+        merchant_guid:
+          example: MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621
+          type: string
+        phone_number:
+          example: "(303) 689-0728"
+          nullable: true
+          type: string
+        postal_code:
+          example: 801121436
+          nullable: true
+          type: string
+        state:
+          example: CO
+          nullable: true
+          type: string
+        street_address:
+          example: 8547 E Arapahoe Rd, Ste 1
+          nullable: true
+          type: string
         updated_at:
-          example: '2016-10-07T05:49:12.000Z'
+          example: 2020-04-13 21:05:09.000000000 Z
+          nullable: true
+          type: string
+      type: object
+    MerchantLocationResponseBody:
+      properties:
+        merchant_location:
+          "$ref": "#/components/schemas/MerchantLocationResponse"
+      type: object
+    MerchantResponse:
+      properties:
+        created_at:
+          example: '2017-04-20T19:30:12.000Z'
+          nullable: true
+          type: string
+        guid:
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          type: string
+        logo_url:
+          example: https://s3.amazonaws.com/MD_Assets/merchant_logos/comcast.png
+          nullable: true
+          type: string
+        name:
+          example: Comcast
+          nullable: true
+          type: string
+        updated_at:
+          example: '2018-09-28T21:13:53.000Z'
+          nullable: true
+          type: string
+        website_url:
+          example: https://www.xfinity.com
+          nullable: true
+          type: string
+      type: object
+    MerchantResponseBody:
+      properties:
+        merchant:
+          "$ref": "#/components/schemas/MerchantResponse"
+      type: object
+    MerchantsResponseBody:
+      properties:
+        merchants:
+          items:
+            "$ref": "#/components/schemas/MerchantResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    OAuthWindowResponse:
+      properties:
+        guid:
+          example: MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f
+          type: string
+        oauth_window_uri:
+          example: int-widgets.moneydesktop.com/oauth/predirect_to/MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f/zgknnw5k7dmztn2njmwlgz574mZlnft6vdrv7kzn9ptj325th6c5p0w6c7j83Ap1bqg01mhsr1bqjgf2fry3ly9wff497c6fcczbyrfgj7s39cygw95Akl7vlpmcAy2kmvh1mlkytg7jA1z3vnw1w3zx2r1wt65s6f6r3ryqqrysl9qA1kr6cAj6vhr1zl325Azz6hx52j1ll3vwbvvbv5xzy7d6csplyw25brA7147vAfq29ArjjAj4qmc6r6h457hkcj2946m0kjp2xzpkz6hz55lsp3Avmdb8dsq4xzqmzzqk68s6bp5tj9jsskw4wvcb95vm4fwh9w8phgp67hfj2flrtwcy5bxbtk74?skip_aggregation=false
+          nullable: true
+          type: string
+      type: object
+    OAuthWindowResponseBody:
+      properties:
+        member:
+          "$ref": "#/components/schemas/OAuthWindowResponse"
+      type: object
+    OptionResponse:
+      properties:
+        label:
+          example: IMAGE_1
+          nullable: true
+          type: string
+        value:
+          example: image_data
+          nullable: true
+          type: string
+      type: object
+    PaginationResponse:
+      properties:
+        current_page:
+          example: 1
+          type: integer
+        per_page:
+          example: 25
+          type: integer
+        total_entries:
+          example: 1
+          type: integer
+        total_pages:
+          example: 1
+          type: integer
+      type: object
+    StatementResponse:
+      properties:
+        account_guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        content_hash:
+          example: ca53785b812d00ef821c3d94bfd6e5bbc0020504410589b7ea8552169f021981
+          nullable: true
+          type: string
+        created_at:
+          example: '2016-10-13T18:08:00+00:00'
+          nullable: true
+          type: string
+        guid:
+          example: STA-737a344b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        updated_at:
+          example: '2016-10-13T18:09:00+00:00'
+          nullable: true
+          type: string
+        uri:
+          example: uri/to/statement
+          nullable: true
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
       type: object
-    TransactionRule:
+    StatementResponseBody:
+      properties:
+        statement:
+          "$ref": "#/components/schemas/StatementResponse"
+      type: object
+    StatementsResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+        statements:
+          items:
+            "$ref": "#/components/schemas/StatementResponse"
+          type: array
+      type: object
+    TagCreateRequest:
+      properties:
+        name:
+          example: MY TAG
+          type: string
+      required:
+      - name
+      type: object
+    TagCreateRequestBody:
+      properties:
+        tag:
+          "$ref": "#/components/schemas/TagCreateRequest"
+      type: object
+    TagResponse:
+      properties:
+        guid:
+          example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
+          type: string
+        name:
+          example: MY TAG
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          type: string
+      type: object
+    TagResponseBody:
+      properties:
+        tag:
+          "$ref": "#/components/schemas/TagResponse"
+      type: object
+    TagUpdateRequest:
+      properties:
+        name:
+          example: MY TAG
+          type: string
+      required:
+      - name
+      type: object
+    TagUpdateRequestBody:
+      properties:
+        tag:
+          "$ref": "#/components/schemas/TagUpdateRequest"
+      type: object
+    TaggingCreateRequest:
+      properties:
+        tag_guid:
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type: string
+        transaction_guid:
+          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+          type: string
+      required:
+      - tag_guid
+      - transaction_guid
+      type: object
+    TaggingCreateRequestBody:
+      properties:
+        tagging:
+          "$ref": "#/components/schemas/TaggingCreateRequest"
+      type: object
+    TaggingResponse:
+      properties:
+        guid:
+          example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
+          type: string
+        member_is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        tag_guid:
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type: string
+        transaction_guid:
+          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+          type: string
+        user_guid:
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          type: string
+      type: object
+    TaggingResponseBody:
+      properties:
+        tagging:
+          "$ref": "#/components/schemas/TaggingResponse"
+      type: object
+    TaggingUpdateRequest:
+      properties:
+        tag_guid:
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type: string
+      required:
+      - tag_guid
+      type: object
+    TaggingUpdateRequestBody:
+      properties:
+        tagging:
+          "$ref": "#/components/schemas/TaggingUpdateRequest"
+      type: object
+    TaggingsResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+        taggings:
+          items:
+            "$ref": "#/components/schemas/TaggingResponse"
+          type: array
+      type: object
+    TagsResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+        tags:
+          items:
+            "$ref": "#/components/schemas/TagResponse"
+          type: array
+      type: object
+    TransactionResponse:
+      properties:
+        account_guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        account_id:
+          example: account123
+          nullable: true
+          type: string
+        amount:
+          example: 61.11
+          nullable: true
+          type: number
+        category:
+          example: Groceries
+          nullable: true
+          type: string
+        category_guid:
+          example: CAT-9588eaad-90a4-bb5c-66c8-1812503d0db8
+          nullable: true
+          type: string
+        check_number_string:
+          example: '6812'
+          nullable: true
+          type: string
+        created_at:
+          example: '2016-10-06T09:43:42.000Z'
+          nullable: true
+          type: string
+        currency_code:
+          example: USD
+          nullable: true
+          type: string
+        date:
+          example: '2013-09-23T00:00:00.000Z'
+          nullable: true
+          type: string
+        description:
+          example: Whole foods
+          nullable: true
+          type: string
+        extended_transaction_type:
+          example: partner_transaction_type
+          nullable: true
+          type: string
+        guid:
+          example: TRN-265abee9-889b-af6a-c69b-25157db2bdd9
+          type: string
+        id:
+          example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
+          nullable: true
+          type: string
+        is_bill_pay:
+          example: false
+          nullable: true
+          type: boolean
+        is_direct_deposit:
+          example: false
+          nullable: true
+          type: boolean
+        is_expense:
+          example: true
+          nullable: true
+          type: boolean
+        is_fee:
+          example: false
+          nullable: true
+          type: boolean
+        is_income:
+          example: false
+          nullable: true
+          type: boolean
+        is_international:
+          example: false
+          nullable: true
+          type: boolean
+        is_overdraft_fee:
+          example: false
+          nullable: true
+          type: boolean
+        is_payroll_advance:
+          example: false
+          nullable: true
+          type: boolean
+        is_recurring:
+          example: false
+          nullable: true
+          type: boolean
+        is_subscription:
+          example: false
+          nullable: true
+          type: boolean
+        latitude:
+          example: -43.2075
+          nullable: true
+          type: number
+        localized_description:
+          example: This is a localized_description
+          nullable: true
+          type: string
+        localized_memo:
+          example: This is a localized_memo
+          nullable: true
+          type: string
+        longitude:
+          example: 139.691706
+          nullable: true
+          type: number
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        member_is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        memo:
+          example: This is a memo
+          nullable: true
+          type: string
+        merchant_category_code:
+          example: 5411
+          nullable: true
+          type: integer
+        merchant_guid:
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          type: string
+        merchant_location_guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type: string
+        metadata:
+          example: some metadata
+          nullable: true
+          type: string
+        original_description:
+          example: WHOLEFDS TSQ 102
+          nullable: true
+          type: string
+        posted_at:
+          example: '2016-10-07T06:00:00.000Z'
+          nullable: true
+          type: string
+        status:
+          example: POSTED
+          nullable: true
+          type: string
+        top_level_category:
+          example: Food & Dining
+          nullable: true
+          type: string
+        transacted_at:
+          example: '2016-10-06T13:00:00.000Z'
+          nullable: true
+          type: string
+        type:
+          example: DEBIT
+          nullable: true
+          type: string
+        updated_at:
+          example: '2016-10-07T05:49:12.000Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+        user_id:
+          example: user123
+          nullable: true
+          type: string
+      type: object
+    TransactionResponseBody:
+      properties:
+        transaction:
+          "$ref": "#/components/schemas/TransactionResponse"
+      type: object
+    TransactionRuleCreateRequest:
+      properties:
+        category_guid:
+          example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
+          type: string
+        description:
+          example: Wal-mart food storage
+          type: string
+        match_description:
+          example: Wal-mart
+          type: string
+      required:
+      - category_guid
+      - match_description
+      type: object
+    TransactionRuleCreateRequestBody:
+      properties:
+        transaction_rule:
+          "$ref": "#/components/schemas/TransactionRuleCreateRequest"
+      type: object
+    TransactionRuleResponse:
       properties:
         category_guid:
           example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
           type: string
         created_at:
           example: '2018-10-02T22:00:50+00:00'
+          nullable: true
           type: string
         description:
           example: Wal-mart food storage
+          nullable: true
           type: string
         guid:
           example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
           type: string
         match_description:
           example: Wal-mart
+          nullable: true
           type: string
         updated_at:
           example: '2018-10-02T23:54:40+00:00'
+          nullable: true
           type: string
         user_guid:
           example: USR-22fc3203-b3e6-8340-43db-8e50b2f56995
           type: string
       type: object
-    User:
+    TransactionRuleResponseBody:
+      properties:
+        transaction_rule:
+          "$ref": "#/components/schemas/TransactionRuleResponse"
+      type: object
+    TransactionRuleUpdateRequest:
+      properties:
+        category_guid:
+          example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
+          type: string
+        description:
+          example: Wal-mart food storage
+          nullable: true
+          type: string
+        match_description:
+          example: Wal-mart
+          nullable: true
+          type: string
+      type: object
+    TransactionRuleUpdateRequestBody:
+      properties:
+        transaction_rule:
+          "$ref": "#/components/schemas/TransactionRuleUpdateRequest"
+      type: object
+    TransactionRulesResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+        transaction_rules:
+          items:
+            "$ref": "#/components/schemas/TransactionRuleResponse"
+          type: array
+      type: object
+    TransactionUpdateRequest:
+      properties:
+        description:
+          example: new description
+          type: string
+      required:
+      - description
+      type: object
+    TransactionUpdateRequestBody:
+      properties:
+        transaction:
+          "$ref": "#/components/schemas/TransactionUpdateRequest"
+      type: object
+    TransactionsResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+        transactions:
+          items:
+            "$ref": "#/components/schemas/TransactionResponse"
+          type: array
+      type: object
+    UserCreateRequest:
       properties:
         email:
           example: email@provider.com
-          type: string
-        guid:
-          example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
           type: string
         id:
           example: My-Unique-ID
@@ -754,17 +1981,135 @@ components:
           example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
           type: string
       type: object
-    Widget:
+    UserCreateRequestBody:
+      properties:
+        user:
+          "$ref": "#/components/schemas/UserCreateRequest"
+      type: object
+    UserResponse:
+      properties:
+        email:
+          example: email@provider.com
+          nullable: true
+          type: string
+        guid:
+          example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
+          type: string
+        id:
+          example: My-Unique-ID
+          nullable: true
+          type: string
+        is_disabled:
+          example: false
+          nullable: true
+          type: boolean
+        metadata:
+          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+          nullable: true
+          type: string
+      type: object
+    UserResponseBody:
+      properties:
+        user:
+          "$ref": "#/components/schemas/UserResponse"
+      type: object
+    UserUpdateRequest:
+      properties:
+        email:
+          example: email@provider.com
+          type: string
+        id:
+          example: My-Unique-ID
+          type: string
+        is_disabled:
+          example: false
+          type: boolean
+        metadata:
+          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+          type: string
+      type: object
+    UserUpdateRequestBody:
+      properties:
+        user:
+          "$ref": "#/components/schemas/UserUpdateRequest"
+      type: object
+    UsersResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+        users:
+          items:
+            "$ref": "#/components/schemas/UserResponse"
+          type: array
+      type: object
+    WidgetRequest:
+      properties:
+        color_scheme:
+          example: light
+          type: string
+        current_institution_code:
+          example: chase
+          type: string
+        current_institution_guid:
+          example: INS-f1a3285d-e855-b61f-6aa7-8ae575c0e0e9
+          type: string
+        current_member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        disable_institution_search:
+          example: false
+          type: boolean
+        include_transactions:
+          example: true
+          type: boolean
+        is_mobile_webview:
+          example: true
+          type: boolean
+        mode:
+          example: aggregation
+          type: string
+        ui_message_version:
+          example: 4
+          type: integer
+        ui_message_webview_url_scheme:
+          example: mx
+          type: string
+        update_credentials:
+          example: false
+          type: boolean
+        wait_for_full_aggregation:
+          example: false
+          type: boolean
+        widget_type:
+          example: connect_widget
+          type: string
+      required:
+      - widget_type
+      type: object
+    WidgetRequestBody:
+      properties:
+        widget_url:
+          "$ref": "#/components/schemas/WidgetRequest"
+      type: object
+    WidgetResponse:
       properties:
         type:
           example: connect_widget
+          nullable: true
           type: string
         url:
           example: https://int-widgets.moneydesktop.com/md/connect/yxcdk7f1nb99jwApp34lA24m0AZ8rzprgmw17gm8z8h2AzjyAnd1rj42qfv42r3xnn07Amfwlg3j09hwp8bkq8tc5z21j33xjggmp2qtlpkz2v4gywfhfn31l44tx2w91bfc2thc58j4syqp0hgxcyvA4g7754hk7gjc56kt7tc36s45mmkdz2jqqqydspytmtr3dAb9jh6fkb24f3zkfpdjj0v77f0vmrtzvzxkmxz7dklsq8gd0gstkbhlw5bgpgc3m9mAtpAcr2w15gwy5xc4blgxppl42Avnm63291z3cyp0wm3lqgmvgzdAddct423gAdqxdlfx5d4mvc0ck2gt7ktqgks4vxq1pAy5
+          nullable: true
           type: string
         user_id:
           example: U-jeff-201709221210
+          nullable: true
           type: string
+      type: object
+    WidgetResponseBody:
+      properties:
+        widget_url:
+          "$ref": "#/components/schemas/WidgetResponse"
       type: object
   securitySchemes:
     basicAuth:
@@ -781,11 +2126,72 @@ info:
   version: 0.1.0
 openapi: 3.0.0
 paths:
+  "/categories/default":
+    get:
+      description: Use this endpoint to retrieve a list of all the default categories
+        and subcategories offered within the MX Platform API. In other words, each
+        item in the returned list will have its `is_default` field set to `true`.
+        There are currently 119 default categories and subcategories. Both the _list
+        default categories_ and _list default categories by user_ endpoints return
+        the same results. The different routes are provided for convenience.
+      operationId: listDefaultCategories
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/CategoriesResponseBody"
+          description: OK
+      summary: List default categories
+      tags:
+      - mx_platform
+  "/categories/{category_guid}":
+    get:
+      description: Use this endpoint to read the attributes of a default category.
+      operationId: readDefaultCategory
+      parameters:
+      - description: The unique id for a `category`.
+        example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
+        in: path
+        name: category_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/CategoryResponseBody"
+          description: OK
+      summary: Read a default category
+      tags:
+      - mx_platform
   "/institutions":
     get:
       description: This endpoint returns a list of institutions based on the specified
         search term or parameter.
-      operationId: ListInstitutions
+      operationId: listInstitutions
       parameters:
       - description: This will list only institutions in which the appended string
           appears.
@@ -794,6 +2200,18 @@ paths:
         name: name
         schema:
           type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
       - description: Filter only institutions which support account identification.
         example: true
         in: query
@@ -823,24 +2241,17 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  institutions:
-                    items:
-                      "$ref": "#/components/schemas/Institution"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/InstitutionsResponseBody"
           description: OK
       summary: List institutions
       tags:
-      - Institution
+      - mx_platform
   "/institutions/favorites":
     get:
       description: This endpoint returns a paginated list containing institutions
         that have been set as the partner’s favorites, sorted by popularity. Please
         contact MX to set a list of favorites.
-      operationId: ListFavorites
+      operationId: listFavoriteInstitutions
       parameters:
       - description: Specify current page.
         example: 1
@@ -859,23 +2270,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  institutions:
-                    items:
-                      "$ref": "#/components/schemas/Institution"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/InstitutionsResponseBody"
           description: OK
-      summary: List favorites
+      summary: List favorite institutions
       tags:
-      - Institution
+      - mx_platform
   "/institutions/{institution_code}":
     get:
       description: This endpoint returns information about the institution specified
         by `institution_code`.
-      operationId: ReadInstitution
+      operationId: readInstitution
       parameters:
       - description: The institution_code of the institution.
         example: chase
@@ -889,19 +2293,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  institution:
-                    "$ref": "#/components/schemas/Institution"
-                type: object
+                "$ref": "#/components/schemas/InstitutionResponseBody"
           description: OK
       summary: Read institution
       tags:
-      - Institution
+      - mx_platform
   "/institutions/{institution_code}/credentials":
     get:
       description: Use this endpoint to see which credentials will be needed to create
         a member for a specific institution.
-      operationId: ListInstitutionRequiredCredentials
+      operationId: listInstitutionCredentials
       parameters:
       - description: The institution_code of the institution.
         example: chase
@@ -927,23 +2328,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  credentials:
-                    items:
-                      "$ref": "#/components/schemas/Credential"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/CredentialsResponseBody"
           description: OK
-      summary: List institution-required credentials
+      summary: List institution credentials
       tags:
-      - Credential
-  "/merchants":
+      - mx_platform
+  "/managed_institutions":
     get:
-      description: This endpoint returns a paginated list of all the merchants in
-        the MX system.
-      operationId: ListMerchants
+      description: This endpoint returns a list of institutions which can be used
+        to create partner-managed members.
+      operationId: listManagedInstitutions
       parameters:
       - description: Specify current page.
         example: 1
@@ -962,23 +2356,66 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  merchants:
-                    items:
-                      "$ref": "#/components/schemas/Merchant"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/InstitutionsResponseBody"
+          description: OK
+      summary: List managed institutions
+      tags:
+      - mx_platform
+  "/merchant_locations/{merchant_location_guid}":
+    get:
+      description: This endpoint returns the specified merchant_location resource.
+      operationId: readMerchantLocation
+      parameters:
+      - description: The unique id for a `merchant_location`.
+        example: MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621
+        in: path
+        name: merchant_location_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MerchantLocationResponseBody"
+          description: OK
+      summary: Read merchant location
+      tags:
+      - mx_platform
+  "/merchants":
+    get:
+      description: This endpoint returns a paginated list of all the merchants in
+        the MX system.
+      operationId: listMerchants
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MerchantsResponseBody"
           description: OK
       summary: List merchants
       tags:
-      - Merchant
+      - mx_platform
   "/merchants/{merchant_guid}":
     get:
       description: Returns information about a particular merchant, such as a logo,
         name, and website.
-      operationId: ReadMerchant
+      operationId: readMerchant
       parameters:
       - description: The unique id for a `merchant`.
         example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
@@ -992,48 +2429,21 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  merchant:
-                    "$ref": "#/components/schemas/Merchant"
-                type: object
+                "$ref": "#/components/schemas/MerchantResponseBody"
           description: OK
       summary: Read merchant
       tags:
-      - Merchant
+      - mx_platform
   "/transactions/enhance":
     post:
       description: Use this endpoint to categorize, cleanse, and classify transactions.
         These transactions are not persisted or stored on the MX platform.
-      operationId: EnhanceTransactions
+      operationId: enhanceTransactions
       requestBody:
         content:
           application/json:
             schema:
-              properties:
-                transactions:
-                  items:
-                    properties:
-                      amount:
-                        example: 21.33
-                        type: number
-                      description:
-                        example: IN-N-OUT BURGER
-                        type: string
-                      id:
-                        example: ID-123
-                        type: string
-                      merchant_category_code:
-                        example: 123
-                        type: integer
-                      type:
-                        example: DEBIT
-                        type: string
-                    required:
-                    - description
-                    - id
-                    type: object
-                  type: array
-              type: object
+              "$ref": "#/components/schemas/EnhanceTransactionsRequestBody"
         description: Transaction object to be enhanced
         required: true
       responses:
@@ -1041,21 +2451,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  transactions:
-                    items:
-                      "$ref": "#/components/schemas/EnhancedTransaction"
-                    type: array
-                type: object
+                "$ref": "#/components/schemas/EnhanceTransactionsResponseBody"
           description: OK
       summary: Enhance transactions
       tags:
-      - EnhancedTransaction
+      - mx_platform
   "/users":
     get:
       description: Use this endpoint to list every user you've created in the MX Platform
         API.
-      operationId: ListUsers
+      operationId: listUsers
       parameters:
       - description: Specify current page.
         example: 1
@@ -1074,18 +2479,11 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  users:
-                    items:
-                      "$ref": "#/components/schemas/User"
-                    type: array
-                type: object
+                "$ref": "#/components/schemas/UsersResponseBody"
           description: OK
       summary: List users
       tags:
-      - User
+      - mx_platform
     post:
       description: Call this endpoint to create a new user. The MX Platform API will
         respond with the newly-created user object if successful. This endpoint accepts
@@ -1094,28 +2492,12 @@ paths:
         background by MX. It will also restrict access to that users data until they
         are no longer disabled. Users who are disabled for the entirety of an MX Platform
         API billing period will not be factored into that months bill.
-      operationId: CreateUser
+      operationId: createUser
       requestBody:
         content:
           application/json:
             schema:
-              properties:
-                user:
-                  properties:
-                    email:
-                      example: email@provider.com
-                      type: string
-                    id:
-                      example: My-Unique-ID
-                      type: string
-                    is_disabled:
-                      example: false
-                      type: boolean
-                    metadata:
-                      example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
-                      type: string
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/UserCreateRequestBody"
         description: User object to be created. (None of these parameters are required,
           but the user object cannot be empty)
         required: true
@@ -1124,19 +2506,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  user:
-                    "$ref": "#/components/schemas/User"
-                type: object
+                "$ref": "#/components/schemas/UserResponseBody"
           description: OK
       summary: Create user
       tags:
-      - User
+      - mx_platform
   "/users/{user_guid}":
     delete:
       description: Use this endpoint to delete the specified `user`. The response
         will have a status of `204 No Content` without an object.
-      operationId: DeleteUser
+      operationId: deleteUser
       parameters:
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -1147,16 +2526,13 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete user
       tags:
-      - User
+      - mx_platform
     get:
       description: Use this endpoint to read the attributes of a specific user.
-      operationId: ReadUser
+      operationId: readUser
       parameters:
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -1170,14 +2546,11 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  user:
-                    "$ref": "#/components/schemas/User"
-                type: object
+                "$ref": "#/components/schemas/UserResponseBody"
           description: OK
       summary: Read user
       tags:
-      - User
+      - mx_platform
     put:
       description: Use this endpoint to update the attributes of a specific user.
         The MX Platform API will respond with the updated user object. Disabling a
@@ -1187,7 +2560,7 @@ paths:
         MX Platform API billing period will not be factored into that months bill.
         To disable a user, update it and set the is_disabled parameter to true. Set
         it to false to re-enable the user.
-      operationId: UpdateUser
+      operationId: updateUser
       parameters:
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -1200,23 +2573,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                user:
-                  properties:
-                    email:
-                      example: email@provider.com
-                      type: string
-                    id:
-                      example: My-Unique-ID
-                      type: string
-                    is_disabled:
-                      example: false
-                      type: boolean
-                    metadata:
-                      example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
-                      type: string
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/UserUpdateRequestBody"
         description: User object to be updated (None of these parameters are required,
           but the user object cannot be empty.)
         required: true
@@ -1225,19 +2582,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  user:
-                    "$ref": "#/components/schemas/User"
-                type: object
+                "$ref": "#/components/schemas/UserResponseBody"
           description: OK
       summary: Update user
       tags:
-      - User
+      - mx_platform
   "/users/{user_guid}/accounts":
     get:
       description: This endpoint returns a list of all the accounts associated with
         the specified `user`.
-      operationId: ListUserAccounts
+      operationId: listUserAccounts
       parameters:
       - description: Specify current page.
         example: 1
@@ -1263,22 +2617,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  accounts:
-                    items:
-                      "$ref": "#/components/schemas/Account"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/AccountsResponseBody"
           description: OK
       summary: List accounts
       tags:
-      - Account
+      - mx_platform
   "/users/{user_guid}/accounts/{account_guid}":
     get:
       description: This endpoint returns the specified `account` resource.
-      operationId: ReadAccount
+      operationId: readAccount
       parameters:
       - description: The unique id for an `account`.
         example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
@@ -1299,19 +2646,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  account:
-                    "$ref": "#/components/schemas/Account"
-                type: object
+                "$ref": "#/components/schemas/AccountResponseBody"
           description: OK
       summary: Read account
       tags:
-      - Account
+      - mx_platform
   "/users/{user_guid}/accounts/{account_guid}/account_numbers":
     get:
       description: This endpoint returns a list of account numbers associated with
         the specified `account`.
-      operationId: ListAccountNumbersByAccount
+      operationId: listAccountNumbersByAccount
       parameters:
       - description: The unique id for an `account`.
         example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
@@ -1344,23 +2688,70 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  account_numbers:
-                    items:
-                      "$ref": "#/components/schemas/AccountNumber"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/AccountNumbersResponseBody"
           description: OK
       summary: List account numbers by account
       tags:
-      - AccountNumber
+      - mx_platform
+  "/users/{user_guid}/accounts/{account_guid}/holdings":
+    get:
+      description: This endpoint returns all holdings associated with the specified
+        `account`.
+      operationId: listHoldingsByAccount
+      parameters:
+      - description: The unique id for the `account`.
+        example: ACT-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      - description: Filter holdings from this date.
+        example: '2015-09-20'
+        in: query
+        name: from_date
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: Filter holdings to this date.
+        example: '2019-10-20'
+        in: query
+        name: to_date
+        schema:
+          type: string
+      - description: The unique id for the `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/HoldingsResponseBody"
+          description: OK
+      summary: List holdings by account
+      tags:
+      - mx_platform
   "/users/{user_guid}/accounts/{account_guid}/transactions":
     get:
       description: This endpoint returns a list of the last 90 days of transactions
         associated with the specified account.
-      operationId: ListTransactionsByAccount
+      operationId: listTransactionsByAccount
       parameters:
       - description: Filter transactions from this date.
         example: '2015-09-20'
@@ -1405,23 +2796,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  transactions:
-                    items:
-                      "$ref": "#/components/schemas/Transaction"
-                    type: array
-                type: object
+                "$ref": "#/components/schemas/TransactionsResponseBody"
           description: OK
       summary: List transactions by account
       tags:
-      - Transaction
+      - mx_platform
   "/users/{user_guid}/categories":
     get:
       description: Use this endpoint to list all categories associated with a `user`,
         including both default and custom categories.
-      operationId: ListCategories
+      operationId: listCategories
       parameters:
       - description: Specify current page.
         example: 1
@@ -1447,22 +2831,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  categories:
-                    items:
-                      "$ref": "#/components/schemas/Category"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/CategoriesResponseBody"
           description: OK
       summary: List categories
       tags:
-      - Category
+      - mx_platform
     post:
       description: Use this endpoint to create a new custom category for a specific
         `user`.
-      operationId: CreateCategory
+      operationId: createCategory
       parameters:
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -1475,22 +2852,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                category:
-                  properties:
-                    metadata:
-                      example: some metadata
-                      type: string
-                    name:
-                      example: Online Shopping
-                      type: string
-                    parent_guid:
-                      example: CAT-aad51b46-d6f7-3da5-fd6e-492328b3023f
-                      type: string
-                  required:
-                  - name
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/CategoryCreateRequestBody"
         description: Custom category object to be created
         required: true
       responses:
@@ -1498,19 +2860,33 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  category:
-                    "$ref": "#/components/schemas/Category"
-                type: object
+                "$ref": "#/components/schemas/CategoryResponseBody"
           description: OK
       summary: Create category
       tags:
-      - Category
+      - mx_platform
   "/users/{user_guid}/categories/default":
     get:
-      description: Use this endpoint to read the attributes of a specific user.
-      operationId: ListDefaultCategories
+      description: Use this endpoint to retrieve a list of all the default categories
+        and subcategories, scoped by user, offered within the MX Platform API. In
+        other words, each item in the returned list will have its `is_default` field
+        set to `true`. There are currently 119 default categories and subcategories.
+        Both the _list default categories_ and _list default categories by user_ endpoints
+        return the same results. The different routes are provided for convenience.
+      operationId: listDefaultCategoriesByUser
       parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
         in: path
@@ -1523,24 +2899,17 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  categories:
-                    items:
-                      "$ref": "#/components/schemas/Category"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/CategoriesResponseBody"
           description: OK
-      summary: List default categories
+      summary: List default categories by user
       tags:
-      - Category
+      - mx_platform
   "/users/{user_guid}/categories/{category_guid}":
     delete:
       description: Use this endpoint to delete a specific custom category according
         to its unique GUID. The API will respond with an empty object and a status
         of `204 No Content`.
-      operationId: DeleteCategory
+      operationId: deleteCategory
       parameters:
       - description: The unique id for a `category`.
         example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
@@ -1558,17 +2927,14 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete category
       tags:
-      - Category
+      - mx_platform
     get:
       description: Use this endpoint to read the attributes of either a default category
         or a custom category.
-      operationId: ReadCategory
+      operationId: readCategory
       parameters:
       - description: The unique id for a `category`.
         example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
@@ -1589,18 +2955,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  category:
-                    "$ref": "#/components/schemas/Category"
-                type: object
+                "$ref": "#/components/schemas/CategoryResponseBody"
           description: OK
-      summary: Read category
+      summary: Read a custom category
       tags:
-      - Category
+      - mx_platform
     put:
       description: Use this endpoint to update the attributes of a custom category
         according to its unique GUID.
-      operationId: UpdateCategory
+      operationId: updateCategory
       parameters:
       - description: The unique id for a `category`.
         example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
@@ -1620,17 +2983,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                category:
-                  properties:
-                    metadata:
-                      example: some metadata
-                      type: string
-                    name:
-                      example: Web shopping
-                      type: string
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/CategoryUpdateRequestBody"
         description: Category object to be updated (While no single parameter is required,
           the `category` object cannot be empty)
         required: true
@@ -1639,19 +2992,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  category:
-                    "$ref": "#/components/schemas/Category"
-                type: object
+                "$ref": "#/components/schemas/CategoryResponseBody"
           description: OK
       summary: Update category
       tags:
-      - Category
+      - mx_platform
   "/users/{user_guid}/connect_widget_url":
     post:
       description: This endpoint will return a URL for an embeddable version of MX
         Connect.
-      operationId: RequestConnectWidgetURL
+      operationId: requestConnectWidgetURL
       parameters:
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -1664,44 +3014,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                config:
-                  properties:
-                    color_scheme:
-                      example: light
-                      type: string
-                    current_institution_code:
-                      example: chase
-                      type: string
-                    current_member_guid:
-                      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-                      type: string
-                    disable_institution_search:
-                      example: false
-                      type: boolean
-                    include_transactions:
-                      example: true
-                      type: boolean
-                    is_mobile_webview:
-                      example: true
-                      type: boolean
-                    mode:
-                      example: aggregation
-                      type: string
-                    ui_message_version:
-                      example: 4
-                      type: integer
-                    ui_message_webview_url_scheme:
-                      example: mx
-                      type: string
-                    update_credentials:
-                      example: false
-                      type: boolean
-                    wait_for_full_aggregation:
-                      example: false
-                      type: boolean
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/ConnectWidgetRequestBody"
         description: Optional config options for WebView (is_mobile_webview, current_institution_code,
           current_member_guid, update_credentials)
       responses:
@@ -1709,19 +3022,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  user:
-                    "$ref": "#/components/schemas/ConnectWidget"
-                type: object
+                "$ref": "#/components/schemas/ConnectWidgetResponseBody"
           description: OK
-      summary: Request connect widget URL
+      summary: Request connect widget url
       tags:
-      - ConnectWidget
+      - mx_platform
   "/users/{user_guid}/holdings":
     get:
       description: This endpoint returns all holdings associated with the specified
         `user` across all accounts and members.
-      operationId: ListHoldingsByUser
+      operationId: listHoldings
       parameters:
       - description: Filter holdings from this date.
         example: '2015-09-20'
@@ -1759,22 +3069,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  holdings:
-                    items:
-                      "$ref": "#/components/schemas/Holding"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/HoldingsResponseBody"
           description: OK
-      summary: List holdings by user
+      summary: List holdings
       tags:
-      - Holding
+      - mx_platform
   "/users/{user_guid}/holdings/{holding_guid}":
     get:
       description: Use this endpoint to read the attributes of a specific `holding`.
-      operationId: ReadHolding
+      operationId: readHolding
       parameters:
       - description: The unique id for a `holding`.
         example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
@@ -1795,19 +3098,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  holding:
-                    "$ref": "#/components/schemas/Holding"
-                type: object
+                "$ref": "#/components/schemas/HoldingResponseBody"
           description: OK
       summary: Read holding
       tags:
-      - Holding
-  "/users/{user_guid}/members":
+      - mx_platform
+  "/users/{user_guid}/managed_members":
     get:
-      description: This endpoint returns an array which contains information on every
-        member associated with a specific user.
-      operationId: ListMembers
+      description: This endpoint returns a list of all the partner-managed members
+        associated with the specified `user`.
+      operationId: listManagedMembers
       parameters:
       - description: Specify current page.
         example: 1
@@ -1833,29 +3133,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  members:
-                    items:
-                      "$ref": "#/components/schemas/Member"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/MembersResponseBody"
           description: OK
-      summary: List members
+      summary: List managed members
       tags:
-      - Member
+      - mx_platform
     post:
-      description: This endpoint allows you to create a new member. Members are created
-        with the required parameters credentials and institution_code, and the optional
-        parameters id and metadata. When creating a member, youll need to include
-        the correct type of credential required by the financial institution and provided
-        by the user. You can find out which credential type is required with the `/institutions/{institution_code}/credentials`
-        endpoint. If successful, the MX Platform API will respond with the newly-created
-        member object. Once you successfully create a member, MX will immediately
-        validate the provided credentials and attempt to aggregate data for accounts
-        and transactions.
-      operationId: CreateMember
+      description: Use this endpoint to create a new partner-managed `member`.
+      operationId: createManagedMember
       parameters:
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -1868,69 +3153,24 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                member:
-                  properties:
-                    background_aggregation_is_disabled:
-                      example: false
-                      type: boolean
-                    credentials:
-                      items:
-                        properties:
-                          guid:
-                            example: CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f
-                            type: string
-                          value:
-                            example: password
-                            type: string
-                        type: object
-                      type: array
-                    id:
-                      example: unique_id
-                      type: string
-                    institution_code:
-                      example: chase
-                      type: string
-                    is_oauth:
-                      example: false
-                      type: boolean
-                    metadata:
-                      example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
-                      type: string
-                    skip_aggregation:
-                      example: false
-                      type: boolean
-                  required:
-                  - credentials
-                  - institution_code
-                  type: object
-                referral_source:
-                  example: APP
-                  type: string
-                ui_message_webview_url_scheme:
-                  example: mx
-                  type: string
-              type: object
-        description: Member object to be created with optional parameters (id and
-          metadata) and required parameters (credentials and institution_code)
+              "$ref": "#/components/schemas/ManagedMemberCreateRequestBody"
+        description: Managed member to be created.
         required: true
       responses:
         '202':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
-                type: object
-          description: Accepted
-      summary: Create member
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: OK
+      summary: Create managed member
       tags:
-      - Member
-  "/users/{user_guid}/members/{member_guid}":
+      - mx_platform
+  "/users/{user_guid}/managed_members/{member_guid}":
     delete:
-      description: Accessing this endpoint will permanently delete a member.
-      operationId: DeleteMember
+      description: Use this endpoint to delete the specified partner-managed `member`.
+        The endpoint will respond with a status of `204 No Content` without a resource.
+      operationId: deleteManagedMember
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -1948,16 +3188,14 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
-      summary: Delete member
+      summary: Delete managed member
       tags:
-      - Member
+      - mx_platform
     get:
-      description: Use this endpoint to read the attributes of a specific member.
-      operationId: ReadMember
+      description: This endpoint returns the attributes of the specified partner-managed
+        `member`.
+      operationId: readManagedMember
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -1978,19 +3216,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
-                type: object
+                "$ref": "#/components/schemas/MemberResponseBody"
           description: OK
-      summary: Read member
+      summary: Read managed member
       tags:
-      - Member
+      - mx_platform
     put:
-      description: Use this endpoint to update a members attributes. Only the credentials,
-        id, and metadata parameters can be updated. To get a list of the required
-        credentials for the member, use the list member credentials endpoint.
-      operationId: UpdateMember
+      description: Use this endpoint to update the attributes of the specified partner_managed
+        `member`.
+      operationId: updateManagedMember
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2010,34 +3244,551 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                member:
-                  properties:
-                    background_aggregation_is_disabled:
-                      example: false
-                      type: boolean
-                    credentials:
-                      items:
-                        properties:
-                          guid:
-                            example: CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f
-                            type: string
-                          value:
-                            example: password
-                            type: string
-                        type: object
-                      type: array
-                    id:
-                      example: unique_id
-                      type: string
-                    metadata:
-                      example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
-                      type: string
-                    skip_aggregation:
-                      example: false
-                      type: boolean
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/ManagedMemberUpdateRequestBody"
+        description: Managed member object to be updated (While no single parameter
+          is required, the request body can't be empty)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: OK
+      summary: Update managed member
+      tags:
+      - mx_platform
+  "/users/{user_guid}/managed_members/{member_guid}/accounts":
+    get:
+      description: Use this endpoint to retrieve a list of all the partner-managed
+        accounts associated with the given partner-manage member.
+      operationId: listManagedAccounts
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountsResponseBody"
+          description: OK
+      summary: List managed accounts
+      tags:
+      - mx_platform
+    post:
+      description: Use this endpoint to create a partner-managed account.
+      operationId: createManagedAccount
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ManagedAccountCreateRequestBody"
+        description: Managed account to be created.
+        required: true
+      responses:
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountResponseBody"
+          description: OK
+      summary: Create managed account
+      tags:
+      - mx_platform
+  "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}":
+    delete:
+      description: Use this endpoint to delete a partner-managed account according
+        to its unique GUID. If successful, the API will respond with a status of `204
+        No Content`.
+      operationId: deleteManagedAccount
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+      summary: Delete managed account
+      tags:
+      - mx_platform
+    get:
+      description: Use this endpoint to read the attributes of a partner-managed account
+        according to its unique guid.
+      operationId: readManagedAccount
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountResponseBody"
+          description: OK
+      summary: Read managed account
+      tags:
+      - mx_platform
+    put:
+      description: Use this endpoint to update the attributes of a partner-managed
+        account according to its unique GUID.
+      operationId: updateManagedAccount
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ManagedAccountUpdateRequestBody"
+        description: Managed account object to be updated (While no single parameter
+          is required, the request body can't be empty)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountResponseBody"
+          description: OK
+      summary: Update managed account
+      tags:
+      - mx_platform
+  "/users/{user_guid}/managed_members/{member_guid}/transactions":
+    get:
+      description: This endpoint returns a list of all the partner-managed transactions
+        associated with the specified `account`, scoped through a `user` and a `member`.
+      operationId: listManagedTransactions
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TransactionsResponseBody"
+          description: OK
+      summary: List managed transactions
+      tags:
+      - mx_platform
+    post:
+      description: Use this endpoint to create a new partner-managed `transaction`.
+      operationId: createManagedTransaction
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ManagedTransactionCreateRequestBody"
+        description: Managed transaction to be created.
+        required: true
+      responses:
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TransactionResponseBody"
+          description: OK
+      summary: Create managed transaction
+      tags:
+      - mx_platform
+  "/users/{user_guid}/managed_members/{member_guid}/transactions/{transaction_guid}":
+    delete:
+      description: Use this endpoint to delete the specified partner-managed `transaction`.
+        The endpoint will respond with a status of `204 No Content` without a resource.
+      operationId: deleteManagedTransaction
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `transaction`.
+        example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+        in: path
+        name: transaction_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+      summary: Delete managed transaction
+      tags:
+      - mx_platform
+    get:
+      description: Requests to this endpoint will return the attributes of the specified
+        partner-managed `transaction`.
+      operationId: readManagedTransaction
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `transaction`.
+        example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+        in: path
+        name: transaction_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TransactionResponseBody"
+          description: OK
+      summary: Read managed transaction
+      tags:
+      - mx_platform
+    put:
+      description: Use this endpoint to update the attributes of the specified partner_managed
+        `transaction`.
+      operationId: updateManagedTransaction
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `transaction`.
+        example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+        in: path
+        name: transaction_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ManagedTransactionUpdateRequestBody"
+        description: Managed transaction object to be updated (While no single parameter
+          is required, the request body can't be empty)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TransactionResponseBody"
+          description: OK
+      summary: Update managed transaction
+      tags:
+      - mx_platform
+  "/users/{user_guid}/members":
+    get:
+      description: This endpoint returns an array which contains information on every
+        member associated with a specific user.
+      operationId: listMembers
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MembersResponseBody"
+          description: OK
+      summary: List members
+      tags:
+      - mx_platform
+    post:
+      description: This endpoint allows you to create a new member. Members are created
+        with the required parameters credentials and institution_code, and the optional
+        parameters id and metadata. When creating a member, youll need to include
+        the correct type of credential required by the financial institution and provided
+        by the user. You can find out which credential type is required with the `/institutions/{institution_code}/credentials`
+        endpoint. If successful, the MX Platform API will respond with the newly-created
+        member object. Once you successfully create a member, MX will immediately
+        validate the provided credentials and attempt to aggregate data for accounts
+        and transactions.
+      operationId: createMember
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/MemberCreateRequestBody"
+        description: Member object to be created with optional parameters (id and
+          metadata) and required parameters (credentials and institution_code)
+        required: true
+      responses:
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: Accepted
+      summary: Create member
+      tags:
+      - mx_platform
+  "/users/{user_guid}/members/{member_guid}":
+    delete:
+      description: Accessing this endpoint will permanently delete a member.
+      operationId: deleteMember
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+      summary: Delete member
+      tags:
+      - mx_platform
+    get:
+      description: Use this endpoint to read the attributes of a specific member.
+      operationId: readMember
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: OK
+      summary: Read member
+      tags:
+      - mx_platform
+    put:
+      description: Use this endpoint to update a members attributes. Only the credentials,
+        id, and metadata parameters can be updated. To get a list of the required
+        credentials for the member, use the list member credentials endpoint.
+      operationId: updateMember
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/MemberUpdateRequestBody"
         description: Member object to be updated (While no single parameter is required,
           the request body can't be empty)
         required: true
@@ -2046,19 +3797,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
-                type: object
+                "$ref": "#/components/schemas/MemberResponseBody"
           description: OK
       summary: Update member
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/account_numbers":
     get:
       description: This endpoint returns a list of account numbers associated with
         the specified `member`.
-      operationId: ListAccountNumbersByMember
+      operationId: listAccountNumbersByMember
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2091,23 +3839,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  account_numbers:
-                    items:
-                      "$ref": "#/components/schemas/AccountNumber"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/AccountNumbersResponseBody"
           description: OK
       summary: List account numbers by member
       tags:
-      - AccountNumber
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/account_owners":
     get:
       description: This endpoint returns an array with information about every account
         associated with a particular member.
-      operationId: ListAccountOwners
+      operationId: listAccountOwnersByMember
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2140,23 +3881,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  account_owners:
-                    items:
-                      "$ref": "#/components/schemas/AccountOwner"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/AccountOwnersResponseBody"
           description: OK
-      summary: List account owners
+      summary: List account owners by member
       tags:
-      - AccountOwner
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}":
     put:
       description: This endpoint allows you to update certain attributes of an `account`
         resource.
-      operationId: UpdateAccount
+      operationId: updateAccountByMember
       parameters:
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -2183,14 +3917,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                account:
-                  properties:
-                    is_hidden:
-                      example: false
-                      type: boolean
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/AccountUpdateRequestBody"
         description: Account object to be created with optional parameters (is_hidden)
         required: true
       responses:
@@ -2198,21 +3925,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  account:
-                    "$ref": "#/components/schemas/Account"
-                type: object
+                "$ref": "#/components/schemas/AccountResponseBody"
           description: OK
-      summary: Update account
+      summary: Update account by member
       tags:
-      - Account
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/aggregate":
     post:
       description: Calling this endpoint initiates an aggregation event for the member.
         This brings in the latest account and transaction data from the connected
         institution. If this data has recently been updated, MX may not initiate an
         aggregation event.
-      operationId: AggregateMember
+      operationId: aggregateMember
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2233,14 +3957,11 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
-                type: object
+                "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
       summary: Aggregate member
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/challenges":
     get:
       description: Use this endpoint for information on what multi-factor authentication
@@ -2249,7 +3970,7 @@ paths:
         then code `204 No Content` will be returned. If the aggregation has been challenged,
         i.e., the member does have a connection status of `CHALLENGED`, then code
         `200 OK` will be returned - along with the corresponding credentials.
-      operationId: ListMemberChallenges
+      operationId: listMemberChallenges
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2282,24 +4003,17 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  challenges:
-                    items:
-                      "$ref": "#/components/schemas/Challenge"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/ChallengesResponseBody"
           description: OK
       summary: List member challenges
       tags:
-      - Challenge
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/check_balance":
     post:
       description: This endpoint operates much like the aggregate member endpoint
         except that it gathers only account balance information; it does not gather
         any transaction data.
-      operationId: CheckBalances
+      operationId: checkBalances
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2320,19 +4034,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
-                type: object
+                "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
       summary: Check balances
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/credentials":
     get:
       description: This endpoint returns an array which contains information on every
         non-MFA credential associated with a specific member.
-      operationId: ListMemberCredentials
+      operationId: listMemberCredentials
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2365,25 +4076,18 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  credentials:
-                    items:
-                      "$ref": "#/components/schemas/Credential"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/CredentialsResponseBody"
           description: OK
       summary: List member credentials
       tags:
-      - Credential
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/extend_history":
     post:
       description: Some institutions allow developers to access an extended transaction
         history with up to 24 months of data associated with a particular member.
         The process for fetching and then reading this extended transaction history
         is much like standard aggregation, and it may trigger multi-factor authentication.
-      operationId: ExtendHistory
+      operationId: extendHistory
       parameters:
       - description: The unique identifier for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2404,19 +4108,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
-                type: object
+                "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
       summary: Extend history
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/fetch_statements":
     post:
       description: Use this endpoint to fetch the statements associated with a particular
         member.
-      operationId: FetchStatementsByMember
+      operationId: fetchStatements
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2437,19 +4138,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
-                type: object
+                "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
-      summary: Fetch statements by member
+      summary: Fetch statements
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/holdings":
     get:
       description: This endpoint returns all holdings associated with the specified
         `member` across all accounts.
-      operationId: ListHoldingsByMember
+      operationId: listHoldingsByMember
       parameters:
       - description: Filter holdings from this date.
         example: '2015-09-20'
@@ -2494,23 +4192,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  holdings:
-                    items:
-                      "$ref": "#/components/schemas/Holding"
-                    type: array
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                type: object
+                "$ref": "#/components/schemas/HoldingsResponseBody"
           description: OK
       summary: List holdings by member
       tags:
-      - Holding
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/identify":
     post:
       description: The identify endpoint begins an identification process for an already-existing
         member.
-      operationId: IdentifyMember
+      operationId: identifyMember
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2531,19 +4222,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
-                type: object
+                "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
       summary: Identify member
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/oauth_window_uri":
     get:
       description: This endpoint will generate an `oauth_window_uri` for the specified
         `member`.
-      operationId: RequestOAuthWindow
+      operationId: requestOAuthWindowURI
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2573,24 +4261,29 @@ paths:
         name: ui_message_webview_url_scheme
         schema:
           type: string
+      - description: Setting this parameter to `true` will prevent the member from
+          automatically aggregating after being redirected from the authorization
+          page.
+        example: false
+        in: query
+        name: skip_aggregation
+        schema:
+          type: boolean
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/OAuthWindow"
-                type: object
+                "$ref": "#/components/schemas/OAuthWindowResponseBody"
           description: OK
-      summary: Read member
+      summary: Request oauth window uri
       tags:
-      - OAuthWindow
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/resume":
     put:
       description: This endpoint answers the challenges needed when a member has been
         challenged by multi-factor authentication.
-      operationId: ResumeAggregation
+      operationId: resumeAggregation
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2610,22 +4303,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                member:
-                  properties:
-                    challenges:
-                      items:
-                        properties:
-                          guid:
-                            example: CRD-2378634-33ub5bhk54kjb
-                            type: string
-                          value:
-                            example: user-entered-value
-                            type: string
-                        type: object
-                      type: array
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/MemberResumeRequestBody"
         description: Member object with MFA challenge answers
         required: true
       responses:
@@ -2633,18 +4311,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
-                type: object
+                "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
       summary: Resume aggregation
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/statements":
     get:
       description: Use this endpoint to get an array of available statements.
-      operationId: ListStatementsByMember
+      operationId: listStatementsByMember
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2677,22 +4352,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  statements:
-                    items:
-                      "$ref": "#/components/schemas/Statement"
-                    type: array
-                type: object
+                "$ref": "#/components/schemas/StatementsResponseBody"
           description: OK
       summary: List statements by member
       tags:
-      - Statement
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/statements/{statement_guid}":
     get:
       description: Use this endpoint to read a JSON representation of the statement.
-      operationId: ReadStatementByMember
+      operationId: readStatementByMember
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2720,18 +4388,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  statement:
-                    "$ref": "#/components/schemas/Statement"
-                type: object
+                "$ref": "#/components/schemas/StatementResponseBody"
           description: OK
       summary: Read statement by member
       tags:
-      - Statement
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/statements/{statement_guid}.pdf":
     get:
       description: Use this endpoint to download a specified statement PDF.
-      operationId: DownloadStatementPDF
+      operationId: downloadStatementPDF
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2762,9 +4427,9 @@ paths:
                 format: binary
                 type: string
           description: OK
-      summary: Download statement PDF
+      summary: Download statement pdf
       tags:
-      - Statement
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/status":
     get:
       description: This endpoint provides the status of the members most recent aggregation
@@ -2776,7 +4441,7 @@ paths:
         to replace and expand upon the information provided in the status field, which
         will soon be deprecated; support for the status field remains for the time
         being.
-      operationId: ReadMemberStatus
+      operationId: readMemberStatus
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2797,19 +4462,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/MemberStatus"
-                type: object
+                "$ref": "#/components/schemas/MemberStatusResponseBody"
           description: OK
       summary: Read member status
       tags:
-      - MemberStatus
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/transactions":
     get:
       description: Requests to this endpoint return a list of transactions associated
         with the specified `member`, accross all accounts associated with that `member`.
-      operationId: ListTransactionsByMember
+      operationId: listTransactionsByMember
       parameters:
       - description: Filter transactions from this date.
         example: '2015-09-20'
@@ -2854,22 +4516,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  transactions:
-                    items:
-                      "$ref": "#/components/schemas/Transaction"
-                    type: array
-                type: object
+                "$ref": "#/components/schemas/TransactionsResponseBody"
           description: OK
       summary: List transactions by member
       tags:
-      - Transaction
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/verify":
     post:
       description: The verify endpoint begins a verification process for a member.
-      operationId: VerifyMember
+      operationId: verifyMember
       parameters:
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
@@ -2890,19 +4545,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  member:
-                    "$ref": "#/components/schemas/Member"
-                type: object
+                "$ref": "#/components/schemas/MemberResponseBody"
           description: OK
       summary: Verify member
       tags:
-      - Member
+      - mx_platform
   "/users/{user_guid}/taggings":
     get:
       description: Use this endpoint to retrieve a list of all the taggings associated
         with a specific user.
-      operationId: ListTaggings
+      operationId: listTaggings
       parameters:
       - description: Specify current page.
         example: 1
@@ -2928,22 +4580,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  taggings:
-                    items:
-                      "$ref": "#/components/schemas/Tagging"
-                    type: array
-                type: object
+                "$ref": "#/components/schemas/TaggingsResponseBody"
           description: OK
       summary: List taggings
       tags:
-      - Tagging
+      - mx_platform
     post:
       description: Use this endpoint to create a new association between a tag and
         a particular transaction, according to their unique GUIDs.
-      operationId: CreateTagging
+      operationId: createTagging
       parameters:
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -2956,20 +4601,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                tagging:
-                  properties:
-                    tag_guid:
-                      example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
-                      type: string
-                    transaction_guid:
-                      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-                      type: string
-                  required:
-                  - tag_guid
-                  - transaction_guid
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/TaggingCreateRequestBody"
         description: Tagging object to be created with required parameters (tag_guid
           and transaction_guid)
         required: true
@@ -2978,20 +4610,17 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tagging:
-                    "$ref": "#/components/schemas/Tagging"
-                type: object
+                "$ref": "#/components/schemas/TaggingResponseBody"
           description: Accepted
       summary: Create tagging
       tags:
-      - Tagging
+      - mx_platform
   "/users/{user_guid}/taggings/{tagging_guid}":
     delete:
       description: Use this endpoint to delete a tagging according to its unique GUID.
         If successful, the API will respond with an empty body and a status of 204
         NO Content.
-      operationId: DeleteTagging
+      operationId: deleteTagging
       parameters:
       - description: The unique id for a `tagging`.
         example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
@@ -3009,17 +4638,14 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete tagging
       tags:
-      - Tagging
+      - mx_platform
     get:
       description: Use this endpoint to read the attributes of a `tagging` according
         to its unique GUID.
-      operationId: ReadTagging
+      operationId: readTagging
       parameters:
       - description: The unique id for a `tagging`.
         example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
@@ -3040,17 +4666,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tagging:
-                    "$ref": "#/components/schemas/Tagging"
-                type: object
+                "$ref": "#/components/schemas/TaggingResponseBody"
           description: OK
       summary: Read tagging
       tags:
-      - Tagging
+      - mx_platform
     put:
       description: Use this endpoint to update a tagging.
-      operationId: UpdateTagging
+      operationId: updateTagging
       parameters:
       - description: The unique id for a `tagging`.
         example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
@@ -3070,16 +4693,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                tagging:
-                  properties:
-                    tag_guid:
-                      example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
-                      type: string
-                  required:
-                  - tag_guid
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/TaggingUpdateRequestBody"
         description: Tagging object to be updated with required parameter (tag_guid)
         required: true
       responses:
@@ -3087,19 +4701,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tagging:
-                    "$ref": "#/components/schemas/Tagging"
-                type: object
+                "$ref": "#/components/schemas/TaggingResponseBody"
           description: OK
       summary: Update tagging
       tags:
-      - Tagging
+      - mx_platform
   "/users/{user_guid}/tags":
     get:
       description: Use this endpoint to list all tags associated with the specified
         `user`. Each user includes the `Business` tag by default.
-      operationId: ListTags
+      operationId: listTags
       parameters:
       - description: Specify current page.
         example: 1
@@ -3125,21 +4736,14 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  tags:
-                    items:
-                      "$ref": "#/components/schemas/Tag"
-                    type: array
-                type: object
+                "$ref": "#/components/schemas/TagsResponseBody"
           description: OK
       summary: List tags
       tags:
-      - Tag
+      - mx_platform
     post:
       description: Use this endpoint to create a new custom tag.
-      operationId: CreateTag
+      operationId: createTag
       parameters:
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -3152,16 +4756,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                tag:
-                  properties:
-                    name:
-                      example: MY TAG
-                      type: string
-                  required:
-                  - name
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/TagCreateRequestBody"
         description: Tag object to be created with required parameters (tag_guid)
         required: true
       responses:
@@ -3169,20 +4764,17 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tag:
-                    "$ref": "#/components/schemas/Tag"
-                type: object
+                "$ref": "#/components/schemas/TagResponseBody"
           description: OK
       summary: Create tag
       tags:
-      - Tag
+      - mx_platform
   "/users/{user_guid}/tags/{tag_guid}":
     delete:
       description: Use this endpoint to permanently delete a specific tag based on
         its unique GUID. If successful, the API will respond with status of `204 No
         Content`.
-      operationId: DeleteTag
+      operationId: deleteTag
       parameters:
       - description: The unique id for a `tag`.
         example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
@@ -3200,17 +4792,14 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete tag
       tags:
-      - Tag
+      - mx_platform
     get:
       description: Use this endpoint to read the attributes of a particular tag according
         to its unique GUID.
-      operationId: ReadTag
+      operationId: readTag
       parameters:
       - description: The unique id for a `tag`.
         example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
@@ -3231,18 +4820,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tag:
-                    "$ref": "#/components/schemas/Tag"
-                type: object
+                "$ref": "#/components/schemas/TagResponseBody"
           description: OK
       summary: Read tag
       tags:
-      - Tag
+      - mx_platform
     put:
       description: Use this endpoint to update the name of a specific tag according
         to its unique GUID.
-      operationId: UpdateTag
+      operationId: updateTag
       parameters:
       - description: The unique id for a `tag`.
         example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
@@ -3262,16 +4848,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                tag:
-                  properties:
-                    name:
-                      example: MY TAG
-                      type: string
-                  required:
-                  - name
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/TagUpdateRequestBody"
         description: Tag object to be updated with required parameter (tag_guid)
         required: true
       responses:
@@ -3279,27 +4856,48 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  tag:
-                    "$ref": "#/components/schemas/Tag"
-                type: object
+                "$ref": "#/components/schemas/TagResponseBody"
           description: OK
       summary: Update tag
       tags:
-      - Tag
+      - mx_platform
   "/users/{user_guid}/tags/{tag_guid}/transactions":
     get:
       description: Use this endpoint to get a list of all transactions associated
         with a particular tag according to the tag’s unique GUID. In other words,
         a list of all transactions that have been assigned to a particular tag using
         the create a tagging endpoint.
-      operationId: ListTransactionsByTag
+      operationId: listTransactionsByTag
       parameters:
+      - description: Filter transactions from this date.
+        example: '2015-09-20'
+        in: query
+        name: from_date
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
       - description: The unique id for a `tag`.
         example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
         in: path
         name: tag_guid
         required: true
+        schema:
+          type: string
+      - description: Filter transactions to this date.
+        example: '2019-10-20'
+        in: query
+        name: to_date
         schema:
           type: string
       - description: The unique id for a `user`.
@@ -3314,23 +4912,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  transactions:
-                    items:
-                      "$ref": "#/components/schemas/Transaction"
-                    type: array
-                type: object
+                "$ref": "#/components/schemas/TransactionsResponseBody"
           description: OK
       summary: List transactions by tag
       tags:
-      - Transaction
+      - mx_platform
   "/users/{user_guid}/transaction_rules":
     get:
       description: Use this endpoint to read the attributes of all existing transaction
         rules belonging to the user.
-      operationId: ListTransactionRulesByUser
+      operationId: listTransactionRules
       parameters:
       - description: Specify current page.
         example: 1
@@ -3356,22 +4947,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  transaction_rules:
-                    items:
-                      "$ref": "#/components/schemas/TransactionRule"
-                    type: array
-                type: object
+                "$ref": "#/components/schemas/TransactionRulesResponseBody"
           description: OK
-      summary: List transaction rules by user
+      summary: List transaction rules
       tags:
-      - TransactionRule
+      - mx_platform
     post:
       description: Use this endpoint to create a new transaction rule. The newly-created
         `transaction_rule` object will be returned if successful.
-      operationId: CreateTransactionRule
+      operationId: createTransactionRule
       parameters:
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -3384,23 +4968,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                transaction_rule:
-                  properties:
-                    category_guid:
-                      example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
-                      type: string
-                    description:
-                      example: Wal-mart food storage
-                      type: string
-                    match_description:
-                      example: Wal-mart
-                      type: string
-                  required:
-                  - category_guid
-                  - match_description
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/TransactionRuleCreateRequestBody"
         description: TransactionRule object to be created with optional parameters
           (description) and required parameters (category_guid and match_description)
         required: true
@@ -3409,19 +4977,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  transaction_rule:
-                    "$ref": "#/components/schemas/TransactionRule"
-                type: object
+                "$ref": "#/components/schemas/TransactionRuleResponseBody"
           description: OK
       summary: Create transaction rule
       tags:
-      - TransactionRule
+      - mx_platform
   "/users/{user_guid}/transaction_rules/{transaction_rule_guid}":
     delete:
       description: Use this endpoint to permanently delete a transaction rule based
         on its unique GUID.
-      operationId: DeleteTransactionRule
+      operationId: deleteTransactionRule
       parameters:
       - description: The unique id for a `transaction_rule`.
         example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
@@ -3439,17 +5004,14 @@ paths:
           type: string
       responses:
         '204':
-          content:
-            application/vnd.mx.api.v1+json:
-              example:
           description: No Content
       summary: Delete transaction rule
       tags:
-      - TransactionRule
+      - mx_platform
     get:
       description: Use this endpoint to read the attributes of an existing transaction
         rule based on the rule’s unique GUID.
-      operationId: ReadTransactionRule
+      operationId: readTransactionRule
       parameters:
       - description: The unique id for a `transaction_rule`.
         example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
@@ -3470,19 +5032,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  transaction_rule:
-                    "$ref": "#/components/schemas/TransactionRule"
-                type: object
+                "$ref": "#/components/schemas/TransactionRuleResponseBody"
           description: OK
       summary: Read transaction rule
       tags:
-      - TransactionRule
+      - mx_platform
     put:
       description: Use this endpoint to update the attributes of a specific transaction
         rule based on its unique GUID. The API will respond with the updated transaction_rule
         object. Any attributes not provided will be left unchanged.
-      operationId: UpdateTransactionRule
+      operationId: updateTransactionRule
       parameters:
       - description: The unique id for a `transaction_rule`.
         example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
@@ -3502,20 +5061,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                transaction_rule:
-                  properties:
-                    category_guid:
-                      example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
-                      type: string
-                    description:
-                      example: Wal-mart food storage
-                      type: string
-                    match_description:
-                      example: Wal-mart
-                      type: string
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/TransactionRuleUpdateRequestBody"
         description: TransactionRule object to be updated
         required: true
       responses:
@@ -3523,20 +5069,17 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  transaction_rule:
-                    "$ref": "#/components/schemas/TransactionRule"
-                type: object
+                "$ref": "#/components/schemas/TransactionRuleResponseBody"
           description: OK
       summary: Update transaction_rule
       tags:
-      - TransactionRule
+      - mx_platform
   "/users/{user_guid}/transactions":
     get:
       description: Requests to this endpoint return a list of transactions associated
         with the specified `user`, accross all members and accounts associated with
         that `user`.
-      operationId: ListTransactionsByUser
+      operationId: listTransactions
       parameters:
       - description: Filter transactions from this date.
         example: '2015-09-20'
@@ -3574,23 +5117,16 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  pagination:
-                    "$ref": "#/components/schemas/Pagination"
-                  transactions:
-                    items:
-                      "$ref": "#/components/schemas/Transaction"
-                    type: array
-                type: object
+                "$ref": "#/components/schemas/TransactionsResponseBody"
           description: OK
-      summary: List transactions by user
+      summary: List transactions
       tags:
-      - Transaction
+      - mx_platform
   "/users/{user_guid}/transactions/{transaction_guid}":
     get:
       description: Requests to this endpoint will return the attributes of the specified
         `transaction`.
-      operationId: ReadTransaction
+      operationId: readTransaction
       parameters:
       - description: The unique id for a `transaction`.
         example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
@@ -3611,18 +5147,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  transaction:
-                    "$ref": "#/components/schemas/Transaction"
-                type: object
+                "$ref": "#/components/schemas/TransactionResponseBody"
           description: OK
       summary: Read transaction
       tags:
-      - Transaction
+      - mx_platform
     put:
       description: Use this endpoint to update the `description` of a specific transaction
         according to its unique GUID.
-      operationId: UpdateTransaction
+      operationId: updateTransaction
       parameters:
       - description: The unique id for a `transaction`.
         example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
@@ -3642,16 +5175,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                transaction:
-                  properties:
-                    description:
-                      example: new description
-                      type: string
-                  required:
-                  - description
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/TransactionUpdateRequestBody"
         description: Transaction object to be updated with a new description
         required: true
       responses:
@@ -3659,14 +5183,11 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  transaction:
-                    "$ref": "#/components/schemas/Transaction"
-                type: object
+                "$ref": "#/components/schemas/TransactionResponseBody"
           description: OK
       summary: Update transaction
       tags:
-      - Transaction
+      - mx_platform
   "/users/{user_guid}/widget_urls":
     post:
       description: This endpoint allows partners to get a URL by passing the `widget_type`
@@ -3674,7 +5195,7 @@ paths:
         In the case of Connect, that means setting the `widget_type` to `connect_widget`.
         Partners may also pass an optional `Accept-Language` header as well as a number
         of configuration options. Note that this is a `POST` request.
-      operationId: RequestWidgetURL
+      operationId: requestWidgetURL
       parameters:
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -3693,52 +5214,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                widget_url:
-                  properties:
-                    color_scheme:
-                      example: light
-                      type: string
-                    current_institution_code:
-                      example: chase
-                      type: string
-                    current_institution_guid:
-                      example: INS-f1a3285d-e855-b61f-6aa7-8ae575c0e0e9
-                      type: string
-                    current_member_guid:
-                      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-                      type: string
-                    disable_institution_search:
-                      example: false
-                      type: boolean
-                    include_transactions:
-                      example: true
-                      type: boolean
-                    is_mobile_webview:
-                      example: true
-                      type: boolean
-                    mode:
-                      example: aggregation
-                      type: string
-                    ui_message_version:
-                      example: 4
-                      type: integer
-                    ui_message_webview_url_scheme:
-                      example: mx
-                      type: string
-                    update_credentials:
-                      example: false
-                      type: boolean
-                    wait_for_full_aggregation:
-                      example: false
-                      type: boolean
-                    widget_type:
-                      example: connect_widget
-                      type: string
-                  required:
-                  - widget_type
-                  type: object
-              type: object
+              "$ref": "#/components/schemas/WidgetRequestBody"
         description: The widget url configuration options.
         required: true
       responses:
@@ -3746,38 +5222,15 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                properties:
-                  widget_url:
-                    "$ref": "#/components/schemas/Widget"
-                type: object
+                "$ref": "#/components/schemas/WidgetResponseBody"
           description: OK
-      summary: Request a widget URL
+      summary: Request widget url
       tags:
-      - Widget
+      - mx_platform
 security:
 - basicAuth: []
 servers:
 - url: https://api.mx.com
 - url: https://int-api.mx.com
 tags:
-- name: Account
-- name: AccountNumber
-- name: AccountOwner
-- name: Category
-- name: Challenge
-- name: ConnectWidget
-- name: Credential
-- name: EnhancedTransaction
-- name: Holding
-- name: Institution
-- name: Member
-- name: MemberStatus
-- name: Merchant
-- name: OAuthWindow
-- name: Statement
-- name: Tag
-- name: Tagging
-- name: Transaction
-- name: TransactionRule
-- name: User
-- name: Widget
+- name: mx_platform
