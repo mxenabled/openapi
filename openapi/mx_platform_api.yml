@@ -5,6 +5,7 @@ components:
       properties:
         account_guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
           type: string
         account_number:
           example: '10001'
@@ -12,6 +13,7 @@ components:
           type: string
         guid:
           example: ACN-8899832e-e5b4-42cd-aa25-bbf1dc889a8f
+          nullable: true
           type: string
         institution_number:
           example: '123'
@@ -19,6 +21,7 @@ components:
           type: string
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
           type: string
         routing_number:
           example: '68899990000000'
@@ -30,6 +33,7 @@ components:
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
           type: string
       type: object
     AccountNumbersResponseBody:
@@ -45,6 +49,7 @@ components:
       properties:
         account_guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
           type: string
         address:
           example: 123 This Way
@@ -64,9 +69,11 @@ components:
           type: string
         guid:
           example: ACO-63dc7714-6fc0-4aa2-a069-c06cdccd1af9
+          nullable: true
           type: string
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
           type: string
         owner_name:
           example: Donnie Darko
@@ -86,6 +93,7 @@ components:
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
           type: string
       type: object
     AccountOwnersResponseBody:
@@ -153,6 +161,7 @@ components:
           type: integer
         guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
           type: string
         holdings_value:
           example: 1000.0
@@ -204,6 +213,7 @@ components:
           type: string
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
           type: string
         member_id:
           example: member123
@@ -279,6 +289,7 @@ components:
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
           type: string
         user_id:
           example: user123
@@ -346,6 +357,7 @@ components:
           type: string
         guid:
           example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
+          nullable: true
           type: string
         is_default:
           example: true
@@ -365,6 +377,7 @@ components:
           type: string
         parent_guid:
           example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
+          nullable: true
           type: string
         updated_at:
           example: '2015-05-13T18:01:23.000Z'
@@ -398,6 +411,7 @@ components:
           type: string
         guid:
           example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
+          nullable: true
           type: string
         image_data:
           example: Who is this guy?
@@ -478,6 +492,7 @@ components:
           type: string
         guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
           type: string
       type: object
     ConnectWidgetResponseBody:
@@ -492,7 +507,6 @@ components:
           type: string
         value:
           example: password
-          nullable: true
           type: string
       type: object
     CredentialResponse:
@@ -511,9 +525,11 @@ components:
           type: string
         guid:
           example: CRD-1ec152cd-e628-e81a-e852-d1e7104624da
+          nullable: true
           type: string
         label:
           example: Username
+          nullable: true
           type: string
       type: object
     CredentialsResponseBody:
@@ -605,6 +621,7 @@ components:
           type: integer
         merchant_guid:
           example: MCH-14f25b63-ef47-a38e-b2b6-d02b280b6e4e
+          nullable: true
           type: string
         merchant_location_guid:
           example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
@@ -663,7 +680,8 @@ components:
     HoldingResponse:
       properties:
         account_guid:
-          example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
           type: string
         cost_basis:
           example: 827.0
@@ -691,6 +709,7 @@ components:
           type: string
         guid:
           example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
+          nullable: true
           type: string
         holding_type:
           example: MONEY_MARKET
@@ -706,6 +725,7 @@ components:
           type: number
         member_guid:
           example: MBR-d65683e8-9eab-26bb-bcfd-ced159c9abe
+          nullable: true
           type: string
         metadata:
           example: metadata
@@ -729,6 +749,7 @@ components:
           type: string
         user_guid:
           example: USR-743e5d7f-1116-28fa-5de1-d3ba02e41d8d
+          nullable: true
           type: string
       type: object
     HoldingResponseBody:
@@ -1255,6 +1276,7 @@ components:
           type: string
         guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
           type: string
         id:
           example: unique_id
@@ -1294,6 +1316,7 @@ components:
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
           type: string
         user_id:
           example: user123
@@ -1333,6 +1356,7 @@ components:
           type: string
         guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
           type: string
         has_processed_accounts:
           example: true
@@ -1409,6 +1433,7 @@ components:
           type: string
         guid:
           example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          nullable: true
           type: string
         latitude:
           example: 39.5963005
@@ -1420,6 +1445,7 @@ components:
           type: number
         merchant_guid:
           example: MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621
+          nullable: true
           type: string
         phone_number:
           example: "(303) 689-0728"
@@ -1455,6 +1481,7 @@ components:
           type: string
         guid:
           example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          nullable: true
           type: string
         logo_url:
           example: https://s3.amazonaws.com/MD_Assets/merchant_logos/comcast.png
@@ -1491,6 +1518,7 @@ components:
       properties:
         guid:
           example: MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f
+          nullable: true
           type: string
         oauth_window_uri:
           example: int-widgets.moneydesktop.com/oauth/predirect_to/MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f/zgknnw5k7dmztn2njmwlgz574mZlnft6vdrv7kzn9ptj325th6c5p0w6c7j83Ap1bqg01mhsr1bqjgf2fry3ly9wff497c6fcczbyrfgj7s39cygw95Akl7vlpmcAy2kmvh1mlkytg7jA1z3vnw1w3zx2r1wt65s6f6r3ryqqrysl9qA1kr6cAj6vhr1zl325Azz6hx52j1ll3vwbvvbv5xzy7d6csplyw25brA7147vAfq29ArjjAj4qmc6r6h457hkcj2946m0kjp2xzpkz6hz55lsp3Avmdb8dsq4xzqmzzqk68s6bp5tj9jsskw4wvcb95vm4fwh9w8phgp67hfj2flrtwcy5bxbtk74?skip_aggregation=false
@@ -1532,6 +1560,7 @@ components:
       properties:
         account_guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
           type: string
         content_hash:
           example: ca53785b812d00ef821c3d94bfd6e5bbc0020504410589b7ea8552169f021981
@@ -1543,9 +1572,11 @@ components:
           type: string
         guid:
           example: STA-737a344b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
           type: string
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
           type: string
         updated_at:
           example: '2016-10-13T18:09:00+00:00'
@@ -1557,6 +1588,7 @@ components:
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
           type: string
       type: object
     StatementResponseBody:
@@ -1590,6 +1622,7 @@ components:
       properties:
         guid:
           example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
+          nullable: true
           type: string
         name:
           example: MY TAG
@@ -1597,6 +1630,7 @@ components:
           type: string
         user_guid:
           example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          nullable: true
           type: string
       type: object
     TagResponseBody:
@@ -1638,6 +1672,7 @@ components:
       properties:
         guid:
           example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
+          nullable: true
           type: string
         member_is_managed_by_user:
           example: false
@@ -1645,12 +1680,15 @@ components:
           type: boolean
         tag_guid:
           example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          nullable: true
           type: string
         transaction_guid:
           example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+          nullable: true
           type: string
         user_guid:
           example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          nullable: true
           type: string
       type: object
     TaggingResponseBody:
@@ -1693,6 +1731,7 @@ components:
       properties:
         account_guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
           type: string
         account_id:
           example: account123
@@ -1736,6 +1775,7 @@ components:
           type: string
         guid:
           example: TRN-265abee9-889b-af6a-c69b-25157db2bdd9
+          nullable: true
           type: string
         id:
           example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
@@ -1799,6 +1839,7 @@ components:
           type: number
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
           type: string
         member_is_managed_by_user:
           example: false
@@ -1814,9 +1855,11 @@ components:
           type: integer
         merchant_guid:
           example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          nullable: true
           type: string
         merchant_location_guid:
           example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          nullable: true
           type: string
         metadata:
           example: some metadata
@@ -1852,6 +1895,7 @@ components:
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
           type: string
         user_id:
           example: user123
@@ -1887,6 +1931,7 @@ components:
       properties:
         category_guid:
           example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
+          nullable: true
           type: string
         created_at:
           example: '2018-10-02T22:00:50+00:00'
@@ -1898,6 +1943,7 @@ components:
           type: string
         guid:
           example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
+          nullable: true
           type: string
         match_description:
           example: Wal-mart
@@ -1909,6 +1955,7 @@ components:
           type: string
         user_guid:
           example: USR-22fc3203-b3e6-8340-43db-8e50b2f56995
+          nullable: true
           type: string
       type: object
     TransactionRuleResponseBody:
@@ -1923,11 +1970,9 @@ components:
           type: string
         description:
           example: Wal-mart food storage
-          nullable: true
           type: string
         match_description:
           example: Wal-mart
-          nullable: true
           type: string
       type: object
     TransactionRuleUpdateRequestBody:
@@ -1994,6 +2039,7 @@ components:
           type: string
         guid:
           example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
+          nullable: true
           type: string
         id:
           example: My-Unique-ID
