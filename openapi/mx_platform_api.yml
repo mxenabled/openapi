@@ -2216,13 +2216,6 @@ paths:
         required: true
         schema:
           type: string
-      - description: The unique id for a `user`.
-        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
       responses:
         '200':
           content:
