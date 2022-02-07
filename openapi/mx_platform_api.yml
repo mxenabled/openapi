@@ -3056,6 +3056,7 @@ paths:
               "$ref": "#/components/schemas/ConnectWidgetRequestBody"
         description: Optional config options for WebView (is_mobile_webview, current_institution_code,
           current_member_guid, update_credentials)
+        required: true
       responses:
         '200':
           content:
