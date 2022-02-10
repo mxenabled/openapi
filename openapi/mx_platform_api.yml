@@ -2792,17 +2792,17 @@ paths:
         associated with the specified account.
       operationId: listTransactionsByAccount
       parameters:
-      - description: Filter transactions from this date.
-        example: '2015-09-20'
-        in: query
-        name: from_date
-        schema:
-          type: string
       - description: The unique id for an `account`.
         example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
         in: path
         name: account_guid
         required: true
+        schema:
+          type: string
+      - description: Filter transactions from this date.
+        example: '2015-09-20'
+        in: query
+        name: from_date
         schema:
           type: string
       - description: Specify current page.
@@ -3304,6 +3304,13 @@ paths:
         accounts associated with the given partner-manage member.
       operationId: listManagedAccounts
       parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
       - description: Specify current page.
         example: 1
         in: query
@@ -3323,13 +3330,6 @@ paths:
         required: true
         schema:
           type: string
-      - description: The unique id for a `member`.
-        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-        in: path
-        name: member_guid
-        required: true
-        schema:
-          type: string
       responses:
         '200':
           content:
@@ -3344,17 +3344,17 @@ paths:
       description: Use this endpoint to create a partner-managed account.
       operationId: createManagedAccount
       parameters:
-      - description: The unique id for a `user`.
-        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
         in: path
         name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
         required: true
         schema:
           type: string
@@ -3382,6 +3382,13 @@ paths:
         No Content`.
       operationId: deleteManagedAccount
       parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
         in: path
@@ -3393,13 +3400,6 @@ paths:
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
         in: path
         name: user_guid
-        required: true
-        schema:
-          type: string
-      - description: The unique id for an `account`.
-        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-        in: path
-        name: account_guid
         required: true
         schema:
           type: string
@@ -3414,6 +3414,13 @@ paths:
         according to its unique guid.
       operationId: readManagedAccount
       parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
         in: path
@@ -3425,13 +3432,6 @@ paths:
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
         in: path
         name: user_guid
-        required: true
-        schema:
-          type: string
-      - description: The unique id for an `account`.
-        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-        in: path
-        name: account_guid
         required: true
         schema:
           type: string
@@ -3450,6 +3450,13 @@ paths:
         account according to its unique GUID.
       operationId: updateManagedAccount
       parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
         in: path
@@ -3461,13 +3468,6 @@ paths:
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
         in: path
         name: user_guid
-        required: true
-        schema:
-          type: string
-      - description: The unique id for an `account`.
-        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-        in: path
-        name: account_guid
         required: true
         schema:
           type: string
@@ -3489,12 +3489,26 @@ paths:
       summary: Update managed account
       tags:
       - mx_platform
-  "/users/{user_guid}/managed_members/{member_guid}/transactions":
+  "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions":
     get:
       description: This endpoint returns a list of all the partner-managed transactions
         associated with the specified `account`, scoped through a `user` and a `member`.
       operationId: listManagedTransactions
       parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
       - description: Specify current page.
         example: 1
         in: query
@@ -3514,13 +3528,6 @@ paths:
         required: true
         schema:
           type: string
-      - description: The unique id for a `member`.
-        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-        in: path
-        name: member_guid
-        required: true
-        schema:
-          type: string
       responses:
         '200':
           content:
@@ -3535,10 +3542,10 @@ paths:
       description: Use this endpoint to create a new partner-managed `transaction`.
       operationId: createManagedTransaction
       parameters:
-      - description: The unique id for a `user`.
-        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
         in: path
-        name: user_guid
+        name: account_guid
         required: true
         schema:
           type: string
@@ -3546,6 +3553,13 @@ paths:
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
         in: path
         name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
         required: true
         schema:
           type: string
@@ -3566,12 +3580,19 @@ paths:
       summary: Create managed transaction
       tags:
       - mx_platform
-  "/users/{user_guid}/managed_members/{member_guid}/transactions/{transaction_guid}":
+  "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid}":
     delete:
       description: Use this endpoint to delete the specified partner-managed `transaction`.
         The endpoint will respond with a status of `204 No Content` without a resource.
       operationId: deleteManagedTransaction
       parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
         in: path
@@ -3579,17 +3600,17 @@ paths:
         required: true
         schema:
           type: string
-      - description: The unique id for a `user`.
-        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
       - description: The unique id for a `transaction`.
         example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
         in: path
         name: transaction_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
         required: true
         schema:
           type: string
@@ -3604,6 +3625,13 @@ paths:
         partner-managed `transaction`.
       operationId: readManagedTransaction
       parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
         in: path
@@ -3611,17 +3639,17 @@ paths:
         required: true
         schema:
           type: string
-      - description: The unique id for a `user`.
-        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
       - description: The unique id for a `transaction`.
         example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
         in: path
         name: transaction_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
         required: true
         schema:
           type: string
@@ -3640,6 +3668,13 @@ paths:
         `transaction`.
       operationId: updateManagedTransaction
       parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
         in: path
@@ -3647,17 +3682,17 @@ paths:
         required: true
         schema:
           type: string
-      - description: The unique id for a `user`.
-        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
       - description: The unique id for a `transaction`.
         example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
         in: path
         name: transaction_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
         required: true
         schema:
           type: string
@@ -3932,10 +3967,10 @@ paths:
         resource.
       operationId: updateAccountByMember
       parameters:
-      - description: The unique id for a `user`.
-        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
         in: path
-        name: user_guid
+        name: account_guid
         required: true
         schema:
           type: string
@@ -3946,10 +3981,10 @@ paths:
         required: true
         schema:
           type: string
-      - description: The unique id for an `account`.
-        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
         in: path
-        name: account_guid
+        name: user_guid
         required: true
         schema:
           type: string
@@ -4280,25 +4315,11 @@ paths:
         required: true
         schema:
           type: string
-      - description: The unique id for a `user`.
-        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
       - description: Must be either `BROWSER` or `APP` depending on the implementation.
           Defaults to `BROWSER`.
         example: APP
         in: query
         name: referral_source
-        schema:
-          type: string
-      - description: A scheme for routing the user back to the application state they
-          were previously in.
-        example: mx
-        in: query
-        name: ui_message_webview_url_scheme
         schema:
           type: string
       - description: Setting this parameter to `true` will prevent the member from
@@ -4309,6 +4330,20 @@ paths:
         name: skip_aggregation
         schema:
           type: boolean
+      - description: A scheme for routing the user back to the application state they
+          were previously in.
+        example: mx
+        in: query
+        name: ui_message_webview_url_scheme
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -5237,17 +5272,17 @@ paths:
         of configuration options. Note that this is a `POST` request.
       operationId: requestWidgetURL
       parameters:
+      - description: The desired language of the widget.
+        example: en-US
+        in: header
+        name: Accept-Language
+        schema:
+          type: string
       - description: The unique id for a `user`.
         example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
         in: path
         name: user_guid
         required: true
-        schema:
-          type: string
-      - description: The desired language of the widget.
-        example: en-US
-        in: header
-        name: Accept-Language
         schema:
           type: string
       requestBody:
