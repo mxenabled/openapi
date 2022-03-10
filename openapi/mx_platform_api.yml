@@ -531,6 +531,10 @@ components:
           example: Username
           nullable: true
           type: string
+        type:
+          example: TEXT
+          nullable: true
+          type: string
       type: object
     CredentialsResponseBody:
       properties:
