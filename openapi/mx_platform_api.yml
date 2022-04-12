@@ -1560,7 +1560,7 @@ components:
           example: 1
           type: integer
       type: object
-    PaymentAccountResponse:
+    PartnerAccountResponse:
       properties:
         account_name:
           example: My Savings
@@ -1591,12 +1591,12 @@ components:
           nullable: true
           type: string
       type: object
-    PaymentAccountResponseBody:
+    PartnerAccountResponseBody:
       properties:
-        payment_account:
-          "$ref": "#/components/schemas/PaymentAccountResponse"
+        partner_account:
+          "$ref": "#/components/schemas/PartnerAccountResponse"
       type: object
-    PaymentProcessorAuthorizationCodeRequest:
+    PartnerAuthorizationCodeRequest:
       properties:
         account_guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
@@ -1608,31 +1608,31 @@ components:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
       type: object
-    PaymentProcessorAuthorizationCodeRequestBody:
+    PartnerAuthorizationCodeRequestBody:
       properties:
-        payment_processor_authorization_code:
-          "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeRequest"
+        partner_authorization_code:
+          "$ref": "#/components/schemas/PartnerAuthorizationCodeRequest"
       type: object
-    PaymentProcessorAuthorizationCodeResponse:
+    PartnerAuthorizationCodeResponse:
       properties:
         authorization_code:
           example: sN3Ffd1nJg_iwEMuxcEo2Z5taC0RvMilfvYKsnM2XGM
           nullable: true
           type: string
       type: object
-    PaymentProcessorAuthorizationCodeResponseBody:
+    PartnerAuthorizationCodeResponseBody:
       properties:
-        payment_processor_authorization_code:
-          "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponse"
+        partner_authorization_code:
+          "$ref": "#/components/schemas/PartnerAuthorizationCodeResponse"
       type: object
-    PaymentProcessorTokenResponseBody:
+    PartnerTokenResponseBody:
       properties:
         access_token:
           example: jUmJS4AZVdvywAMO_JWKwZ8fvY9ZZQINSBHTKkHMw-c
           nullable: true
           type: string
         scope:
-          example: payment_accounts
+          example: Platform#partner_accounts
           nullable: true
           type: string
         token_type:
@@ -2560,51 +2560,50 @@ paths:
       summary: Read merchant
       tags:
       - mx_platform
-  "/payment_account":
+  "/partner_account":
     get:
-      description: Use this endpoint to request a payment account.
-      operationId: requestPaymentAccount
+      description: Use this endpoint to request a partner account.
+      operationId: requestPartnerAccount
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/PaymentAccountResponseBody"
+                "$ref": "#/components/schemas/PartnerAccountResponseBody"
           description: OK
       security:
       - bearerAuth: []
-      summary: Request payment account
+      summary: Request partner account
       tags:
       - mx_platform
-  "/payment_processor_authorization_code":
+  "/partner_authorization_code":
     post:
-      description: Use this endpoint to request a payment processor authorization
-        code.
-      operationId: requestPaymentProcessorAuthorizationCode
+      description: Use this endpoint to request a partner authorization code.
+      operationId: requestPartnerAuthorizationCode
       requestBody:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeRequestBody"
-        description: Payment processor authorization code object containing account_guid,
-          member_guid, and user_guid.
+              "$ref": "#/components/schemas/PartnerAuthorizationCodeRequestBody"
+        description: Partner authorization code object containing account_guid, member_guid,
+          and user_guid.
         required: true
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponseBody"
+                "$ref": "#/components/schemas/PartnerAuthorizationCodeResponseBody"
           description: OK
-      summary: Request payment processor authorization code
+      summary: Request partner authorization code
       tags:
       - mx_platform
-  "/payment_processor_token":
+  "/partner_token":
     post:
-      description: Use this endpoint to request a payment processor token.
-      operationId: requestPaymentProcessorToken
+      description: Use this endpoint to request a partner token.
+      operationId: requestPartnerToken
       parameters:
-      - description: Code to request processor token.
+      - description: Code to request partner token.
         example: sN3Ffd1nJg_iwEMuxcEo2Z5taC0RvMilfvYKsnM2XGM
         in: query
         name: code
@@ -2621,9 +2620,9 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/PaymentProcessorTokenResponseBody"
+                "$ref": "#/components/schemas/PartnerTokenResponseBody"
           description: OK
-      summary: Request payment processor token
+      summary: Request partner token
       tags:
       - mx_platform
   "/transactions/enhance":
