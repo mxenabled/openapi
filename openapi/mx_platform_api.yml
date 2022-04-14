@@ -1560,86 +1560,6 @@ components:
           example: 1
           type: integer
       type: object
-    PartnerAccountResponse:
-      properties:
-        account_name:
-          example: My Savings
-          nullable: true
-          type: string
-        account_number:
-          example: '1858091489'
-          nullable: true
-          type: string
-        account_type:
-          example: SAVINGS
-          nullable: true
-          type: string
-        available_balance:
-          example: 1000.0
-          nullable: true
-          type: number
-        balance:
-          example: 1000.0
-          nullable: true
-          type: number
-        routing_number:
-          example: '68899990000000'
-          nullable: true
-          type: string
-        transit_number:
-          example: '12345'
-          nullable: true
-          type: string
-      type: object
-    PartnerAccountResponseBody:
-      properties:
-        partner_account:
-          "$ref": "#/components/schemas/PartnerAccountResponse"
-      type: object
-    PartnerAuthorizationCodeRequest:
-      properties:
-        account_guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          type: string
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type: string
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type: string
-      type: object
-    PartnerAuthorizationCodeRequestBody:
-      properties:
-        partner_authorization_code:
-          "$ref": "#/components/schemas/PartnerAuthorizationCodeRequest"
-      type: object
-    PartnerAuthorizationCodeResponse:
-      properties:
-        authorization_code:
-          example: sN3Ffd1nJg_iwEMuxcEo2Z5taC0RvMilfvYKsnM2XGM
-          nullable: true
-          type: string
-      type: object
-    PartnerAuthorizationCodeResponseBody:
-      properties:
-        partner_authorization_code:
-          "$ref": "#/components/schemas/PartnerAuthorizationCodeResponse"
-      type: object
-    PartnerTokenResponseBody:
-      properties:
-        access_token:
-          example: jUmJS4AZVdvywAMO_JWKwZ8fvY9ZZQINSBHTKkHMw-c
-          nullable: true
-          type: string
-        scope:
-          example: Platform#partner_accounts
-          nullable: true
-          type: string
-        token_type:
-          example: bearer
-          nullable: true
-          type: string
-      type: object
     StatementResponse:
       properties:
         account_guid:
@@ -2245,9 +2165,6 @@ components:
     basicAuth:
       scheme: basic
       type: http
-    bearerAuth:
-      scheme: bearer
-      type: http
 info:
   contact:
     name: MX Platform API
@@ -2558,71 +2475,6 @@ paths:
                 "$ref": "#/components/schemas/MerchantResponseBody"
           description: OK
       summary: Read merchant
-      tags:
-      - mx_platform
-  "/partner_account":
-    get:
-      description: Use this endpoint to request a partner account.
-      operationId: requestPartnerAccount
-      responses:
-        '200':
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/PartnerAccountResponseBody"
-          description: OK
-      security:
-      - bearerAuth: []
-      summary: Request partner account
-      tags:
-      - mx_platform
-  "/partner_authorization_code":
-    post:
-      description: Use this endpoint to request a partner authorization code.
-      operationId: requestPartnerAuthorizationCode
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/PartnerAuthorizationCodeRequestBody"
-        description: Partner authorization code object containing account_guid, member_guid,
-          and user_guid.
-        required: true
-      responses:
-        '200':
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/PartnerAuthorizationCodeResponseBody"
-          description: OK
-      summary: Request partner authorization code
-      tags:
-      - mx_platform
-  "/partner_token":
-    post:
-      description: Use this endpoint to request a partner token.
-      operationId: requestPartnerToken
-      parameters:
-      - description: Code to request partner token.
-        example: sN3Ffd1nJg_iwEMuxcEo2Z5taC0RvMilfvYKsnM2XGM
-        in: query
-        name: code
-        schema:
-          type: string
-      - description: Specify grant type.
-        example: authorization_code
-        in: query
-        name: grant_type
-        schema:
-          type: string
-      responses:
-        '200':
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/PartnerTokenResponseBody"
-          description: OK
-      summary: Request partner token
       tags:
       - mx_platform
   "/transactions/enhance":
