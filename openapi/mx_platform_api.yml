@@ -792,7 +792,8 @@ components:
           nullable: true
           type: string
         instructional_text:
-          example: null
+          example: Some instructional text <a href="https://example.url.chase.com/instructions">for
+            end users</a>.
           nullable: true
           type: string
         medium_logo_url:
