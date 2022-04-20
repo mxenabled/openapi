@@ -791,6 +791,11 @@ components:
           example: chase
           nullable: true
           type: string
+        instructional_text:
+          example: Some instructional text <a href="https://example.url.chase.com/instructions"
+            id="instructional_text">for end users</a>.
+          nullable: true
+          type: string
         medium_logo_url:
           example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png
           nullable: true
