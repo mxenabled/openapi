@@ -793,7 +793,7 @@ components:
           type: string
         instructional_text:
           example: Some instructional text <a href="https://example.url.chase.com/instructions"
-            id="instructional_text" >for end users</a>.
+            id="instructional_text">for end users</a>.
           nullable: true
           type: string
         medium_logo_url:
