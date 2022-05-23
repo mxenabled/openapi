@@ -475,9 +475,6 @@ components:
         update_credentials:
           example: false
           type: boolean
-        wait_for_full_aggregation:
-          example: false
-          type: boolean
       type: object
     ConnectWidgetRequestBody:
       properties:
@@ -2130,9 +2127,6 @@ components:
           example: mx
           type: string
         update_credentials:
-          example: false
-          type: boolean
-        wait_for_full_aggregation:
           example: false
           type: boolean
         widget_type:
