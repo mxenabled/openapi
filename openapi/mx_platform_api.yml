@@ -716,6 +716,10 @@ components:
           example: MONEY_MARKET
           nullable: true
           type: string
+        holding_type_id:
+          example: 1
+          nullable: true
+          type: integer
         id:
           example: ID-123
           nullable: true
