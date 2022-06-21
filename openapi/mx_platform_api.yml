@@ -445,6 +445,9 @@ components:
       type: object
     ConnectWidgetRequest:
       properties:
+        client_redirect_url:
+          example: https://mx.com
+          type: string
         color_scheme:
           example: light
           type: string
@@ -1240,6 +1243,9 @@ components:
         background_aggregation_is_disabled:
           example: false
           type: boolean
+        client_redirect_url:
+          example: https://mx.com
+          type: string
         credentials:
           items:
             "$ref": "#/components/schemas/CredentialRequest"
@@ -2100,6 +2106,9 @@ components:
       type: object
     WidgetRequest:
       properties:
+        client_redirect_url:
+          example: https://mx.com
+          type: string
         color_scheme:
           example: light
           type: string
@@ -4306,6 +4315,13 @@ paths:
         `member`.
       operationId: requestOAuthWindowURI
       parameters:
+      - description: A URL that MX will redirect to at the end of OAuth with additional
+          query parameters. Only available with `referral_source=APP`.
+        example: https://mx.com
+        in: query
+        name: client_redirect_url
+        schema:
+          type: string
       - description: The unique id for a `member`.
         example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
         in: path
@@ -4329,7 +4345,7 @@ paths:
         schema:
           type: boolean
       - description: A scheme for routing the user back to the application state they
-          were previously in.
+          were previously in. Only available with `referral_source=APP`.
         example: mx
         in: query
         name: ui_message_webview_url_scheme
