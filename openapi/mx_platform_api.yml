@@ -1243,9 +1243,6 @@ components:
         background_aggregation_is_disabled:
           example: false
           type: boolean
-        client_redirect_url:
-          example: https://mx.com
-          type: string
         credentials:
           items:
             "$ref": "#/components/schemas/CredentialRequest"
@@ -1271,6 +1268,9 @@ components:
       type: object
     MemberCreateRequestBody:
       properties:
+        client_redirect_url:
+          example: https://mx.com
+          type: string
         member:
           "$ref": "#/components/schemas/MemberCreateRequest"
         referral_source:
