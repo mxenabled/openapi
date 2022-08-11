@@ -1286,6 +1286,9 @@ components:
           example: '2016-10-13T18:07:57.000Z'
           nullable: true
           type: string
+        background_aggregation_is_disabled:
+          example: false
+          type: boolean
         connection_status:
           example: CONNECTED
           nullable: true
