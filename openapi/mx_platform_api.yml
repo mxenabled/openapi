@@ -1,6 +1,88 @@
 ---
 components:
   schemas:
+    InsightResponse:
+      properties:
+        active_at:
+          example: '2022-01-07T12:00:00Z'
+          nullable: true
+          type: string
+        client_guid:
+          example: 'CLT-abcd-1234'
+          nullable: true
+          type: string
+        created_at:
+          example: '2022-01-12T18:16:51Z'
+          nullable: true
+          type: string
+        description:
+          example: "Gold's Gym charged you $36.71 more this month than normal. Did you upgrade your service?"
+          nullable: true
+          type: string
+        guid:
+          exmaple: 'BET-abcd-1234'
+          nullable: true
+          type: string
+        has_been_displayed:
+          example: true
+          nullable: true
+          type: boolean
+        has_associated_accounts:
+          example: false
+          nullable: true
+          type: boolean
+        has_associated_transactions:
+          example: true
+          nullable: true
+          type: boolean
+        has_associated_merchants:
+          example: false
+          nullable: true
+          type: boolean
+        has_associated_scheduled_payments:
+          example: false
+          nullable: true
+          type: boolean
+        is_dismissed:
+          example: false
+          nullable: true
+          type: boolean
+        title:
+          example: 'Price increase'
+          nullable: true
+          type: string
+        template:
+          example: 'SubscriptionPriceIncrease'
+          nullable: true
+          type: string
+        updated_at:
+          example: '2022-01-12T18:16:51Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: 'USR-1234-abcd'
+          type: string
+        user_id:
+          example: 'user-partner-defined-1234'
+      type: object
+    InsightsResponseBody:
+      properties:
+        account_numbers:
+          items:
+            "$ref": "#/components/schemas/InsightResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    InsightUpdateRequest:
+      properties:
+        has_been_displayed:
+          example: false
+          type: boolean
+        is_dismissed:
+          example: false
+          type: boolean
+      type: object
     AccountNumberResponse:
       properties:
         account_guid:
@@ -2191,6 +2273,50 @@ info:
   version: 0.1.0
 openapi: 3.0.0
 paths:
+  "/users/{user_guid}/insights":
+    get:
+      description: Use this endpoint to list all the insights associated with the user. Note the use of the beta accept header.
+      operationId: listInsightsUser
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InsightsResponseBody"
+          description: OK
+      summary: List all insights for a user.
+      tags:
+      - mx_platform
+  "/users/{user_guid}/insights/{insight_guid}":
+    get:
+      description: Use this endpoint to read the attributes of a specific insight according to its unique GUID.
+      operationId: listInsightsUser
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InsightsResponseBody"
+          description: OK
+      summary: List all insights for a user.
+      tags:
+      - mx_platform
   "/categories/default":
     get:
       description: Use this endpoint to retrieve a list of all the default categories
