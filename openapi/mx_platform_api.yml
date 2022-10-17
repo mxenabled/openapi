@@ -3239,7 +3239,7 @@ paths:
   "/users/{user_guid}/insights":
     get:
       description: Use this endpoint to list all the insights associated with the
-        user. Note the use of the beta accept header.
+        user.
       operationId: listInsightsUser
       parameters:
       - description: The unique identifier for the user. Defined by MX.
@@ -3299,7 +3299,7 @@ paths:
   "/users/{user_guid}/insights/{insight_guid}/accounts":
     get:
       description: Use this endpoint to list all the accounts associated with the
-        insight. Note the use of the beta accept header.
+        insight.
       operationId: listAccountsInsight
       parameters:
       - description: The unique identifier for the user. Defined by MX.
@@ -3329,7 +3329,7 @@ paths:
   "/users/{user_guid}/insights/{insight_guid}/merchants":
     get:
       description: Use this endpoint to list all the merchants associated with the
-        insight. Note the use of the beta accept header.
+        insight.
       operationId: listMerchantsInsight
       parameters:
       - description: The unique identifier for the user. Defined by MX.
@@ -3359,7 +3359,7 @@ paths:
   "/users/{user_guid}/insights/{insight_guid}/transactions":
     get:
       description: Use this endpoint to list all the transactions associated with
-        the insight. Note the use of the beta accept header.
+        the insight.
       operationId: listTransactionsInsight
       parameters:
       - description: The unique identifier for the user. Defined by MX.
