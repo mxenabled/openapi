@@ -2532,6 +2532,24 @@ paths:
         name: records_per_page
         schema:
           type: integer
+      - description: The user `id` to search for.
+        example: u-12324-abdc
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: The user `email` to search for.
+        example: example@example.com
+        in: query
+        name: email
+        schema:
+          type: string
+      - description: Search for users that are diabled.
+        example: true
+        in: query
+        name: is_disabled
+        schema:
+          type: boolean
       responses:
         '200':
           content:
