@@ -460,6 +460,9 @@ components:
         disable_institution_search:
           example: false
           type: boolean
+        include_identity:
+          example: false,
+          type: boolean,
         include_transactions:
           example: true
           type: boolean
@@ -2127,6 +2130,9 @@ components:
         disable_institution_search:
           example: false
           type: boolean
+        include_identity:
+          example: false,
+          type: boolean,
         include_transactions:
           example: true
           type: boolean
