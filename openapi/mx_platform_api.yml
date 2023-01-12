@@ -2666,6 +2666,12 @@ paths:
         the specified `user`.
       operationId: listUserAccounts
       parameters:
+      - description: List only accounts whose member is managed by the user.
+        example: true
+        in: query
+        name: member_is_managed_by_user
+        schema:
+          type: boolean
       - description: Specify current page.
         example: 1
         in: query
@@ -4001,6 +4007,12 @@ paths:
         the specified `member`.
       operationId: listMemberAccounts
       parameters:
+      - description: List only accounts whose member is managed by the user.
+        example: true
+        in: query
+        name: member_is_managed_by_user
+        schema:
+          type: boolean
       - description: Specify current page.
         example: 1
         in: query
