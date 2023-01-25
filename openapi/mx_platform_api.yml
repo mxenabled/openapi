@@ -4074,7 +4074,6 @@ paths:
       summary: Read account by member
       tags:
       - mx_platform
-  "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}":
     put:
       description: This endpoint allows you to update certain attributes of an `account`
         resource.
