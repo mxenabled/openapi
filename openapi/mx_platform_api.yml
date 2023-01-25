@@ -4038,6 +4038,43 @@ paths:
       tags:
       - mx_platform
   "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}":
+    get:
+      description: This endpoint allows you to read the attributes of an `account`
+        resource.
+      operationId: readAccountByMember
+      parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountResponseBody"
+          description: OK
+      summary: Read account by member
+      tags:
+      - mx_platform
+  "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}":
     put:
       description: This endpoint allows you to update certain attributes of an `account`
         resource.
