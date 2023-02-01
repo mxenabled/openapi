@@ -23,6 +23,10 @@ components:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           nullable: true
           type: string
+        passed_validation:
+          example: true
+          nullable: true
+          type: boolean
         routing_number:
           example: '68899990000000'
           nullable: true
