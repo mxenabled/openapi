@@ -67,8 +67,16 @@ components:
           example: donnie@darko.co
           nullable: true
           type: string
+        first_name:
+          example: Donnie
+          nullable: true
+          type: string
         guid:
           example: ACO-63dc7714-6fc0-4aa2-a069-c06cdccd1af9
+          nullable: true
+          type: string
+        last_name:
+          example: Darko
           nullable: true
           type: string
         member_guid:
