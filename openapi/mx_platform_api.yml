@@ -458,7 +458,7 @@ components:
     ConnectWidgetRequest:
       properties:
         client_redirect_url:
-          example: https://mx.com
+          example: mx.com
           type: string
         color_scheme:
           example: light
@@ -1259,7 +1259,7 @@ components:
           example: false
           type: boolean
         client_redirect_url:
-          example: https://mx.com
+          example: mx.com
           type: string
         credentials:
           items:
@@ -2125,7 +2125,7 @@ components:
     WidgetRequest:
       properties:
         client_redirect_url:
-          example: https://mx.com
+          example: mx.com
           type: string
         color_scheme:
           example: light
