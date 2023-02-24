@@ -2063,7 +2063,7 @@ components:
           example: false
           type: boolean
         metadata:
-          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+          example: '{\"type\": \"individual\", \"status\": \"preferred\"}'
           type: string
       type: object
     UserCreateRequestBody:
