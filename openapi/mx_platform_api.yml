@@ -2148,9 +2148,6 @@ components:
         disable_institution_search:
           example: false
           type: boolean
-        disable_institution_search:
-          example: false
-          type: boolean
         include_identity:
           example: false
           type: boolean
