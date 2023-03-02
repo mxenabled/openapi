@@ -1341,7 +1341,7 @@ components:
           nullable: true
           type: string
         oauth_window_uri:
-          example: https://api.testbankname.com/v1/oauth/authorize?client_id=testbankname&redirect_uri=https://app.moneydesktop.com/oauth/redirect_from/testbankname&response_type=code&scope=readonly&state=MX_TESTING&response_type=code
+          example: https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2
           nullable: true
           type: string
         successfully_aggregated_at:
@@ -1555,7 +1555,7 @@ components:
           nullable: true
           type: string
         oauth_window_uri:
-          example: https://api.testbankname.com/v1/oauth/authorize?client_id=testbankname&redirect_uri=https://app.moneydesktop.com/oauth/redirect_from/testbankname&response_type=code&scope=readonly&state=MX_TESTING&response_type=code
+          example: https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2
           nullable: true
           type: string
       type: object
