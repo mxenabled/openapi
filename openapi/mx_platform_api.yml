@@ -469,6 +469,9 @@ components:
         current_member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
+        disable_background_agg:
+          example: false
+          type: boolean
         disable_institution_search:
           example: false
           type: boolean
@@ -479,10 +482,13 @@ components:
           example: true
           type: boolean
         is_mobile_webview:
-          example: true
+          example: false
           type: boolean
         mode:
           example: aggregation
+          type: string
+        oauth_referral_source:
+          example: BROWSER
           type: string
         ui_message_version:
           example: 4
@@ -2057,7 +2063,7 @@ components:
           example: false
           type: boolean
         metadata:
-          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+          example: '{\"type\": \"individual\", \"status\": \"preferred\"}'
           type: string
       type: object
     UserCreateRequestBody:
@@ -2149,10 +2155,13 @@ components:
           example: true
           type: boolean
         is_mobile_webview:
-          example: true
+          example: false
           type: boolean
         mode:
           example: aggregation
+          type: string
+        oauth_referral_source:
+          example: BROWSER
           type: string
         ui_message_version:
           example: 4
