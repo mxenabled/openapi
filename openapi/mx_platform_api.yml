@@ -816,6 +816,14 @@ components:
           example: chase
           nullable: true
           type: string
+        forgot_password_url:
+          example: https://example.url.chase.com/forgot-password
+          nullable: true
+          type: string
+        forgot_username_url:
+          example: https://example.url.chase.com/forgot-username
+          nullable: true
+          type: string
         instructional_text:
           example: Some instructional text <a href="https://example.url.chase.com/instructions"
             id="instructional_text">for end users</a>.
@@ -853,6 +861,10 @@ components:
           example: true
           nullable: true
           type: boolean
+        trouble_signing_in_url:
+          example: https://example.url.chase.com/login-trouble
+          nullable: true
+          type: string
         url:
           example: https://www.chase.com
           nullable: true
