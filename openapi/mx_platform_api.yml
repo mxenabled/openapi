@@ -1794,7 +1794,7 @@ components:
           nullable: true
           type: string
         tax_year:
-          example: '2022'
+          example: '2023'
           nullable: true
           type: string
         updated_at:
