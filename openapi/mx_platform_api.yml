@@ -4,7 +4,7 @@ components:
     AccountNumberResponse:
       properties:
         account_guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          example: ACT-06d7f45b-caae-0f6e-1384-01f52e75dcb1
           nullable: true
           type: string
         account_number:
