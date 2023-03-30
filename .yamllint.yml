@@ -1,0 +1,7 @@
+---
+yaml-files:
+  - '.yamllint'
+
+rules:
+  indentation: disable
+  line-length: disable
