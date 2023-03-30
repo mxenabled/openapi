@@ -4819,6 +4819,7 @@ paths:
         name: user_guid
         required: true
         schema:
+          type: string
       responses:
         '200':
           content:
