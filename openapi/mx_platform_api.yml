@@ -1,6 +1,63 @@
 ---
 components:
   schemas:
+    AuthorizationCodeResponse:
+      properties:
+        code:
+          example: 9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI
+          nullable: true
+          type: string
+      type: object
+    AuthorizationCodeResponseBody:
+      properties:
+        authorization_code:
+          items:
+            "$ref": "#/components/schemas/AuthorizationCodeResponse"
+      type: object
+    AuthorizationCodeRequest:
+      properties:
+        scope:
+          example: 'user-guid:USR-101ad774-288b-44ed-ad16-da87d522ea20 member-guid:MBR-54feffb9-8474-47bd-8442-de003910113a account-guid:ACT-32a64160-582a-4f00-ab34-5f49cc35ed35 read-protected'
+          nullable: true
+          type: string
+      type: object
+    AuthorizationCodeRequestBody
+      properties:
+        authorization_code:
+          "$ref": "#/components/schemas/AuthorizationCodeRequest"
+      type: object
+    PaymentProcessorAuthorizationCodeResponse
+      properties:
+        authorization_code:
+          example: 9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI
+          nullable: true
+          type: string
+      type: object
+    PaymentProcessorAuthorizationCodeRequest
+      properties:
+        account_guid:
+          example: ACT-4d4c0068-33bc-4d06-bbd6-cd270fd0135c
+          nullable: true
+          type: string
+        member_guid:
+          example: MBR-46637bc5-942d-4229-9370-ddd858bf805e
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-f12b1f5a-7cbe-467c-aa30-0a10d0b2f549
+          nullable: true
+          type: string
+      type: object
+    PaymentProcessorAuthorizationCodeResponseBody
+      properties:
+        payment_processor_authorization_code:
+          "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponse"
+      type: object
+    PaymentProcessorAuthorizationCodeRequestBody
+      properties:
+        payment_processor_authorization_code:
+          "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeRequest"
+      type: object
     AccountNumberResponse:
       properties:
         account_guid:
@@ -2221,6 +2278,48 @@ info:
   version: 0.1.0
 openapi: 3.0.0
 paths:
+  "payment_processor_authorization_code":
+    post:
+      description: '(This endpoint is deprecated. Clients should use `/authorization_code`.) Clients use this endpoint to request an authorization_code according to a user, member, and account specified in the request body. Clients then pass this code to processors. Processor access is scoped only to the user/member/account specified in this request. Before requesting an authorization_code, clients must have verified the specified member.'
+      operationId: deprecatedRequestPaymentprocessorAuthorizationCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeRequestBody"
+        description: The scope for the authorization code.
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponseBody"
+          description: OK
+      summary: '(Deprecated) Request an authorization code.
+      tags:
+      - mx_platform
+  "/authorization_code":
+    post:
+      description: Clients use this endpoint to request an authorization code according to the parameters specified in the scope. Clients then pass this code to processors. Processor access is scoped only to the GUIDs and features specified in this request. Before requesting an authorization code which includes a member in the scope, clients must have verified that member.
+      operationId: requestAuthorizationCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/AuthorizationCodeRequestBody"
+        description: The scope for the authorization code.
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AuthorizationCodeResponseBody"
+          description: OK
+      summary: Request an authorization code.
+      tags:
+      - mx_platform
   "/categories/default":
     get:
       description: Use this endpoint to retrieve a list of all the default categories
