@@ -2296,7 +2296,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponseBody"
           description: OK
-      summary: '(Deprecated) Request an authorization code.
+      summary: '(Deprecated) Request an authorization code.'
       tags:
       - mx_platform
   "/authorization_code":
