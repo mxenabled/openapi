@@ -2613,7 +2613,7 @@ paths:
         this code to processors. Processor access is scoped only to the user/member/account
         specified in this request. Before requesting an authorization_code, clients
         must have verified the specified member."
-      operationId: deprecatedRequestPaymentprocessorAuthorizationCode
+      operationId: deprecatedRequestPaymentProcessorAuthorizationCode
       requestBody:
         content:
           application/json:
