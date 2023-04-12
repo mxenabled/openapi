@@ -2605,6 +2605,32 @@ paths:
       summary: Read merchant
       tags:
       - mx_platform
+  "/payment_processor_authorization_code":
+    post:
+      description: "(This endpoint is deprecated. Clients should use `/authorization_code`.)
+        Clients use this endpoint to request an authorization_code according to a
+        user, member, and account specified in the request body. Clients then pass
+        this code to processors. Processor access is scoped only to the user/member/account
+        specified in this request. Before requesting an authorization_code, clients
+        must have verified the specified member."
+      operationId: deprecatedRequestPaymentprocessorAuthorizationCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeRequestBody"
+        description: The scope for the authorization code.
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponseBody"
+          description: OK
+      summary: "(Deprecated) Request an authorization code."
+      tags:
+      - mx_platform
   "/transactions/enhance":
     post:
       description: Use this endpoint to categorize, cleanse, and classify transactions.
@@ -5538,32 +5564,6 @@ paths:
                 "$ref": "#/components/schemas/WidgetResponseBody"
           description: OK
       summary: Request widget url
-      tags:
-      - mx_platform
-  payment_processor_authorization_code:
-    post:
-      description: "(This endpoint is deprecated. Clients should use `/authorization_code`.)
-        Clients use this endpoint to request an authorization_code according to a
-        user, member, and account specified in the request body. Clients then pass
-        this code to processors. Processor access is scoped only to the user/member/account
-        specified in this request. Before requesting an authorization_code, clients
-        must have verified the specified member."
-      operationId: deprecatedRequestPaymentprocessorAuthorizationCode
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeRequestBody"
-        description: The scope for the authorization code.
-        required: true
-      responses:
-        '200':
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponseBody"
-          description: OK
-      summary: "(Deprecated) Request an authorization code."
       tags:
       - mx_platform
 security:
