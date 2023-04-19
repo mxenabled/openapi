@@ -17,7 +17,6 @@ jobs:
           files: openapi/mx_platform_api.yml
 
       - name: Generate access token
-        if: steps.changed-files-specific.outputs.any_changed == true
         id: generate_token
         uses: tibdex/github-app-token@v1
         with:
