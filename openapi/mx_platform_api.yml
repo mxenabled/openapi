@@ -4,7 +4,7 @@ components:
     AccountNumberResponse:
       properties:
         account_guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          example: ACT-06d7f45b-caae-0f6e-1384-01f52e75dcb1
           nullable: true
           type: string
         account_number:
@@ -1823,6 +1823,63 @@ components:
         tags:
           items:
             "$ref": "#/components/schemas/TagResponse"
+          type: array
+      type: object
+    TaxDocumentResponse:
+      properties:
+        content_hash:
+          example: a16c580c4fcdfa8088edaa7b4d35b290
+          nullable: true
+          type: string
+        created_at:
+          example: '2022-10-18T19:23:16Z'
+          nullable: true
+          type: string
+        document_type:
+          example: TAX1099_C
+          nullable: true
+          type: string
+        guid:
+          example: TAX-ee8776ea-468b-4b02-b95d-743adf6ba50e
+          nullable: true
+          type: string
+        issued_on:
+          example: '2022-03-31'
+          nullable: true
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
+          type: string
+        tax_year:
+          example: '2023'
+          nullable: true
+          type: string
+        updated_at:
+          example: '2022-10-18T19:23:16Z'
+          nullable: true
+          type: string
+        uri:
+          example: "/users/USR-11141024-90b3-1bce-cac9-c06ced52ab4c/members/MBR-7c6f361b-e582-15b6-60c0-358f12466b4b/tax_documents/TAX-ee8776ea-468b-4b02-b95d-743adf6ba50e.pdf"
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          nullable: true
+          type: string
+      type: object
+    TaxDocumentResponseBody:
+      properties:
+        tax_document:
+          "$ref": "#/components/schemas/TaxDocumentResponse"
+      type: object
+    TaxDocumentsResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+        tax_documents:
+          items:
+            "$ref": "#/components/schemas/TaxDocumentResponse"
           type: array
       type: object
     TransactionResponse:
@@ -4475,6 +4532,41 @@ paths:
       summary: Fetch statements
       tags:
       - mx_platform
+  "/users/{user_guid}/members/{member_guid}/fetch_tax_documents":
+    post:
+      description: Use this endpoint to fetch (aggregate) the tax documents associated
+        with the specified member. This request **does not** return the latest tax
+        documents. It just starts the document aggregation process and returns the
+        initial state of the process. You must interact with the newly aggregated
+        data using the other document endpoints in this reference. This request may
+        also trigger multi-factor authentication which requires end-user input and
+        a specific process for answering authentication challenges.
+      operationId: fetchTaxDocuments
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: Accepted
+      summary: Fetch Tax Documents
+      tags:
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/holdings":
     get:
       description: This endpoint returns all holdings associated with the specified
@@ -4804,6 +4896,121 @@ paths:
                 "$ref": "#/components/schemas/MemberStatusResponseBody"
           description: OK
       summary: Read member status
+      tags:
+      - mx_platform
+  "/users/{user_guid}/members/{member_guid}/tax_documents":
+    get:
+      description: Use this endpoint to get a paginated list of tax documents.
+      operationId: listTaxDocuments
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TaxDocumentsResponseBody"
+          description: OK
+      summary: List Tax Documents
+      tags:
+      - mx_platform
+  "/users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}":
+    get:
+      description: Use this endpoint to read the attributes of the specified tax document.
+      operationId: readTaxDocument
+      parameters:
+      - description: The unique id for a `tax_document`.
+        example: TAX-987dfds1b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: tax_document_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TaxDocumentResponseBody"
+          description: OK
+      summary: Read a Tax Document
+      tags:
+      - mx_platform
+  "/users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}.pdf":
+    get:
+      description: Use this endpoint to download a PDF version of the specified tax
+        document. The endpoint URL is the base URL appended with the uri of the tax_document.
+      operationId: downloadTaxDocument
+      parameters:
+      - description: The unique id for a `tax_document`.
+        example: TAX-987dfds1b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: tax_document_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+pdf:
+              schema:
+                format: binary
+                type: string
+          description: OK
+      summary: Download a Tax Document PDF
       tags:
       - mx_platform
   "/users/{user_guid}/members/{member_guid}/transactions":
