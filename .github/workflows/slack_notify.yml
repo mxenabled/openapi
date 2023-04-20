@@ -1,12 +1,12 @@
-name: Slack Notification
+name: Slack Notify
 
 on:
   issues:
     types:
       [opened, closed]
   workflow_run:
-    types:
-      [completed]
+    types: [completed]
+    workflows: [refresh, update_sdks]
 
 jobs:
   Notify:
