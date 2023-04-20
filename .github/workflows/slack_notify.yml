@@ -12,7 +12,7 @@ jobs:
   Notify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Slack workflow notification
         if: ${{ github.event_name == 'workflow_run' }}
         uses: slackapi/slack-github-action@v1.23.0
@@ -26,6 +26,7 @@ jobs:
                     "type": "plain_text",
                     "text": "Workflow ${{ github.event.workflow_run.event }}: ${{ github.event.workflow_run.status }}"
                   }
+                },
                 {
                   "type": "actions",
                   "elements": [
@@ -57,6 +58,7 @@ jobs:
                     "type": "plain_text",
                     "text": "${{ github.event.issue.title }} - ${{ github.event.issue.state }}"
                   }
+                },
                 {
                   "type": "actions",
                   "elements": [
