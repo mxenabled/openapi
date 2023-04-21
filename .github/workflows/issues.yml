@@ -14,7 +14,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "*Issue ${{ github.event.issue.state }}*\n\n*Title:* ${{ github.event.issue.title }}\n*Repo:* <${{ github.repository.html_url }}|${{ github.repository }}>\n*<${{ github.event.issue.html_url }}|Issue Link>*"
+              "text": "*Issue ${{ github.event.issue.state }}*\n\n*Title:* ${{ github.event.issue.title }}\n*Repo:* ${{ github.repository }}\n*<${{ github.event.issue.html_url }}|Issue Link>*"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
