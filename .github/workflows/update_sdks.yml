@@ -35,3 +35,16 @@ jobs:
           -H "Authorization: token ${{ steps.generate_token.outputs.token }}" \
           https://api.github.com/repos/mxenabled/mx-platform-ruby/dispatches \
           -d '{"event_type":"generate_publish_release","client_payload":{"version":"${{ env.LABEL }}"}}'
+
+      - name: Slack notification
+        uses: ravsamhq/notify-slack-action@v2
+        if: always()
+        with:
+          status: ${{ job.status }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          notification_title: "{repo}: {workflow} workflow"
+          message_format: "{emoji} *{workflow}* {status_message} in <{repo_url}|{repo}>"
+          footer: "<{workflow_url}|View Workflow>"
+          notify_when: "failure"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
