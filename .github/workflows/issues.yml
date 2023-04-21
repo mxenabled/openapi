@@ -1,0 +1,42 @@
+name: Issues
+
+on:
+  issues:
+    types: [opened, closed]
+
+jobs:
+  Notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Slack notification
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          payload: |
+            {
+              "text": "${{ github.repository }} Issue: ${{ github.event.issue.title }} - ${{ github.event.issue.state }}",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "${{ github.repository }} Issue: ${{ github.event.issue.title }} - ${{ github.event.issue.state }}"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Issue Link"
+                      },
+                      "url": "${{ github.event.issue.html_url }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
