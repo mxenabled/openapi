@@ -2,7 +2,7 @@ name: Issues
 
 on:
   issues:
-    types: [opened, closed]
+    types: [opened, closed, reopened]
 
 jobs:
   Notify:
@@ -14,29 +14,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "${{ github.repository }} Issue: ${{ github.event.issue.title }} - ${{ github.event.issue.state }}",
-              "blocks": [
-                {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "${{ github.repository }} Issue: ${{ github.event.issue.title }} - ${{ github.event.issue.state }}"
-                  }
-                },
-                {
-                  "type": "actions",
-                  "elements": [
-                    {
-                      "type": "button",
-                      "text": {
-                        "type": "plain_text",
-                        "text": "Issue Link"
-                      },
-                      "url": "${{ github.event.issue.html_url }}"
-                    }
-                  ]
-                }
-              ]
+              "text": "*Issue ${{ github.event.issue.state }}*\n\n*Title:* ${{ github.event.issue.title }}\n*Repo:* <${{ github.repository }}|${{ github.repository }}>\n*<${{ github.event.issue.html_url }}|Issue Link>*"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
