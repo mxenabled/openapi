@@ -1,0 +1,18 @@
+name: Validate
+
+on: [push]
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Validate OpenAPI Schema
+      uses: thiyagu06/openapi-validator-action@v1
+      with:
+        filepath: 'openapi/mx_platform_api.yml'
+    - name: Validate OpenAPI YAML
+      uses: ibiqlik/action-yamllint@v3
+      with:
+        file_or_dir: openapi/mx_platform_api.yml
+        config_file: .yamllint.yml

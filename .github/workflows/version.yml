@@ -1,0 +1,29 @@
+name: Version
+
+on:
+  pull_request:
+    types: [opened, labeled, unlabeled, synchronize]
+
+jobs:
+  Version:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get openapi file
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v35
+        with:
+          files: openapi/mx_platform_api.yml
+
+      - name: Require version label if openapi spec changed
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        uses: mheap/github-action-required-labels@v4
+        with:
+          mode: exactly
+          count: 1
+          labels: "major, minor, patch"
+          add_comment: true
+          message: "This PR is blocked until you add one of the following labels: {{ provided }}. Once added you can merge."
