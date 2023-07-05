@@ -2088,6 +2088,7 @@ components:
       required:
       - category_guid
       - match_description
+      - description
       type: object
     TransactionRuleCreateRequestBody:
       properties:
@@ -5527,8 +5528,7 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/TransactionRuleCreateRequestBody"
-        description: TransactionRule object to be created with optional parameters
-          (description) and required parameters (category_guid and match_description)
+        description: TransactionRule object to be created with required parameters (description, category_guid, and match_description).
         required: true
       responses:
         '200':
