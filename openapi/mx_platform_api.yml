@@ -2109,7 +2109,7 @@ components:
           nullable: true
           type: string
         guid:
-          example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
+          example: UTR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
           nullable: true
           type: string
         match_description:
@@ -5547,7 +5547,7 @@ paths:
       operationId: deleteTransactionRule
       parameters:
       - description: The unique id for a `transaction_rule`.
-        example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
+        example: UTR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
         in: path
         name: transaction_rule_guid
         required: true
@@ -5572,7 +5572,7 @@ paths:
       operationId: readTransactionRule
       parameters:
       - description: The unique id for a `transaction_rule`.
-        example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
+        example: UTR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
         in: path
         name: transaction_rule_guid
         required: true
@@ -5602,7 +5602,7 @@ paths:
       operationId: updateTransactionRule
       parameters:
       - description: The unique id for a `transaction_rule`.
-        example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
+        example: UTR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
         in: path
         name: transaction_rule_guid
         required: true
