@@ -113,7 +113,7 @@ components:
     AccountNumberResponse:
       properties:
         account_guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          example: ACT-06d7f45b-caae-0f6e-1384-01f52e75dcb1
           nullable: true
           type: string
         account_number:
@@ -454,6 +454,32 @@ components:
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
       type: object
+    AuthorizationCodeRequest:
+      properties:
+        scope:
+          example: user-guid:USR-101ad774-288b-44ed-ad16-da87d522ea20 member-guid:MBR-54feffb9-8474-47bd-8442-de003910113a
+            account-guid:ACT-32a64160-582a-4f00-ab34-5f49cc35ed35 read-protected
+          nullable: true
+          type: string
+      type: object
+    AuthorizationCodeRequestBody:
+      properties:
+        authorization_code:
+          "$ref": "#/components/schemas/AuthorizationCodeRequest"
+      type: object
+    AuthorizationCodeResponse:
+      properties:
+        code:
+          example: 9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI
+          nullable: true
+          type: string
+      type: object
+    AuthorizationCodeResponseBody:
+      properties:
+        authorization_code:
+          items:
+            "$ref": "#/components/schemas/AuthorizationCodeResponse"
+      type: object
     CategoriesResponseBody:
       properties:
         categories:
@@ -590,6 +616,9 @@ components:
         current_member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
+        disable_background_agg:
+          example: false
+          type: boolean
         disable_institution_search:
           example: false
           type: boolean
@@ -600,10 +629,13 @@ components:
           example: true
           type: boolean
         is_mobile_webview:
-          example: true
+          example: false
           type: boolean
         mode:
           example: aggregation
+          type: string
+        oauth_referral_source:
+          example: BROWSER
           type: string
         ui_message_version:
           example: 4
@@ -931,6 +963,14 @@ components:
           example: chase
           nullable: true
           type: string
+        forgot_password_url:
+          example: https://example.url.chase.com/forgot-password
+          nullable: true
+          type: string
+        forgot_username_url:
+          example: https://example.url.chase.com/forgot-username
+          nullable: true
+          type: string
         instructional_text:
           example: Some instructional text <a href="https://example.url.chase.com/instructions"
             id="instructional_text">for end users</a>.
@@ -968,6 +1008,10 @@ components:
           example: true
           nullable: true
           type: boolean
+        trouble_signing_in_url:
+          example: https://example.url.chase.com/login-trouble
+          nullable: true
+          type: string
         url:
           example: https://www.chase.com
           nullable: true
@@ -1711,6 +1755,38 @@ components:
           example: 1
           type: integer
       type: object
+    PaymentProcessorAuthorizationCodeRequest:
+      properties:
+        account_guid:
+          example: ACT-4d4c0068-33bc-4d06-bbd6-cd270fd0135c
+          nullable: true
+          type: string
+        member_guid:
+          example: MBR-46637bc5-942d-4229-9370-ddd858bf805e
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-f12b1f5a-7cbe-467c-aa30-0a10d0b2f549
+          nullable: true
+          type: string
+      type: object
+    PaymentProcessorAuthorizationCodeRequestBody:
+      properties:
+        payment_processor_authorization_code:
+          "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeRequest"
+      type: object
+    PaymentProcessorAuthorizationCodeResponse:
+      properties:
+        authorization_code:
+          example: 9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI
+          nullable: true
+          type: string
+      type: object
+    PaymentProcessorAuthorizationCodeResponseBody:
+      properties:
+        payment_processor_authorization_code:
+          "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponse"
+      type: object
     StatementResponse:
       properties:
         account_guid:
@@ -1880,6 +1956,63 @@ components:
         tags:
           items:
             "$ref": "#/components/schemas/TagResponse"
+          type: array
+      type: object
+    TaxDocumentResponse:
+      properties:
+        content_hash:
+          example: a16c580c4fcdfa8088edaa7b4d35b290
+          nullable: true
+          type: string
+        created_at:
+          example: '2022-10-18T19:23:16Z'
+          nullable: true
+          type: string
+        document_type:
+          example: TAX1099_C
+          nullable: true
+          type: string
+        guid:
+          example: TAX-ee8776ea-468b-4b02-b95d-743adf6ba50e
+          nullable: true
+          type: string
+        issued_on:
+          example: '2022-03-31'
+          nullable: true
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
+          type: string
+        tax_year:
+          example: '2023'
+          nullable: true
+          type: string
+        updated_at:
+          example: '2022-10-18T19:23:16Z'
+          nullable: true
+          type: string
+        uri:
+          example: "/users/USR-11141024-90b3-1bce-cac9-c06ced52ab4c/members/MBR-7c6f361b-e582-15b6-60c0-358f12466b4b/tax_documents/TAX-ee8776ea-468b-4b02-b95d-743adf6ba50e.pdf"
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          nullable: true
+          type: string
+      type: object
+    TaxDocumentResponseBody:
+      properties:
+        tax_document:
+          "$ref": "#/components/schemas/TaxDocumentResponse"
+      type: object
+    TaxDocumentsResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+        tax_documents:
+          items:
+            "$ref": "#/components/schemas/TaxDocumentResponse"
           type: array
       type: object
     TransactionResponse:
@@ -2178,7 +2311,7 @@ components:
           example: false
           type: boolean
         metadata:
-          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+          example: '{\"type\": \"individual\", \"status\": \"preferred\"}'
           type: string
       type: object
     UserCreateRequestBody:
@@ -2260,6 +2393,9 @@ components:
         current_member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
+        disable_background_agg:
+          example: false
+          type: boolean
         disable_institution_search:
           example: false
           type: boolean
@@ -2270,10 +2406,13 @@ components:
           example: true
           type: boolean
         is_mobile_webview:
-          example: true
+          example: false
           type: boolean
         mode:
           example: aggregation
+          type: string
+        oauth_referral_source:
+          example: BROWSER
           type: string
         ui_message_version:
           example: 4
@@ -2330,6 +2469,31 @@ info:
   version: 0.1.0
 openapi: 3.0.0
 paths:
+  "/authorization_code":
+    post:
+      description: Clients use this endpoint to request an authorization code according
+        to the parameters specified in the scope. Clients then pass this code to processors.
+        Processor access is scoped only to the GUIDs and features specified in this
+        request. Before requesting an authorization code which includes a member in
+        the scope, clients must have verified that member.
+      operationId: requestAuthorizationCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/AuthorizationCodeRequestBody"
+        description: The scope for the authorization code.
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AuthorizationCodeResponseBody"
+          description: OK
+      summary: Request an authorization code.
+      tags:
+      - mx_platform
   "/categories/default":
     get:
       description: Use this endpoint to retrieve a list of all the default categories
@@ -2629,6 +2793,32 @@ paths:
                 "$ref": "#/components/schemas/MerchantResponseBody"
           description: OK
       summary: Read merchant
+      tags:
+      - mx_platform
+  "/payment_processor_authorization_code":
+    post:
+      description: "(This endpoint is deprecated. Clients should use `/authorization_code`.)
+        Clients use this endpoint to request an authorization_code according to a
+        user, member, and account specified in the request body. Clients then pass
+        this code to processors. Processor access is scoped only to the user/member/account
+        specified in this request. Before requesting an authorization_code, clients
+        must have verified the specified member."
+      operationId: deprecatedRequestPaymentProcessorAuthorizationCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeRequestBody"
+        description: The scope for the authorization code.
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponseBody"
+          description: OK
+      summary: "(Deprecated) Request an authorization code."
       tags:
       - mx_platform
   "/transactions/enhance":
@@ -4528,6 +4718,41 @@ paths:
       summary: Fetch statements
       tags:
       - mx_platform
+  "/users/{user_guid}/members/{member_guid}/fetch_tax_documents":
+    post:
+      description: Use this endpoint to fetch (aggregate) the tax documents associated
+        with the specified member. This request **does not** return the latest tax
+        documents. It just starts the document aggregation process and returns the
+        initial state of the process. You must interact with the newly aggregated
+        data using the other document endpoints in this reference. This request may
+        also trigger multi-factor authentication which requires end-user input and
+        a specific process for answering authentication challenges.
+      operationId: fetchTaxDocuments
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: Accepted
+      summary: Fetch Tax Documents
+      tags:
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/holdings":
     get:
       description: This endpoint returns all holdings associated with the specified
@@ -4857,6 +5082,121 @@ paths:
                 "$ref": "#/components/schemas/MemberStatusResponseBody"
           description: OK
       summary: Read member status
+      tags:
+      - mx_platform
+  "/users/{user_guid}/members/{member_guid}/tax_documents":
+    get:
+      description: Use this endpoint to get a paginated list of tax documents.
+      operationId: listTaxDocuments
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TaxDocumentsResponseBody"
+          description: OK
+      summary: List Tax Documents
+      tags:
+      - mx_platform
+  "/users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}":
+    get:
+      description: Use this endpoint to read the attributes of the specified tax document.
+      operationId: readTaxDocument
+      parameters:
+      - description: The unique id for a `tax_document`.
+        example: TAX-987dfds1b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: tax_document_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TaxDocumentResponseBody"
+          description: OK
+      summary: Read a Tax Document
+      tags:
+      - mx_platform
+  "/users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}.pdf":
+    get:
+      description: Use this endpoint to download a PDF version of the specified tax
+        document. The endpoint URL is the base URL appended with the uri of the tax_document.
+      operationId: downloadTaxDocument
+      parameters:
+      - description: The unique id for a `tax_document`.
+        example: TAX-987dfds1b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: tax_document_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+pdf:
+              schema:
+                format: binary
+                type: string
+          description: OK
+      summary: Download a Tax Document PDF
       tags:
       - mx_platform
   "/users/{user_guid}/members/{member_guid}/transactions":
