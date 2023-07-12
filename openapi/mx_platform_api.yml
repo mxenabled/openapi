@@ -1,6 +1,115 @@
 ---
 components:
   schemas:
+    AccountCreateRequest:
+      properties:
+        account_number:
+          example: '5366'
+          type: string
+        apr:
+          example: 1.0
+          type: number
+        apy:
+          example: 1.0
+          type: number
+        available_balance:
+          example: 1000.0
+          type: number
+        available_credit:
+          example: 1000.0
+          type: number
+        balance:
+          example: 1000.0
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          type: number
+        credit_limit:
+          example: 100.0
+          type: number
+        currency_code:
+          example: USD
+          type: string
+        day_payment_is_due:
+          example: 20
+          type: integer
+        death_benefit:
+          example: 1000
+          type: integer
+        id:
+          example: '1040434698'
+          type: string
+        interest_rate:
+          example: 1.0
+          type: number
+        is_closed:
+          example: false
+          type: boolean
+        is_hidden:
+          example: false
+          type: boolean
+        last_payment:
+          example: 100.0
+          type: number
+        last_payment_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        loan_amount:
+          example: 1000.0
+          type: number
+        matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        minimum_balance:
+          example: 100.0
+          type: number
+        minimum_payment:
+          example: 10.0
+          type: number
+        name:
+          example: Test account 2
+          type: string
+        nickname:
+          example: Swiss Account
+          type: string
+        original_balance:
+          example: 10.0
+          type: number
+        payment_due_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        payoff_balance:
+          example: 10.0
+          type: number
+        routing_number:
+          example: '68899990000000'
+          type: string
+        started_on:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        subtype:
+          example: NONE
+          type: string
+        type:
+          example: SAVINGS
+          type: string
+      required:
+      - balance
+      - name
+      - type
+      type: object
+    AccountCreateRequestBody:
+      properties:
+        skip_webhook:
+          example: true
+          nullable: true
+          type: boolean
+        account:
+          "$ref": "#/components/schemas/AccountCreateRequest"
+      type: object
     AccountNumberResponse:
       properties:
         account_guid:
@@ -199,11 +308,19 @@ components:
           example: 1.0
           nullable: true
           type: number
+        is_business:
+          example: false
+          nullable: true
+          type: boolean
         is_closed:
           example: false
           nullable: true
           type: boolean
         is_hidden:
+          example: false
+          nullable: true
+          type: boolean
+        is_manual:
           example: false
           nullable: true
           type: boolean
@@ -275,6 +392,10 @@ components:
           example: 1.0
           nullable: true
           type: number
+        property_type:
+          example: 1
+          nullable: true
+          type: string
         routing_number:
           example: '68899990000000'
           nullable: true
@@ -2903,6 +3024,34 @@ paths:
       summary: List accounts
       tags:
       - mx_platform
+    post:
+      description: This endpoint can only be used to create manual accounts. Creating a manual account will automatically create it under the Manual Institution member. Since a manual account has no credentials tied to the member, the account will never aggregate or include data from a data feed..
+      operationId: createManualAccount
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string      
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/AccountCreateRequestBody"
+        description: Manual account object to be created. 
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountResponseBody"
+          description: OK
+      summary: Create manual account
+      tags:
+      - mx_platform
   "/users/{user_guid}/accounts/{account_guid}":
     get:
       description: This endpoint returns the specified `account` resource.
@@ -2932,6 +3081,31 @@ paths:
       summary: Read account
       tags:
       - mx_platform
+    delete:
+      description: This endpoint deletes accounts that were manually created. The API will respond with an empty object and a status
+        of `204 No Content`.
+      operationId: deleteManualAccount
+      parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content.
+      summary: Delete manual account
+      tags:
+      - mx_platform  
   "/users/{user_guid}/accounts/{account_guid}/account_numbers":
     get:
       description: This endpoint returns a list of account numbers associated with
