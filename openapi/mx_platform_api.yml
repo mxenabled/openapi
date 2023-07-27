@@ -249,7 +249,7 @@ components:
           nullable: true
           type: number
         balance:
-          example: 1000.0
+          example: 10000.0
           nullable: true
           type: number
         cash_balance:
@@ -425,7 +425,7 @@ components:
           nullable: true
           type: string
         user_id:
-          example: user123
+          example: "tommyshelby-1234"
           nullable: true
           type: string
       type: object
@@ -1417,6 +1417,319 @@ components:
       properties:
         transaction:
           "$ref": "#/components/schemas/ManagedTransactionUpdateRequest"
+      type: object
+    ManualAccountCreateRequest:
+      properties:
+        account_number:
+          example: '5366'
+          type: string
+        apr:
+          example: 1.0
+          type: number
+        apy:
+          example: 1.0
+          type: number
+        available_balance:
+          example: 1000.0
+          type: number
+        balance:
+          example: 1000.0
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          type: number
+        credit_limit:
+          example: 100.0
+          type: number
+        currency_code:
+          example: USD
+          type: string
+        death_benefit:
+          example: 1000
+          type: integer
+        interest_rate:
+          example: 1.0
+          type: number
+        is_business:
+          example: false
+          type: boolean
+        is_closed:
+          example: false
+          type: boolean
+        is_hidden:
+          example: false
+          type: boolean
+        loan_amount:
+          example: 1000.0
+          type: number
+        name:
+          example: Test account 2
+          type: string
+        nickname:
+          example: Swiss Account
+          type: string
+        original_balance:
+          example: 10.0
+          type: number
+        payment_due_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        payoff_balance:
+          example: 10.0
+          type: number
+        routing_number:
+          example: '68899990000000'
+          type: string
+        subtype:
+          example: NONE
+          type: string
+        type:
+          example: SAVINGS
+          type: string
+      required:
+      - name
+      - type
+      type: object
+    ManualAccountCreateRequestBody:
+      properties:
+        skip_webhook:
+          example: true
+          nullable: true
+          type: boolean
+        account:
+          "$ref": "#/components/schemas/ManualAccountCreateRequest"
+      type: object
+    ManualAccountResponse:
+      properties:
+        account_number:
+          example: '5366'
+          nullable: true
+          type: string
+        account_ownership:
+          example: 'INDIVIDUAL'
+          nullable: true
+          type: string
+        annuity_policy_to_date:
+          example: '2016-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        annuity_provider:
+          example: 'Metlife'
+          nullable: true
+          type: string
+        annuity_term_year:
+          example: 2048
+          nullable: true
+          type: number
+        apr:
+          example: 1.0
+          nullable: true
+          type: number
+        apy:
+          example: 1.0
+          nullable: true
+          type: number
+        available_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        available_credit:
+          example: 1000.0
+          nullable: true
+          type: number
+        balance:
+          example: 10000.0
+          nullable: true
+          type: number
+        cash_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          nullable: true
+          type: number
+        created_at:
+          example: '2023-07-25T17:14:46Z'
+          nullable: false
+          type: string
+        credit_limit:
+          example: 100.0
+          nullable: true
+          type: number
+        currency_code:
+          example: USD
+          nullable: true
+          type: string
+        day_payment_is_due:
+          example: 20
+          nullable: true
+          type: integer
+        death_benefit:
+          example: 1000
+          nullable: true
+          type: integer
+        guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
+          type: string
+        holdings_value:
+          example: 1000.0
+          nullable: true
+          type: number
+        id:
+          example: '1040434698'
+          nullable: true
+          type: string
+        imported_at:
+          example: null
+          nullable: true
+          type: string
+        interest_rate:
+          example: 1.0
+          nullable: true
+          type: number
+        institution_code:
+          example: '3af3685e-05d9-7060-359f-008d0755e993'
+          nullable: true
+          type: string
+        insured_name:
+          example: 'Tommy Shelby'
+          nullable: true
+          type: string
+        is_closed:
+          example: false
+          nullable: true
+          type: boolean
+        is_hidden:
+          example: false
+          nullable: true
+          type: boolean
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
+        last_payment:
+          example: 100.0
+          nullable: true
+          type: number
+        last_payment_at:
+          example: '2023-07-25T17:14:46Z'
+          nullable: true
+          type: string
+        loan_amount:
+          example: 1000.0
+          nullable: true
+          type: number
+        margin_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        member_is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
+          type: string
+        member_id:
+          example: member123
+          nullable: true
+          type: string
+        member_is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        metadata:
+          example: 'some metadata'
+          nullable: true
+          type: string
+        minimum_balance:
+          example: 100.0
+          nullable: true
+          type: number
+        minimum_payment:
+          example: 10.0
+          nullable: true
+          type: number
+        name:
+          example: Test account 2
+          nullable: true
+          type: string
+        nickname:
+          example: My Checking
+          nullable: true
+          type: string
+        original_balance:
+          example: 10.0
+          nullable: true
+          type: number
+        pay_out_amount:
+          example: 10.0
+          nullable: true
+          type: number
+        payment_due_at:
+          example: 20
+          nullable: true
+          type: number
+        payoff_balance:
+          example: 10.0
+          nullable: true
+          type: number
+        premium_amount:
+          example: 1.0
+          nullable: true
+          type: number
+        routing_number:
+          example: '68899990000000'
+          nullable: true
+          type: string
+        started_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        subtype:
+          example: NONE
+          nullable: true
+          type: string
+        today_ugl_amount:
+          example: 1000.50
+          nullable: true
+          type: number
+        today_ugl_percentage:
+          example: 6.9
+          nullable: true
+          type: number
+        total_account_value:
+          example: 1.0
+          nullable: true
+          type: number
+        type:
+          example: SAVINGS
+          nullable: true
+          type: string
+        updated_at:
+          example: '2016-10-13T18:08:00.000Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
+          type: string
+        user_id:
+          example: "tommyshelby-1234"
+          nullable: true
+          type: string
+      type: object
+    ManualAccountResponseBody:
+      properties:
+        account:
+          "$ref": "#/components/schemas/ManualAccountResponse"
       type: object
     MemberCreateRequest:
       properties:
