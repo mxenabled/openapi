@@ -4,11 +4,11 @@ components:
     AccountCreateRequest:
       properties:
         account_subtype_name:
-          example: 'NONE'
-          type: string
-        account_type:
           example: 'SAVINGS'
           type: string
+        account_type:
+          example: 2
+          type: integer
         apr:
           example: 1.0
           type: number
@@ -64,7 +64,7 @@ components:
           example: 1
           type: integer
         property_type_name:
-          example: ''
+          example: 'VEHICLE'
           type: string
         skip_webhook:
           example: false
@@ -165,7 +165,7 @@ components:
           nullable: true
           type: string
         imported_at:
-          example: null
+          example: '2015-10-13T17:57:37.000Z'
           nullable: true
           type: string
         interest_rate:
@@ -253,9 +253,9 @@ components:
           nullable: true
           type: number
         payment_due_at:
-          example: 20
+          example: '2015-10-13T17:57:37.000Z'
           nullable: true
-          type: number
+          type: string
         payoff_balance:
           example: 10.0
           nullable: true
