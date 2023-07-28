@@ -3,9 +3,6 @@ components:
   schemas:
     AccountCreateRequest:
       properties:
-        account_number:
-          example: '5366'
-          type: string
         account_subtype_name:
           example: 'NONE'
           type: string
