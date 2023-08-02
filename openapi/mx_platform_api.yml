@@ -4,7 +4,7 @@ components:
     AccountCreateRequest:
       properties:
         account_subtype_name:
-          example: 'SAVINGS'
+          example: 'PERSONAL'
           type: string
         account_type:
           example: 2
@@ -75,10 +75,6 @@ components:
       type: object
     AccountCreateRequestBody:
       properties:
-        skip_webhook:
-          example: true
-          nullable: true
-          type: boolean
         account:
           "$ref": "#/components/schemas/AccountCreateRequest"
       type: object
@@ -264,6 +260,14 @@ components:
           example: 1.0
           nullable: true
           type: number
+        property_type:
+          example: 1
+          nullable: true
+          type: integer
+        property_type_name:
+          example: VEHICLE
+          nullable: true
+          type: string
         routing_number:
           example: '68899990000000'
           nullable: true
@@ -309,7 +313,7 @@ components:
       properties:
         account:
           "$ref": "#/components/schemas/AccountResponse"
-      type: object    
+      type: object
     AccountNumberResponse:
       properties:
         account_guid:
@@ -3026,13 +3030,13 @@ paths:
         name: user_guid
         required: true
         schema:
-          type: string      
+          type: string
       requestBody:
         content:
           application/json:
             schema:
               "$ref": "#/components/schemas/AccountCreateRequestBody"
-        description: Manual account object to be created. 
+        description: Manual account object to be created.
         required: true
       responses:
         '200':
@@ -3097,7 +3101,7 @@ paths:
           description: No content.
       summary: Delete manual account
       tags:
-      - mx_platform  
+      - mx_platform
   "/users/{user_guid}/accounts/{account_guid}/account_numbers":
     get:
       description: This endpoint returns a list of account numbers associated with
