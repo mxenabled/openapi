@@ -65,16 +65,17 @@ components:
           type: integer
         property_type_name:
           example: 'VEHICLE'
-          type: string
-        skip_webhook:
-          example: false
-          type: boolean
+          type: string        
       required:
       - name
       - account_type
       type: object
     AccountCreateRequestBody:
       properties:
+        skip_webhook:
+          example: true
+          nullable: true
+          type: boolean
         account:
           "$ref": "#/components/schemas/AccountCreateRequest"
       type: object
@@ -432,12 +433,76 @@ components:
       type: object
     AccountUpdateRequest:
       properties:
+        account_subtype_name:
+          example: 'PERSONAL'
+          type: string
+        account_type:
+          example: 2
+          type: integer
+        apr:
+          example: 1.0
+          type: number
+        apy:
+          example: 1.0
+          type: number
+        available_balance:
+          example: 1000.0
+          type: number
+        balance:
+          example: 1000.0
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          type: number
+        credit_limit:
+          example: 100.00
+          type: number
+        currency_code:
+          example: USD
+          type: string
+        death_benefit:
+          example: 1000
+          type: integer
+        interest_rate:
+          example: 1.0
+          type: number
+        is_business:
+          example: false
+          type: boolean
+        is_closed:
+          example: false
+          type: boolean
         is_hidden:
           example: false
           type: boolean
+        loan_amount:
+          example: 1000.0
+          type: number
+        metadata:
+          example: some metadata
+          type: string
+        name:
+          example: Test account 2
+          type: string
+        nickname:
+          example: Swiss Account
+          type: string
+        original_balance:
+          example: 10.0
+          type: number
+        property_type:
+          example: 1
+          type: integer
+        property_type_name:
+          example: 'VEHICLE'
+          type: string        
       type: object
     AccountUpdateRequestBody:
       properties:
+        skip_webhook:
+          example: true
+          nullable: true
+          type: boolean
         account:
           "$ref": "#/components/schemas/AccountUpdateRequest"
       type: object
@@ -2997,6 +3062,12 @@ paths:
         name: page
         schema:
           type: integer
+      - description: List only accounts that were manually created.
+        example: true
+        in: query
+        name: is_manual
+        schema:
+          type: boolean
       - description: Specify records per page.
         example: 10
         in: query
@@ -4459,8 +4530,8 @@ paths:
       tags:
       - mx_platform
     put:
-      description: This endpoint allows you to update certain attributes of an `account`
-        resource.
+      description:
+        This endpoint allows you to update certain attributes of an `account` resource including manual accounts.
       operationId: updateAccountByMember
       parameters:
       - description: The unique id for an `account`.
