@@ -65,17 +65,16 @@ components:
           type: integer
         property_type_name:
           example: 'VEHICLE'
-          type: string        
+          type: string
+        skip_webhook:
+          example: true
+          type: boolean        
       required:
       - name
       - account_type
       type: object
     AccountCreateRequestBody:
       properties:
-        skip_webhook:
-          example: true
-          nullable: true
-          type: boolean
         account:
           "$ref": "#/components/schemas/AccountCreateRequest"
       type: object
@@ -495,14 +494,13 @@ components:
           type: integer
         property_type_name:
           example: 'VEHICLE'
-          type: string        
+          type: string
+        skip_webhook:
+          example: true
+          type: boolean        
       type: object
     AccountUpdateRequestBody:
       properties:
-        skip_webhook:
-          example: true
-          nullable: true
-          type: boolean
         account:
           "$ref": "#/components/schemas/AccountUpdateRequest"
       type: object
