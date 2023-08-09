@@ -265,10 +265,6 @@ components:
           example: '68899990000000'
           nullable: true
           type: string
-        skip_webhook:
-          example: true
-          nullable: true
-          type: boolean
         started_on:
           example: '2015-10-13T17:57:37.000Z'
           nullable: true
