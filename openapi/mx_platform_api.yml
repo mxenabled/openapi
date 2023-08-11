@@ -2205,6 +2205,7 @@ components:
       required:
       - category_guid
       - match_description
+      - description
       type: object
     TransactionRuleCreateRequestBody:
       properties:
@@ -2226,7 +2227,7 @@ components:
           nullable: true
           type: string
         guid:
-          example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
+          example: UTR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
           nullable: true
           type: string
         match_description:
@@ -5697,8 +5698,7 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/TransactionRuleCreateRequestBody"
-        description: TransactionRule object to be created with optional parameters
-          (description) and required parameters (category_guid and match_description)
+        description: TransactionRule object to be created with required parameters (description, category_guid, and match_description).
         required: true
       responses:
         '200':
@@ -5717,7 +5717,7 @@ paths:
       operationId: deleteTransactionRule
       parameters:
       - description: The unique id for a `transaction_rule`.
-        example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
+        example: UTR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
         in: path
         name: transaction_rule_guid
         required: true
@@ -5742,7 +5742,7 @@ paths:
       operationId: readTransactionRule
       parameters:
       - description: The unique id for a `transaction_rule`.
-        example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
+        example: UTR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
         in: path
         name: transaction_rule_guid
         required: true
@@ -5772,7 +5772,7 @@ paths:
       operationId: updateTransactionRule
       parameters:
       - description: The unique id for a `transaction_rule`.
-        example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
+        example: UTR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
         in: path
         name: transaction_rule_guid
         required: true
