@@ -8,4 +8,4 @@ This repository contains the OpenAPI specification for the [MX Platform API](htt
 
 Run the command `bundle` to install the gems required to run the CI validations locally.
 
-After making changes, running the command `bundle exec rake` will run the CI validations locally.
+After making changes, running the command `bundle exec rake normalize` will run the CI validations locally.

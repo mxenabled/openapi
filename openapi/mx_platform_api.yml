@@ -1,10 +1,323 @@
 ---
 components:
   schemas:
+    AccountCreateRequest:
+      properties:
+        account_subtype_name:
+          example: 'PERSONAL'
+          type: string
+        account_type:
+          example: 2
+          type: integer
+        apr:
+          example: 1.0
+          type: number
+        apy:
+          example: 1.0
+          type: number
+        available_balance:
+          example: 1000.0
+          type: number
+        balance:
+          example: 1000.0
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          type: number
+        credit_limit:
+          example: 100.0
+          type: number
+        currency_code:
+          example: USD
+          type: string
+        death_benefit:
+          example: 1000
+          type: integer
+        interest_rate:
+          example: 1.0
+          type: number
+        is_business:
+          example: false
+          type: boolean
+        is_closed:
+          example: false
+          type: boolean
+        is_hidden:
+          example: false
+          type: boolean
+        loan_amount:
+          example: 1000.0
+          type: number
+        metadata:
+          example: some metadata
+          type: string
+        name:
+          example: Test account 2
+          type: string
+        nickname:
+          example: Swiss Account
+          type: string
+        original_balance:
+          example: 10.0
+          type: number
+        property_type:
+          example: 1
+          type: integer
+        property_type_name:
+          example: 'VEHICLE'
+          type: string
+        skip_webhook:
+          example: false
+          type: boolean
+      required:
+      - name
+      - account_type
+      type: object
+    AccountCreateRequestBody:
+      properties:
+        account:
+          "$ref": "#/components/schemas/AccountCreateRequest"
+      type: object
+    AccountResponse:
+      properties:
+        account_number:
+          example: '5366'
+          nullable: true
+          type: string
+        account_ownership:
+          example: 'INDIVIDUAL'
+          nullable: true
+          type: string
+        annuity_policy_to_date:
+          example: '2016-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        annuity_provider:
+          example: 'Metlife'
+          nullable: true
+          type: string
+        annuity_term_year:
+          example: 2048
+          nullable: true
+          type: number
+        apr:
+          example: 1.0
+          nullable: true
+          type: number
+        apy:
+          example: 1.0
+          nullable: true
+          type: number
+        available_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        available_credit:
+          example: 1000.0
+          nullable: true
+          type: number
+        balance:
+          example: 10000.0
+          nullable: true
+          type: number
+        cash_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          nullable: true
+          type: number
+        created_at:
+          example: '2023-07-25T17:14:46Z'
+          nullable: false
+          type: string
+        credit_limit:
+          example: 100.0
+          nullable: true
+          type: number
+        currency_code:
+          example: USD
+          nullable: true
+          type: string
+        day_payment_is_due:
+          example: 20
+          nullable: true
+          type: integer
+        death_benefit:
+          example: 1000
+          nullable: true
+          type: integer
+        guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
+          type: string
+        holdings_value:
+          example: 1000.0
+          nullable: true
+          type: number
+        id:
+          example: '1040434698'
+          nullable: true
+          type: string
+        imported_at:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        interest_rate:
+          example: 1.0
+          nullable: true
+          type: number
+        institution_code:
+          example: '3af3685e-05d9-7060-359f-008d0755e993'
+          nullable: true
+          type: string
+        insured_name:
+          example: 'Tommy Shelby'
+          nullable: true
+          type: string
+        is_closed:
+          example: false
+          nullable: true
+          type: boolean
+        is_hidden:
+          example: false
+          nullable: true
+          type: boolean
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
+        last_payment:
+          example: 100.0
+          nullable: true
+          type: number
+        last_payment_at:
+          example: '2023-07-25T17:14:46Z'
+          nullable: true
+          type: string
+        loan_amount:
+          example: 1000.0
+          nullable: true
+          type: number
+        margin_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
+          type: string
+        member_id:
+          example: member123
+          nullable: true
+          type: string
+        member_is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        metadata:
+          example: 'some metadata'
+          nullable: true
+          type: string
+        minimum_balance:
+          example: 100.0
+          nullable: true
+          type: number
+        minimum_payment:
+          example: 10.0
+          nullable: true
+          type: number
+        name:
+          example: Test account 2
+          nullable: true
+          type: string
+        nickname:
+          example: My Checking
+          nullable: true
+          type: string
+        original_balance:
+          example: 10.0
+          nullable: true
+          type: number
+        pay_out_amount:
+          example: 10.0
+          nullable: true
+          type: number
+        payment_due_at:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        payoff_balance:
+          example: 10.0
+          nullable: true
+          type: number
+        premium_amount:
+          example: 1.0
+          nullable: true
+          type: number
+        property_type:
+          example: 1
+          nullable: true
+          type: integer
+        property_type_name:
+          example: VEHICLE
+          nullable: true
+          type: string
+        routing_number:
+          example: '68899990000000'
+          nullable: true
+          type: string
+        started_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        subtype:
+          example: NONE
+          nullable: true
+          type: string
+        today_ugl_amount:
+          example: 1000.50
+          nullable: true
+          type: number
+        today_ugl_percentage:
+          example: 6.9
+          nullable: true
+          type: number
+        total_account_value:
+          example: 1.0
+          nullable: true
+          type: number
+        type:
+          example: SAVINGS
+          nullable: true
+          type: string
+        updated_at:
+          example: '2016-10-13T18:08:00.000Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
+          type: string
+        user_id:
+          example: 'user123'
+          nullable: true
+          type: string
+      type: object
+    AccountResponseBody:
+      properties:
+        account:
+          "$ref": "#/components/schemas/AccountResponse"
+      type: object
     AccountNumberResponse:
       properties:
         account_guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          example: ACT-06d7f45b-caae-0f6e-1384-01f52e75dcb1
           nullable: true
           type: string
         account_number:
@@ -23,6 +336,10 @@ components:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           nullable: true
           type: string
+        passed_validation:
+          example: true
+          nullable: true
+          type: boolean
         routing_number:
           example: '68899990000000'
           nullable: true
@@ -67,8 +384,16 @@ components:
           example: donnie@darko.co
           nullable: true
           type: string
+        first_name:
+          example: Donnie
+          nullable: true
+          type: string
         guid:
           example: ACO-63dc7714-6fc0-4aa2-a069-c06cdccd1af9
+          nullable: true
+          type: string
+        last_name:
+          example: Darko
           nullable: true
           type: string
         member_guid:
@@ -105,202 +430,6 @@ components:
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
       type: object
-    AccountResponse:
-      properties:
-        account_number:
-          example: '5366'
-          nullable: true
-          type: string
-        apr:
-          example: 1.0
-          nullable: true
-          type: number
-        apy:
-          example: 1.0
-          nullable: true
-          type: number
-        available_balance:
-          example: 1000.0
-          nullable: true
-          type: number
-        available_credit:
-          example: 1000.0
-          nullable: true
-          type: number
-        balance:
-          example: 1000.0
-          nullable: true
-          type: number
-        cash_balance:
-          example: 1000.0
-          nullable: true
-          type: number
-        cash_surrender_value:
-          example: 1000.0
-          nullable: true
-          type: number
-        created_at:
-          example: '2016-10-13T17:57:37.000Z'
-          nullable: true
-          type: string
-        credit_limit:
-          example: 100.0
-          nullable: true
-          type: number
-        currency_code:
-          example: USD
-          nullable: true
-          type: string
-        day_payment_is_due:
-          example: 20
-          nullable: true
-          type: integer
-        death_benefit:
-          example: 1000
-          nullable: true
-          type: integer
-        guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          nullable: true
-          type: string
-        holdings_value:
-          example: 1000.0
-          nullable: true
-          type: number
-        id:
-          example: '1040434698'
-          nullable: true
-          type: string
-        imported_at:
-          example: '2015-10-13T17:57:37.000Z'
-          nullable: true
-          type: string
-        institution_code:
-          example: chase
-          nullable: true
-          type: string
-        insured_name:
-          example: Frodo Baggins
-          nullable: true
-          type: string
-        interest_rate:
-          example: 1.0
-          nullable: true
-          type: number
-        is_closed:
-          example: false
-          nullable: true
-          type: boolean
-        is_hidden:
-          example: false
-          nullable: true
-          type: boolean
-        last_payment:
-          example: 100.0
-          nullable: true
-          type: number
-        last_payment_at:
-          example: '2015-10-13T17:57:37.000Z'
-          nullable: true
-          type: string
-        loan_amount:
-          example: 1000.0
-          nullable: true
-          type: number
-        matures_on:
-          example: '2015-10-13T17:57:37.000Z'
-          nullable: true
-          type: string
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          nullable: true
-          type: string
-        member_id:
-          example: member123
-          nullable: true
-          type: string
-        member_is_managed_by_user:
-          example: false
-          nullable: true
-          type: boolean
-        metadata:
-          example: some metadata
-          nullable: true
-          type: string
-        minimum_balance:
-          example: 100.0
-          nullable: true
-          type: number
-        minimum_payment:
-          example: 10.0
-          nullable: true
-          type: number
-        name:
-          example: Test account 2
-          nullable: true
-          type: string
-        nickname:
-          example: My Checking
-          nullable: true
-          type: string
-        original_balance:
-          example: 10.0
-          nullable: true
-          type: number
-        pay_out_amount:
-          example: 10.0
-          nullable: true
-          type: number
-        payment_due_at:
-          example: '2015-10-13T17:57:37.000Z'
-          nullable: true
-          type: string
-        payoff_balance:
-          example: 10.0
-          nullable: true
-          type: number
-        premium_amount:
-          example: 1.0
-          nullable: true
-          type: number
-        routing_number:
-          example: '68899990000000'
-          nullable: true
-          type: string
-        started_on:
-          example: '2015-10-13T17:57:37.000Z'
-          nullable: true
-          type: string
-        subtype:
-          example: NONE
-          nullable: true
-          type: string
-        total_account_value:
-          example: 1.0
-          nullable: true
-          type: number
-        type:
-          example: SAVINGS
-          nullable: true
-          type: string
-        updated_at:
-          example: '2016-10-13T18:08:00.000Z'
-          nullable: true
-          type: string
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          nullable: true
-          type: string
-        user_id:
-          example: user123
-          nullable: true
-          type: string
-      type: object
-    AccountResponseBody:
-      properties:
-        account:
-          "$ref": "#/components/schemas/AccountResponse"
-      type: object
     AccountUpdateRequest:
       properties:
         is_hidden:
@@ -320,6 +449,32 @@ components:
           type: array
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    AuthorizationCodeRequest:
+      properties:
+        scope:
+          example: user-guid:USR-101ad774-288b-44ed-ad16-da87d522ea20 member-guid:MBR-54feffb9-8474-47bd-8442-de003910113a
+            account-guid:ACT-32a64160-582a-4f00-ab34-5f49cc35ed35 read-protected
+          nullable: true
+          type: string
+      type: object
+    AuthorizationCodeRequestBody:
+      properties:
+        authorization_code:
+          "$ref": "#/components/schemas/AuthorizationCodeRequest"
+      type: object
+    AuthorizationCodeResponse:
+      properties:
+        code:
+          example: 9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI
+          nullable: true
+          type: string
+      type: object
+    AuthorizationCodeResponseBody:
+      properties:
+        authorization_code:
+          items:
+            "$ref": "#/components/schemas/AuthorizationCodeResponse"
       type: object
     CategoriesResponseBody:
       properties:
@@ -457,17 +612,26 @@ components:
         current_member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
+        disable_background_agg:
+          example: false
+          type: boolean
         disable_institution_search:
+          example: false
+          type: boolean
+        include_identity:
           example: false
           type: boolean
         include_transactions:
           example: true
           type: boolean
         is_mobile_webview:
-          example: true
+          example: false
           type: boolean
         mode:
           example: aggregation
+          type: string
+        oauth_referral_source:
+          example: BROWSER
           type: string
         ui_message_version:
           example: 4
@@ -878,6 +1042,14 @@ components:
           example: chase
           nullable: true
           type: string
+        forgot_password_url:
+          example: https://example.url.chase.com/forgot-password
+          nullable: true
+          type: string
+        forgot_username_url:
+          example: https://example.url.chase.com/forgot-username
+          nullable: true
+          type: string
         instructional_text:
           example: Some instructional text <a href="https://example.url.chase.com/instructions"
             id="instructional_text">for end users</a>.
@@ -915,6 +1087,10 @@ components:
           example: true
           nullable: true
           type: boolean
+        trouble_signing_in_url:
+          example: https://example.url.chase.com/login-trouble
+          nullable: true
+          type: string
         url:
           example: https://www.chase.com
           nullable: true
@@ -1326,9 +1502,6 @@ components:
         background_aggregation_is_disabled:
           example: false
           type: boolean
-        client_redirect_url:
-          example: https://mx.com
-          type: string
         credentials:
           items:
             "$ref": "#/components/schemas/CredentialRequest"
@@ -1354,6 +1527,9 @@ components:
       type: object
     MemberCreateRequestBody:
       properties:
+        client_redirect_url:
+          example: https://mx.com
+          type: string
         member:
           "$ref": "#/components/schemas/MemberCreateRequest"
         referral_source:
@@ -1409,7 +1585,7 @@ components:
           nullable: true
           type: string
         oauth_window_uri:
-          example: int-widgets.moneydesktop.com/oauth/predirect_to/MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f/p8v7rxpxg3pdAsfgwxcrwxwhz3Zbygxfr6wAb931qv91hpb57k6bkr6t6m9djrfrfd467p8xkgqp6w7k1r9g8k8bfxqbfw2lq5tdwjq2sngAx76fm0jrw0dpmbtlkxchgjsw3r7r0hhq6A8sshqptfxql2rt123shfpkyhhpfvy67yvprbkb7lmlyrpwsd9yj0s22pmsyjhcw7d2q44d9fsxn5kfsmr2zqc79c2AxAx5gkjgbczf22A1sjx70t2pvnggzyh55s7bh62dd5wq7f1r4x90mcxn1tfhhrq5b09mjkt5hg66cjn700pcf6fgA42lbsp7v1pdch85mswycrp21c6j2sxffm14Asg3?skip_aggregation=false&referral_source=APP&ui_message_webview_url_scheme=myapp
+          example: https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2
           nullable: true
           type: string
         successfully_aggregated_at:
@@ -1623,7 +1799,7 @@ components:
           nullable: true
           type: string
         oauth_window_uri:
-          example: int-widgets.moneydesktop.com/oauth/predirect_to/MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f/zgknnw5k7dmztn2njmwlgz574mZlnft6vdrv7kzn9ptj325th6c5p0w6c7j83Ap1bqg01mhsr1bqjgf2fry3ly9wff497c6fcczbyrfgj7s39cygw95Akl7vlpmcAy2kmvh1mlkytg7jA1z3vnw1w3zx2r1wt65s6f6r3ryqqrysl9qA1kr6cAj6vhr1zl325Azz6hx52j1ll3vwbvvbv5xzy7d6csplyw25brA7147vAfq29ArjjAj4qmc6r6h457hkcj2946m0kjp2xzpkz6hz55lsp3Avmdb8dsq4xzqmzzqk68s6bp5tj9jsskw4wvcb95vm4fwh9w8phgp67hfj2flrtwcy5bxbtk74?skip_aggregation=false
+          example: https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2
           nullable: true
           type: string
       type: object
@@ -1657,6 +1833,38 @@ components:
         total_pages:
           example: 1
           type: integer
+      type: object
+    PaymentProcessorAuthorizationCodeRequest:
+      properties:
+        account_guid:
+          example: ACT-4d4c0068-33bc-4d06-bbd6-cd270fd0135c
+          nullable: true
+          type: string
+        member_guid:
+          example: MBR-46637bc5-942d-4229-9370-ddd858bf805e
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-f12b1f5a-7cbe-467c-aa30-0a10d0b2f549
+          nullable: true
+          type: string
+      type: object
+    PaymentProcessorAuthorizationCodeRequestBody:
+      properties:
+        payment_processor_authorization_code:
+          "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeRequest"
+      type: object
+    PaymentProcessorAuthorizationCodeResponse:
+      properties:
+        authorization_code:
+          example: 9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI
+          nullable: true
+          type: string
+      type: object
+    PaymentProcessorAuthorizationCodeResponseBody:
+      properties:
+        payment_processor_authorization_code:
+          "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponse"
       type: object
     StatementResponse:
       properties:
@@ -1827,6 +2035,63 @@ components:
         tags:
           items:
             "$ref": "#/components/schemas/TagResponse"
+          type: array
+      type: object
+    TaxDocumentResponse:
+      properties:
+        content_hash:
+          example: a16c580c4fcdfa8088edaa7b4d35b290
+          nullable: true
+          type: string
+        created_at:
+          example: '2022-10-18T19:23:16Z'
+          nullable: true
+          type: string
+        document_type:
+          example: TAX1099_C
+          nullable: true
+          type: string
+        guid:
+          example: TAX-ee8776ea-468b-4b02-b95d-743adf6ba50e
+          nullable: true
+          type: string
+        issued_on:
+          example: '2022-03-31'
+          nullable: true
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
+          type: string
+        tax_year:
+          example: '2023'
+          nullable: true
+          type: string
+        updated_at:
+          example: '2022-10-18T19:23:16Z'
+          nullable: true
+          type: string
+        uri:
+          example: "/users/USR-11141024-90b3-1bce-cac9-c06ced52ab4c/members/MBR-7c6f361b-e582-15b6-60c0-358f12466b4b/tax_documents/TAX-ee8776ea-468b-4b02-b95d-743adf6ba50e.pdf"
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          nullable: true
+          type: string
+      type: object
+    TaxDocumentResponseBody:
+      properties:
+        tax_document:
+          "$ref": "#/components/schemas/TaxDocumentResponse"
+      type: object
+    TaxDocumentsResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+        tax_documents:
+          items:
+            "$ref": "#/components/schemas/TaxDocumentResponse"
           type: array
       type: object
     TransactionResponse:
@@ -2125,7 +2390,7 @@ components:
           example: false
           type: boolean
         metadata:
-          example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+          example: '{\"type\": \"individual\", \"status\": \"preferred\"}'
           type: string
       type: object
     UserCreateRequestBody:
@@ -2207,17 +2472,26 @@ components:
         current_member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
+        disable_background_agg:
+          example: false
+          type: boolean
         disable_institution_search:
+          example: false
+          type: boolean
+        include_identity:
           example: false
           type: boolean
         include_transactions:
           example: true
           type: boolean
         is_mobile_webview:
-          example: true
+          example: false
           type: boolean
         mode:
           example: aggregation
+          type: string
+        oauth_referral_source:
+          example: BROWSER
           type: string
         ui_message_version:
           example: 4
@@ -2274,6 +2548,31 @@ info:
   version: 0.1.0
 openapi: 3.0.0
 paths:
+  "/authorization_code":
+    post:
+      description: Clients use this endpoint to request an authorization code according
+        to the parameters specified in the scope. Clients then pass this code to processors.
+        Processor access is scoped only to the GUIDs and features specified in this
+        request. Before requesting an authorization code which includes a member in
+        the scope, clients must have verified that member.
+      operationId: requestAuthorizationCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/AuthorizationCodeRequestBody"
+        description: The scope for the authorization code.
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AuthorizationCodeResponseBody"
+          description: OK
+      summary: Request an authorization code.
+      tags:
+      - mx_platform
   "/categories/default":
     get:
       description: Use this endpoint to retrieve a list of all the default categories
@@ -2575,6 +2874,32 @@ paths:
       summary: Read merchant
       tags:
       - mx_platform
+  "/payment_processor_authorization_code":
+    post:
+      description: "(This endpoint is deprecated. Clients should use `/authorization_code`.)
+        Clients use this endpoint to request an authorization_code according to a
+        user, member, and account specified in the request body. Clients then pass
+        this code to processors. Processor access is scoped only to the user/member/account
+        specified in this request. Before requesting an authorization_code, clients
+        must have verified the specified member."
+      operationId: deprecatedRequestPaymentProcessorAuthorizationCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeRequestBody"
+        description: The scope for the authorization code.
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponseBody"
+          description: OK
+      summary: "(Deprecated) Request an authorization code."
+      tags:
+      - mx_platform
   "/transactions/enhance":
     post:
       description: Use this endpoint to categorize, cleanse, and classify transactions.
@@ -2615,6 +2940,24 @@ paths:
         name: records_per_page
         schema:
           type: integer
+      - description: The user `id` to search for.
+        example: u-12324-abdc
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: The user `email` to search for.
+        example: example@example.com
+        in: query
+        name: email
+        schema:
+          type: string
+      - description: Search for users that are diabled.
+        example: true
+        in: query
+        name: is_disabled
+        schema:
+          type: boolean
       responses:
         '200':
           content:
@@ -2725,6 +3068,12 @@ paths:
         the specified `user`.
       operationId: listUserAccounts
       parameters:
+      - description: List only accounts whose member is managed by the user.
+        example: true
+        in: query
+        name: member_is_managed_by_user
+        schema:
+          type: boolean
       - description: Specify current page.
         example: 1
         in: query
@@ -2754,6 +3103,34 @@ paths:
       summary: List accounts
       tags:
       - mx_platform
+    post:
+      description: This endpoint can only be used to create manual accounts. Creating a manual account will automatically create it under the Manual Institution member. Since a manual account has no credentials tied to the member, the account will never aggregate or include data from a data feed..
+      operationId: createManualAccount
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/AccountCreateRequestBody"
+        description: Manual account object to be created.
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountResponseBody"
+          description: OK
+      summary: Create manual account
+      tags:
+      - mx_platform
   "/users/{user_guid}/accounts/{account_guid}":
     get:
       description: This endpoint returns the specified `account` resource.
@@ -2781,6 +3158,31 @@ paths:
                 "$ref": "#/components/schemas/AccountResponseBody"
           description: OK
       summary: Read account
+      tags:
+      - mx_platform
+    delete:
+      description: This endpoint deletes accounts that were manually created. The API will respond with an empty object and a status
+        of `204 No Content`.
+      operationId: deleteManualAccount
+      parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content.
+      summary: Delete manual account
       tags:
       - mx_platform
   "/users/{user_guid}/accounts/{account_guid}/account_numbers":
@@ -4204,7 +4606,91 @@ paths:
       summary: List account owners by member
       tags:
       - mx_platform
+  "/users/{user_guid}/members/{member_guid}/accounts":
+    get:
+      description: This endpoint returns a list of all the accounts associated with
+        the specified `member`.
+      operationId: listMemberAccounts
+      parameters:
+      - description: List only accounts whose member is managed by the user.
+        example: true
+        in: query
+        name: member_is_managed_by_user
+        schema:
+          type: boolean
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountsResponseBody"
+          description: OK
+      summary: List accounts by member
+      tags:
+      - mx_platform
   "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}":
+    get:
+      description: This endpoint allows you to read the attributes of an `account`
+        resource.
+      operationId: readAccountByMember
+      parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountResponseBody"
+          description: OK
+      summary: Read account by member
+      tags:
+      - mx_platform
     put:
       description: This endpoint allows you to update certain attributes of an `account`
         resource.
@@ -4459,6 +4945,41 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
       summary: Fetch statements
+      tags:
+      - mx_platform
+  "/users/{user_guid}/members/{member_guid}/fetch_tax_documents":
+    post:
+      description: Use this endpoint to fetch (aggregate) the tax documents associated
+        with the specified member. This request **does not** return the latest tax
+        documents. It just starts the document aggregation process and returns the
+        initial state of the process. You must interact with the newly aggregated
+        data using the other document endpoints in this reference. This request may
+        also trigger multi-factor authentication which requires end-user input and
+        a specific process for answering authentication challenges.
+      operationId: fetchTaxDocuments
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: Accepted
+      summary: Fetch Tax Documents
       tags:
       - mx_platform
   "/users/{user_guid}/members/{member_guid}/holdings":
@@ -4790,6 +5311,121 @@ paths:
                 "$ref": "#/components/schemas/MemberStatusResponseBody"
           description: OK
       summary: Read member status
+      tags:
+      - mx_platform
+  "/users/{user_guid}/members/{member_guid}/tax_documents":
+    get:
+      description: Use this endpoint to get a paginated list of tax documents.
+      operationId: listTaxDocuments
+      parameters:
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TaxDocumentsResponseBody"
+          description: OK
+      summary: List Tax Documents
+      tags:
+      - mx_platform
+  "/users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}":
+    get:
+      description: Use this endpoint to read the attributes of the specified tax document.
+      operationId: readTaxDocument
+      parameters:
+      - description: The unique id for a `tax_document`.
+        example: TAX-987dfds1b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: tax_document_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TaxDocumentResponseBody"
+          description: OK
+      summary: Read a Tax Document
+      tags:
+      - mx_platform
+  "/users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}.pdf":
+    get:
+      description: Use this endpoint to download a PDF version of the specified tax
+        document. The endpoint URL is the base URL appended with the uri of the tax_document.
+      operationId: downloadTaxDocument
+      parameters:
+      - description: The unique id for a `tax_document`.
+        example: TAX-987dfds1b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: tax_document_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `member`.
+        example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: member_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+pdf:
+              schema:
+                format: binary
+                type: string
+          description: OK
+      summary: Download a Tax Document PDF
       tags:
       - mx_platform
   "/users/{user_guid}/members/{member_guid}/transactions":
