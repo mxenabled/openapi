@@ -1447,6 +1447,9 @@ components:
         client_redirect_url:
           example: https://mx.com
           type: string
+        enable_app2app:
+          example: false
+          type: boolean
         member:
           "$ref": "#/components/schemas/MemberCreateRequest"
         referral_source:
@@ -4844,6 +4847,13 @@ paths:
         example: https://mx.com
         in: query
         name: client_redirect_url
+        schema:
+          type: string
+      - description:
+          This indicates whether OAuth app2app behavior is enabled for institutions that support it. Defaults to `true`. This setting is not persistent.
+        example: false
+        in: query
+        name: enable_app2app
         schema:
           type: string
       - description: The unique id for a `member`.
