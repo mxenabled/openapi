@@ -4,7 +4,7 @@ components:
     AccountCreateRequest:
       properties:
         account_subtype_name:
-          example: 'PERSONAL'
+          example: PERSONAL
           type: string
         account_type:
           example: 2
@@ -64,7 +64,7 @@ components:
           example: 1
           type: integer
         property_type_name:
-          example: 'VEHICLE'
+          example: VEHICLE
           type: string
         skip_webhook:
           example: false
@@ -77,242 +77,6 @@ components:
       properties:
         account:
           "$ref": "#/components/schemas/AccountCreateRequest"
-      type: object
-    AccountResponse:
-      properties:
-        account_number:
-          example: '5366'
-          nullable: true
-          type: string
-        account_ownership:
-          example: 'INDIVIDUAL'
-          nullable: true
-          type: string
-        annuity_policy_to_date:
-          example: '2016-10-13T17:57:37.000Z'
-          nullable: true
-          type: string
-        annuity_provider:
-          example: 'Metlife'
-          nullable: true
-          type: string
-        annuity_term_year:
-          example: 2048
-          nullable: true
-          type: number
-        apr:
-          example: 1.0
-          nullable: true
-          type: number
-        apy:
-          example: 1.0
-          nullable: true
-          type: number
-        available_balance:
-          example: 1000.0
-          nullable: true
-          type: number
-        available_credit:
-          example: 1000.0
-          nullable: true
-          type: number
-        balance:
-          example: 10000.0
-          nullable: true
-          type: number
-        cash_balance:
-          example: 1000.0
-          nullable: true
-          type: number
-        cash_surrender_value:
-          example: 1000.0
-          nullable: true
-          type: number
-        created_at:
-          example: '2023-07-25T17:14:46Z'
-          nullable: false
-          type: string
-        credit_limit:
-          example: 100.0
-          nullable: true
-          type: number
-        currency_code:
-          example: USD
-          nullable: true
-          type: string
-        day_payment_is_due:
-          example: 20
-          nullable: true
-          type: integer
-        death_benefit:
-          example: 1000
-          nullable: true
-          type: integer
-        guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          nullable: true
-          type: string
-        holdings_value:
-          example: 1000.0
-          nullable: true
-          type: number
-        id:
-          example: '1040434698'
-          nullable: true
-          type: string
-        imported_at:
-          example: '2015-10-13T17:57:37.000Z'
-          nullable: true
-          type: string
-        interest_rate:
-          example: 1.0
-          nullable: true
-          type: number
-        institution_code:
-          example: '3af3685e-05d9-7060-359f-008d0755e993'
-          nullable: true
-          type: string
-        insured_name:
-          example: 'Tommy Shelby'
-          nullable: true
-          type: string
-        is_closed:
-          example: false
-          nullable: true
-          type: boolean
-        is_hidden:
-          example: false
-          nullable: true
-          type: boolean
-        is_manual:
-          example: false
-          nullable: true
-          type: boolean
-        last_payment:
-          example: 100.0
-          nullable: true
-          type: number
-        last_payment_at:
-          example: '2023-07-25T17:14:46Z'
-          nullable: true
-          type: string
-        loan_amount:
-          example: 1000.0
-          nullable: true
-          type: number
-        margin_balance:
-          example: 1000.0
-          nullable: true
-          type: number
-        matures_on:
-          example: '2015-10-13T17:57:37.000Z'
-          nullable: true
-          type: string
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          nullable: true
-          type: string
-        member_id:
-          example: member123
-          nullable: true
-          type: string
-        member_is_managed_by_user:
-          example: false
-          nullable: true
-          type: boolean
-        metadata:
-          example: 'some metadata'
-          nullable: true
-          type: string
-        minimum_balance:
-          example: 100.0
-          nullable: true
-          type: number
-        minimum_payment:
-          example: 10.0
-          nullable: true
-          type: number
-        name:
-          example: Test account 2
-          nullable: true
-          type: string
-        nickname:
-          example: My Checking
-          nullable: true
-          type: string
-        original_balance:
-          example: 10.0
-          nullable: true
-          type: number
-        pay_out_amount:
-          example: 10.0
-          nullable: true
-          type: number
-        payment_due_at:
-          example: '2015-10-13T17:57:37.000Z'
-          nullable: true
-          type: string
-        payoff_balance:
-          example: 10.0
-          nullable: true
-          type: number
-        premium_amount:
-          example: 1.0
-          nullable: true
-          type: number
-        property_type:
-          example: 1
-          nullable: true
-          type: integer
-        property_type_name:
-          example: VEHICLE
-          nullable: true
-          type: string
-        routing_number:
-          example: '68899990000000'
-          nullable: true
-          type: string
-        started_on:
-          example: '2015-10-13T17:57:37.000Z'
-          nullable: true
-          type: string
-        subtype:
-          example: NONE
-          nullable: true
-          type: string
-        today_ugl_amount:
-          example: 1000.50
-          nullable: true
-          type: number
-        today_ugl_percentage:
-          example: 6.9
-          nullable: true
-          type: number
-        total_account_value:
-          example: 1.0
-          nullable: true
-          type: number
-        type:
-          example: SAVINGS
-          nullable: true
-          type: string
-        updated_at:
-          example: '2016-10-13T18:08:00.000Z'
-          nullable: true
-          type: string
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          nullable: true
-          type: string
-        user_id:
-          example: 'user123'
-          nullable: true
-          type: string
-      type: object
-    AccountResponseBody:
-      properties:
-        account:
-          "$ref": "#/components/schemas/AccountResponse"
       type: object
     AccountNumberResponse:
       properties:
@@ -429,6 +193,242 @@ components:
           type: array
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    AccountResponse:
+      properties:
+        account_number:
+          example: '5366'
+          nullable: true
+          type: string
+        account_ownership:
+          example: INDIVIDUAL
+          nullable: true
+          type: string
+        annuity_policy_to_date:
+          example: '2016-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        annuity_provider:
+          example: Metlife
+          nullable: true
+          type: string
+        annuity_term_year:
+          example: 2048
+          nullable: true
+          type: number
+        apr:
+          example: 1.0
+          nullable: true
+          type: number
+        apy:
+          example: 1.0
+          nullable: true
+          type: number
+        available_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        available_credit:
+          example: 1000.0
+          nullable: true
+          type: number
+        balance:
+          example: 10000.0
+          nullable: true
+          type: number
+        cash_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          nullable: true
+          type: number
+        created_at:
+          example: '2023-07-25T17:14:46Z'
+          nullable: false
+          type: string
+        credit_limit:
+          example: 100.0
+          nullable: true
+          type: number
+        currency_code:
+          example: USD
+          nullable: true
+          type: string
+        day_payment_is_due:
+          example: 20
+          nullable: true
+          type: integer
+        death_benefit:
+          example: 1000
+          nullable: true
+          type: integer
+        guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
+          type: string
+        holdings_value:
+          example: 1000.0
+          nullable: true
+          type: number
+        id:
+          example: '1040434698'
+          nullable: true
+          type: string
+        imported_at:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        institution_code:
+          example: 3af3685e-05d9-7060-359f-008d0755e993
+          nullable: true
+          type: string
+        insured_name:
+          example: Tommy Shelby
+          nullable: true
+          type: string
+        interest_rate:
+          example: 1.0
+          nullable: true
+          type: number
+        is_closed:
+          example: false
+          nullable: true
+          type: boolean
+        is_hidden:
+          example: false
+          nullable: true
+          type: boolean
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
+        last_payment:
+          example: 100.0
+          nullable: true
+          type: number
+        last_payment_at:
+          example: '2023-07-25T17:14:46Z'
+          nullable: true
+          type: string
+        loan_amount:
+          example: 1000.0
+          nullable: true
+          type: number
+        margin_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
+          type: string
+        member_id:
+          example: member123
+          nullable: true
+          type: string
+        member_is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        metadata:
+          example: some metadata
+          nullable: true
+          type: string
+        minimum_balance:
+          example: 100.0
+          nullable: true
+          type: number
+        minimum_payment:
+          example: 10.0
+          nullable: true
+          type: number
+        name:
+          example: Test account 2
+          nullable: true
+          type: string
+        nickname:
+          example: My Checking
+          nullable: true
+          type: string
+        original_balance:
+          example: 10.0
+          nullable: true
+          type: number
+        pay_out_amount:
+          example: 10.0
+          nullable: true
+          type: number
+        payment_due_at:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        payoff_balance:
+          example: 10.0
+          nullable: true
+          type: number
+        premium_amount:
+          example: 1.0
+          nullable: true
+          type: number
+        property_type:
+          example: 1
+          nullable: true
+          type: integer
+        property_type_name:
+          example: VEHICLE
+          nullable: true
+          type: string
+        routing_number:
+          example: '68899990000000'
+          nullable: true
+          type: string
+        started_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        subtype:
+          example: NONE
+          nullable: true
+          type: string
+        today_ugl_amount:
+          example: 1000.5
+          nullable: true
+          type: number
+        today_ugl_percentage:
+          example: 6.9
+          nullable: true
+          type: number
+        total_account_value:
+          example: 1.0
+          nullable: true
+          type: number
+        type:
+          example: SAVINGS
+          nullable: true
+          type: string
+        updated_at:
+          example: '2016-10-13T18:08:00.000Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
+          type: string
+        user_id:
+          example: user123
+          nullable: true
+          type: string
+      type: object
+    AccountResponseBody:
+      properties:
+        account:
+          "$ref": "#/components/schemas/AccountResponse"
       type: object
     AccountUpdateRequest:
       properties:
@@ -1001,11 +1001,11 @@ components:
           nullable: true
           type: boolean
         micro_description:
-          example: ""
+          example: ''
           nullable: true
           type: string
         micro_title:
-          example: ""
+          example: ''
           nullable: true
           type: string
         template:
@@ -1035,6 +1035,13 @@ components:
           example: false
           type: boolean
       type: object
+    InsightsReadResponseBody:
+      properties:
+        account_numbers:
+          items:
+            "$ref": "#/components/schemas/InsightResponse"
+          type: object
+      type: object
     InsightsResponseBody:
       properties:
         account_numbers:
@@ -1043,13 +1050,6 @@ components:
           type: array
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
-      type: object
-    InsightsReadResponseBody:
-      properties:
-        account_numbers:
-          items:
-            "$ref": "#/components/schemas/InsightResponse"
-          type: object
       type: object
     InstitutionResponse:
       properties:
@@ -3119,7 +3119,10 @@ paths:
       tags:
       - mx_platform
     post:
-      description: This endpoint can only be used to create manual accounts. Creating a manual account will automatically create it under the Manual Institution member. Since a manual account has no credentials tied to the member, the account will never aggregate or include data from a data feed..
+      description: This endpoint can only be used to create manual accounts. Creating
+        a manual account will automatically create it under the Manual Institution
+        member. Since a manual account has no credentials tied to the member, the
+        account will never aggregate or include data from a data feed..
       operationId: createManualAccount
       parameters:
       - description: The unique id for a `user`.
@@ -3147,6 +3150,31 @@ paths:
       tags:
       - mx_platform
   "/users/{user_guid}/accounts/{account_guid}":
+    delete:
+      description: This endpoint deletes accounts that were manually created. The
+        API will respond with an empty object and a status of `204 No Content`.
+      operationId: deleteManualAccount
+      parameters:
+      - description: The unique id for an `account`.
+        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content.
+      summary: Delete manual account
+      tags:
+      - mx_platform
     get:
       description: This endpoint returns the specified `account` resource.
       operationId: readAccount
@@ -3173,31 +3201,6 @@ paths:
                 "$ref": "#/components/schemas/AccountResponseBody"
           description: OK
       summary: Read account
-      tags:
-      - mx_platform
-    delete:
-      description: This endpoint deletes accounts that were manually created. The API will respond with an empty object and a status
-        of `204 No Content`.
-      operationId: deleteManualAccount
-      parameters:
-      - description: The unique id for an `account`.
-        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-        in: path
-        name: account_guid
-        required: true
-        schema:
-          type: string
-      - description: The unique id for a `user`.
-        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: No content.
-      summary: Delete manual account
       tags:
       - mx_platform
   "/users/{user_guid}/accounts/{account_guid}/account_numbers":
@@ -3676,39 +3679,10 @@ paths:
       summary: List all insights for a user.
       tags:
       - mx_platform
-  "/users/{user_guid}/insights{guid}":
-    get:
-      description: Use this endpoint to read the attributes of a specific insight according to its unique GUID.
-      operationId: readInsightsUser
-      parameters:
-      - description: The unique identifier for the user. Defined by MX.
-        example: USR-1234-abcd
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
-      - description: The unique identifier for the insight. Defined by MX.
-        example: BET-1234-abcd
-        in: path
-        name: guid
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/InsightsResponseBody"
-          description: OK
-      summary: Read a specific insight.
-      tags:
-      - mx_platform
-
   "/users/{user_guid}/insights/{guid}":
     put:
-      description: Use this endpoint to update the attributes of a particular insight according to its unique GUID
+      description: Use this endpoint to update the attributes of a particular insight
+        according to its unique GUID
       operationId: updateInsight
       parameters:
       - description: The unique identifier for the user. Defined by MX.
@@ -3744,6 +3718,36 @@ paths:
       tags:
       - mx_platform
   "/users/{user_guid}/insights/{guid}/accounts":
+    "/users/{user_guid}/insights/{guid}/categories":
+      get:
+        description: Use this endpoint to list all the categories associated with
+          the insight.
+        operationId: listCategoriesInsight
+        parameters:
+        - description: The unique identifier for the user. Defined by MX.
+          example: USR-1234-abcd
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the insight. Defined by MX.
+          example: BET-1234-abcd
+          in: path
+          name: guid
+          required: true
+          schema:
+            type: string
+        responses:
+          '200':
+            content:
+              application/vnd.mx.api.v1+json:
+                schema:
+                  "$ref": "#/components/schemas/CategoriesResponseBody"
+            description: OK
+        summary: List all categories associated with an insight.
+        tags:
+        - mx_platform
     get:
       description: Use this endpoint to list all the accounts associated with the
         insight.
@@ -3773,36 +3777,6 @@ paths:
       summary: List all accounts associated with an insight.
       tags:
       - mx_platform
-    "/users/{user_guid}/insights/{guid}/categories":
-      get:
-        description: Use this endpoint to list all the categories associated with the
-          insight.
-        operationId: listCategoriesInsight
-        parameters:
-        - description: The unique identifier for the user. Defined by MX.
-          example: USR-1234-abcd
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique identifier for the insight. Defined by MX.
-          example: BET-1234-abcd
-          in: path
-          name: guid
-          required: true
-          schema:
-            type: string
-        responses:
-          '200':
-            content:
-              application/vnd.mx.api.v1+json:
-                schema:
-                  "$ref": "#/components/schemas/CategoriesResponseBody"
-            description: OK
-        summary: List all categories associated with an insight.
-        tags:
-        - mx_platform  
   "/users/{user_guid}/insights/{guid}/merchants":
     get:
       description: Use this endpoint to list all the merchants associated with the
@@ -3861,6 +3835,36 @@ paths:
                 "$ref": "#/components/schemas/TransactionsResponseBody"
           description: OK
       summary: List all transactions associated with an insight.
+      tags:
+      - mx_platform
+  "/users/{user_guid}/insights{guid}":
+    get:
+      description: Use this endpoint to read the attributes of a specific insight
+        according to its unique GUID.
+      operationId: readInsightsUser
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InsightsResponseBody"
+          description: OK
+      summary: Read a specific insight.
       tags:
       - mx_platform
   "/users/{user_guid}/managed_members":
