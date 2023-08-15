@@ -1001,11 +1001,11 @@ components:
           nullable: true
           type: boolean
         micro_description:
-          example: ''
+          example: Netflix charged you $5.00 more this month than normal.
           nullable: true
           type: string
         micro_title:
-          example: ''
+          example: Price increase
           nullable: true
           type: string
         template:
