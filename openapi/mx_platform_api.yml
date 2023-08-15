@@ -1000,6 +1000,14 @@ components:
           example: false
           nullable: true
           type: boolean
+        micro_description:
+          example: ""
+          nullable: true
+          type: string
+        micro_title:
+          example: ""
+          nullable: true
+          type: string
         template:
           example: SubscriptionPriceIncrease
           nullable: true
@@ -1035,6 +1043,13 @@ components:
           type: array
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    InsightsReadResponseBody:
+      properties:
+        account_numbers:
+          items:
+            "$ref": "#/components/schemas/InsightResponse"
+          type: object
       type: object
     InstitutionResponse:
       properties:
@@ -3661,9 +3676,39 @@ paths:
       summary: List all insights for a user.
       tags:
       - mx_platform
-  "/users/{user_guid}/insights/{insight_guid}":
+  "/users/{user_guid}/insights{guid}":
+    get:
+      description: Use this endpoint to read the attributes of a specific insight according to its unique GUID.
+      operationId: readInsightsUser
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InsightsResponseBody"
+          description: OK
+      summary: Read a specific insight.
+      tags:
+      - mx_platform
+
+  "/users/{user_guid}/insights/{guid}":
     put:
-      description: Use this endpoint to update the attributes of the specified insight.
+      description: Use this endpoint to update the attributes of a particular insight according to its unique GUID
       operationId: updateInsight
       parameters:
       - description: The unique identifier for the user. Defined by MX.
@@ -3676,7 +3721,7 @@ paths:
       - description: The unique identifier for the insight. Defined by MX.
         example: BET-1234-abcd
         in: path
-        name: insight_guid
+        name: guid
         required: true
         schema:
           type: string
@@ -3698,7 +3743,7 @@ paths:
       summary: Update insight
       tags:
       - mx_platform
-  "/users/{user_guid}/insights/{insight_guid}/accounts":
+  "/users/{user_guid}/insights/{guid}/accounts":
     get:
       description: Use this endpoint to list all the accounts associated with the
         insight.
@@ -3714,7 +3759,7 @@ paths:
       - description: The unique identifier for the insight. Defined by MX.
         example: BET-1234-abcd
         in: path
-        name: insight_guid
+        name: guid
         required: true
         schema:
           type: string
@@ -3728,7 +3773,37 @@ paths:
       summary: List all accounts associated with an insight.
       tags:
       - mx_platform
-  "/users/{user_guid}/insights/{insight_guid}/merchants":
+    "/users/{user_guid}/insights/{guid}/categories":
+      get:
+        description: Use this endpoint to list all the categories associated with the
+          insight.
+        operationId: listCategoriesInsight
+        parameters:
+        - description: The unique identifier for the user. Defined by MX.
+          example: USR-1234-abcd
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the insight. Defined by MX.
+          example: BET-1234-abcd
+          in: path
+          name: guid
+          required: true
+          schema:
+            type: string
+        responses:
+          '200':
+            content:
+              application/vnd.mx.api.v1+json:
+                schema:
+                  "$ref": "#/components/schemas/CategoriesResponseBody"
+            description: OK
+        summary: List all categories associated with an insight.
+        tags:
+        - mx_platform  
+  "/users/{user_guid}/insights/{guid}/merchants":
     get:
       description: Use this endpoint to list all the merchants associated with the
         insight.
@@ -3744,7 +3819,7 @@ paths:
       - description: The unique identifier for the insight. Defined by MX.
         example: BET-1234-abcd
         in: path
-        name: insight_guid
+        name: guid
         required: true
         schema:
           type: string
@@ -3758,7 +3833,7 @@ paths:
       summary: List all merchants associated with an insight.
       tags:
       - mx_platform
-  "/users/{user_guid}/insights/{insight_guid}/transactions":
+  "/users/{user_guid}/insights/{guid}/transactions":
     get:
       description: Use this endpoint to list all the transactions associated with
         the insight.
@@ -3774,7 +3849,7 @@ paths:
       - description: The unique identifier for the insight. Defined by MX.
         example: BET-1234-abcd
         in: path
-        name: insight_guid
+        name: guid
         required: true
         schema:
           type: string
@@ -3785,7 +3860,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/TransactionsResponseBody"
           description: OK
-      summary: List all transactionsassociated with an insight.
+      summary: List all transactions associated with an insight.
       tags:
       - mx_platform
   "/users/{user_guid}/managed_members":
