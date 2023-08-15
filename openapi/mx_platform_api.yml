@@ -1006,6 +1006,104 @@ components:
           nullable: true
           type: string
       type: object
+    InsightResponse:
+      properties:
+        active_at:
+          example: '2022-01-07T12:00:00Z'
+          nullable: true
+          type: string
+        client_guid:
+          example: CLT-abcd-1234
+          nullable: true
+          type: string
+        created_at:
+          example: '2022-01-12T18:16:51Z'
+          nullable: true
+          type: string
+        description:
+          example: Gold's Gym charged you $36.71 more this month than normal. Did
+            you upgrade your service?
+          nullable: true
+          type: string
+        guid:
+          example: BET-abcd-1234
+          nullable: true
+          type: string
+        has_associated_accounts:
+          example: false
+          nullable: true
+          type: boolean
+        has_associated_merchants:
+          example: false
+          nullable: true
+          type: boolean
+        has_associated_scheduled_payments:
+          example: false
+          nullable: true
+          type: boolean
+        has_associated_transactions:
+          example: true
+          nullable: true
+          type: boolean
+        has_been_displayed:
+          example: true
+          nullable: true
+          type: boolean
+        is_dismissed:
+          example: false
+          nullable: true
+          type: boolean
+        micro_description:
+          example: ""
+          nullable: true
+          type: string
+        micro_title:
+          example: ""
+          nullable: true
+          type: string
+        template:
+          example: SubscriptionPriceIncrease
+          nullable: true
+          type: string
+        title:
+          example: Price increase
+          nullable: true
+          type: string
+        updated_at:
+          example: '2022-01-12T18:16:51Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-1234-abcd
+          type: string
+        user_id:
+          example: user-partner-defined-1234
+      type: object
+    InsightUpdateRequest:
+      properties:
+        has_been_displayed:
+          example: false
+          type: boolean
+        is_dismissed:
+          example: false
+          type: boolean
+      type: object
+    InsightsResponseBody:
+      properties:
+        account_numbers:
+          items:
+            "$ref": "#/components/schemas/InsightResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    InsightsReadResponseBody:
+      properties:
+        account_numbers:
+          items:
+            "$ref": "#/components/schemas/InsightResponse"
+          type: object
+      type: object
     InstitutionResponse:
       properties:
         code:
@@ -3612,6 +3710,216 @@ paths:
                 "$ref": "#/components/schemas/HoldingResponseBody"
           description: OK
       summary: Read holding
+      tags:
+      - mx_platform
+  "/users/{user_guid}/insights":
+    get:
+      description: Use this endpoint to list all the insights associated with the
+        user.
+      operationId: listInsightsUser
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InsightsResponseBody"
+          description: OK
+      summary: List all insights for a user.
+      tags:
+      - mx_platform
+  "/users/{user_guid}/insights{guid}":
+    get:
+      description: Use this endpoint to read the attributes of a specific insight according to its unique GUID.
+      operationId: readInsightsUser
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InsightsResponseBody"
+          description: OK
+      summary: Read a specific insight.
+      tags:
+      - mx_platform
+
+  "/users/{user_guid}/insights/{guid}":
+    put:
+      description: Use this endpoint to update the attributes of a particular insight according to its unique GUID
+      operationId: updateInsight
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/InsightUpdateRequest"
+        description: The insight to be updated (None of these parameters are required,
+          but the user object cannot be empty.)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InsightResponse"
+          description: OK
+      summary: Update insight
+      tags:
+      - mx_platform
+  "/users/{user_guid}/insights/{guid}/accounts":
+    get:
+      description: Use this endpoint to list all the accounts associated with the
+        insight.
+      operationId: listAccountsInsight
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountsResponseBody"
+          description: OK
+      summary: List all accounts associated with an insight.
+      tags:
+      - mx_platform
+    "/users/{user_guid}/insights/{guid}/categories":
+      get:
+        description: Use this endpoint to list all the categories associated with the
+          insight.
+        operationId: listCategoriesInsight
+        parameters:
+        - description: The unique identifier for the user. Defined by MX.
+          example: USR-1234-abcd
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the insight. Defined by MX.
+          example: BET-1234-abcd
+          in: path
+          name: guid
+          required: true
+          schema:
+            type: string
+        responses:
+          '200':
+            content:
+              application/vnd.mx.api.v1+json:
+                schema:
+                  "$ref": "#/components/schemas/CategoriesResponseBody"
+            description: OK
+        summary: List all categories associated with an insight.
+        tags:
+        - mx_platform  
+  "/users/{user_guid}/insights/{guid}/merchants":
+    get:
+      description: Use this endpoint to list all the merchants associated with the
+        insight.
+      operationId: listMerchantsInsight
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MerchantsResponseBody"
+          description: OK
+      summary: List all merchants associated with an insight.
+      tags:
+      - mx_platform
+  "/users/{user_guid}/insights/{guid}/transactions":
+    get:
+      description: Use this endpoint to list all the transactions associated with
+        the insight.
+      operationId: listTransactionsInsight
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TransactionsResponseBody"
+          description: OK
+      summary: List all transactions associated with an insight.
       tags:
       - mx_platform
   "/users/{user_guid}/managed_members":
