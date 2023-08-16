@@ -3,12 +3,12 @@ components:
   schemas:
     AccountCreateRequest:
       properties:
-        account_subtype_name:
+        account_subtype:
           example: 'PERSONAL'
           type: string
         account_type:
-          example: 2
-          type: integer
+          example: SAVINGS
+          type: string
         apr:
           example: 1.0
           type: number
@@ -61,13 +61,10 @@ components:
           example: 10.0
           type: number
         property_type:
-          example: 1
-          type: integer
-        property_type_name:
-          example: 'VEHICLE'
+          example: VEHICLE
           type: string
         skip_webhook:
-          example: false
+          example: true
           type: boolean
       required:
       - name
@@ -261,10 +258,6 @@ components:
           nullable: true
           type: number
         property_type:
-          example: 1
-          nullable: true
-          type: integer
-        property_type_name:
           example: VEHICLE
           nullable: true
           type: string
@@ -432,8 +425,68 @@ components:
       type: object
     AccountUpdateRequest:
       properties:
+        account_subtype:
+          example: 'PERSONAL'
+          type: string
+        account_type:
+          example: SAVINGS
+          type: string
+        apr:
+          example: 1.0
+          type: number
+        apy:
+          example: 1.0
+          type: number
+        available_balance:
+          example: 1000.0
+          type: number
+        balance:
+          example: 1000.0
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          type: number
+        credit_limit:
+          example: 100.00
+          type: number
+        currency_code:
+          example: USD
+          type: string
+        death_benefit:
+          example: 1000
+          type: integer
+        interest_rate:
+          example: 1.0
+          type: number
+        is_business:
+          example: false
+          type: boolean
+        is_closed:
+          example: false
+          type: boolean
         is_hidden:
           example: false
+          type: boolean
+        loan_amount:
+          example: 1000.0
+          type: number
+        metadata:
+          example: some metadata
+          type: string
+        name:
+          example: Test account 2
+          type: string
+        nickname:
+          example: Swiss Account
+          type: string
+        original_balance:
+          example: 10.0
+          type: number
+        property_type:
+          example: VEHICLE
+          type: string
+        skip_webhook:
+          example: true
           type: boolean
       type: object
     AccountUpdateRequestBody:
@@ -3000,6 +3053,12 @@ paths:
         name: page
         schema:
           type: integer
+      - description: List only accounts that were manually created.
+        example: true
+        in: query
+        name: is_manual
+        schema:
+          type: boolean
       - description: Specify records per page.
         example: 10
         in: query
