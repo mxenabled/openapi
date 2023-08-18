@@ -3682,7 +3682,7 @@ paths:
   "/users/{user_guid}/insights/{guid}":
     put:
       description: Use this endpoint to update the attributes of a particular insight
-        according to its unique GUID
+        according to its unique GUID.
       operationId: updateInsight
       parameters:
       - description: The unique identifier for the user. Defined by MX.
