@@ -1836,6 +1836,52 @@ components:
         payment_processor_authorization_code:
           "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponse"
       type: object
+    SpendingPlanIterationItemResponse:
+      properties:
+        created_at:
+          example: '2016-10-13T18:08:00+00:00'
+          nullable: true
+          type: integer
+        current_iteration_number:
+          example: '1'
+          nullable: true
+          type: integer
+        guid:
+          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+          nullable: true
+          type: string
+        updated_at:
+          example: '2016-10-13T18:09:00+00:00'
+          nullable: true
+          type: integer
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
+          type: string
+      type: object
+    SpendingPlanResponse:
+      properties:
+        created_at:
+          example: '2016-10-13T18:08:00+00:00'
+          nullable: true
+          type: integer
+        current_iteration_number:
+          example: '1'
+          nullable: true
+          type: integer
+        guid:
+          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+          nullable: true
+          type: string
+        updated_at:
+          example: '2016-10-13T18:09:00+00:00'
+          nullable: true
+          type: integer
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
+          type: string
+      type: object
     StatementResponse:
       properties:
         account_guid:
@@ -5335,6 +5381,525 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: OK
       summary: Verify member
+      tags:
+      - mx_platform
+
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items":
+    post:
+      description: This endpoint creates a new `spending_plan_iteration_item`.
+      operationId: createSpendingPlanIterationItem
+      parameters:
+      - description: The unique ID for the `spending_plan`.
+        example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+        in: path
+        name: spending_plan_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/SpendingPlanIterationItemResponse"
+          description: OK
+      summary: Create spending plan iteration item
+      tags:
+      - mx_platform
+  "/users/{user_guid}/spending_plans":
+    post:
+      description: This endpoint creates a new `spending_plan` for the user.
+      operationId: createSpendingPlan
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/SpendingPlanResponse"
+          description: OK
+      summary: Create spending plan
+      tags:
+      - mx_platform
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid}":
+    delete:
+      description: Use this endpoint to delete a `spending_plan_account`.
+      operationId: deleteSpendingPlanAccount
+      parameters:
+      - description: The unique ID for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `spending_plan`.
+        example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+        in: path
+        name: spending_plan_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the specified account.
+        example: ACT-e9f80fee-84da-7s7r-9a5e-0346g4279b4c
+        in: path
+        name: spending_plan_account_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+      summary: Delete spending plan account
+      tags:
+      - mx_platform
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid}":
+    delete:
+      description: Use this endpoint to delete a spending plan `iteration_item`.
+      operationId: deleteSpendingPlanIterationItem
+      parameters:
+      - description: The unique ID for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `spending_plan`.
+        example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+        in: path
+        name: spending_plan_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `iteration_item`.
+        example: SII-a4dc1549-da28-1245-9c9c-53eee4cdfbe3
+        in: path
+        name: iteration_item_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+      summary: Delete spending plan iteration item
+      tags:
+      - mx_platform
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}":
+    delete:
+      description: Use this endpoint to delete a user's `spending_plan`.
+      operationId: deleteSpendingPlan
+      parameters:
+      - description: The unique ID for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `spending_plan`.
+        example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+        in: path
+        name: spending_plan_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+      summary: Delete spending plan
+      tags:
+      - mx_platform
+  "/users/{user_guid}/spending_plans":
+    get:
+      description: Use this endpoint to list all the spending plans associated with the user.
+      operationId: listSpendingPlans
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/SpendingPlanResponse"
+          description: OK
+      summary: List spending plans
+      tags:
+      - mx_platform
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts":
+    get:
+      description: Use this endpoint to list all the spending plan accounts associated with the spending plan.
+      operationId: listSpendingPlanAccounts
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `spending_plan`.
+        example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+        in: path
+        name: spending_plan_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/SpendingPlanAccountsResponse"
+          description: OK
+      summary: List spending plan accounts
+      tags:
+      - mx_platform
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items":
+    get:
+      description: Use this endpoint to list all the spending plan `iteration_items` associated with the `iteration`.
+      operationId: listSpendingPlanIterationItems
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `spending_plan`.
+        example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+        in: path
+        name: spending_plan_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/SpendingPlanIterationItemsResponse"
+          description: OK
+      summary: List spending plan iteration items
+      tags:
+      - mx_platform
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations":
+    get:
+      description: Use this endpoint to list all the spending plan `iterations` associated with the `spending_plan`.
+      operationId: listSpendingPlanIterations
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `spending_plan`.
+        example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+        in: path
+        name: spending_plan_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/SpendingPlanIterationsResponse"
+          description: OK
+      summary: List spending plan iterations
+      tags:
+      - mx_platform
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid}":
+    get:
+      description: Use this endpoint to read the attributes of a specific spending plan account according to its unique GUID.
+      operationId: readSpendingPlanAccount
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `spending_plan`.
+        example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+        in: path
+        name: spending_plan_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the specified account.
+        example: ACT-e9f80fee-84da-7s7r-9a5e-0346g4279b4c
+        in: path
+        name: spending_plan_account_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/SpendingPlanReadAccountResponse"
+          description: OK
+      summary: Read spending plan account
+      tags:
+      - mx_platform
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}":
+    get:
+      description: Use this endpoint to read the attributes of a specific spending plan according to its unique GUID.
+      operationId: readSpendingPlanUser
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `spending_plan`.
+        example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+        in: path
+        name: spending_plan_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/SpendingPlanResponse"
+          description: OK
+      summary: Read a spending plan for a user
+      tags:
+      - mx_platform
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/{iteration_number}":
+    get:
+      description: Use this endpoint to read the attributes of a specific spending plan `iteration` according to its `iteration_number`.
+      operationId: readSpendingPlanIteration
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `spending_plan`.
+        example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+        in: path
+        name: spending_plan_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/SpendingPlanIterationResponse"
+          description: OK
+      summary: Read a spending plan iteration
+      tags:
+      - mx_platform
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_guid}":
+    get:
+      description: Use this endpoint to read the attributes of a specific spending plan `iteration_item` according to its unique GUID.
+      operationId: readSpendingPlanIterationItem
+      parameters:
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `spending_plan`.
+        example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+        in: path
+        name: spending_plan_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `iteration`.
+        example: SII-0479b359-b682-4d49-8c6a-61c7c1ec642f
+        in: path
+        name: iteration_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/SpendingPlanIterationItemResponse"
+          description: OK
+      summary: Read a spending plan iteration item
+      tags:
+      - mx_platform
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid}":
+    put:
+      description: Use this endpoint to update an existing `spending_plan_iteration_item`.
+      operationId: updateSpendingPlanIterationItem
+      parameters:
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `spending_plan`.
+        example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+        in: path
+        name: spending_plan_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique ID for the `iteration_item`.
+        example: SII-a4dc1549-da28-1245-9c9c-53eee4cdfbe3
+        in: path
+        name: iteration_item_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/SpendingPlanIterationItemUpdateRequestBody"
+        description: Iteration item object to be updated with required parameter (iteration_item_guid)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/SpendingPlanIterationItemResponse"
+          description: OK
+      summary: Update a spending plan iteration item
       tags:
       - mx_platform
   "/users/{user_guid}/taggings":
