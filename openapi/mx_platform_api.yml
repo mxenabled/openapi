@@ -1895,7 +1895,7 @@ components:
           nullable: true
           type: string
         iteration_number:
-          example: `
+          example: 1
           nullable: true
           type: integer
         spending_plan_guid:
