@@ -1961,10 +1961,6 @@ components:
           example: "2016-10-13T18:08:00+00:00"
           nullable: true
           type: string
-        current_iteration_number:
-          example: 1
-          nullable: true
-          type: integer
         guid:
           example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
           nullable: true
