@@ -1987,7 +1987,7 @@ components:
           nullable: true
           type: string
         transaction_guids:
-          example: [TRN-265abee9-889b-af6a-c69b-25157db2bdd9, TRN-543f3fg2-889b-a4ga-c39b-23637db5sfd9]
+          example: "[TRN-265abee9-889b-af6a-c69b-25157db2bdd9, TRN-543f3fg2-889b-a4ga-c39b-23637db5sfd9]"
           nullable: true
           type: array
         updated_at:
