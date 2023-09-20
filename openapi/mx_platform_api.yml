@@ -1862,6 +1862,7 @@ components:
         user_guid:
           example: USR-72086f59-6684-4adf-8f29-c4d32db43cd7
           type: string
+      type: object
     SpendingPlanAccountsResponse:
       properties:
         spending_plan_accounts:
