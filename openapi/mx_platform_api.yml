@@ -1864,13 +1864,13 @@ components:
           type: string
     SpendingPlanAccountsResponse:
       properties:
-          spending_plan_accounts:
-            items:
-              "$ref": "#/components/schemas/SpendingPlanAccountResponse"
-            type: array
-          pagination:
-            "$ref": "#/components/schemas/PaginationResponse"
-        type: object
+        spending_plan_accounts:
+          items:
+            "$ref": "#/components/schemas/SpendingPlanAccountResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
     SpendingPlanIterationsResponse:
       properties:
         iterations:
@@ -1931,7 +1931,7 @@ components:
           type: string
         item_type:
           example: 1
-          type: decimal
+          type: number
         planned_amount:
           example: 110
           type: string
@@ -1949,7 +1949,7 @@ components:
         actual_amount:
           example: 345.0
           nullable: true
-          type: decimal
+          type: number
         category_guid:
           example: CAT-40faf068-abb4-405c-8f6a-e883ed541fff
           nullable: true
@@ -1973,7 +1973,7 @@ components:
         planned_amount:
           example: 345.0
           nullable: true
-          type: decimal
+          type: number
         scheduled_payment_guid:
           example: SCP-54bed778-6600-4262-908c-8822f141cc30
           nullable: true
@@ -2001,13 +2001,13 @@ components:
       type: object
     SpendingPlansResponseBody:
       properties:
-          iteration_items:
-            items:
-              "$ref": "#/components/schemas/SpendingPlanResponse"
-            type: array
-          pagination:
-            "$ref": "#/components/schemas/PaginationResponse"
-        type: object
+        iteration_items:
+          items:
+            "$ref": "#/components/schemas/SpendingPlanResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
     SpendingPlanResponse:
       properties:
         created_at:
