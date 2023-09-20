@@ -2011,11 +2011,11 @@ components:
     SpendingPlanResponse:
       properties:
         created_at:
-          example: '2016-10-13T18:08:00+00:00'
+          example: 2016-10-13T18:08:00+00:00
           nullable: true
           type: integer
         current_iteration_number:
-          example: '1'
+          example: 1
           nullable: true
           type: integer
         guid:
@@ -2023,7 +2023,7 @@ components:
           nullable: true
           type: string
         updated_at:
-          example: '2016-10-13T18:09:00+00:00'
+          example: 2016-10-13T18:09:00+00:00
           nullable: true
           type: integer
         user_guid:
