@@ -1961,10 +1961,6 @@ components:
           example: "2016-10-13T18:08:00+00:00"
           nullable: true
           type: string
-        current_iteration_number:
-          example: 1
-          nullable: true
-          type: integer
         guid:
           example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
           nullable: true
@@ -1990,12 +1986,10 @@ components:
           nullable: true
           type: string
         transaction_guids:
-          example:
-            [
-              TRN-265abee9-889b-af6a-c69b-25157db2bdd9,
-              TRN-543f3fg2-889b-a4ga-c39b-23637db5sfd9,
-            ]
-          nullable: true
+          items:
+            example: TRN-265abee9-889b-af6a-c69b-25157db2bdd9
+            nullable: true
+            type: string
           type: array
         updated_at:
           example: 2016-10-13T18:09:00+00:00
