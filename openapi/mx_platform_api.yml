@@ -5650,7 +5650,7 @@ paths:
           description: OK
       summary: Create spending plan iteration item
       tags:
-        - spending_plan
+        - spending plan
     get:
       description: Use this endpoint to list all the spending plan `iteration_items` associated with the `iteration`.
       operationId: listSpendingPlanIterationItems
@@ -5690,7 +5690,7 @@ paths:
           description: OK
       summary: List spending plan iteration items
       tags:
-        - spending_plan
+        - spending plan
   "/users/{user_guid}/spending_plans":
     post:
       description: This endpoint creates a new `spending_plan` for the user.
@@ -5712,7 +5712,7 @@ paths:
           description: OK
       summary: Create spending plan
       tags:
-        - spending_plan
+        - spending plan
     get:
       description: Use this endpoint to list all the spending plans associated with the user.
       operationId: listSpendingPlans
@@ -5745,7 +5745,7 @@ paths:
           description: OK
       summary: List spending plans
       tags:
-        - spending_plan
+        - spending plan
   ? "/users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid}"
   : delete:
       description: Use this endpoint to delete a `spending_plan_account`.
@@ -5777,7 +5777,7 @@ paths:
           description: No Content
       summary: Delete spending plan account
       tags:
-        - spending_plan
+        - spending plan
     get:
       description: Use this endpoint to read the attributes of a specific spending plan account according to its unique GUID.
       operationId: readSpendingPlanAccount
@@ -5824,7 +5824,7 @@ paths:
           description: OK
       summary: Read spending plan account
       tags:
-        - spending_plan
+        - spending plan
   ? "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid}"
   : delete:
       description: Use this endpoint to delete a spending plan `iteration_item`.
@@ -5856,7 +5856,7 @@ paths:
           description: No Content
       summary: Delete spending plan iteration item
       tags:
-        - spending_plan
+        - spending plan
     get:
       description: Use this endpoint to read the attributes of a specific spending plan `iteration_item` according to its unique GUID.
       operationId: readSpendingPlanIterationItem
@@ -5903,7 +5903,7 @@ paths:
           description: OK
       summary: Read a spending plan iteration item
       tags:
-        - spending_plan
+        - spending plan
     put:
       description: Use this endpoint to update an existing `spending_plan_iteration_item`.
       operationId: updateSpendingPlanIterationItem
@@ -5945,7 +5945,7 @@ paths:
           description: OK
       summary: Update a spending plan iteration item
       tags:
-        - spending_plan
+        - spending plan
   "/users/{user_guid}/spending_plans/{spending_plan_guid}":
     delete:
       description: Use this endpoint to delete a user's `spending_plan`.
@@ -5970,7 +5970,7 @@ paths:
           description: No Content
       summary: Delete spending plan
       tags:
-        - spending_plan
+        - spending plan
     get:
       description: Use this endpoint to read the attributes of a specific spending plan according to its unique GUID.
       operationId: readSpendingPlanUser
@@ -6010,7 +6010,7 @@ paths:
           description: OK
       summary: Read a spending plan for a user
       tags:
-        - spending_plan
+        - spending plan
   ? "/users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts"
   : get:
       description: Use this endpoint to list all the spending plan accounts associated with the spending plan.
@@ -6051,7 +6051,7 @@ paths:
           description: OK
       summary: List spending plan accounts
       tags:
-        - spending_plan
+        - spending plan
   "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations":
     get:
       description: Use this endpoint to list all the spending plan `iterations` associated with the `spending_plan`.
@@ -6092,7 +6092,7 @@ paths:
           description: OK
       summary: List spending plan iterations
       tags:
-        - spending_plan
+        - spending plan
   ? "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/{iteration_number}"
   : get:
       description: Use this endpoint to read the attributes of a specific spending plan `iteration` according to its `iteration_number`.
@@ -6140,7 +6140,7 @@ paths:
           description: OK
       summary: Read a spending plan iteration
       tags:
-        - spending_plan
+        - spending plan
   "/users/{user_guid}/taggings":
     get:
       description:
