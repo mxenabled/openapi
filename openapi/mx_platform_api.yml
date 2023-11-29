@@ -5639,7 +5639,7 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/SpendingPlanIterationItemCreateRequestBody"
-        description: Iteration item to be created with required parameters (planned_amount)
+        description: Iteration item to be created with required parameter (planned_amount)
         required: true
       responses:
         "200":
