@@ -3303,6 +3303,47 @@ paths:
       summary: List holdings by account
       tags:
       - mx_platform
+  "/users/{user_guid}/accounts/{account_guid}/insights":
+    get:
+      description: Use this endpoint to list all insights associated with a specified account GUID.
+      operationId: listInsightsByAccount
+      parameters:
+      - description: The unique id for the `account`.
+        example: ACT-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for the `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InsightsResponseBody"
+          description: OK
+      summary: List insights by account
+      tags:
+      - insights
   "/users/{user_guid}/accounts/{account_guid}/transactions":
     get:
       description: This endpoint returns a list of the last 90 days of transactions
@@ -6352,6 +6393,47 @@ paths:
       summary: Update transaction
       tags:
       - mx_platform
+  "/users/{user_guid}/transactions/{transaction_guid}/insights":
+    get:
+      description: Use this endpoint to list all insights associated with a specified transaction GUID.
+      operationId: listInsightsByTransaction
+      parameters:
+      - description: The unique id for a `transaction`.
+        example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+        in: path
+        name: transaction_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique id for a `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InsightsResponseBody"
+          description: OK
+      summary: List insights by transaction
+      tags:
+      - insights
   "/users/{user_guid}/widget_urls":
     post:
       description: This endpoint allows partners to get a URL by passing the `widget_type`
