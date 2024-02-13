@@ -967,6 +967,10 @@ components:
           example: '2022-01-12T18:16:51Z'
           nullable: true
           type: string
+        cta_clicked_at:
+          example: '2022-01-12T18:16:51Z'
+          nullable: true
+          type: string
         description:
           example: Gold's Gym charged you $36.71 more this month than normal. Did
             you upgrade your service?
@@ -2503,6 +2507,9 @@ components:
         include_transactions:
           example: true
           type: boolean
+        insight_guid:
+          example: false
+          type: string
         is_mobile_webview:
           example: false
           type: boolean
