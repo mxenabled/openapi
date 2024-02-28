@@ -2656,6 +2656,9 @@ components:
         is_mobile_webview:
           example: false
           type: boolean
+        microwidget_instance_id:
+          example: false
+          type: string
         mode:
           example: aggregation
           type: string
