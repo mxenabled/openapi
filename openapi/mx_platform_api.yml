@@ -2650,6 +2650,9 @@ components:
         include_transactions:
           example: true
           type: boolean
+        insight_guid:
+          example: false
+          type: string
         is_mobile_webview:
           example: false
           type: boolean
