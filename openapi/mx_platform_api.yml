@@ -1555,6 +1555,10 @@ components:
           example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
           nullable: true
           type: string
+        most_recent_job_guid:
+          example: MBR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
+          type: string
         name:
           example: Chase Bank
           nullable: true
