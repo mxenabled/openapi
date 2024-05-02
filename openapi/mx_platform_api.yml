@@ -2650,11 +2650,14 @@ components:
         include_transactions:
           example: true
           type: boolean
+        insight_guid:
+          example: BET-1234
+          type: string
         is_mobile_webview:
           example: false
           type: boolean
         microwidget_instance_id:
-          example: false
+          example: accounts_page
           type: string
         mode:
           example: aggregation
