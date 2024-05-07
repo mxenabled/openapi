@@ -1889,6 +1889,57 @@ components:
         payment_processor_authorization_code:
           "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponse"
       type: object
+    ScheduledPaymentResponse:
+      properties:
+        amount:
+          example: 13.54
+          type: number
+        created_at:
+          example: 2023-04-27T23:14:16Z
+          type: string
+        description:
+          example: Netflix
+          type: string
+        guid:
+          example: SPA-c76e4a85-b2c4-4335-82b7-8f8b8f28c35a
+          type: string
+        is_completed:
+          example: false
+          type: boolean
+        is_recurring:
+          example: true
+          type: boolean
+        merchant_guid:
+          example: MCH-b8a2624c-2176-59ec-c150-37854bc38aa8
+          type: string
+        occurs_on:
+          example: 2022-01-15
+          type: string
+        recurrence_day:
+          example: 15
+          type: integer
+        recurrence_type:
+          example: EVERY_MONTH
+          type: string
+        transaction_type:
+          example: DEBIT
+          type: string
+        updated_at:
+          example: 2023-04-27T23:14:16Z
+          type: string
+        user_guid:
+          example: USR-72086f59-6684-4adf-8f29-c4d32db43cd7
+          type: string
+      type: object
+    ScheduledPaymentsResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+        scheduled_payments:
+          items:
+            "$ref": "#/components/schemas/ScheduledPaymentResponse"
+          type: array
+      type: object
     StatementResponse:
       properties:
         account_guid:
@@ -3774,6 +3825,18 @@ paths:
         required: true
         schema:
           type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
       responses:
         '200':
           content:
@@ -3803,6 +3866,18 @@ paths:
         required: true
         schema:
           type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
       responses:
         '200':
           content:
@@ -3833,6 +3908,18 @@ paths:
         required: true
         schema:
           type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
       responses:
         '200':
           content:
@@ -3863,6 +3950,18 @@ paths:
         required: true
         schema:
           type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
       responses:
         '200':
           content:
@@ -3871,6 +3970,47 @@ paths:
                 "$ref": "#/components/schemas/MerchantsResponseBody"
           description: OK
       summary: List all merchants associated with an insight.
+      tags:
+      - insights
+  "/users/{user_guid}/insights/{insight_guid}/scheduled_payments":
+    get:
+      description: Use this endpoint to list all the scheduled payments associated with the insight.
+      operationId: listScheduledPaymentsInsight
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: insight_guid
+        required: true
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/ScheduledPaymentsResponseBody"
+          description: OK
+      summary: List all scheduled payments associated with an insight
       tags:
       - insights
   "/users/{user_guid}/insights/{insight_guid}/transactions":
@@ -3893,6 +4033,18 @@ paths:
         required: true
         schema:
           type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
       responses:
         '200':
           content:
@@ -3928,7 +4080,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/InsightsResponseBody"
+                "$ref": "#/components/schemas/InsightResponseBody"
           description: OK
       summary: Read a specific insight.
       tags:
@@ -3970,75 +4122,6 @@ paths:
       summary: Update insight
       tags:
       - insights  
-  "/accounts/{account_guid}/insights":
-    get:
-      description: Use this endpoint to list all insights associated with a specified account ID.
-      operationId: listByAccountID
-      parameters:
-      - description: The unique id for an `account`.
-        example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-        in: path
-        name: account_guid
-        required: true
-        schema:
-          type: string
-      - description: Specify current page.
-        example: 1
-        in: query
-        name: page
-        schema:
-          type: integer
-      - description: Specify records per page.
-        example: 10
-        in: query
-        name: records_per_page
-        schema:
-          type: integer
-      responses:
-        '200':
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/InsightsResponseBody"
-          description: OK
-      summary: List all insights with specified account ID
-      tags:
-      - insights
-  "/transactions/{transaction_guid}/insights":
-    get:
-      description: Use this endpoint to list all insights associated with a specified transaction ID.
-      operationId: listByTransactionID
-      parameters:
-      parameters:
-      - description: The unique id for a `transaction`.
-        example: TRN-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-        in: path
-        name: transaction_guid
-        required: true
-        schema:
-          type: string
-      - description: Specify current page.
-        example: 1
-        in: query
-        name: page
-        schema:
-          type: integer
-      - description: Specify records per page.
-        example: 10
-        in: query
-        name: records_per_page
-        schema:
-          type: integer
-      responses:
-        '200':
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/InsightsResponseBody"
-          description: OK
-      summary: List all insights with specified transaction ID
-      tags:
-      - insights
   "/users/{user_guid}/managed_members":
     get:
       description: This endpoint returns a list of all the partner-managed members
