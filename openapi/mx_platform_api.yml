@@ -2808,7 +2808,7 @@ components:
           example: true
           type: boolean
         insight_guid:
-          example: null
+          example: BET-123
           type: string
         is_mobile_webview:
           example: false
