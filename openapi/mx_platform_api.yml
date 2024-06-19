@@ -1721,6 +1721,10 @@ components:
           example: true
           nullable: true
           type: boolean
+        has_processed_account_numbers:
+          example: true
+          nullable: true
+          type: boolean
         has_processed_transactions:
           example: false
           nullable: true
