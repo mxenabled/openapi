@@ -1661,6 +1661,14 @@ components:
           example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
           nullable: true
           type: string
+        most_recent_job_detail_code:
+          example: (deprecated)
+          nullable: true
+          type: string
+        most_recent_job_detail_text:
+          example: (deprecated)
+          nullable: true
+          type: string
         name:
           example: Chase Bank
           nullable: true
