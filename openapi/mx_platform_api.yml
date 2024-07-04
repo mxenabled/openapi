@@ -1653,6 +1653,10 @@ components:
           example: false
           nullable: true
           type: boolean
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
         is_oauth:
           example: false
           nullable: true
