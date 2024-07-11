@@ -392,6 +392,10 @@ components:
           example: 1.0
           nullable: true
           type: number
+        total_account_value_ugl:
+          example: 1.1
+          nullable: true
+          type: number
         type:
           example: SAVINGS
           nullable: true
