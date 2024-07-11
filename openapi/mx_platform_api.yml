@@ -89,6 +89,10 @@ components:
           example: ACN-8899832e-e5b4-42cd-aa25-bbf1dc889a8f
           nullable: true
           type: string
+        loan_guarantor:
+          example: U.S. DEPARTMENT OF EDUCATION
+          nullable: true
+          type: string
         institution_number:
           example: '123'
           nullable: true
