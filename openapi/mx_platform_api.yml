@@ -1,5 +1,23 @@
 ---
+info:
+  contact:
+    name: MX Platform API
+    url: https://www.mx.com/products/platform-api
+  description:
+    The MX Platform API is a powerful, fully-featured API designed to make
+    aggregating and enhancing financial data easy and reliable. It can seamlessly
+    connect your app or website to tens of thousands of financial institutions.
+  title: MX Platform API
+  version: 0.1.0
+openapi: 3.0.0
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    basicAuth:
+      scheme: basic
+      type: http
   schemas:
     AccountCreateRequest:
       properties:
