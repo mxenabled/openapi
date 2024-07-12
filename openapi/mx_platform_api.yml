@@ -1,12 +1,5 @@
 ---
 components:
-  securitySchemes:
-    bearerAuth:
-      scheme: bearer
-      type: http
-    basicAuth:
-      scheme: basic
-      type: http
   schemas:
     AccountCreateRequest:
       properties:
@@ -3357,43 +3350,6 @@ components:
             "$ref": "#/components/schemas/TagResponse"
           type: array
       type: object
-    TokenRequest:
-      properties:
-        account_guid:
-          example: ACT-32a64160-582a-4f00-ab34-5f49ss789d35
-          type: string
-        member_guid:
-          example: MBR-54feffb9-8474-47bd-8442-de04563213a
-          type: string
-        user_guid:
-          example: USR-101ad774-288b-44ed-ad16-da54635sea20
-          type: string
-      type: object
-    TokenRequestBody:
-      properties:
-        scope:
-          "$ref": "#/components/schemas/TokenRequest"
-      type: object
-    TokenResponse:
-      properties:
-        access_token:
-          example: i8FnF...
-          type: string
-        active:
-          example: true
-          type: boolean
-        expires_at:
-          example: 2023-04-19T15:38:2800:00
-          type: string
-        payment_processor_guid:
-          example: PPR-084aa709-8218-4b5a-b3ab-70ffc7483daf
-          type: string
-    TokenResponseBody:
-      properties:
-        tokens:
-          items:
-            "$ref": "#/components/schemas/TokenResponse"
-      type: object
     TransactionCreateRequest:
       properties:
         amount:
@@ -4479,24 +4435,6 @@ paths:
                 "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponseBody"
           description: OK
       summary: "(Deprecated) Request an authorization code"
-      tags:
-        - mx_platform
-  "/tokens":
-    get:
-      description: View a list of tokens that exist for a user, member, or account.
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/TokenRequestBody"
-      responses:
-        '200':
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/TokenResponseBody"
-          description: OK
-      summary: View a List of Tokens
       tags:
         - mx_platform
   "/transactions/enhance":
