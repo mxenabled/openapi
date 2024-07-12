@@ -1,5 +1,12 @@
 ---
 components:
+  securitySchemes:
+    bearerAuth:
+      scheme: bearer
+      type: http
+    basicAuth:
+      scheme: basic
+      type: http
   schemas:
     AccountCreateRequest:
       properties:
