@@ -3368,6 +3368,43 @@ components:
             "$ref": "#/components/schemas/TagResponse"
           type: array
       type: object
+    TokenRequest:
+      properties:
+        user_guid: 
+          example: USR-101ad774-288b-44ed-ad16-da54635sea20 
+          type: string
+        member_guid: 
+          example: MBR-54feffb9-8474-47bd-8442-de04563213a
+          type: string
+        account_guid:
+          example: ACT-32a64160-582a-4f00-ab34-5f49ss789d35
+          type: string 
+      type: object
+    TokenRequestBody: 
+      properties:
+        scope:
+            "$ref": "#/components/schemas/TokenRequest"
+      type: object
+    TokenResponse:
+      properties:
+        payment_processor_guid:
+          example: PPR-084aa709-8218-4b5a-b3ab-70ffc7483daf
+          type: string
+        expires_at:
+          example: 2023-04-19T15:38:2800:00
+          type: string
+        access_token:
+          example: i8FnF...
+          type: string
+        active:
+          example: true
+          type: boolean 
+    TokenResponseBody:
+      properties:
+        tokens:
+          items:
+           "$ref": "#/components/schemas/TokenResponse"
+      type: object
     TransactionCreateRequest:
       properties:
         amount:
@@ -4453,6 +4490,24 @@ paths:
                 "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponseBody"
           description: OK
       summary: "(Deprecated) Request an authorization code"
+      tags:
+        - mx_platform
+  "/tokens":
+    get:
+      summary: View a List of Tokens
+      description: View a list of tokens that exist for a user, member, or account. 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/TokenRequestBody"
+      responses:
+        "200":
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TokenResponseBody"
+          description: OK
       tags:
         - mx_platform
   "/transactions/enhance":
@@ -6659,6 +6714,12 @@ paths:
               schema:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: OK
       summary: Create member
       tags:
         - mx_platform
@@ -6750,6 +6811,12 @@ paths:
               schema:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: OK
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: Accepted
       summary: Update member
       tags:
         - mx_platform
