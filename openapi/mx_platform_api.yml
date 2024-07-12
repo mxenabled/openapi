@@ -2424,7 +2424,8 @@ components:
     MicrodepositsResponseBody:
       properties:
         micro_deposits:
-          "$ref": "#/components/schemas/MicrodepositRequest"
+          items:
+            "$ref": "#/components/schemas/MicrodepositRequest"
           type: array
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
@@ -3931,7 +3932,7 @@ components:
           description: Only use this option if the `widget_type` is set to `pulse_widget`.
             Set this to the insight guid you want to appear at the top of the insights
             feed.
-          example:
+          example: BET-1234-abcd
           type: string
         is_mobile_webview:
           description: This option is for all `widget_type`s. This configures the
@@ -3943,7 +3944,7 @@ components:
           description: Only use this option if the `widget_type` is set to `micro_pulse_carousel_widget`.
             Set this to a unique value for each instance of the Micro Widget. This
             lets us collect unique data for each instance of the widget.
-          example:
+          example: accounts_page
           type: string
         mode:
           description: Only use this option if the `widget_type` is set to `connect_widget`.
@@ -4034,7 +4035,7 @@ paths:
                 "$ref": "#/components/schemas/ProcessorAccountNumberBody"
           description: OK
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       summary: Request an account number (Processors Only)
       tags:
         - mx_platform
@@ -4049,7 +4050,7 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: OK
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       summary: Check Real Time Account Balance (Processors Only)
       tags:
         - mx_platform
@@ -4063,7 +4064,7 @@ paths:
                 "$ref": "#/components/schemas/ProcessorOwnerBody"
           description: OK
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       summary: Get account owner information (Processors Only)
       tags:
         - mx_platform
@@ -4443,7 +4444,7 @@ paths:
                 "$ref": "#/components/schemas/PaymentAccountBody"
           description: OK
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       summary: Read the account balance (Processors Only)
       tags:
         - mx_platform
@@ -9566,6 +9567,7 @@ paths:
         - mx_platform
 security:
   - basicAuth: []
+  - bearerAuth: []
 servers:
   - url: https://api.mx.com
   - url: https://int-api.mx.com
