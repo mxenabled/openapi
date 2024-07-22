@@ -82,7 +82,7 @@ components:
           nullable: true
           type: string
         account_number:
-          example: '10001'
+          example: 10001
           nullable: true
           type: string
         guid:
@@ -93,8 +93,12 @@ components:
           example: U.S. DEPARTMENT OF EDUCATION
           nullable: true
           type: string
+        loan_reference_number:
+          example: 123456789012345
+          nullable: true
+          type: string
         institution_number:
-          example: '123'
+          example: 123
           nullable: true
           type: string
         member_guid:
@@ -106,11 +110,15 @@ components:
           nullable: true
           type: boolean
         routing_number:
-          example: '68899990000000'
+          example: 68899990000000
+          nullable: true
+          type: string
+        sequence_number:
+          example: 1-01
           nullable: true
           type: string
         transit_number:
-          example: '12345'
+          example: 12345
           nullable: true
           type: string
         user_guid:
