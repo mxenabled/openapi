@@ -783,6 +783,51 @@ components:
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
       type: object
+    CreditCardProduct:
+      properties:
+        annual_fee:
+          example: 45.00
+        duration_of_introductory_rate_on_balance_transfer:
+          example: null
+        duration_of_introductory_rate_on_purchases:
+          example: null
+        guid:
+          example: CCA-b5bcd822-6d01-4e23-b8d6-846a225e714a
+        has_cashback_rewards: 
+          example: false
+          type: boolean
+        has_other_rewards:
+          example: true
+          type: boolean
+        has_travel_rewards: 
+          example: true
+          type: boolean
+        has_zero_introductory_annual_fee:
+          example: true
+          type: boolean
+        has_zero_percent_introductory_rate:
+          example: false
+          type: boolean 
+        has_zero_percent_introductory_rate_on_balance_transfer:
+          example: true
+          type: boolean
+        financial_institution:
+          example: true
+          type: boolean
+        is_accepting_applications:
+          example: true
+          type: boolean
+        is_small_business_card:
+          example: true
+          type: boolean
+        name: 
+          example: Chase Credit Card
+          type: string
+    CreditCardProductResponse:
+      properties:
+        reward:
+          "$ref": "#/components/schemas/CreditCardProduct"
+      type: object
     EnhanceTransactionResponse:
       properties:
         amount:
@@ -1983,6 +2028,84 @@ components:
         payment_processor_authorization_code:
           "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponse"
       type: object
+    RewardsResponse:
+      properties:
+        account_guid:
+          example: ACT-1234
+          type: string
+        balance_type: 
+          example: EXPIRING_BALANCE
+          type: string
+        balance: 
+          example: 102
+          type: integer
+        created_at:
+          example: 2020-01-28T21:09:01+0000
+          type: string
+        description: 
+          example: A description of the reward.
+          type: string 
+        expires_on: 
+          example: 2020-02-28
+          type: string
+        guid: 
+          example: RWD-1234
+          type: string
+        member_guid: 
+          example: MBR-4567
+          type: string
+        unit_type:
+          example: POINTS
+          type: string
+        user_guid:
+          example: USR-1234
+          type: string 
+    RewardsResponseBody:
+      properties:
+        rewards:
+          items:
+            "$ref": "#/components/schemas/RewardsResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    RewardResponse: 
+      properties:
+        account_guid:
+          example: ACT-1234
+          type: string
+        balance_type: 
+          example: EXPIRING_BALANCE
+          type: string
+        balance: 
+          example: 102
+          type: integer
+        created_at:
+          example: 2020-01-28T21:09:01+0000
+          type: string
+        description: 
+          example: A description of the reward.
+          type: string 
+        expires_on: 
+          example: 2020-02-28
+          type: string
+        guid: 
+          example: RWD-1234
+          type: string
+        member_guid: 
+          example: MBR-4567
+          type: string
+        unit_type:
+          example: POINTS
+          type: string
+        user_guid:
+          example: USR-1234
+          type: string
+    RewardResponseBody:
+      properties:
+        reward:
+          "$ref": "#/components/schemas/RewardResponse"
+      type: object
     SpendingPlanAccountResponse:
       properties:
         account_guid:
@@ -2993,6 +3116,28 @@ paths:
                 "$ref": "#/components/schemas/CategoryResponseBody"
           description: OK
       summary: Read a default category
+      tags:
+        - mx_platform
+  "/credit_card_products/{credit_card_product_guid}":
+    get:
+      description: This endpoint returns the specified `credit_card_product` according to the unique GUID. 
+      operationId: creditCard
+      parameters:
+        - description: The required `credit_card_product_guid` can be found on the `account` object.
+          example: credit_card_product_guid
+          in: path
+          name: credit_card_product_guid
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/CreditCardProductResponse"
+          description: OK
+      summary: Read a Credit Card Product 
       tags:
         - mx_platform
   "/institutions":
@@ -5552,6 +5697,35 @@ paths:
       summary: Extend history
       tags:
         - mx_platform
+  "/users/{user_guid}/members/{member_guid}/fetch_rewards":
+    post:
+      description: Calling this endpoint initiates an aggregation-type event which will gather the member's rewards information, as well as account and transaction information. Rewards data is also gathered with daily background aggregations.
+      operationId: fetchRewards
+      parameters:
+        - description: The unique id for a `user`.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the member. Defined by MX. 
+          example: MBR-fa7537f3-48aa-a683-a02a-b18345562f54
+          in: path
+          name: member_guid
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: OK
+      summary: Fetch Rewards
+      tags:
+        - mx_platform
   "/users/{user_guid}/members/{member_guid}/fetch_statements":
     post:
       description:
@@ -5811,6 +5985,71 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
       summary: Resume aggregation
+      tags:
+        - mx_platform
+  "/users/{user_guid}/members/{member_guid}/rewards":
+    get:
+      description: Use this endpoint to list all the `rewards` associated with a specified `member`.
+      operationId: listRewards
+      parameters:
+        - description: The unique id for a `user`.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the member. Defined by MX. 
+          example: MBR-fa7537f3-48aa-a683-a02a-b18345562f54
+          in: path
+          name: member_guid
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/RewardsResponseBody"
+          description: OK
+      summary: List Rewards
+      tags:
+        - mx_platform
+  "/users/{user_guid}/members/{member_guid}/rewards/{reward_guid}":
+    get:
+      description: Use this endpoint to read a specific `reward` based on its unique GUID..
+      operationId: readRewards
+      parameters:
+        - description: The unique id for a `user`.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the member. Defined by MX. 
+          example: MBR-fa7537f3-48aa-a683-a02a-b18345562f54
+          in: path
+          name: member_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the rewards. Defined by MX. 
+          example: RWD-fa7537f3-48aa-a683-a02a-b324322f54
+          in: path
+          name: reward_guid
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/RewardResponseBody"
+          description: OK
+      summary: Read Reward
       tags:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/statements":
