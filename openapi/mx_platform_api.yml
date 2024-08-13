@@ -388,6 +388,10 @@ components:
           example: "2015-10-13T17:57:37.000Z"
           nullable: true
           type: string
+        statement_balance:
+          example: 100.1
+          nullable: true
+          type: number
         subtype:
           example: NONE
           nullable: true
