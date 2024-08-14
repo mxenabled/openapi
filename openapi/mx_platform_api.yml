@@ -550,6 +550,129 @@ components:
           items:
             "$ref": "#/components/schemas/AuthorizationCodeResponse"
       type: object
+    BudgetResponse:
+      properties:
+        amount:
+          description: A goal amount set by the user for a category's transaction total during a month.
+          example: 153.0
+          type: number
+        category_guid:
+          description: Unique identifier for the budget category. Defined by MX.
+          example: CAT-bd56d35a-a9a7-6e10-66c1-5b9cc1b6c81a
+          type: string
+          nullable: false
+        created_at:
+          description: Date and time the budget was created, represented in ISO 8601 format with timestamp.
+          example: 2018-10-18T19:51:26+00:00
+          type: string
+        guid:
+          description: Unique identifier for the budget. Defined by MX.
+          example: BGT-6ca0e3ef-c65e-4655-8b5a-275a3c19c21d
+          type: string
+        is_exceeded:
+          description: If the budget has been exceeded, this field will be true. Otherwise, this field will be false.
+          example: true
+          type: boolean
+        is_off_track:
+          description: If the budget is off track, this field will be true. Otherwise, this field will be false.
+          example: true
+          type: boolean 
+        metadata:
+          description: Additional information a partner can store on the budget.
+          example: some metadata
+          nullable: true
+          type: string
+        name:
+          description: The name of the budget that is visible to the user (ie "Food", "Bills", "Entertainment", etc).
+          example: Food & Dining
+          type: string
+          nullable: true
+        off_track_percentage:
+          description: The percentage amount of off track spending. (Deprecated).
+          nullable: true 
+          type: number 
+        parent_guid:
+          description: Unique identifier for the parent budget. Defined by MX.
+          nullable: true
+          type: string
+        percent_spent:
+          description: The percentage of a budget that has been spent during the current calendar month Calculated as the transaction total divided by the amount and then multiplied by 100.A value of zero will be returned when `amount` is zero.
+          example: 1276.34
+          nullable: true
+          type: number
+        projected_spending:
+          description: The projected amount of spending for the budget.
+          example: 3562.4
+          type: number
+        revision:
+          description: The revision number of this budget record.
+          example: 561
+          type: integer
+        transaction_total:
+          description: The cumulative amount of all transactions under the budget.
+          example: 1952.8
+        updated_at:
+          description: Date and time the budget was updated, represented in ISO 8601 format with timestamp.
+          example: 2022-06-14T21:17:11+00:00
+        user_guid: 
+          description: Unique identifier for the user. Defined by MX.
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+    BudgetCreateRequest:
+      properties:
+        category_guid:
+          example: CAT-bd56d35a-a9a7-6e10-66c1-5b9cc1b6c81a
+          description: Unique identifier of the category.
+          type: string
+        parent_guid:
+          example: BGT-6be44a91-e105-f68a-4770-8c7c0a5c9778
+          description: Unique identifier of the parent budget. This is only required when creating a budget on a sub-category.
+          type: string
+        amount:
+          example: 1000
+          description: Amount of the budget.
+          type: integer
+        metadata:
+          example: Additional information 
+          description: Additional information a partner can store on the budget.
+          type: string
+        skip_webhook:
+          example: true
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          type: boolean  
+      required:
+        - category_guid
+        - parent_guid
+      type: object
+    BudgetUpdateRequest:
+      properties:
+        amount:
+          example: 1000
+          description: Amount of the budget.
+          type: integer
+        metadata:
+          example: Additional information 
+          description: Additional information a partner can store on the budget.
+          type: string
+        skip_webhook:
+          example: true
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          type: boolean
+      type: object
+    BudgetCreateRequestBody:
+      properties:
+        budget:
+          "$ref": "#/components/schemas/BudgetCreateRequest" 
+      type: object
+    BudgetUpdateRequestBody:
+      properties:
+        budget:
+          "$ref": "#/components/schemas/BudgetUpdateRequest" 
+      type: object
+    BudgetResponseBody:
+      properties:
+        budget:
+            "$ref": "#/components/schemas/BudgetResponse" 
+      type: object
     CategoriesResponseBody:
       properties:
         categories:
@@ -787,12 +910,16 @@ components:
       properties:
         annual_fee:
           example: 45.00
+          type: number
         duration_of_introductory_rate_on_balance_transfer:
           example: null
+          type: integer
         duration_of_introductory_rate_on_purchases:
           example: null
+          type: integer
         guid:
           example: CCA-b5bcd822-6d01-4e23-b8d6-846a225e714a
+          type: string
         has_cashback_rewards: 
           example: false
           type: boolean
@@ -811,10 +938,10 @@ components:
         has_zero_percent_introductory_rate_on_balance_transfer:
           example: true
           type: boolean
-        financial_institution:
+        is_accepting_applicants:
           example: true
           type: boolean
-        is_accepting_applications:
+        is_active_credit_card_product:
           example: true
           type: boolean
         is_small_business_card:
@@ -825,7 +952,7 @@ components:
           type: string
     CreditCardProductResponse:
       properties:
-        reward:
+        credit_card_product:
           "$ref": "#/components/schemas/CreditCardProduct"
       type: object
     EnhanceTransactionResponse:
@@ -963,6 +1090,207 @@ components:
           items:
             "$ref": "#/components/schemas/EnhanceTransactionResponse"
           type: array
+      type: object
+    GoalRequest:
+      properties:
+        account_guid:
+          description: Unique identifier of the account for the goal. 
+          example: ACT-4e431124-4a29-abf9-f059-ab232ac14dbf
+          type: string
+        amount:
+          description: Amount of the goal. 
+          example: 4500.50
+          type: number
+        goal_type_name: 
+          description: The goal type. 
+          example: PAYOFF
+          type: string
+        meta_type_name:
+          description: The category of the goal. 
+          example: VACATION
+          type: string
+        name: 
+          description: The name of the goal. 
+          example: Save for Europe 
+          type: string
+        completed_at:
+          description: Date and time the goal was completed. 
+          example: 2015-06-19T10:37:04-06:00
+          type: string
+        has_been_spent:
+          description: Determines if the goal has been spent.
+          example: false
+          type: boolean
+        is_complete:
+          description: Determines if the goal is complete. 
+          example: false
+          type: boolean
+        metadata:
+          description: Additional information a partner can store on the goal. 
+          example: Additional information
+          type: string
+        position: 
+          description: The priority of the goal in relation to multiple goals. 
+          example: 3
+          type: integer
+        targeted_to_complete_at:
+          description: Date and time the goal is to complete. Intended for users to set their own goal completion dates.
+          example: 2026-12-08 00:00:00.000000
+          type: string
+      required:
+        - account_guid
+        - amount
+        - goal_type_name
+        - meta_type_name
+        - name
+      type: object
+    GoalRequestBody:
+      properties:
+        goal:
+          "$ref": "#/components/schemas/GoalRequest" 
+      type: object
+    GoalResponse:
+      properties:
+        account_guid:
+          description: Unique identifier of the account for the goal. 
+          example: ACT-4e431124-4a29-abf9-f059-ab232ac14dbf
+          type: string
+        amount:
+          description: Amount of the goal. 
+          example: 4500.0
+          type: number
+        completed_at:
+          description: Date and time the goal was completed. 
+          example: 2015-06-19T10:37:04-06:00
+          type: string
+        current_amount:
+          description: The current amount of the goal. 
+          example: 1651.27
+          type: number
+        goal_type_name: 
+          description: The goal type. 
+          example: PAYOFF
+          type: string
+        guid:
+          description: Unique identifier for the goal. Defined by MX.
+          example: GOL-f223463-4355-48d0-rce7-fe2rb345617c
+          type: string
+        has_been_spent:
+          description: Determines if the goal has been spent. 
+          example: false
+          type: boolean
+        is_complete:
+          description: Determines if the goal is complete. 
+          example: false
+          type: boolean
+        metadata:
+          description: Additional information a partner can store on the goal. 
+          example: Additional information
+          type: string
+        meta_type_name:
+          description: The category of the goal. 
+          example: VACATION
+          type: string
+        name: 
+          description: The name of the goal. 
+          example: Save for Europe
+          type: string
+        position: 
+          description: The priority of the goal in relation to multiple goals. 
+          example: 3
+          type: integer
+        projected_to_complete_at:
+          description: Date and time the goal is projected to be completed.
+          example: 2022-06-14T16:03:53-00:00
+          type: string
+        targeted_to_complete_at:
+          description: Date and time the goal is to complete. Intended for users to set their own goal completion dates.
+          example: 2026-12-08 00:00:00.000000
+          type: string
+        track_type_name:
+          example: Track Type Name
+          type: string
+        user_guid:
+          description: The unique identifier for the the user. Defined by MX. 
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          type: string
+    GoalsResponse:
+      properties:
+        account_guid:
+          description: Unique identifier of the account for the goal. 
+          example: ACT-4e431124-4a29-abf9-f059-ab232ac14dbf
+          type: string
+        amount:
+          description: Amount of the goal. 
+          example: 4500.0
+          type: number
+        current_amount:
+          description: The current amount of the goal.
+          example: 1651.27
+          type: number
+        guid:
+          description: The unique identifier for the goal. Defined by MX. 
+          example: GOL-524ca5db-a2d5-44f3-b048-16de16059024
+          type: string
+        goal_type_name: 
+          description: The goal type. 
+          example: PAYOFF
+          type: string
+        meta_type_name:
+          description: The category of the goal. 
+          example: VACATION
+          type: string
+        name: 
+          description: The name of the goal. 
+          example: Save for Europe 
+          type: string
+        completed_at:
+          description: Date and time the goal was completed. 
+          example: 2015-06-19T10:37:04-06:00
+          type: string
+        has_been_spent:
+          description: Determines if the goal has been spent.
+          example: false
+          type: boolean
+        is_complete:
+          description: Determines if the goal is complete. 
+          example: false
+          type: boolean
+        metadata:
+          description: Additional information a partner can store on the goal. 
+          example: Additional information
+          type: string
+        position: 
+          description: The priority of the goal in relation to multiple goals. 
+          example: 3
+          type: integer
+        projected_to_complete_at:
+          description: The date on which the project was completed. 
+          example: 2022-06-14T16:03:53-00:00
+          type: string
+        targeted_to_complete_at:
+          example: 2026-12-08 00:00:00.000000
+          type: string
+        track_type_name:
+          example: Track Type Name
+          type: string
+        user_guid:
+          description: The unique identifier for the the user. Defined by MX. 
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          type: string
+    GoalResponseBody:
+      properties:
+        goal:
+          "$ref": "#/components/schemas/GoalResponse" 
+      type: object
+    GoalsResponseBody:
+      properties:
+        goals:
+          items:
+            "$ref": "#/components/schemas/GoalsResponse" 
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
       type: object
     HoldingResponse:
       properties:
@@ -1954,6 +2282,55 @@ components:
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
       type: object
+    MonthlyCashFlowResponse:
+      properties:
+        guid: 
+          example: MCF-4e431124-4a29-abf9-f059-ab232ac14dbf
+          type: string
+          description: Unique identifier for the monthly cash flow profile. Defined by MX.
+        user_guid:
+          example: USR-6c83f63c-efcc-0189-3f14-100f0bad378a
+          type: string
+          description: Unique identifier for the user the monthly cash flow profile is attached to. Defined by MX.
+        budgeted_income: 
+          example: 1200.12
+          type: integer
+          description: The amount of the budgeted income for the user.
+        budgeted_expenses:
+          example: 1000.00
+          type: integer
+          description: The amount of the budgeted expenses for the user.
+        goals_contribution: 
+          example: 150.00
+          type: integer
+          description: The monthly dollar amount allocated for goals.
+        estimated_goals_contribution:
+          example: null
+          type: integer
+          description: The estimated monthly dollar amount allocated for goals calculated from income and budgets.
+        uses_estimated_goals_contribution: 
+          example: false
+          type: boolean
+    MonthlyCashFlowResponseBody:
+      properties:
+        monthly_cash_flow_profile:
+          "$ref": "#/components/schemas/MonthlyCashFlowResponse" 
+      type: object
+    MonthlyCashFlowProfileRequest:
+      properties:
+        goals_contribution:
+          example: 150
+          type: integer
+          description: The monthly dollar amount allocated for goals.
+        uses_estimated_goals_contribution:
+          example: false
+          type: boolean
+          description: Determines if the user uses estimated goals contribution.
+    MonthlyCashFlowProfileRequestBody:
+      properties: 
+        institution:
+          "$ref": "#/components/schemas/MonthlyCashFlowProfileRequest"
+      type: object
     OAuthWindowResponse:
       properties:
         guid:
@@ -2028,6 +2405,33 @@ components:
         payment_processor_authorization_code:
           "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponse"
       type: object
+    RepositionRequest:
+      properties:
+        guid:
+          description: The unique identifier for the goal. Defined by MX. 
+          example: GOL-97665947-235c-b213-ca25-8cf0174774f5
+          type: string
+        position:
+          description: The priority of the goal in relation to multiple goals.
+          example: 1
+          type: integer
+      required:
+        - guid
+        - position
+    RepositionRequestBody:
+      properties:
+        goals:
+          items:
+            "$ref": "#/components/schemas/RepositionRequest" 
+          type: array
+      type: object
+    RepositionResponseBody:
+      properties:
+        goals:
+          items:
+            "$ref": "#/components/schemas/GoalsResponse" 
+          type: array
+      type: object
     RewardsResponse:
       properties:
         account_guid:
@@ -2056,6 +2460,9 @@ components:
           type: string
         unit_type:
           example: POINTS
+          type: string
+        updated_at:
+          example: 2023-06-01T19:18:06Z
           type: string
         user_guid:
           example: USR-1234
@@ -2098,6 +2505,9 @@ components:
         unit_type:
           example: POINTS
           type: string
+        updated_at:
+          example: 2023-06-01T19:18:06Z
+          type: string
         user_guid:
           example: USR-1234
           type: string
@@ -2105,6 +2515,57 @@ components:
       properties:
         reward:
           "$ref": "#/components/schemas/RewardResponse"
+      type: object
+    ScheduledPaymentResponse:
+      properties:
+        amount:
+          example: 13.54
+          type: number
+        created_at:
+          example: 2023-04-27T23:14:16Z
+          type: string
+        description:
+          example: Netflix
+          type: string
+        guid:
+          example: SPA-c76e4a85-b2c4-4335-82b7-8f8b8f28c35a
+          type: string
+        is_completed:
+          example: false
+          type: boolean
+        is_recurring:
+          example: true
+          type: boolean
+        merchant_guid:
+          example: MCH-b8a2624c-2176-59ec-c150-37854bc38aa8
+          type: string
+        occurs_on:
+          example: 2022-01-15
+          type: string
+        recurrence_day:
+          example: 15
+          type: integer
+        recurrence_type:
+          example: EVERY_MONTH
+          type: string
+        transaction_type:
+          example: DEBIT
+          type: string
+        updated_at:
+          example: 2023-04-27T23:14:16Z
+          type: string
+        user_guid:
+          example: USR-72086f59-6684-4adf-8f29-c4d32db43cd7
+          type: string
+      type: object
+    ScheduledPaymentsResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+        scheduled_payments:
+          items:
+            "$ref": "#/components/schemas/ScheduledPaymentResponse"
+          type: array
       type: object
     SpendingPlanAccountResponse:
       properties:
@@ -2297,55 +2758,38 @@ components:
           nullable: true
           type: string
       type: object
-    ScheduledPaymentResponse:
+    SplitTransactionRequest:
       properties:
-        amount:
-          example: 13.54
-          type: number
-        created_at:
-          example: 2023-04-27T23:14:16Z
-          type: string
-        description:
-          example: Netflix
-          type: string
-        guid:
-          example: SPA-c76e4a85-b2c4-4335-82b7-8f8b8f28c35a
-          type: string
-        is_completed:
-          example: false
-          type: boolean
-        is_recurring:
-          example: true
-          type: boolean
-        merchant_guid:
-          example: MCH-b8a2624c-2176-59ec-c150-37854bc38aa8
-          type: string
-        occurs_on:
-          example: 2022-01-15
-          type: string
-        recurrence_day:
-          example: 15
+        amount: 
+          description: Amount of money you want to re-categorize. 
+          example: 54.19
           type: integer
-        recurrence_type:
-          example: EVERY_MONTH
+        description:
+          description: Description for the split transaction. 
+          example: Chevron Gas
           type: string
-        transaction_type:
-          example: DEBIT
+        category_guid:
+          description: Unique identifier of the category. 
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
           type: string
-        updated_at:
-          example: 2023-04-27T23:14:16Z
+        memo:
+          description: Memo for the split transaction
           type: string
-        user_guid:
-          example: USR-72086f59-6684-4adf-8f29-c4d32db43cd7
-          type: string
-      type: object
-    ScheduledPaymentsResponseBody:
+          example: Chips and Soda
+      required:
+        - amount
+    SplitTransactionRequestBody:
       properties:
-        pagination:
-          "$ref": "#/components/schemas/PaginationResponse"
-        scheduled_payments:
+        transactions:
+          "$ref": "#/components/schemas/SplitTransactionRequest"
+      required:
+        - transactions
+      type: object
+    SplitTransactionsResponseBody:
+      properties:
+        transactions:
           items:
-            "$ref": "#/components/schemas/ScheduledPaymentResponse"
+            "$ref": "#/components/schemas/TransactionResponse"
           type: array
       type: object
     StatementResponse:
@@ -2859,6 +3303,58 @@ components:
           items:
             "$ref": "#/components/schemas/TransactionResponse"
           type: array
+      type: object
+    UpdateGoalRequest:
+      properties:
+        account_guid:
+          description: Unique identifier of the account for the goal. 
+          example: ACT-4e431124-4a29-abf9-f059-ab232ac14dbf
+          type: string
+        amount:
+          description: Amount of the goal. 
+          example: 4500.50
+          type: number
+        goal_type_name: 
+          description: The goal type. 
+          example: PAYOFF
+          type: string
+        meta_type_name:
+          description: The category of the goal. 
+          example: VACATION
+          type: string
+        name: 
+          description: The name of the goal. 
+          example: Save for Europe 
+          type: string
+        completed_at:
+          description: Date and time the goal was completed. 
+          example: 2015-06-19T10:37:04-06:00
+          type: string
+        has_been_spent:
+          description: Determines if the goal has been spent.
+          example: false
+          type: boolean
+        is_complete:
+          description: Determines if the goal is complete. 
+          example: false
+          type: boolean
+        metadata:
+          description: Additional information a partner can store on the goal. 
+          example: Additional information
+          type: string
+        position: 
+          description: The priority of the goal in relation to multiple goals. 
+          example: 3
+          type: integer
+        targeted_to_complete_at:
+          description: Date and time the goal is to complete. Intended for users to set their own goal completion dates.
+          example: 2026-12-08 00:00:00.000000
+          type: string
+      type: object
+    UpdateGoalRequestBody:
+      properties:
+        goal:
+          "$ref": "#/components/schemas/UpdateGoalRequest" 
       type: object
     UserCreateRequest:
       properties:
@@ -3915,6 +4411,149 @@ paths:
       summary: List transactions by account
       tags:
         - mx_platform
+  "/users/{user_guid}/budgets/generate":
+    post: 
+      tags:
+        - budgets
+      summary: Auto-generate budgets 
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+      description: This endpoint will automatically create budgets for several categories based on existing transactions; these budgets are returned as an array. Specifically, budgets will only be generated if the `user` has at least one `transaction` in a given category during each of the two previous calendar months. For example, if the request is made on March 6, and there is at least one "Bills & Utilities" `transaction` in both January and February, a budget will be generated for "Bills & Utilities." If there are two "Bills & Utilities" transactions in February but none in January, no budget will be generated for that category. If budgets already exist for particular categories, new budgets will be generated and returned based on the available transactions. If one or more budgets remain unchanged, they will nevertheless be returned in the response. If no transaction data for the `user` meet the above criteria, a `422 Unprocessable Entity` error will be returned with status code 4221 along with the message, `There aren't enough transactions to automatically create any budgets`.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+  "/users/{user_guid}/budgets":
+    post: 
+      tags:
+        - budgets
+      summary: Create a budget
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+      description: Create a budget. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter. You cannot create a duplicate budget. For example, if you attempt to create a budget for "Gas", but that budget already exist, the request will fail. You can retrieve a list of all existing categories by using the List Categories endpoint. 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/BudgetCreateRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+    get: 
+      tags:
+        - budgets
+      summary: List all budgets
+      description: List all budgets 
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+  "/users/{user_guid}/budgets/{budget_guid}":
+    get: 
+      tags:
+        - budgets
+      summary: Read a specific budget
+      description: Read a specific budget. 
+      parameters:
+        - name: budget_guid
+          description: The unique identifier for the budget. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+        - name: user_guid
+          description: The unique identifier for the budget. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+    put:
+      tags:
+        - budgets
+      summary: Update a specific budget 
+      description: Update a specific budget. 
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the budget. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+        - name: budget_guid
+          description: The unique identifier for the budget. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/BudgetUpdateRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+    delete: 
+      tags:
+        - budgets
+      summary: Delete a budget
+      description: Delete a budget. 
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the budget. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+        - name: budget_guid
+          description: The unique identifier for the budget. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+      responses:
+        "204":
+          description: No content
   "/users/{user_guid}/categories":
     get:
       description:
@@ -4151,6 +4790,169 @@ paths:
       summary: Request connect widget url
       tags:
         - mx_platform
+  "/users/{user_guid}/goals":
+    post:
+      tags:
+        - goals
+      summary: Create a goal
+      description: Create a goal. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter. 
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. 
+          in: path
+          required: true 
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/GoalRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalResponseBody'  
+    get:
+      tags:
+        - goals
+      summary: List goals
+      description: List all goals a user can set. 
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. 
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: page
+          description: Results are returned in paginated sets, this is the page of the results you would like to view. Defaults to page 1 if no page is specified.
+          example: 
+          in: query
+          required: false
+          schema: 
+            type: string
+        - name: records_per_age
+          description:  The supported range is from 10 to 1000. If the records_per_page parameter is not specified or is outside this range, a default of 25 records per page will be used.
+          example: 
+          in: query
+          required: false
+          schema: 
+            type: string     
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalsResponseBody' 
+  "/users/{user_guid}/goals/{goal_guid}":
+    delete: 
+      tags:
+        - goals
+      summary: Delete a goal
+      description: Delete a goal. 
+      parameters:
+        - name: goal_guid
+          description: The unique identifier for a goal. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+        - name: user_guid
+          description: The unique identifier for a user.
+          required: true
+          in: path 
+          schema: 
+            type: string
+      responses:
+        "204":
+          description: No content
+    get:
+      tags:
+        - goals
+      summary: Read a goal
+      description: Read a specific goal. 
+      parameters:
+        - name: goal_guid
+          description: The unique identifier for a goal. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+        - name: user_guid
+          description: The unique identifier for a user.
+          required: true
+          in: path 
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalResponseBody' 
+    put:
+      tags:
+        - goals
+      summary: Update a goal
+      description: This endpoint updates a specific goal. 
+      parameters:
+        - name: goal_guid
+          description: The unique identifier for a goal. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+        - name: user_guid
+          description: The unique identifier for a user.
+          required: true
+          in: path 
+          schema: 
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/UpdateGoalRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalResponseBody' 
+  "/users/{user_guid}/goals/reposition":
+    put:
+      tags:
+        - goals
+      summary: Reposition goals
+      description: This endpoint repositions goal priority levels. If one goal is set to a lower priority, then any other goals need to be adjusted accordingly.
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. 
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/RepositionRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepositionResponseBody' 
   "/users/{user_guid}/holdings":
     get:
       description:
@@ -6404,6 +7206,50 @@ paths:
       summary: Verify member
       tags:
         - mx_platform
+  "/users/{user_guid}/monthly_cash_flow_profile":
+    get:
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. 
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonthlyCashFlowResponseBody'
+      tags:
+        - mx_platform
+      summary: Read monthly cash flow profile
+    put:
+      description: Use this endpoint to update the attributes of a `monthly_cash_flow_profile`.
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. 
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/MonthlyCashFlowProfileRequestBody'
+      responses:
+        '200':
+          description: OK
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonthlyCashFlowResponseBody'
+      tags:
+      - mx_platform
+      summary: Update monthly cash flow profile
   ? "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items"
   : post:
       description: This endpoint creates a new `spending_plan_iteration_item`.
@@ -7587,6 +8433,60 @@ paths:
       summary: Update transaction
       tags:
       - mx_platform
+  "/users/{user_guid}/transactions/{transaction_guid}/split":
+    delete:
+      description: This endpoint deletes all split transactions linked to a parent transaction, but it leaves the parent transaction active. This request will also update the parent transaction's has_been_split field to false. This endpoint accepts the optional MX-Skip-Webhook header.
+      parameters:
+        - description: The unique id for a `transaction`.
+          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+          in: path
+          name: transaction_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique id for a `user`.
+          example: USR-85628b0-5210-4878-9bd3-f4ce154f90c4
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No content
+      summary: Delete split transactions
+      tags:
+        - mx_platform
+    post:
+      description: This endpoint creates two or more child transactions that are branched from a previous transaction. This endpoint allows you to link multiple categories, descriptions, and amounts to a parent transaction.  When a split transaction is created, the parent transaction's `has_been_split` field will automatically be updated to true and the child transactions' `parent_guid` will have the transaction guid of the parent. The total amount of the child transactions must equal the amount of the parent transaction. Once a transaction has been split it can't be split again.    In order to re-split a transaction, it must first be un-split. This can be done by calling the Delete Split Transactions endpoint. Calling this endpoint will delete the existing child transactions and update the parent transaction's `has_been_split` field to false. You can then re-split the parent transaction by calling Create Split Transaction again.
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: transaction_guid
+          description: The unique identifier for the transaction. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/SplitTransactionRequestBody"
+      responses:
+        "200":
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/SplitTransactionsResponseBody"
+          description: OK
+      summary: Create split transactions
+      tags:
+        - mx_platform
   "/users/{user_guid}/widget_urls":
     post:
       description:
