@@ -2294,15 +2294,15 @@ components:
           description: Unique identifier for the user the monthly cash flow profile is attached to. Defined by MX.
         budgeted_income: 
           example: 1200.12
-          type: integer
+          type: number
           description: The amount of the budgeted income for the user.
         budgeted_expenses:
           example: 1000.00
-          type: integer
+          type: number
           description: The amount of the budgeted expenses for the user.
         goals_contribution: 
           example: 150.00
-          type: integer
+          type: number
           description: The monthly dollar amount allocated for goals.
         estimated_goals_contribution:
           example: null
@@ -2319,8 +2319,8 @@ components:
     MonthlyCashFlowProfileRequest:
       properties:
         goals_contribution:
-          example: 150
-          type: integer
+          example: 150.01
+          type: number
           description: The monthly dollar amount allocated for goals.
         uses_estimated_goals_contribution:
           example: false
@@ -2763,7 +2763,7 @@ components:
         amount: 
           description: Amount of money you want to re-categorize. 
           example: 54.19
-          type: integer
+          type: number
         description:
           description: Description for the split transaction. 
           example: Chevron Gas
