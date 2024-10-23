@@ -264,6 +264,10 @@ components:
           example: 1000
           nullable: true
           type: integer
+        federal_insurance_status:
+          example: INSURED
+          nullable: true
+          type: string
         guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
           nullable: true
@@ -1551,6 +1555,10 @@ components:
           nullable: true
           type: boolean
         supports_oauth:
+          example: true
+          nullable: true
+          type: boolean
+        supports_tax_document:
           example: true
           nullable: true
           type: boolean
