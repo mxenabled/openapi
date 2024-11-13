@@ -2,7 +2,7 @@
 
 # MX's OpenAPI Specification
 
-This repository contains the OpenAPI specification for the [MX Platform API](https://docs.mx.com/api).
+This repository contains the OpenAPI specification for the [MX Platform API](https://docs.mx.com/api). Changes here will also need to be added to [Docs-V2](https://gitlab.com/mxtechnologies/mx/developer-experience/projects/docs-v2); they are not currently auto-synced.
 
 ### Development
 
