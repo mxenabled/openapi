@@ -6364,7 +6364,7 @@ paths:
           metadata) and required parameters (credentials and institution_code)
         required: true
       responses:
-        '200':
+        "200":
           content:
             application/vnd.mx.api.v1+json:
               schema:
