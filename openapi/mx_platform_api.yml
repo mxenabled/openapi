@@ -75,238 +75,6 @@ components:
         account:
           "$ref": "#/components/schemas/AccountCreateRequest"
       type: object
-    AccountResponse:
-      properties:
-        account_number:
-          example: "5366"
-          nullable: true
-          type: string
-        account_ownership:
-          example: "INDIVIDUAL"
-          nullable: true
-          type: string
-        annuity_policy_to_date:
-          example: "2016-10-13T17:57:37.000Z"
-          nullable: true
-          type: string
-        annuity_provider:
-          example: "Metlife"
-          nullable: true
-          type: string
-        annuity_term_year:
-          example: 2048
-          nullable: true
-          type: number
-        apr:
-          example: 1.0
-          nullable: true
-          type: number
-        apy:
-          example: 1.0
-          nullable: true
-          type: number
-        available_balance:
-          example: 1000.0
-          nullable: true
-          type: number
-        available_credit:
-          example: 1000.0
-          nullable: true
-          type: number
-        balance:
-          example: 10000.0
-          nullable: true
-          type: number
-        cash_balance:
-          example: 1000.0
-          nullable: true
-          type: number
-        cash_surrender_value:
-          example: 1000.0
-          nullable: true
-          type: number
-        created_at:
-          example: "2023-07-25T17:14:46Z"
-          nullable: false
-          type: string
-        credit_limit:
-          example: 100.0
-          nullable: true
-          type: number
-        currency_code:
-          example: USD
-          nullable: true
-          type: string
-        day_payment_is_due:
-          example: 20
-          nullable: true
-          type: integer
-        death_benefit:
-          example: 1000
-          nullable: true
-          type: integer
-        guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          nullable: true
-          type: string
-        holdings_value:
-          example: 1000.0
-          nullable: true
-          type: number
-        id:
-          example: "1040434698"
-          nullable: true
-          type: string
-        imported_at:
-          example: "2015-10-13T17:57:37.000Z"
-          nullable: true
-          type: string
-        interest_rate:
-          example: 1.0
-          nullable: true
-          type: number
-        institution_code:
-          example: "3af3685e-05d9-7060-359f-008d0755e993"
-          nullable: true
-          type: string
-        insured_name:
-          example: "Tommy Shelby"
-          nullable: true
-          type: string
-        is_closed:
-          example: false
-          nullable: true
-          type: boolean
-        is_hidden:
-          example: false
-          nullable: true
-          type: boolean
-        is_manual:
-          example: false
-          nullable: true
-          type: boolean
-        last_payment:
-          example: 100.0
-          nullable: true
-          type: number
-        last_payment_at:
-          example: "2023-07-25T17:14:46Z"
-          nullable: true
-          type: string
-        loan_amount:
-          example: 1000.0
-          nullable: true
-          type: number
-        margin_balance:
-          example: 1000.0
-          nullable: true
-          type: number
-        matures_on:
-          example: "2015-10-13T17:57:37.000Z"
-          nullable: true
-          type: string
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          nullable: true
-          type: string
-        member_id:
-          example: member123
-          nullable: true
-          type: string
-        member_is_managed_by_user:
-          example: false
-          nullable: true
-          type: boolean
-        metadata:
-          example: "some metadata"
-          nullable: true
-          type: string
-        minimum_balance:
-          example: 100.0
-          nullable: true
-          type: number
-        minimum_payment:
-          example: 10.0
-          nullable: true
-          type: number
-        name:
-          example: Test account 2
-          nullable: true
-          type: string
-        nickname:
-          example: My Checking
-          nullable: true
-          type: string
-        original_balance:
-          example: 10.0
-          nullable: true
-          type: number
-        pay_out_amount:
-          example: 10.0
-          nullable: true
-          type: number
-        payment_due_at:
-          example: "2015-10-13T17:57:37.000Z"
-          nullable: true
-          type: string
-        payoff_balance:
-          example: 10.0
-          nullable: true
-          type: number
-        premium_amount:
-          example: 1.0
-          nullable: true
-          type: number
-        property_type:
-          example: VEHICLE
-          nullable: true
-          type: string
-        routing_number:
-          example: "68899990000000"
-          nullable: true
-          type: string
-        started_on:
-          example: "2015-10-13T17:57:37.000Z"
-          nullable: true
-          type: string
-        subtype:
-          example: NONE
-          nullable: true
-          type: string
-        today_ugl_amount:
-          example: 1000.50
-          nullable: true
-          type: number
-        today_ugl_percentage:
-          example: 6.9
-          nullable: true
-          type: number
-        total_account_value:
-          example: 1.0
-          nullable: true
-          type: number
-        type:
-          example: SAVINGS
-          nullable: true
-          type: string
-        updated_at:
-          example: "2016-10-13T18:08:00.000Z"
-          nullable: true
-          type: string
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          nullable: true
-          type: string
-        user_id:
-          example: "user123"
-          nullable: true
-          type: string
-      type: object
-    AccountResponseBody:
-      properties:
-        account:
-          "$ref": "#/components/schemas/AccountResponse"
-      type: object
     AccountNumberResponse:
       properties:
         account_guid:
@@ -314,15 +82,23 @@ components:
           nullable: true
           type: string
         account_number:
-          example: "10001"
+          example: 10001
           nullable: true
           type: string
         guid:
           example: ACN-8899832e-e5b4-42cd-aa25-bbf1dc889a8f
           nullable: true
           type: string
+        loan_guarantor:
+          example: U.S. DEPARTMENT OF EDUCATION
+          nullable: true
+          type: string
+        loan_reference_number:
+          example: 123456789012345
+          nullable: true
+          type: string
         institution_number:
-          example: "123"
+          example: 123
           nullable: true
           type: string
         member_guid:
@@ -334,26 +110,21 @@ components:
           nullable: true
           type: boolean
         routing_number:
-          example: "68899990000000"
+          example: 68899990000000
+          nullable: true
+          type: string
+        sequence_number:
+          example: 1-01
           nullable: true
           type: string
         transit_number:
-          example: "12345"
+          example: 12345
           nullable: true
           type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           nullable: true
           type: string
-      type: object
-    AccountNumbersResponseBody:
-      properties:
-        account_numbers:
-          items:
-            "$ref": "#/components/schemas/AccountNumberResponse"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/PaginationResponse"
       type: object
     AccountOwnerResponse:
       properties:
@@ -419,6 +190,259 @@ components:
         account_owners:
           items:
             "$ref": "#/components/schemas/AccountOwnerResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    AccountResponse:
+      properties:
+        account_number:
+          example: "5366"
+          nullable: true
+          type: string
+        account_ownership:
+          example: 'INDIVIDUAL'
+          nullable: true
+          type: string
+        annuity_policy_to_date:
+          example: "2016-10-13T17:57:37.000Z"
+          nullable: true
+          type: string
+        annuity_provider:
+          example: 'Metlife'
+          nullable: true
+          type: string
+        annuity_term_year:
+          example: 2048
+          nullable: true
+          type: number
+        apr:
+          example: 1.0
+          nullable: true
+          type: number
+        apy:
+          example: 1.0
+          nullable: true
+          type: number
+        available_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        available_credit:
+          example: 1000.0
+          nullable: true
+          type: number
+        balance:
+          example: 10000.0
+          nullable: true
+          type: number
+        cash_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        cash_surrender_value:
+          example: 1000.0
+          nullable: true
+          type: number
+        created_at:
+          example: "2023-07-25T17:14:46Z"
+          nullable: false
+          type: string
+        credit_limit:
+          example: 100.0
+          nullable: true
+          type: number
+        currency_code:
+          example: USD
+          nullable: true
+          type: string
+        day_payment_is_due:
+          example: 20
+          nullable: true
+          type: integer
+        death_benefit:
+          example: 1000
+          nullable: true
+          type: integer
+        federal_insurance_status:
+          example: INSURED
+          nullable: true
+          type: string
+        guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
+          type: string
+        holdings_value:
+          example: 1000.0
+          nullable: true
+          type: number
+        id:
+          example: "1040434698"
+          nullable: true
+          type: string
+        imported_at:
+          example: "2015-10-13T17:57:37.000Z"
+          nullable: true
+          type: string
+        institution_code:
+          example: '3af3685e-05d9-7060-359f-008d0755e993'
+          nullable: true
+          type: string
+        insured_name:
+          example: 'Tommy Shelby'
+          nullable: true
+          type: string
+        interest_rate:
+          example: 1.0
+          nullable: true
+          type: number
+        is_closed:
+          example: false
+          nullable: true
+          type: boolean
+        is_hidden:
+          example: false
+          nullable: true
+          type: boolean
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
+        last_payment:
+          example: 100.0
+          nullable: true
+          type: number
+        last_payment_at:
+          example: "2023-07-25T17:14:46Z"
+          nullable: true
+          type: string
+        loan_amount:
+          example: 1000.0
+          nullable: true
+          type: number
+        margin_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        matures_on:
+          example: "2015-10-13T17:57:37.000Z"
+          nullable: true
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
+          type: string
+        member_id:
+          example: member123
+          nullable: true
+          type: string
+        member_is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        metadata:
+          example: 'some metadata'
+          nullable: true
+          type: string
+        minimum_balance:
+          example: 100.0
+          nullable: true
+          type: number
+        minimum_payment:
+          example: 10.0
+          nullable: true
+          type: number
+        name:
+          example: Test account 2
+          nullable: true
+          type: string
+        nickname:
+          example: My Checking
+          nullable: true
+          type: string
+        original_balance:
+          example: 10.0
+          nullable: true
+          type: number
+        pay_out_amount:
+          example: 10.0
+          nullable: true
+          type: number
+        payment_due_at:
+          example: "2015-10-13T17:57:37.000Z"
+          nullable: true
+          type: string
+        payoff_balance:
+          example: 10.0
+          nullable: true
+          type: number
+        premium_amount:
+          example: 1.0
+          nullable: true
+          type: number
+        property_type:
+          example: VEHICLE
+          nullable: true
+          type: string
+        routing_number:
+          example: "68899990000000"
+          nullable: true
+          type: string
+        started_on:
+          example: "2015-10-13T17:57:37.000Z"
+          nullable: true
+          type: string
+        statement_balance:
+          example: 100.1
+          nullable: true
+          type: number
+        subtype:
+          example: NONE
+          nullable: true
+          type: string
+        today_ugl_amount:
+          example: 1000.5
+          nullable: true
+          type: number
+        today_ugl_percentage:
+          example: 6.9
+          nullable: true
+          type: number
+        total_account_value:
+          example: 1.0
+          nullable: true
+          type: number
+        total_account_value_ugl:
+          example: 1.1
+          nullable: true
+          type: number
+        type:
+          example: SAVINGS
+          nullable: true
+          type: string
+        updated_at:
+          example: "2016-10-13T18:08:00.000Z"
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
+          type: string
+        user_id:
+          example: 'user123'
+          nullable: true
+          type: string
+      type: object
+    AccountResponseBody:
+      properties:
+        account:
+          "$ref": "#/components/schemas/AccountResponse"
+      type: object
+    AccountNumbersResponseBody:
+      properties:
+        account_numbers:
+          items:
+            "$ref": "#/components/schemas/AccountNumberResponse"
           type: array
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
@@ -529,6 +553,129 @@ components:
         authorization_code:
           items:
             "$ref": "#/components/schemas/AuthorizationCodeResponse"
+      type: object
+    BudgetResponse:
+      properties:
+        amount:
+          description: A goal amount set by the user for a category's transaction total during a month.
+          example: 153.0
+          type: number
+        category_guid:
+          description: Unique identifier for the budget category. Defined by MX.
+          example: CAT-bd56d35a-a9a7-6e10-66c1-5b9cc1b6c81a
+          type: string
+          nullable: false
+        created_at:
+          description: Date and time the budget was created, represented in ISO 8601 format with timestamp.
+          example: 2018-10-18T19:51:26+00:00
+          type: string
+        guid:
+          description: Unique identifier for the budget. Defined by MX.
+          example: BGT-6ca0e3ef-c65e-4655-8b5a-275a3c19c21d
+          type: string
+        is_exceeded:
+          description: If the budget has been exceeded, this field will be true. Otherwise, this field will be false.
+          example: true
+          type: boolean
+        is_off_track:
+          description: If the budget is off track, this field will be true. Otherwise, this field will be false.
+          example: true
+          type: boolean 
+        metadata:
+          description: Additional information a partner can store on the budget.
+          example: some metadata
+          nullable: true
+          type: string
+        name:
+          description: The name of the budget that is visible to the user (ie "Food", "Bills", "Entertainment", etc).
+          example: Food & Dining
+          type: string
+          nullable: true
+        off_track_percentage:
+          description: The percentage amount of off track spending. (Deprecated).
+          nullable: true 
+          type: number 
+        parent_guid:
+          description: Unique identifier for the parent budget. Defined by MX.
+          nullable: true
+          type: string
+        percent_spent:
+          description: The percentage of a budget that has been spent during the current calendar month Calculated as the transaction total divided by the amount and then multiplied by 100.A value of zero will be returned when `amount` is zero.
+          example: 1276.34
+          nullable: true
+          type: number
+        projected_spending:
+          description: The projected amount of spending for the budget.
+          example: 3562.4
+          type: number
+        revision:
+          description: The revision number of this budget record.
+          example: 561
+          type: integer
+        transaction_total:
+          description: The cumulative amount of all transactions under the budget.
+          example: 1952.8
+        updated_at:
+          description: Date and time the budget was updated, represented in ISO 8601 format with timestamp.
+          example: 2022-06-14T21:17:11+00:00
+        user_guid: 
+          description: Unique identifier for the user. Defined by MX.
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+    BudgetCreateRequest:
+      properties:
+        category_guid:
+          example: CAT-bd56d35a-a9a7-6e10-66c1-5b9cc1b6c81a
+          description: Unique identifier of the category.
+          type: string
+        parent_guid:
+          example: BGT-6be44a91-e105-f68a-4770-8c7c0a5c9778
+          description: Unique identifier of the parent budget. This is only required when creating a budget on a sub-category.
+          type: string
+        amount:
+          example: 1000
+          description: Amount of the budget.
+          type: integer
+        metadata:
+          example: Additional information 
+          description: Additional information a partner can store on the budget.
+          type: string
+        skip_webhook:
+          example: true
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          type: boolean  
+      required:
+        - category_guid
+        - parent_guid
+      type: object
+    BudgetUpdateRequest:
+      properties:
+        amount:
+          example: 1000
+          description: Amount of the budget.
+          type: integer
+        metadata:
+          example: Additional information 
+          description: Additional information a partner can store on the budget.
+          type: string
+        skip_webhook:
+          example: true
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          type: boolean
+      type: object
+    BudgetCreateRequestBody:
+      properties:
+        budget:
+          "$ref": "#/components/schemas/BudgetCreateRequest" 
+      type: object
+    BudgetUpdateRequestBody:
+      properties:
+        budget:
+          "$ref": "#/components/schemas/BudgetUpdateRequest" 
+      type: object
+    BudgetResponseBody:
+      properties:
+        budget:
+            "$ref": "#/components/schemas/BudgetResponse" 
       type: object
     CategoriesResponseBody:
       properties:
@@ -763,6 +910,55 @@ components:
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
       type: object
+    CreditCardProduct:
+      properties:
+        annual_fee:
+          example: 45.00
+          type: number
+        duration_of_introductory_rate_on_balance_transfer:
+          example: null
+          type: integer
+        duration_of_introductory_rate_on_purchases:
+          example: null
+          type: integer
+        guid:
+          example: CCA-b5bcd822-6d01-4e23-b8d6-846a225e714a
+          type: string
+        has_cashback_rewards: 
+          example: false
+          type: boolean
+        has_other_rewards:
+          example: true
+          type: boolean
+        has_travel_rewards: 
+          example: true
+          type: boolean
+        has_zero_introductory_annual_fee:
+          example: true
+          type: boolean
+        has_zero_percent_introductory_rate:
+          example: false
+          type: boolean 
+        has_zero_percent_introductory_rate_on_balance_transfer:
+          example: true
+          type: boolean
+        is_accepting_applicants:
+          example: true
+          type: boolean
+        is_active_credit_card_product:
+          example: true
+          type: boolean
+        is_small_business_card:
+          example: true
+          type: boolean
+        name: 
+          example: Chase Credit Card
+          type: string
+    CreditCardProductResponse:
+      properties:
+        credit_card_product:
+          "$ref": "#/components/schemas/CreditCardProduct"
+      type: object
     EnhanceTransactionResponse:
       properties:
         amount:
@@ -899,6 +1095,207 @@ components:
             "$ref": "#/components/schemas/EnhanceTransactionResponse"
           type: array
       type: object
+    GoalRequest:
+      properties:
+        account_guid:
+          description: Unique identifier of the account for the goal. 
+          example: ACT-4e431124-4a29-abf9-f059-ab232ac14dbf
+          type: string
+        amount:
+          description: Amount of the goal. 
+          example: 4500.50
+          type: number
+        goal_type_name: 
+          description: The goal type. 
+          example: PAYOFF
+          type: string
+        meta_type_name:
+          description: The category of the goal. 
+          example: VACATION
+          type: string
+        name: 
+          description: The name of the goal. 
+          example: Save for Europe 
+          type: string
+        completed_at:
+          description: Date and time the goal was completed. 
+          example: 2015-06-19T10:37:04-06:00
+          type: string
+        has_been_spent:
+          description: Determines if the goal has been spent.
+          example: false
+          type: boolean
+        is_complete:
+          description: Determines if the goal is complete. 
+          example: false
+          type: boolean
+        metadata:
+          description: Additional information a partner can store on the goal. 
+          example: Additional information
+          type: string
+        position: 
+          description: The priority of the goal in relation to multiple goals. 
+          example: 3
+          type: integer
+        targeted_to_complete_at:
+          description: Date and time the goal is to complete. Intended for users to set their own goal completion dates.
+          example: 2026-12-08 00:00:00.000000
+          type: string
+      required:
+        - account_guid
+        - amount
+        - goal_type_name
+        - meta_type_name
+        - name
+      type: object
+    GoalRequestBody:
+      properties:
+        goal:
+          "$ref": "#/components/schemas/GoalRequest" 
+      type: object
+    GoalResponse:
+      properties:
+        account_guid:
+          description: Unique identifier of the account for the goal. 
+          example: ACT-4e431124-4a29-abf9-f059-ab232ac14dbf
+          type: string
+        amount:
+          description: Amount of the goal. 
+          example: 4500.0
+          type: number
+        completed_at:
+          description: Date and time the goal was completed. 
+          example: 2015-06-19T10:37:04-06:00
+          type: string
+        current_amount:
+          description: The current amount of the goal. 
+          example: 1651.27
+          type: number
+        goal_type_name: 
+          description: The goal type. 
+          example: PAYOFF
+          type: string
+        guid:
+          description: Unique identifier for the goal. Defined by MX.
+          example: GOL-f223463-4355-48d0-rce7-fe2rb345617c
+          type: string
+        has_been_spent:
+          description: Determines if the goal has been spent. 
+          example: false
+          type: boolean
+        is_complete:
+          description: Determines if the goal is complete. 
+          example: false
+          type: boolean
+        metadata:
+          description: Additional information a partner can store on the goal. 
+          example: Additional information
+          type: string
+        meta_type_name:
+          description: The category of the goal. 
+          example: VACATION
+          type: string
+        name: 
+          description: The name of the goal. 
+          example: Save for Europe
+          type: string
+        position: 
+          description: The priority of the goal in relation to multiple goals. 
+          example: 3
+          type: integer
+        projected_to_complete_at:
+          description: Date and time the goal is projected to be completed.
+          example: 2022-06-14T16:03:53-00:00
+          type: string
+        targeted_to_complete_at:
+          description: Date and time the goal is to complete. Intended for users to set their own goal completion dates.
+          example: 2026-12-08 00:00:00.000000
+          type: string
+        track_type_name:
+          example: Track Type Name
+          type: string
+        user_guid:
+          description: The unique identifier for the the user. Defined by MX. 
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          type: string
+    GoalsResponse:
+      properties:
+        account_guid:
+          description: Unique identifier of the account for the goal. 
+          example: ACT-4e431124-4a29-abf9-f059-ab232ac14dbf
+          type: string
+        amount:
+          description: Amount of the goal. 
+          example: 4500.0
+          type: number
+        current_amount:
+          description: The current amount of the goal.
+          example: 1651.27
+          type: number
+        guid:
+          description: The unique identifier for the goal. Defined by MX. 
+          example: GOL-524ca5db-a2d5-44f3-b048-16de16059024
+          type: string
+        goal_type_name: 
+          description: The goal type. 
+          example: PAYOFF
+          type: string
+        meta_type_name:
+          description: The category of the goal. 
+          example: VACATION
+          type: string
+        name: 
+          description: The name of the goal. 
+          example: Save for Europe 
+          type: string
+        completed_at:
+          description: Date and time the goal was completed. 
+          example: 2015-06-19T10:37:04-06:00
+          type: string
+        has_been_spent:
+          description: Determines if the goal has been spent.
+          example: false
+          type: boolean
+        is_complete:
+          description: Determines if the goal is complete. 
+          example: false
+          type: boolean
+        metadata:
+          description: Additional information a partner can store on the goal. 
+          example: Additional information
+          type: string
+        position: 
+          description: The priority of the goal in relation to multiple goals. 
+          example: 3
+          type: integer
+        projected_to_complete_at:
+          description: The date on which the project was completed. 
+          example: 2022-06-14T16:03:53-00:00
+          type: string
+        targeted_to_complete_at:
+          example: 2026-12-08 00:00:00.000000
+          type: string
+        track_type_name:
+          example: Track Type Name
+          type: string
+        user_guid:
+          description: The unique identifier for the the user. Defined by MX. 
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          type: string
+    GoalResponseBody:
+      properties:
+        goal:
+          "$ref": "#/components/schemas/GoalResponse" 
+      type: object
+    GoalsResponseBody:
+      properties:
+        goals:
+          items:
+            "$ref": "#/components/schemas/GoalsResponse" 
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
     HoldingResponse:
       properties:
         account_guid:
@@ -1007,6 +1404,112 @@ components:
           nullable: true
           type: string
       type: object
+    InsightResponse:
+      properties:
+        active_at:
+          example: '2022-01-07T12:00:00Z'
+          nullable: true
+          type: string
+        client_guid:
+          example: CLT-abcd-1234
+          nullable: true
+          type: string
+        created_at:
+          example: '2022-01-12T18:16:51Z'
+          nullable: true
+          type: string
+        cta_clicked_at:
+          example: '2022-01-12T18:16:51Z'
+          nullable: true
+          type: string
+        description:
+          example: Gold's Gym charged you $36.71 more this month than normal. Did
+            you upgrade your service?
+          nullable: true
+          type: string
+        guid:
+          example: BET-abcd-1234
+          nullable: true
+          type: string
+        has_associated_accounts:
+          example: false
+          nullable: true
+          type: boolean
+        has_associated_merchants:
+          example: false
+          nullable: true
+          type: boolean
+        has_associated_scheduled_payments:
+          example: false
+          nullable: true
+          type: boolean
+        has_associated_transactions:
+          example: true
+          nullable: true
+          type: boolean
+        has_been_displayed:
+          example: true
+          nullable: true
+          type: boolean
+        is_dismissed:
+          example: false
+          nullable: true
+          type: boolean
+        micro_call_to_action:
+          example: Learn more
+          nullable: true
+          type: string
+        micro_description:
+          example: Netflix charged you $5.00 more this month than normal.
+          nullable: true
+          type: string
+        micro_title:
+          example: Price increase
+          nullable: true
+          type: string
+        template:
+          example: SubscriptionPriceIncrease
+          nullable: true
+          type: string
+        title:
+          example: Price increase
+          nullable: true
+          type: string
+        updated_at:
+          example: '2022-01-12T18:16:51Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-1234-abcd
+          type: string
+        user_id:
+          example: user-partner-defined-1234
+      type: object
+    InsightUpdateRequest:
+      properties:
+        has_been_displayed:
+          example: false
+          type: boolean
+        is_dismissed:
+          example: false
+          type: boolean
+      type: object
+    InsightResponseBody:
+      properties:
+        insight:
+          items:
+            "$ref": "#/components/schemas/InsightResponse"
+          type: object
+      type: object
+    InsightsResponseBody:
+      properties:
+        insights:
+          items:
+            "$ref": "#/components/schemas/InsightResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
     InstitutionResponse:
       properties:
         code:
@@ -1052,6 +1555,10 @@ components:
           nullable: true
           type: boolean
         supports_oauth:
+          example: true
+          nullable: true
+          type: boolean
+        supports_tax_document:
           example: true
           nullable: true
           type: boolean
@@ -1547,12 +2054,24 @@ components:
           example: false
           nullable: true
           type: boolean
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
         is_oauth:
           example: false
           nullable: true
           type: boolean
         metadata:
           example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+          nullable: true
+          type: string
+        most_recent_job_detail_code:
+          example: (deprecated)
+          nullable: true
+          type: string
+        most_recent_job_detail_text:
+          example: (deprecated)
           nullable: true
           type: string
         name:
@@ -1612,6 +2131,10 @@ components:
           nullable: true
           type: string
         has_processed_accounts:
+          example: true
+          nullable: true
+          type: boolean
+        has_processed_account_numbers:
           example: true
           nullable: true
           type: boolean
@@ -1767,6 +2290,158 @@ components:
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
       type: object
+    MicrodepositVerifyRequest:
+      properties:
+        deposit_amount_1:
+          type: integer
+          example: 0.09
+        deposit_amount_2:
+          type: integer
+          example: 0.09
+    MicrodepositVerifyRequestBody:
+      properties:
+        micro_deposit:
+          "$ref": "#/components/schemas/MicrodepositVerifyRequest"
+      type: object
+    MicrodepositRequest:
+      properties:
+        account_number:
+          example: "3331261"
+          type: string
+        account_type:
+          example: CHECKING
+          type: string
+        routing_number:
+          example: "091000019" 
+          type: string
+        account_name:
+          example: My test account
+          type: string
+        email: 
+          example: joshyboy2@example.com
+          type: string
+        first_name:
+          example: Joshy
+          type: string
+        last_name: 
+          example: Grobanne
+          type: string
+      required:
+        - account_number
+        - account_type
+        - routing_number
+    MicrodepositRequestBody:
+      properties:
+        micro_deposit:
+          "$ref": "#/components/schemas/MicrodepositRequest"
+      type: object
+    MicrodepositResponse:
+      properties:
+        account_name:
+          type: string
+          example: My test account
+        account_number:
+          type: string
+          example: 3331261
+        account_type:
+          type: string
+          example: CHECKING
+        email: 
+          type: string
+          example: joshyboy2@example.com
+        first_name:
+          type: string
+          example: Joshy
+        last_name: 
+          type: string
+          example: Grobanne
+        routing_number: 
+          type: string
+          example: 091000019
+        error_message:
+          type: string
+          example: null
+        guid:
+          type: string
+          example: MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb
+        institution_code:
+          example: mxbank
+          type: string
+        institution_name:
+          example: MX Bank
+          type: string
+        status:
+          example: INITIATED
+          type: string
+        updated_at:
+          example: 2023-06-01T19:18:06Z
+          type: string
+        verified_at:
+          example: null
+          type: string
+    MicrodepositResponseBody:
+      properties:
+        micro_deposit:
+          "$ref": "#/components/schemas/MicrodepositResponse"
+      type: object
+    MicrodepositsResponseBody:
+      properties:
+        micro_deposits:
+          items:
+            "$ref": "#/components/schemas/MicrodepositResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    MonthlyCashFlowResponse:
+      properties:
+        guid: 
+          example: MCF-4e431124-4a29-abf9-f059-ab232ac14dbf
+          type: string
+          description: Unique identifier for the monthly cash flow profile. Defined by MX.
+        user_guid:
+          example: USR-6c83f63c-efcc-0189-3f14-100f0bad378a
+          type: string
+          description: Unique identifier for the user the monthly cash flow profile is attached to. Defined by MX.
+        budgeted_income: 
+          example: 1200.12
+          type: number
+          description: The amount of the budgeted income for the user.
+        budgeted_expenses:
+          example: 1000.00
+          type: number
+          description: The amount of the budgeted expenses for the user.
+        goals_contribution: 
+          example: 150.00
+          type: number
+          description: The monthly dollar amount allocated for goals.
+        estimated_goals_contribution:
+          example: null
+          type: integer
+          description: The estimated monthly dollar amount allocated for goals calculated from income and budgets.
+        uses_estimated_goals_contribution: 
+          example: false
+          type: boolean
+    MonthlyCashFlowResponseBody:
+      properties:
+        monthly_cash_flow_profile:
+          "$ref": "#/components/schemas/MonthlyCashFlowResponse" 
+      type: object
+    MonthlyCashFlowProfileRequest:
+      properties:
+        goals_contribution:
+          example: 150.01
+          type: number
+          description: The monthly dollar amount allocated for goals.
+        uses_estimated_goals_contribution:
+          example: false
+          type: boolean
+          description: Determines if the user uses estimated goals contribution.
+    MonthlyCashFlowProfileRequestBody:
+      properties: 
+        institution:
+          "$ref": "#/components/schemas/MonthlyCashFlowProfileRequest"
+      type: object
     OAuthWindowResponse:
       properties:
         guid:
@@ -1840,6 +2515,168 @@ components:
       properties:
         payment_processor_authorization_code:
           "$ref": "#/components/schemas/PaymentProcessorAuthorizationCodeResponse"
+      type: object
+    RepositionRequest:
+      properties:
+        guid:
+          description: The unique identifier for the goal. Defined by MX. 
+          example: GOL-97665947-235c-b213-ca25-8cf0174774f5
+          type: string
+        position:
+          description: The priority of the goal in relation to multiple goals.
+          example: 1
+          type: integer
+      required:
+        - guid
+        - position
+    RepositionRequestBody:
+      properties:
+        goals:
+          items:
+            "$ref": "#/components/schemas/RepositionRequest" 
+          type: array
+      type: object
+    RepositionResponseBody:
+      properties:
+        goals:
+          items:
+            "$ref": "#/components/schemas/GoalsResponse" 
+          type: array
+      type: object
+    RewardsResponse:
+      properties:
+        account_guid:
+          example: ACT-1234
+          type: string
+        balance_type: 
+          example: EXPIRING_BALANCE
+          type: string
+        balance: 
+          example: 102
+          type: integer
+        created_at:
+          example: 2020-01-28T21:09:01+0000
+          type: string
+        description: 
+          example: A description of the reward.
+          type: string 
+        expires_on: 
+          example: 2020-02-28
+          type: string
+        guid: 
+          example: RWD-1234
+          type: string
+        member_guid: 
+          example: MBR-4567
+          type: string
+        unit_type:
+          example: POINTS
+          type: string
+        updated_at:
+          example: 2023-06-01T19:18:06Z
+          type: string
+        user_guid:
+          example: USR-1234
+          type: string 
+    RewardsResponseBody:
+      properties:
+        rewards:
+          items:
+            "$ref": "#/components/schemas/RewardsResponse"
+          type: array
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+      type: object
+    RewardResponse: 
+      properties:
+        account_guid:
+          example: ACT-1234
+          type: string
+        balance_type: 
+          example: EXPIRING_BALANCE
+          type: string
+        balance: 
+          example: 102
+          type: integer
+        created_at:
+          example: 2020-01-28T21:09:01+0000
+          type: string
+        description: 
+          example: A description of the reward.
+          type: string 
+        expires_on: 
+          example: 2020-02-28
+          type: string
+        guid: 
+          example: RWD-1234
+          type: string
+        member_guid: 
+          example: MBR-4567
+          type: string
+        unit_type:
+          example: POINTS
+          type: string
+        updated_at:
+          example: 2023-06-01T19:18:06Z
+          type: string
+        user_guid:
+          example: USR-1234
+          type: string
+    RewardResponseBody:
+      properties:
+        reward:
+          "$ref": "#/components/schemas/RewardResponse"
+      type: object
+    ScheduledPaymentResponse:
+      properties:
+        amount:
+          example: 13.54
+          type: number
+        created_at:
+          example: 2023-04-27T23:14:16Z
+          type: string
+        description:
+          example: Netflix
+          type: string
+        guid:
+          example: SPA-c76e4a85-b2c4-4335-82b7-8f8b8f28c35a
+          type: string
+        is_completed:
+          example: false
+          type: boolean
+        is_recurring:
+          example: true
+          type: boolean
+        merchant_guid:
+          example: MCH-b8a2624c-2176-59ec-c150-37854bc38aa8
+          type: string
+        occurs_on:
+          example: 2022-01-15
+          type: string
+        recurrence_day:
+          example: 15
+          type: integer
+        recurrence_type:
+          example: EVERY_MONTH
+          type: string
+        transaction_type:
+          example: DEBIT
+          type: string
+        updated_at:
+          example: 2023-04-27T23:14:16Z
+          type: string
+        user_guid:
+          example: USR-72086f59-6684-4adf-8f29-c4d32db43cd7
+          type: string
+      type: object
+    ScheduledPaymentsResponseBody:
+      properties:
+        pagination:
+          "$ref": "#/components/schemas/PaginationResponse"
+        scheduled_payments:
+          items:
+            "$ref": "#/components/schemas/ScheduledPaymentResponse"
+          type: array
       type: object
     SpendingPlanAccountResponse:
       properties:
@@ -2031,6 +2868,40 @@ components:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           nullable: true
           type: string
+      type: object
+    SplitTransactionRequest:
+      properties:
+        amount: 
+          description: Amount of money you want to re-categorize. 
+          example: 54.19
+          type: number
+        description:
+          description: Description for the split transaction. 
+          example: Chevron Gas
+          type: string
+        category_guid:
+          description: Unique identifier of the category. 
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type: string
+        memo:
+          description: Memo for the split transaction
+          type: string
+          example: Chips and Soda
+      required:
+        - amount
+    SplitTransactionRequestBody:
+      properties:
+        transactions:
+          "$ref": "#/components/schemas/SplitTransactionRequest"
+      required:
+        - transactions
+      type: object
+    SplitTransactionsResponseBody:
+      properties:
+        transactions:
+          items:
+            "$ref": "#/components/schemas/TransactionResponse"
+          type: array
       type: object
     StatementResponse:
       properties:
@@ -2259,6 +3130,236 @@ components:
           items:
             "$ref": "#/components/schemas/TaxDocumentResponse"
           type: array
+      type: object
+    TransactionCreateRequest:
+      properties:
+        amount:
+          example: 61.11
+          type: number
+        date:
+          example: "2016-10-06"
+          type: string
+        description:
+          example: Whole foods
+          type: string
+        type:
+          description: The type of transaction, which must be CREDIT or DEBIT. See Transaction Fields for more information.
+          example: DEBIT
+          type: string
+        category_guid:
+          description: Unique identifier of the category. 
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type: string
+        currency_code:
+          example: USD
+          type: string
+        has_been_viewed:
+          example: false
+          type: boolean
+        is_hidden:
+          example: false
+          type: boolean
+        is_international:
+          example: false
+          type: boolean
+        memo:
+          example: This is a memo
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        skip_webhook:
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          example: true
+          type: boolean
+      required:
+        - amount
+        - date
+        - description
+        - type
+    TransactionCreateRequestBody:
+      properties:
+        transaction:
+          "$ref": "#/components/schemas/TransactionCreateRequest"
+      type: object
+    TransactionCreateResponseBody:
+      properties:
+        account_guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
+          type: string
+        account_id:
+          example: account123
+          nullable: true
+          type: string
+        amount:
+          example: 61.11
+          nullable: false
+          type: number
+        category:
+          example: Groceries
+          nullable: true
+          type: string
+        category_guid:
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          nullable: true
+          type: string
+        check_number_string:
+          example: null
+          nullable: true
+          type: string
+        created_at:
+          example: '2016-10-08T09:43:42.000Z'
+          nullable: true
+          type: string
+        currency_code:
+          example: USD
+          nullable: true
+          type: string
+        date:
+          example: '2016-10-06T00:00:00.000Z'
+          nullable: true
+          type: string
+        description:
+          example: Whole foods
+          nullable: true
+          type: string
+        extended_transaction_type:
+          example: null
+          nullable: true
+          type: string
+        guid:
+          example: TRN-265abee9-889b-af6a-c69b-25157db2bdd9
+          nullable: true
+          type: string
+        id:
+          example: null
+          nullable: true
+          type: string
+        is_bill_pay:
+          example: false
+          nullable: true
+          type: boolean
+        is_direct_deposit:
+          example: false
+          nullable: true
+          type: boolean
+        is_expense:
+          example: true
+          nullable: true
+          type: boolean
+        is_fee:
+          example: false
+          nullable: true
+          type: boolean
+        is_income:
+          example: false
+          nullable: true
+          type: boolean
+        is_international:
+          example: false
+          nullable: true
+          type: boolean
+        is_manual:
+          example: true
+          nullable: true
+          type: boolean
+        is_overdraft_fee:
+          example: false
+          nullable: true
+          type: boolean
+        is_payroll_advance:
+          example: false
+          nullable: true
+          type: boolean
+        is_recurring:
+          example: null
+          nullable: true
+          type: boolean
+        is_subscription:
+          example: false
+          nullable: true
+          type: boolean
+        latitude:
+          example: null
+          nullable: true
+          type: number
+        localized_description:
+          example: null
+          nullable: true
+          type: string
+        localized_memo:
+          example: null
+          nullable: true
+          type: string
+        longitude:
+          example: null
+          nullable: true
+          type: number
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
+          type: string
+        member_is_managed_by_user:
+          example: true
+          nullable: true
+          type: boolean
+        memo:
+          example: This is a memo
+          nullable: true
+          type: string
+        merchant_category_code:
+          example: null
+          nullable: true
+          type: integer
+        merchant_guid:
+          example: null
+          nullable: true
+          type: string
+        merchant_location_guid:
+          example: null
+          nullable: true
+          type: string
+        metadata:
+          example: some metadata
+          nullable: true
+          type: string
+        original_description:
+          example: null
+          nullable: true
+          type: string
+        posted_at:
+          example: null
+          nullable: true
+          type: string
+        status:
+          example: null
+          nullable: true
+          type: string
+        top_level_category:
+          example: Food & Dining
+          nullable: true
+          type: string
+        transacted_at:
+          example: null
+          nullable: true
+          type: string
+        type:
+          example: DEBIT
+          nullable: false
+          type: string
+        updated_at:
+          example: '2016-10-08T05:49:12.000Z'
+          nullable: false
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
+          type: string
+        user_id:
+          example: user123
+          nullable: true
+          type: string
       type: object
     TransactionResponse:
       properties:
@@ -2544,6 +3645,58 @@ components:
             "$ref": "#/components/schemas/TransactionResponse"
           type: array
       type: object
+    UpdateGoalRequest:
+      properties:
+        account_guid:
+          description: Unique identifier of the account for the goal. 
+          example: ACT-4e431124-4a29-abf9-f059-ab232ac14dbf
+          type: string
+        amount:
+          description: Amount of the goal. 
+          example: 4500.50
+          type: number
+        goal_type_name: 
+          description: The goal type. 
+          example: PAYOFF
+          type: string
+        meta_type_name:
+          description: The category of the goal. 
+          example: VACATION
+          type: string
+        name: 
+          description: The name of the goal. 
+          example: Save for Europe 
+          type: string
+        completed_at:
+          description: Date and time the goal was completed. 
+          example: 2015-06-19T10:37:04-06:00
+          type: string
+        has_been_spent:
+          description: Determines if the goal has been spent.
+          example: false
+          type: boolean
+        is_complete:
+          description: Determines if the goal is complete. 
+          example: false
+          type: boolean
+        metadata:
+          description: Additional information a partner can store on the goal. 
+          example: Additional information
+          type: string
+        position: 
+          description: The priority of the goal in relation to multiple goals. 
+          example: 3
+          type: integer
+        targeted_to_complete_at:
+          description: Date and time the goal is to complete. Intended for users to set their own goal completion dates.
+          example: 2026-12-08 00:00:00.000000
+          type: string
+      type: object
+    UpdateGoalRequestBody:
+      properties:
+        goal:
+          "$ref": "#/components/schemas/UpdateGoalRequest" 
+      type: object
     UserCreateRequest:
       properties:
         email:
@@ -2650,9 +3803,15 @@ components:
         include_transactions:
           example: true
           type: boolean
+        insight_guid:
+          example: BET-123
+          type: string
         is_mobile_webview:
           example: false
           type: boolean
+        microwidget_instance_id:
+          example: accounts_page
+          type: string
         mode:
           example: aggregation
           type: string
@@ -2794,6 +3953,28 @@ paths:
                 "$ref": "#/components/schemas/CategoryResponseBody"
           description: OK
       summary: Read a default category
+      tags:
+        - mx_platform
+  "/credit_card_products/{credit_card_product_guid}":
+    get:
+      description: This endpoint returns the specified `credit_card_product` according to the unique GUID. 
+      operationId: creditCard
+      parameters:
+        - description: The required `credit_card_product_guid` can be found on the `account` object.
+          example: credit_card_product_guid
+          in: path
+          name: credit_card_product_guid
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/CreditCardProductResponse"
+          description: OK
+      summary: Read a Credit Card Product 
       tags:
         - mx_platform
   "/institutions":
@@ -3295,7 +4476,7 @@ paths:
       tags:
         - mx_platform
     post:
-      description: This endpoint can only be used to create manual accounts. Creating a manual account will automatically create it under the Manual Institution member. Since a manual account has no credentials tied to the member, the account will never aggregate or include data from a data feed..
+      description: This endpoint can only be used to create manual accounts. Creating a manual account will automatically create it under the Manual Institution member. Since a manual account has no credentials tied to the member, the account will never aggregate or include data from a data feed.
       operationId: createManualAccount
       parameters:
         - description: The unique id for a `user`.
@@ -3323,8 +4504,34 @@ paths:
       tags:
         - mx_platform
   "/users/{user_guid}/accounts/{account_guid}":
+    delete:
+      description: This endpoint deletes accounts that were manually created. The
+        API will respond with an empty object and a status of `204 No Content`.
+      operationId: deleteManualAccount
+      parameters:
+        - description: The unique id for an `account`.
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          in: path
+          name: account_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique id for a `user`.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No content.
+      summary: Delete manual account
+      tags:
+        - mx_platform
     get:
-      description: This endpoint returns the specified `account` resource.
+      description:
+        This endpoint returns the specified `account` resource.
       operationId: readAccount
       parameters:
         - description: The unique id for an `account`.
@@ -3349,32 +4556,6 @@ paths:
                 "$ref": "#/components/schemas/AccountResponseBody"
           description: OK
       summary: Read account
-      tags:
-        - mx_platform
-    delete:
-      description:
-        This endpoint deletes accounts that were manually created. The API will respond with an empty object and a status
-        of `204 No Content`.
-      operationId: deleteManualAccount
-      parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-      responses:
-        "204":
-          description: No content.
-      summary: Delete manual account
       tags:
         - mx_platform
   "/users/{user_guid}/accounts/{account_guid}/account_numbers":
@@ -3475,7 +4656,79 @@ paths:
       summary: List holdings by account
       tags:
         - mx_platform
+  "/users/{user_guid}/accounts/{account_guid}/insights":
+    get:
+      description: Use this endpoint to list all insights associated with a specified account GUID.
+      operationId: listInsightsByAccount
+      parameters:
+      - description: The unique id for the `account`.
+        example: ACT-7c6f361b-e582-15b6-60c0-358f12466b4b
+        in: path
+        name: account_guid
+        required: true
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      - description: The unique id for the `user`.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InsightsResponseBody"
+          description: OK
+      summary: List insights by account
+      tags:
+      - insights
   "/users/{user_guid}/accounts/{account_guid}/transactions":
+    post:
+      tags: 
+        - transactions
+      summary: Create manual transaction
+      description: This endpoint can only be used to create manual transactions that are under a manual account. This endpoint accepts the optional MX-Skip-Webhook header and skip_webhook parameter.
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. 
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_guid
+          description: The unique identifier for the account. 
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody: 
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/TransactionCreateRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/TransactionCreateResponseBody'
     get:
       description:
         This endpoint returns a list of the last 90 days of transactions
@@ -3530,6 +4783,149 @@ paths:
       summary: List transactions by account
       tags:
         - mx_platform
+  "/users/{user_guid}/budgets/generate":
+    post: 
+      tags:
+        - budgets
+      summary: Auto-generate budgets 
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+      description: This endpoint will automatically create budgets for several categories based on existing transactions; these budgets are returned as an array. Specifically, budgets will only be generated if the `user` has at least one `transaction` in a given category during each of the two previous calendar months. For example, if the request is made on March 6, and there is at least one "Bills & Utilities" `transaction` in both January and February, a budget will be generated for "Bills & Utilities." If there are two "Bills & Utilities" transactions in February but none in January, no budget will be generated for that category. If budgets already exist for particular categories, new budgets will be generated and returned based on the available transactions. If one or more budgets remain unchanged, they will nevertheless be returned in the response. If no transaction data for the `user` meet the above criteria, a `422 Unprocessable Entity` error will be returned with status code 4221 along with the message, `There aren't enough transactions to automatically create any budgets`.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+  "/users/{user_guid}/budgets":
+    post: 
+      tags:
+        - budgets
+      summary: Create a budget
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+      description: Create a budget. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter. You cannot create a duplicate budget. For example, if you attempt to create a budget for "Gas", but that budget already exist, the request will fail. You can retrieve a list of all existing categories by using the List Categories endpoint. 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/BudgetCreateRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+    get: 
+      tags:
+        - budgets
+      summary: List all budgets
+      description: List all budgets 
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+  "/users/{user_guid}/budgets/{budget_guid}":
+    get: 
+      tags:
+        - budgets
+      summary: Read a specific budget
+      description: Read a specific budget. 
+      parameters:
+        - name: budget_guid
+          description: The unique identifier for the budget. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+        - name: user_guid
+          description: The unique identifier for the budget. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+    put:
+      tags:
+        - budgets
+      summary: Update a specific budget 
+      description: Update a specific budget. 
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the budget. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+        - name: budget_guid
+          description: The unique identifier for the budget. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/BudgetUpdateRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+    delete: 
+      tags:
+        - budgets
+      summary: Delete a budget
+      description: Delete a budget. 
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the budget. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+        - name: budget_guid
+          description: The unique identifier for the budget. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+      responses:
+        "204":
+          description: No content
   "/users/{user_guid}/categories":
     get:
       description:
@@ -3766,6 +5162,169 @@ paths:
       summary: Request connect widget url
       tags:
         - mx_platform
+  "/users/{user_guid}/goals":
+    post:
+      tags:
+        - goals
+      summary: Create a goal
+      description: Create a goal. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter. 
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. 
+          in: path
+          required: true 
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/GoalRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalResponseBody'  
+    get:
+      tags:
+        - goals
+      summary: List goals
+      description: List all goals a user can set. 
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. 
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: page
+          description: Results are returned in paginated sets, this is the page of the results you would like to view. Defaults to page 1 if no page is specified.
+          example: 
+          in: query
+          required: false
+          schema: 
+            type: string
+        - name: records_per_age
+          description:  The supported range is from 10 to 1000. If the records_per_page parameter is not specified or is outside this range, a default of 25 records per page will be used.
+          example: 
+          in: query
+          required: false
+          schema: 
+            type: string     
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalsResponseBody' 
+  "/users/{user_guid}/goals/{goal_guid}":
+    delete: 
+      tags:
+        - goals
+      summary: Delete a goal
+      description: Delete a goal. 
+      parameters:
+        - name: goal_guid
+          description: The unique identifier for a goal. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+        - name: user_guid
+          description: The unique identifier for a user.
+          required: true
+          in: path 
+          schema: 
+            type: string
+      responses:
+        "204":
+          description: No content
+    get:
+      tags:
+        - goals
+      summary: Read a goal
+      description: Read a specific goal. 
+      parameters:
+        - name: goal_guid
+          description: The unique identifier for a goal. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+        - name: user_guid
+          description: The unique identifier for a user.
+          required: true
+          in: path 
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalResponseBody' 
+    put:
+      tags:
+        - goals
+      summary: Update a goal
+      description: This endpoint updates a specific goal. 
+      parameters:
+        - name: goal_guid
+          description: The unique identifier for a goal. Defined by MX. 
+          required: true
+          in: path 
+          schema: 
+            type: string
+        - name: user_guid
+          description: The unique identifier for a user.
+          required: true
+          in: path 
+          schema: 
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/UpdateGoalRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalResponseBody' 
+  "/users/{user_guid}/goals/reposition":
+    put:
+      tags:
+        - goals
+      summary: Reposition goals
+      description: This endpoint repositions goal priority levels. If one goal is set to a lower priority, then any other goals need to be adjusted accordingly.
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. 
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/RepositionRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepositionResponseBody' 
   "/users/{user_guid}/holdings":
     get:
       description:
@@ -3843,6 +5402,316 @@ paths:
       summary: Read holding
       tags:
         - mx_platform
+  "/users/{user_guid}/insights":
+    get:
+      description: Use this endpoint to list all the insights associated with the
+        user.
+      operationId: listInsightsUser
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InsightsResponseBody"
+          description: OK
+      summary: List all insights for a user.
+      tags:
+      - insights 
+  "/users/{user_guid}/insights/{insight_guid}/categories":
+    get:
+      description: Use this endpoint to list all the categories associated with the insight.
+      operationId: listCategoriesInsight
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: insight_guid
+        required: true
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/CategoriesResponseBody"
+          description: OK
+      summary: List all categories associated with an insight.
+      tags:
+      - insights
+  "/users/{user_guid}/insights/{insight_guid}/accounts":
+    get:
+      description: Use this endpoint to list all the accounts associated with the
+        insight.
+      operationId: listAccountsInsight
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: insight_guid
+        required: true
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/AccountsResponseBody"
+          description: OK
+      summary: List all accounts associated with an insight.
+      tags:
+      - insights
+  "/users/{user_guid}/insights/{insight_guid}/merchants":
+    get:
+      description: Use this endpoint to list all the merchants associated with the
+        insight.
+      operationId: listMerchantsInsight
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: insight_guid
+        required: true
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MerchantsResponseBody"
+          description: OK
+      summary: List all merchants associated with an insight.
+      tags:
+      - insights
+  "/users/{user_guid}/insights/{insight_guid}/scheduled_payments":
+    get:
+      description: Use this endpoint to list all the scheduled payments associated with the insight.
+      operationId: listScheduledPaymentsInsight
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: insight_guid
+        required: true
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/ScheduledPaymentsResponseBody"
+          description: OK
+      summary: List all scheduled payments associated with an insight
+      tags:
+      - insights
+  "/users/{user_guid}/insights/{insight_guid}/transactions":
+    get:
+      description: Use this endpoint to list all the transactions associated with
+        the insight.
+      operationId: listTransactionsInsight
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: insight_guid
+        required: true
+        schema:
+          type: string
+      - description: Specify current page.
+        example: 1
+        in: query
+        name: page
+        schema:
+          type: integer
+      - description: Specify records per page.
+        example: 10
+        in: query
+        name: records_per_page
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/TransactionsResponseBody"
+          description: OK
+      summary: List all transactions associated with an insight.
+      tags:
+      - insights
+  "/users/{user_guid}/insights{insight_guid}":
+    get:
+      description: Use this endpoint to read the attributes of a specific insight
+        according to its unique GUID.
+      operationId: readInsightsUser
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-1234-abcd
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: insight_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InsightResponseBody"
+          description: OK
+      summary: Read a specific insight.
+      tags:
+      - insights
+    put:
+      description: Use this endpoint to update the attributes of a particular insight
+        according to its unique GUID.
+      operationId: updateInsight
+      parameters:
+      - description: The unique identifier for the user. Defined by MX.
+        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+        in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the insight. Defined by MX.
+        example: BET-1234-abcd
+        in: path
+        name: insight_guid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/InsightUpdateRequest"
+        description: The insight to be updated (None of these parameters are required,
+          but the user object cannot be empty.)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/InsightResponse"
+          description: OK
+      summary: Update insight
+      tags:
+      - insights  
   "/users/{user_guid}/managed_members":
     get:
       description:
@@ -4495,6 +6364,12 @@ paths:
           metadata) and required parameters (credentials and institution_code)
         required: true
       responses:
+        "200":
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: OK
         "202":
           content:
             application/vnd.mx.api.v1+json:
@@ -4772,8 +6647,7 @@ paths:
         - mx_platform
     put:
       description:
-        This endpoint allows you to update certain attributes of an `account`
-        resource.
+        This endpoint allows you to update certain attributes of an `account` resource, including manual accounts. For manual accounts, you can update every field listed. For aggregated accounts, you can only update `is_business`, `is_hidden` and `metadata`.
       operationId: updateAccountByMember
       parameters:
         - description: The unique id for an `account`.
@@ -4802,7 +6676,6 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/AccountUpdateRequestBody"
-        description: Account object to be created with optional parameters (is_hidden)
         required: true
       responses:
         "200":
@@ -5000,6 +6873,35 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
       summary: Extend history
+      tags:
+        - mx_platform
+  "/users/{user_guid}/members/{member_guid}/fetch_rewards":
+    post:
+      description: Calling this endpoint initiates an aggregation-type event which will gather the member's rewards information, as well as account and transaction information. Rewards data is also gathered with daily background aggregations.
+      operationId: fetchRewards
+      parameters:
+        - description: The unique id for a `user`.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the member. Defined by MX. 
+          example: MBR-fa7537f3-48aa-a683-a02a-b18345562f54
+          in: path
+          name: member_guid
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/MemberResponseBody"
+          description: OK
+      summary: Fetch Rewards
       tags:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/fetch_statements":
@@ -5261,6 +7163,71 @@ paths:
                 "$ref": "#/components/schemas/MemberResponseBody"
           description: Accepted
       summary: Resume aggregation
+      tags:
+        - mx_platform
+  "/users/{user_guid}/members/{member_guid}/rewards":
+    get:
+      description: Use this endpoint to list all the `rewards` associated with a specified `member`.
+      operationId: listRewards
+      parameters:
+        - description: The unique id for a `user`.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the member. Defined by MX. 
+          example: MBR-fa7537f3-48aa-a683-a02a-b18345562f54
+          in: path
+          name: member_guid
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/RewardsResponseBody"
+          description: OK
+      summary: List Rewards
+      tags:
+        - mx_platform
+  "/users/{user_guid}/members/{member_guid}/rewards/{reward_guid}":
+    get:
+      description: Use this endpoint to read a specific `reward` based on its unique GUID..
+      operationId: readRewards
+      parameters:
+        - description: The unique id for a `user`.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the member. Defined by MX. 
+          example: MBR-fa7537f3-48aa-a683-a02a-b18345562f54
+          in: path
+          name: member_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the rewards. Defined by MX. 
+          example: RWD-fa7537f3-48aa-a683-a02a-b324322f54
+          in: path
+          name: reward_guid
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/RewardResponseBody"
+          description: OK
+      summary: Read Reward
       tags:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/statements":
@@ -5615,6 +7582,170 @@ paths:
       summary: Verify member
       tags:
         - mx_platform
+  "/users/{user_guid}/micro_deposits":
+    get:
+      tags:
+        - microdeposits
+      summary: List all microdeposits for a user
+      description: Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID.
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+      responses: 
+        '200':
+          description: OK
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrodepositsResponseBody'
+    post:
+      tags:
+        - microdeposits
+      summary: Create a microdeposit
+      description: Use this endpoint to create a microdeposit. The response will include the new microdeposit record with a status of INITIATED.
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/MicrodepositRequestBody"
+        required: true
+      responses: 
+        '200':
+          description: OK
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrodepositResponseBody'
+  "/users/{user_guid}/micro_deposits/{micro_deposit_guid}":
+    delete:
+      tags:
+        - microdeposits
+      summary: Delete a microdeposit
+      description:
+        Use this endpoint to delete the specified microdeposit.
+      parameters:
+        - name: micro_deposit_guid
+          description: The unique identifier for the microdeposit. Defined by MX. 
+          in: path
+          required: true
+          example: MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb
+          schema:
+            type: string
+        - description: The unique id for a `user`.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No Content
+    get:
+      tags:
+        - microdeposits
+      summary: Read a microdeposit for a user
+      description: Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID. <br></br> Webhooks for microdeposit status changes are triggered when a status changes. The actual status of the microdeposit guid updates every minute. You may force a status update by calling the read microdeposit endpoint.
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: micro_deposit_guid
+          description: The unique identifier for the microdeposit. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+      responses: 
+        '200':
+          description: OK
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrodepositResponseBody'
+  "/micro_deposits/{microdeposit_guid}/verify":
+    put:
+      tags:
+        - microdeposits
+      summary: Verify a Microdeposit
+      description: Use this endpoint to verify the amounts deposited into the account during a microdeposit verification. The verification has not successfully completed until the `status` is `VERIFIED`. Poll the `/users/{user_guid}/micro_deposits/{micro_deposit_guid}` (read microdeposit) endpoint until you see this status or an error state.
+      parameters:
+        - name: microdeposit_guid
+          description: The unique identifier for the microdeposit. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/MicrodepositVerifyRequestBody"
+      responses: 
+        '200':
+          description: OK
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrodepositResponseBody'
+  "/users/{user_guid}/monthly_cash_flow_profile":
+    get:
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. 
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonthlyCashFlowResponseBody'
+      tags:
+        - mx_platform
+      summary: Read monthly cash flow profile
+    put:
+      description: Use this endpoint to update the attributes of a `monthly_cash_flow_profile`.
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. 
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/MonthlyCashFlowProfileRequestBody'
+      responses:
+        '200':
+          description: OK
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonthlyCashFlowResponseBody'
+      tags:
+      - mx_platform
+      summary: Update monthly cash flow profile
   ? "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items"
   : post:
       description: This endpoint creates a new `spending_plan_iteration_item`.
@@ -6796,6 +8927,60 @@ paths:
                 "$ref": "#/components/schemas/TransactionResponseBody"
           description: OK
       summary: Update transaction
+      tags:
+      - mx_platform
+  "/users/{user_guid}/transactions/{transaction_guid}/split":
+    delete:
+      description: This endpoint deletes all split transactions linked to a parent transaction, but it leaves the parent transaction active. This request will also update the parent transaction's has_been_split field to false. This endpoint accepts the optional MX-Skip-Webhook header.
+      parameters:
+        - description: The unique id for a `transaction`.
+          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+          in: path
+          name: transaction_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique id for a `user`.
+          example: USR-85628b0-5210-4878-9bd3-f4ce154f90c4
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No content
+      summary: Delete split transactions
+      tags:
+        - mx_platform
+    post:
+      description: This endpoint creates two or more child transactions that are branched from a previous transaction. This endpoint allows you to link multiple categories, descriptions, and amounts to a parent transaction.  When a split transaction is created, the parent transaction's `has_been_split` field will automatically be updated to true and the child transactions' `parent_guid` will have the transaction guid of the parent. The total amount of the child transactions must equal the amount of the parent transaction. Once a transaction has been split it can't be split again.    In order to re-split a transaction, it must first be un-split. This can be done by calling the Delete Split Transactions endpoint. Calling this endpoint will delete the existing child transactions and update the parent transaction's `has_been_split` field to false. You can then re-split the parent transaction by calling Create Split Transaction again.
+      parameters:
+        - name: user_guid
+          description: The unique identifier for the user. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: transaction_guid
+          description: The unique identifier for the transaction. Defined by MX. 
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/SplitTransactionRequestBody"
+      responses:
+        "200":
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                "$ref": "#/components/schemas/SplitTransactionsResponseBody"
+          description: OK
+      summary: Create split transactions
       tags:
         - mx_platform
   "/users/{user_guid}/widget_urls":
