@@ -2086,6 +2086,10 @@ components:
           example: "2016-10-13T17:57:38.000Z"
           nullable: true
           type: string
+        use_cases:
+          example: ["PFM", "IAV"]
+          nullable: true
+          type: array
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           nullable: true
