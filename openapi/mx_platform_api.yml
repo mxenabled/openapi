@@ -2088,7 +2088,7 @@ components:
           type: string
         use_cases:
           example: ["PFM", "IAV"]
-          nullable: false
+          nullable: true
           type: array
           items:
             example: "PFM"
