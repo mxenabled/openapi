@@ -2090,6 +2090,10 @@ components:
           example: ["PFM", "IAV"]
           nullable: true
           type: array
+          items:
+            example: "PFM"
+            nullable: false
+            type: string
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           nullable: true
