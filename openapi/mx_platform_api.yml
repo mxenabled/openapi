@@ -101,6 +101,14 @@ components:
           example: 123
           nullable: true
           type: string
+        loan_guarantor:
+          example: Donnie Darko
+          nullable: true
+          type: string
+        loan_reference_number:
+          example: '12345678'
+          nullable: true
+          type: string
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           nullable: true
@@ -115,6 +123,10 @@ components:
           type: string
         sequence_number:
           example: 1-01
+          nullable: true
+          type: string
+        sequence_number:
+          example: '987654321'
           nullable: true
           type: string
         transit_number:
