@@ -2023,12 +2023,8 @@ components:
       type: object
     MemberResponse:
       properties:
-        error:
-          example: '{\"error_type\": \"MEMBER\", \"error_code\": 1000, \"error_message\": \"This Member has no eligible checking, savings, or money market accounts.\", \"user_message\": \"We could not find any accounts eligible for transfers. Please link a checking or savings account.\", \"locale\": \"en\"}'
-          nullable: true
-          type: string
         aggregated_at:
-          example: "2016-10-13T18:07:57.000Z"
+          example: '2016-10-13T18:07:57.000Z'
           nullable: true
           type: string
         background_aggregation_is_disabled:
@@ -2036,6 +2032,14 @@ components:
           type: boolean
         connection_status:
           example: CONNECTED
+          nullable: true
+          type: string
+        connection_status_message:
+          example: 'Connected to MX Bank'
+          nullable: true
+          type: string
+        error:
+          example: '{\"error_type\": \"MEMBER\", \"error_code\": 1000, \"error_message\": \"This Member has no eligible checking, savings, or money market accounts.\", \"user_message\": \"We could not find any accounts eligible for transfers. Please link a checking or savings account.\", \"locale\": \"en\"}'
           nullable: true
           type: string
         guid:
@@ -2047,8 +2051,12 @@ components:
           nullable: true
           type: string
         institution_code:
-          example: chase
+          example: mxbank
           nullable: true
+          type: string
+        institution_guid:
+          example: INS-12345678-90ab-cdef-1234-567890abcdef
+          nullable: false
           type: string
         is_being_aggregated:
           example: false
@@ -2067,37 +2075,47 @@ components:
           nullable: true
           type: boolean
         metadata:
-          example: '\"credentials_last_refreshed_at\": \"2015-10-15\"'
+          example: '\"credentials_last_refreshed_at\": \"2015-10-15\'
           nullable: true
           type: string
         most_recent_job_detail_code:
-          example: (deprecated)
+          example: null
           nullable: true
-          type: string
+          type: integer
         most_recent_job_detail_text:
-          example: (deprecated)
+          example: null
           nullable: true
-          type: string
+          type: boolean
+        most_recent_job_guid:
+          example: JOB-12345678-90ab-cdef-1234-567890abcdef
+          nullable: true
+          type: boolean
         name:
-          example: Chase Bank
+          example: MX Bank
           nullable: true
           type: string
+        needs_updated_credentials:
+          example: false
+          nullable: true
+          type: boolean
         oauth_window_uri:
           example: https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2
           nullable: true
           type: string
         successfully_aggregated_at:
-          example: "2016-10-13T17:57:38.000Z"
+          example: '2016-10-13T17:57:38.000Z'
           nullable: true
           type: string
         use_cases:
-          example: ["PFM", "IAV"]
-          nullable: true
           type: array
+          description: The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`. Only set this if you've met with MX and have opted in to using this field.
           items:
-            example: "PFM"
-            nullable: false
             type: string
+            enum:
+              - MONEY_MOVEMENT
+              - PFM
+          example:
+            - "PFM"
         user_guid:
           example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           nullable: true
