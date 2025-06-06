@@ -1514,7 +1514,7 @@ components:
       properties:
         created_at:
           example: '2016-10-13T18:07:57.000Z'
-          nullable: true
+          nullable: false
           type: string
         code:
           example: mxbank
@@ -1550,11 +1550,6 @@ components:
           example: MX Bank
           nullable: true
           type: string
-        popularity:
-          example: 1000
-          nullable: false
-          type: integer
-          description: The number of member connections to the institution.
         small_logo_url:
           example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png
           nullable: true
@@ -1589,7 +1584,7 @@ components:
           type: string
         updated_at:
           example: '2016-10-13T18:07:57.000Z'
-          nullable: true
+          nullable: false
           type: string
         url:
           example: https://www.mx.com
