@@ -200,8 +200,12 @@ components:
           example: "5366"
           nullable: true
           type: string
+        account_number_set_by:
+          example: 1
+          nullable: true
+          type: integer
         account_ownership:
-          example: 'INDIVIDUAL'
+          example: "INDIVIDUAL"
           nullable: true
           type: string
         annuity_policy_to_date:
@@ -209,41 +213,73 @@ components:
           nullable: true
           type: string
         annuity_provider:
-          example: 'Metlife'
+          example: "Metlife"
           nullable: true
           type: string
         annuity_term_year:
           example: 2048
           nullable: true
-          type: number
+          type: integer
         apr:
           example: 1.0
           nullable: true
           type: number
+        apr_set_by:
+          example: 1
+          nullable: true
+          type: integer
         apy:
           example: 1.0
           nullable: true
           type: number
+        apy_set_by:
+          example: 1
+          nullable: true
+          type: integer
         available_balance:
           example: 1000.0
           nullable: true
           type: number
+        available_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
         available_credit:
           example: 1000.0
           nullable: true
           type: number
+        available_credit_set_by:
+          example: 1
+          nullable: true
+          type: integer
         balance:
           example: 10000.0
+          nullable: true
+          type: number
+        balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        calculated_apr:
+          example: 21.66409
           nullable: true
           type: number
         cash_balance:
           example: 1000.0
           nullable: true
           type: number
+        cash_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
         cash_surrender_value:
           example: 1000.0
           nullable: true
           type: number
+        cash_surrender_value_set_by:
+          example: 1
+          nullable: true
+          type: integer
         created_at:
           example: "2023-07-25T17:14:46Z"
           nullable: false
@@ -252,30 +288,174 @@ components:
           example: 100.0
           nullable: true
           type: number
+        credit_limit_set_by:
+          example: 1
+          nullable: true
+          type: integer
         currency_code:
           example: USD
           nullable: true
           type: string
+        currency_code_set_by:
+          example: 1
+          nullable: true
+          type: integer
         day_payment_is_due:
           example: 20
+          nullable: true
+          type: integer
+        day_payment_is_due_set_by:
+          example: 1
           nullable: true
           type: integer
         death_benefit:
           example: 1000
           nullable: true
           type: integer
+        death_benefit_set_by:
+          example: 1
+          nullable: true
+          type: integer
         federal_insurance_status:
           example: INSURED
           nullable: true
           type: string
+        feed_account_number:
+          example: "5366"
+          nullable: true
+          type: string
+        feed_account_subtype:
+          example: 1
+          nullable: true
+          type: integer
+        feed_account_type:
+          example: 1
+          nullable: true
+          type: integer
+        feed_apr:
+          example: 1.0
+          nullable: true
+          type: number
+        feed_apy:
+          example: 1.0
+          nullable: true
+          type: number
+        feed_available_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        feed_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        feed_cash_balance:
+          example: 1000.0
+          nullable: true
+          type: number
+        feed_cash_surrender_value:
+          example: 1000.0
+          nullable: true
+          type: number
+        feed_credit_limit:
+          example: 100.0
+          nullable: true
+          type: number
+        feed_currency_code:
+          example: "USD"
+          nullable: true
+          type: string
+        feed_day_payment_is_due:
+          example: 20
+          nullable: true
+          type: integer
+        feed_death_benefit:
+          example: 1000
+          nullable: true
+          type: integer
+        feed_holdings_value:
+          example: 1000.0
+          nullable: true
+          type: number
+        feed_interest_rate:
+          example: 1.0
+          nullable: true
+          type: number
+        feed_is_closed:
+          example: false
+          nullable: true
+          type: boolean
+        feed_last_payment:
+          example: 100.0
+          nullable: true
+          type: number
+        feed_last_payment_at:
+          example: "2023-07-25T17:14:46Z"
+          nullable: true
+          type: string
+        feed_loan_amount:
+          example: 1000.0
+          nullable: true
+          type: number
+        feed_matures_on:
+          example: "2015-10-13T17:57:37.000Z"
+          nullable: true
+          type: string
+        feed_minimum_balance:
+          example: 100.0
+          nullable: true
+          type: number
+        feed_minimum_payment:
+          example: 10.0
+          nullable: true
+          type: number
+        feed_name:
+          example: "Test account 2"
+          nullable: true
+          type: string
+        feed_nickname:
+          example: "My Checking"
+          nullable: true
+          type: string
+        feed_original_balance:
+          example: 10.0
+          nullable: true
+          type: number
+        feed_payment_due_at:
+          example: "2025-02-13T17:57:37.000Z"
+          nullable: true
+          type: string
+        feed_payoff_balance:
+          example: 10.0
+          nullable: true
+          type: number
+        feed_routing_number:
+          example: "68899990000000"
+          nullable: true
+          type: string
+        feed_started_on:
+          example: "2020-10-13T17:57:37.000Z"
+          nullable: true
+          type: string
+        feed_statement_balance:
+          example: 100.0
+          nullable: true
+          type: number
+        feed_total_account_value:
+          example: 100.0
+          nullable: true
+          type: number
         guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          example: "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1"
           nullable: true
           type: string
         holdings_value:
           example: 1000.0
           nullable: true
           type: number
+        holdings_value_set_by:
+          example: 1
+          nullable: true
+          type: integer
         id:
           example: "1040434698"
           nullable: true
@@ -285,21 +465,33 @@ components:
           nullable: true
           type: string
         institution_code:
-          example: '3af3685e-05d9-7060-359f-008d0755e993'
+          example: "3af3685e-05d9-7060-359f-008d0755e993"
+          nullable: true
+          type: string
+        institution_guid:
+          example: "INS-12a3b-4c5dd6-1349-008d0755e993"
           nullable: true
           type: string
         insured_name:
-          example: 'Tommy Shelby'
+          example: "Tommy Shelby"
           nullable: true
           type: string
         interest_rate:
           example: 1.0
           nullable: true
           type: number
+        interest_rate_set_by:
+          example: 1
+          nullable: true
+          type: integer
         is_closed:
           example: false
           nullable: true
           type: boolean
+        is_closed_set_by:
+          example: 1
+          nullable: true
+          type: integer
         is_hidden:
           example: false
           nullable: true
@@ -312,14 +504,26 @@ components:
           example: 100.0
           nullable: true
           type: number
+        last_payment_set_by:
+          example: 1
+          nullable: true
+          type: integer
         last_payment_at:
           example: "2023-07-25T17:14:46Z"
           nullable: true
           type: string
+        last_payment_at_set_by:
+          example: 1
+          nullable: true
+          type: integer
         loan_amount:
           example: 1000.0
           nullable: true
           type: number
+        loan_amount_set_by:
+          example: 1
+          nullable: true
+          type: integer
         margin_balance:
           example: 1000.0
           nullable: true
@@ -328,12 +532,16 @@ components:
           example: "2015-10-13T17:57:37.000Z"
           nullable: true
           type: string
+        matures_on_set_by:
+          example: 1
+          nullable: true
+          type: integer
         member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          example: "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b"
           nullable: true
           type: string
         member_id:
-          example: member123
+          example: "member123"
           nullable: true
           type: string
         member_is_managed_by_user:
@@ -341,29 +549,49 @@ components:
           nullable: true
           type: boolean
         metadata:
-          example: 'some metadata'
+          example: "some metadata"
           nullable: true
           type: string
         minimum_balance:
           example: 100.0
           nullable: true
           type: number
+        minimum_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
         minimum_payment:
           example: 10.0
           nullable: true
           type: number
+        minimum_payment_set_by:
+          example: 1
+          nullable: true
+          type: integer      
         name:
-          example: Test account 2
+          example: "Test account 2"
           nullable: true
           type: string
+        name_set_by:
+          example: 1
+          nullable: true
+          type: integer 
         nickname:
-          example: My Checking
+          example: "My Checking"
           nullable: true
           type: string
+        nickname_set_by:
+          example: 1
+          nullable: true
+          type: integer 
         original_balance:
           example: 10.0
           nullable: true
           type: number
+        original_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
         pay_out_amount:
           example: 10.0
           nullable: true
@@ -372,18 +600,26 @@ components:
           example: "2015-10-13T17:57:37.000Z"
           nullable: true
           type: string
+        payment_due_at_set_by:
+          example: 1
+          nullable: true
+          type: integer
         payoff_balance:
           example: 10.0
           nullable: true
           type: number
-        premium_amount:
-          example: 1.0
+        payoff_balance_set_by:
+          example: 1
           nullable: true
-          type: number
-        property_type:
-          example: VEHICLE
+          type: integer
+        premium_amount:
+          example: "3900"
           nullable: true
           type: string
+        property_type:
+          example: 1
+          nullable: true
+          type: integer
         routing_number:
           example: "68899990000000"
           nullable: true
@@ -392,16 +628,28 @@ components:
           example: "2015-10-13T17:57:37.000Z"
           nullable: true
           type: string
+        started_on_set_by:
+          example: 1
+          nullable: true
+          type: integer
         statement_balance:
-          example: 100.1
+          example: 1000.50
           nullable: true
           type: number
+        statement_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
         subtype:
-          example: NONE
+          example: "NONE"
           nullable: true
           type: string
+        subtype_set_by:
+          example: 1
+          nullable: true
+          type: integer
         today_ugl_amount:
-          example: 1000.5
+          example: 1000.50
           nullable: true
           type: number
         today_ugl_percentage:
@@ -412,20 +660,28 @@ components:
           example: 1.0
           nullable: true
           type: number
-        total_account_value_ugl:
-          example: 1.1
+        total_account_value_set_by:
+          example: 1
           nullable: true
-          type: number
+          type: integer
+        total_account_value_ugl:
+          example: 1.0
+          nullable: true
+          type: number  
         type:
-          example: SAVINGS
+          example: "SAVINGS"
           nullable: true
           type: string
+        type_set_by:
+          example: 1
+          nullable: true
+          type: integer
         updated_at:
           example: "2016-10-13T18:08:00.000Z"
           nullable: true
           type: string
         user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          example: "USR-fa7537f3-48aa-a683-a02a-b18940482f54"
           nullable: true
           type: string
         user_id:
