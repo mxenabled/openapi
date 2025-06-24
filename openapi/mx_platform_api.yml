@@ -613,13 +613,13 @@ components:
           nullable: true
           type: integer
         premium_amount:
-          example: "3900"
+          example: 3900
+          nullable: true
+          type: number
+        property_type:
+          example: "VEHICLE"
           nullable: true
           type: string
-        property_type:
-          example: 1
-          nullable: true
-          type: integer
         routing_number:
           example: "68899990000000"
           nullable: true
