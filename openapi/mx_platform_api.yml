@@ -6996,6 +6996,20 @@ paths:
           required: true
           schema:
             type: string
+        - description: When set to `false`, the aggregation will not gather holdings data. Defaults to `true`. 
+          example: false
+          in: query
+          name: include_holdings
+          required: false
+          schema: 
+            type: boolean
+        - description: When set to `false`, the aggregation will not gather transactions data. Defaults to `true`. 
+          example: false
+          in: query
+          name: include_transactions
+          required: false
+          schema: 
+            type: boolean
       responses:
         "202":
           content:
