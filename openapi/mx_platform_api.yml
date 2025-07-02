@@ -4009,7 +4009,7 @@ components:
           example: 2026-12-08 00:00:00.000000
           nullable: true
           type: string
-        birthday:
+        born_on:
           example: 1990-05-15
           nullable: true
           type: string
