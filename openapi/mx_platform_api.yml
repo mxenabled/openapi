@@ -3661,6 +3661,18 @@ components:
           example: 61.11
           nullable: true
           type: number
+        amount_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        business_category:
+          example: Office Supplies
+          nullable: true
+          type: string
+        business_category_guid:
+          example: BCG-12345678-90ab-cdef-1234-567890abcdef
+          nullable: true
+          type: string
         category:
           example: Groceries
           nullable: true
@@ -3669,6 +3681,14 @@ components:
           example: CAT-9588eaad-90a4-bb5c-66c8-1812503d0db8
           nullable: true
           type: string
+        category_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        check_number_set_by:
+          example: 1
+          nullable: true
+          type: integer
         check_number_string:
           example: "6812"
           nullable: true
@@ -3681,22 +3701,90 @@ components:
           example: USD
           nullable: true
           type: string
+        currency_code_set_by:
+          example: 1
+          nullable: true
+          type: integer
         date:
           example: "2013-09-23T00:00:00.000Z"
           nullable: true
           type: string
+        date_set_by:
+          example: 1
+          nullable: true
+          type: integer
         description:
           example: Whole foods
           nullable: true
           type: string
+        description_set_by:
+          example: 1
+          nullable: true
+          type: integer
         extended_transaction_type:
           example: partner_transaction_type
+          nullable: true
+          type: string
+        feed_amount:
+          example: 61.11
+          nullable: true
+          type: number
+        feed_check_number_string:
+          example: "6812"
+          nullable: true
+          type: string
+        feed_currency_code:
+          example: USD
+          nullable: true
+          type: string
+        feed_description:
+          example: WHOLEFDS TSQ 102
+          nullable: true
+          type: string
+        feed_is_international:
+          example: false
+          nullable: true
+          type: boolean
+        feed_latitude:
+          example: -43.2075
+          nullable: true
+          type: number
+        feed_longitude:
+          example: 139.691706
+          nullable: true
+          type: number
+        feed_memo:
+          example: Original memo from feed
+          nullable: true
+          type: string
+        feed_posted_at:
+          example: "2016-10-07T06:00:00.000Z"
+          nullable: true
+          type: string
+        feed_status:
+          example: POSTED
+          nullable: true
+          type: string
+        feed_transacted_at:
+          example: "2016-10-06T13:00:00.000Z"
+          nullable: true
+          type: string
+        feed_transaction_type:
+          example: DEBIT
           nullable: true
           type: string
         guid:
           example: TRN-265abee9-889b-af6a-c69b-25157db2bdd9
           nullable: true
           type: string
+        has_been_split:
+          example: false
+          nullable: true
+          type: boolean
+        has_been_viewed:
+          example: true
+          nullable: true
+          type: boolean
         id:
           example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
           nullable: true
@@ -3741,10 +3829,34 @@ components:
           example: false
           nullable: true
           type: boolean
+        is_international_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        is_business:
+          example: false
+          nullable: true
+          type: boolean
+        is_flagged:
+          example: false
+          nullable: true
+          type: boolean
+        is_hidden:
+          example: false
+          nullable: true
+          type: boolean
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
         latitude:
           example: -43.2075
           nullable: true
           type: number
+        latitude_set_by:
+          example: 1
+          nullable: true
+          type: integer
         localized_description:
           example: This is a localized_description
           nullable: true
@@ -3757,6 +3869,10 @@ components:
           example: 139.691706
           nullable: true
           type: number
+        longitude_set_by:
+          example: 1
+          nullable: true
+          type: integer
         member_guid:
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           nullable: true
@@ -3769,6 +3885,10 @@ components:
           example: This is a memo
           nullable: true
           type: string
+        memo_set_by:
+          example: 1
+          nullable: true
+          type: integer
         merchant_category_code:
           example: 5411
           nullable: true
