@@ -1558,10 +1558,70 @@ components:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
           nullable: true
           type: string
-        cost_basis:
-          example: 827.0
+        allocations_cash:
+          example: 15.50
           nullable: true
           type: number
+        allocations_convertible:
+          example: 8.20
+          nullable: true
+          type: number
+        allocations_foreign_bond:
+          example: 12.30
+          nullable: true
+          type: number
+        allocations_foreign_stock:
+          example: 25.70
+          nullable: true
+          type: number
+        allocations_other:
+          example: 5.10
+          nullable: true
+          type: number
+        allocations_preferred:
+          example: 7.80
+          nullable: true
+          type: number
+        allocations_unknown:
+          example: 2.10
+          nullable: true
+          type: number
+        allocations_us_bond:
+          example: 18.90
+          nullable: true
+          type: number
+        allocations_us_stock:
+          example: 4.40
+          nullable: true
+          type: number
+        bond_coupon_rate:
+          example: 3.25
+          nullable: true
+          type: number
+        bond_coupon_rate_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        bond_maturity_date:
+          example: "2025-12-15T00:00:00.000Z"
+          nullable: true
+          type: string
+        bond_maturity_date_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        cost_basis:
+          example: 827.05
+          nullable: true
+          type: number
+        cost_basis_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        cost_basis_updated_at:
+          example: "2023-08-15T14:30:22.000Z"
+          nullable: true
+          type: string
         created_at:
           example: "2015-04-13T18:01:23.000Z"
           nullable: true
@@ -1570,6 +1630,10 @@ components:
           example: USD
           nullable: true
           type: string
+        currency_code_set_by:
+          example: 1
+          nullable: true
+          type: integer
         cusip:
           example: 18383M878
           nullable: true
@@ -1578,10 +1642,98 @@ components:
           example: 2.5
           nullable: true
           type: number
+        daily_change_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        deleted_at:
+          example: null
+          nullable: true
+          type: string
         description:
           example: Guggenheim Defensive Equity ETF
           nullable: true
           type: string
+        description_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        equity_classification:
+          example: LARGE_CAP
+          nullable: true
+          type: string
+        equity_classification_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        feed_bond_coupon_rate:
+          example: 3.25
+          nullable: true
+          type: number
+        feed_bond_maturity_date:
+          example: "2025-12-15T00:00:00.000Z"
+          nullable: true
+          type: string
+        feed_cost_basis:
+          example: 827.0
+          nullable: true
+          type: number
+        feed_currency_code:
+          example: USD
+          nullable: true
+          type: string
+        feed_daily_change:
+          example: 2.5
+          nullable: true
+          type: number
+        feed_description:
+          example: GUGGENHEIM DEF EQT ETF
+          nullable: true
+          type: string
+        feed_equity_classification:
+          example: LARGE_CAP
+          nullable: true
+          type: string
+        feed_fixed_income_classification:
+          example: GOVERNMENT_BOND
+          nullable: true
+          type: string
+        feed_isin:
+          example: US40163T1088
+          nullable: true
+          type: string
+        feed_market_value:
+          example: 989.55
+          nullable: true
+          type: number
+        feed_purchase_price:
+          example: 26.35
+          nullable: true
+          type: number
+        feed_sector:
+          example: Technology
+          nullable: true
+          type: string
+        feed_sedol:
+          example: B1Z3K48
+          nullable: true
+          type: string
+        feed_shares:
+          example: 6.0
+          nullable: true
+          type: number
+        feed_symbol:
+          example: DEF
+          nullable: true
+          type: string
+        fixed_income_classification:
+          example: GOVERNMENT_BOND
+          nullable: true
+          type: string
+        fixed_income_classification_set_by:
+          example: 1
+          nullable: true
+          type: integer
         guid:
           example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
           nullable: true
@@ -1594,34 +1746,130 @@ components:
           example: 1
           nullable: true
           type: integer
+        holding_type_set_by:
+          example: 1
+          nullable: true
+          type: integer
         id:
           example: ID-123
           nullable: true
           type: string
+        is_deleted:
+          example: false
+          nullable: true
+          type: boolean
+        isin:
+          example: US40163T1088
+          nullable: true
+          type: string
+        isin_set_by:
+          example: 1
+          nullable: true
+          type: number
+        large_core_weight:
+          example: 22.5
+          nullable: true
+          type: number
+        large_growth_weight:
+          example: 18.3
+          nullable: true
+          type: number
+        large_value_weight:
+          example: 15.7
+          nullable: true
+          type: number
         market_value:
           example: 989.5
           nullable: true
           type: number
+        market_value_set_by:
+          example: 1
+          nullable: true
+          type: integer
         member_guid:
           example: MBR-d65683e8-9eab-26bb-bcfd-ced159c9abe
           nullable: true
           type: string
+        member_is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
         metadata:
           example: metadata
           nullable: true
           type: string
+        mid_core_weight:
+          example: 12.4
+          nullable: true
+          type: number
+        mid_growth_weight:
+          example: 8.7
+          nullable: true
+          type: number
+        mid_value_weight:
+          example: 6.2
+          nullable: true
+          type: number
+        price:
+          example: 185.00
+          nullable: true
+          type: number
         purchase_price:
           example: 26.3
           nullable: true
           type: number
+        purchase_price_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        sector:
+          example: Technology
+          nullable: true
+          type: string
+        sector_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        sedol:
+          example: B1Z3K48
+          nullable: true
+          type: string
+        sedol_set_by:
+          example: 1
+          nullable: true
+          type: integer
         shares:
           example: 6.0
+          nullable: true
+          type: number
+        shares_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        small_core_weight:
+          example: 4.8
+          nullable: true
+          type: number
+        small_growth_weight:
+          example: 3.1
+          nullable: true
+          type: number
+        small_value_weight:
+          example: 2.6
           nullable: true
           type: number
         symbol:
           example: DEF
           nullable: true
           type: string
+        symbol_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        unknown_weight:
+          example: 1.2
+          nullable: true
+          type: number
         updated_at:
           example: "2015-04-13T18:01:23.000Z"
           nullable: true
