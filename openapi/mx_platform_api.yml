@@ -1653,6 +1653,7 @@ components:
           type: string
         guid:
           example: CRO-e7ecc864-61fd-47a6-a122-3cbc9016660d
+          nullable: true
           type: string
         label:
           example: IMAGE_1
