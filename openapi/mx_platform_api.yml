@@ -4013,14 +4013,46 @@ components:
       type: object
     UserResponse:
       properties:
+        accepted_terms_and_conditions_at:
+          example: 2026-12-08 00:00:00.000000
+          nullable: true
+          type: string
+        born_on:
+          example: 1990-05-15
+          nullable: true
+          type: string
+        credit_score:
+          example: 750
+          nullable: true
+          type: integer
         email:
           example: email@provider.com
+          nullable: true
+          type: string
+        email_is_verified:
+          example: true
+          nullable: true
+          type: boolean
+        failed_token_login_attempts_count:
+          example: 0
+          nullable: true
+          type: integer
+        first_name:
+          example: Steven
+          nullable: true
+          type: string
+        gender:
+          example: M
           nullable: true
           type: string
         guid:
           example: USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6
           nullable: true
           type: string
+        has_accepted_terms_and_conditions:
+          example: true
+          nullable: true
+          type: boolean
         id:
           example: My-Unique-ID
           nullable: true
@@ -4029,8 +4061,28 @@ components:
           example: false
           nullable: true
           type: boolean
+        is_restricted:
+          example: false
+          nullable: true
+          type: boolean
+        last_name:
+          example: Universe
+          nullable: true
+          type: string
+        logged_in_at:
+          example: 2026-12-08 00:00:00.000000
+          nullable: true
+          type: string
         metadata:
           example: '{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}'
+          nullable: true
+          type: string
+        phone:
+          example: 555-555-5555
+          nullable: true
+          type: string
+        postal_code:
+          example: 12345
           nullable: true
           type: string
       type: object
