@@ -5198,6 +5198,524 @@ components:
           $ref: '#/components/schemas/MemberElements'
       type: object
 
+  parameters:
+    userIsDisabled:
+      description: Search for users that are diabled.
+      example: true
+      in: query
+      name: is_disabled
+      schema:
+    userId:
+      description: The user `id` to search for.
+      example: u-12324-abdc
+      in: query
+      name: id
+      schema:
+        type: string
+    userGuid:
+      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    userEmail:
+      description: The user `email` to search for.
+      example: example@example.com
+      in: query
+      name: email
+      schema:
+        type: string
+    useCase:
+      description: The use case associated with the member. Valid values are `PFM` and `MONEY_MOVEMENT`. For example, you can append either `?use_case=PFM` or `?use_case=MONEY_MOVEMENT`.
+      example: MONEY_MOVEMENT
+      required: false
+      in: query
+      name: use_case
+      schema:
+        type: string
+    uiMessageWebviewUrlScheme:
+      description: A scheme for routing the user back to the application state they were previously in. Only available with `referral_source=APP`.
+      in: query
+      name: ui_message_webview_url_scheme
+      schema:
+        type: string
+    transactionRuleGuid:
+      description: The unique id for a `transaction_rule`.
+      example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
+      in: path
+      name: transaction_rule_guid
+      required: true
+      schema:
+        type: string
+    transactionGuid:
+      description: The unique id for a `transaction`.
+      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+      in: path
+      name: transaction_guid
+      required: true
+      schema:
+        type: string
+    toUpdatedAt:
+      name: to_updated_at
+      description: Filter transactions to the date in which the transaction was updated. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Maximum date range limit is 6 months.
+      example: 2024-03-31
+      in: query
+      schema:
+        type: string
+    topLevelCategoryGuidArray:
+      name: top_level_category_guid[]
+      description: Filter transactions belonging to any specified `top_level_category_guid[]` in url. This must be top level category guid(s), use `category_guid` for subcategory guid(s).
+    topLevelCategoryGuid:
+      name: top_level_category_guid
+      description: Filter transactions belonging to specified `top_level_category_guid`. This must be top level category guid, use `category_guid` for subcategory guid.
+    toDate:
+      description: Filter transactions to this date (at midnight). This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 5 days forward from the day the request is made to capture pending transactions.
+      example: 2024-03-31
+      in: query
+      name: to_date
+      schema:
+        type: string    
+    toCreatedAt:
+      name: to_created_at
+      description: Filter transaction to the date in which the transaction was created. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Maximum date range limit is 6 months.
+      example: 2024-03-31
+      in: query
+      schema:
+        type: string
+    tagGuid:
+      description: The unique id for a `tag`.
+      example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
+      in: path
+      name: tag_guid
+      required: true
+      schema:
+        type: string
+    taggingGuid:
+      description: The unique id for a `tagging`.
+      example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
+      in: path
+      name: tagging_guid
+      required: true
+      schema:
+        type: string
+    supportsTransactionHistory:
+      description: Filter only institutions which support extended transaction history.
+      example: true
+      in: query
+      name: supports_transaction_history
+      schema:
+        type: boolean
+    supportsAccountVerification:
+      description: Filter only institutions which support account verification.
+      example: true
+      in: query
+      name: supports_account_verification
+      schema:
+        type: boolean
+    supportsAccountStatement:
+      description: Filter only institutions which support account statements.
+      example: true
+      in: query
+      name: supports_account_statement
+      schema:
+        type: boolean
+    supportsAccountIdentification:
+      description: Filter only institutions which support account identification.
+      example: true
+      in: query
+      name: supports_account_identification
+      schema:
+        type: boolean
+    subject:
+      name: subject
+      description: The subject related to the notification.
+      required: true
+      in: query
+      schema:
+        type: string
+    statementGuid:
+      description: The unique id for a `statement`.
+      example: STA-737a344b-caae-0f6e-1384-01f52e75dcb1
+      in: path
+      name: statement_guid
+      required: true
+      schema:
+        type: string
+    startTime:
+      description: Filter transactions from this date. Must be in the format YYYY-MM-DD. The range is limited to 1 year. 
+      example: 2015-09-20
+      in: query
+      name: startTime
+      schema:
+        type: string
+    spendingPlanGuid:
+      description: The unique ID for the `spending_plan`.
+      example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
+      in: path
+      name: spending_plan_guid
+      required: true
+      schema:
+        type: string
+    spendingPlanAccountGuid:
+      description: The unique ID for the specified account.
+      example: ACT-e9f80fee-84da-7s7r-9a5e-0346g4279b4c
+      in: path
+      name: spending_plan_account_guid
+      required: true
+      schema:
+        type: string    
+    skipAggregation:
+      description: Setting this parameter to `true` will prevent the member from automatically aggregating after being redirected from the authorization page.
+      example: false
+      in: query
+      name: skip_aggregation
+      schema:
+        type: boolean
+    rewardGuid:
+      description: The unique identifier for the rewards. Defined by MX. 
+      example: RWD-fa7537f3-48aa-a683-a02a-b324322f54
+      in: path
+      name: reward_guid
+      required: true
+      schema:
+        type: string
+    returnStatus:
+      description: The status of the return. See [Return Statuses](/api-reference/platform-api/reference/ach-return-fields#return-status) for a complete list.
+      example: SUBMITTED
+      in: query
+      name: return_status
+      required: false
+      schema:
+        type: string
+    returnedAt:
+      description: The date and time when the return was reported by the Receiving Financial Depository Institution (RDFI) in ISO 8601 format without timestamp.
+      example: 2025-02-13T18:09:00+00:00
+      in: query
+      name: returned_at
+      required: false
+      schema:
+        type: string
+    returnCode:
+      description: The associated ACH return code and notice of change code. See [Return Codes](/api-reference/platform-api/reference/ach-return-fields#return-codes) for a complete list.
+      in: query
+      name: return_code
+      required: false
+      schema:
+        type: string
+    resolvedStatusAt:
+      description: The date and time when the return was resolved by the Receiving Financial Depository Institution (RDFI) in ISO 8601 format without timestamp
+      example: 2025-02-13T18:09:00+00:00
+      in: query
+      name: resolved_status_at
+      required: false
+      schema:
+        type: string
+    repeatingTransactionGuid:
+      description: The unique id for a recurring transaction.
+      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+      in: path
+      name: repeating_transaction_guid
+      required: true
+      schema:
+        type: string
+    referralSource:
+      description: Must be either `BROWSER` or `APP` depending on the implementation. Defaults to `BROWSER`.
+      example: APP
+      in: query
+      name: referral_source
+      schema:
+        type: string
+    recordsPerPageMax1000:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
+    recordsPerPage:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
+      in: query
+      name: page
+      schema:
+        type: integer
+    notificationGuid:
+      name: notification_guid
+      description: The unique identifier for notifications. Defined by MX. 
+      example: NTF-b53294f5-2356-4782-9f81-ae064c42b40a
+      in: path
+      required: true
+      schema: 
+        type: string
+    microDepositGuid:
+      name: micro_deposit_guid
+      description: The unique identifier for the microdeposit. Defined by MX. 
+      in: path
+      required: true
+      example: MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb
+      schema:
+        type: string
+    merchantName:
+      description:
+        This will list only merchants in which the appended string appears.
+      example: Comcast
+      in: query
+      name: name
+      schema:
+        type: string
+    merchantLocationGuid:
+      description: The unique id for a `merchant_location`.
+      example: MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621
+      in: path
+      name: merchant_location_guid
+      required: true
+      schema:
+        type: string
+    merchantGuid:
+      description: The unique id for a `merchant`.
+      example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+      in: path
+      name: merchant_guid
+      required: true
+      schema:
+        type: string
+    memberIsManagedByUser:
+      description: List only accounts whose member is managed by the user.
+      example: true
+      in: query
+      name: member_is_managed_by_user
+      schema:
+        type: boolean
+    memberGuid:
+      description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    iterationNumber:
+      description: The current iteration number for the spending plan `iteration`.
+      example: 1
+      in: path
+      name: iteration_number
+      required: true
+      schema:
+        type: integer
+    iterationItemGuid:
+      description: The unique ID for the `iteration_item`.
+      example: SII-a4dc1549-da28-1245-9c9c-53eee4cdfbe3
+      in: path
+      name: iteration_item_guid
+      required: true
+      schema:
+        type: string
+    isoCountryCode:
+      description: An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico).
+      required: false
+      in: query
+      name: iso_country_code
+      example: ["US", "CA"]
+      schema:
+        type: array
+        items:
+          type: string
+    institutionName:
+      description:
+        This will list only institutions in which the appended string appears.
+      example: mxbank
+      in: query
+      name: name
+      schema:
+        type: string
+    institutionGuid:
+      description: The identifier for the institution associated with the ACH return. Defined by MX.
+      in: query
+      name: institution_guid
+      required: false
+      schema:
+        type: string
+    institutionCode:
+      description: The institution_code of the institution.
+      example: mxbank
+      in: path
+      name: institution_code
+      required: true
+      schema:
+        type: string
+    insightGuid:
+      description: The unique identifier for the insight. Defined by MX.
+      example: BET-1234-abcd
+      in: path
+      name: insight_guid
+      required: true
+      schema:
+        type: string
+    include_transactions:
+      description: When set to `false`, the aggregation will not gather transactions data. Defaults to `true`.
+      example: true
+      in: query
+      name: include_transactions
+      required: false
+      schema:
+        type: boolean
+    include_holdings:
+      description: When set to `false`, the aggregation will not gather holdings data. Defaults to `true`.
+      example: false
+      in: query
+      name: include_holdings
+      required: false
+      schema:
+        type: boolean
+    includes:
+      description: |
+        Options for enhanced transactions. This query parameter is optional. Possible additional metadata: `repeating_transactions`, `merchants`, `classifications`, `geolocations`. The query value is format sensitive. To retrieve all available enhancements, append:
+    holdingGuid:
+      description: The unique id for a `holding`.
+      example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
+      in: path
+      name: holding_guid
+      required: true
+      schema:
+        type: string
+    goalGuid:
+      name: goal_guid
+      description: The unique identifier for a goal. Defined by MX. 
+      required: true
+      in: path 
+      schema: 
+        type: string
+    fromUpdatedAt:
+      name: from_updated_at
+      description: Filter transactions from the date in which the transaction was updated. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Maximum date range limit is 6 months.
+      example: 2024-01-01
+      in: query
+      schema:
+        type: string
+    fromDate:
+      description: Filter transactions from this date. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 120 days ago if not provided.
+      example: 2024-01-01
+      in: query
+      name: from_date
+      schema:
+        type: string
+    fromCreatedAt:
+      name: from_created_at
+      in: query
+      description: Filter transactions from the date the transaction was created. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Maximum date range limit is 6 months.
+      example: 2024-01-01
+      schema:
+        type: string
+    endTime:
+      description: Filter transactions to this date. Must be in the format YYYY-MM-DD. The range is limited to 1 year. 
+      example: 2015-09-20
+      in: query
+      name: endTime
+      schema:
+        type: string    
+    enableApp2app:
+      description: This indicates whether OAuth app2app behavior is enabled for institutions that support it. Defaults to `true`. When set to `false`, any `oauth_window_uri` generated will **not** direct the end user to the institution's mobile application. This setting is not persistent. This setting currently only affects Chase institutions.
+      example: 'false'
+      in: query
+      name: enable_app2app
+      schema:
+        type: string
+    creditCardProductGuid:
+      description: The required `credit_card_product_guid` can be found on the `account` object.
+      example: credit_card_product_guid
+      in: path
+      name: credit_card_product_guid
+      required: true
+      schema:
+        type: string
+    content: 
+      name: content
+      description: The information related to the notification.
+      required: true
+      in: query
+      schema:
+        type: string
+    clientRedirectUrl:
+      description: A URL that MX will redirect to at the end of OAuth with additional query parameters. Only available with `referral_source=APP`.
+      example: https://{yoursite.com}
+      in: query
+      name: client_redirect_url
+      schema:
+        type: string
+    categoryGuidQueryArray:
+      name: category_guid[]
+      description: Filter transactions belonging to any specified `category_guid[]` in url.
+    categoryGuidQuery:
+      name: category_guid
+      description: Filter transactions belonging to specified `category_guid`.
+    categoryGuid:
+      name: category_guid
+      description: The unique id for a `category`.
+      in: path
+      required: true
+      schema:
+        type: string
+        example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
+    budgetGuid:
+      name: budget_guid
+      description: The unique identifier for the budget. Defined by MX. 
+      required: true
+      in: path 
+      schema: 
+        type: string
+    achReturnGuid:
+      name: ach_return_guid
+      description: The unique identifier (`guid`) for the ACH return. Defined by MX.
+      required: true
+      in: path 
+      schema: 
+        type: string
+    accountIsManual:
+      description: List only accounts that were manually created.
+      example: true
+      in: query
+      name: is_manual
+      schema:
+        type: boolean
+    accountGuid:
+      description: The unique id for an `account`.
+      example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+      in: path
+      name: account_guid
+      required: true
+      schema:
+        type: string
+    xCallback:
+      description: The base64 encoded string defined in this header will be returned in the [Member](/resources/webhooks/member/) and [Member Data Updated](/resources/webhooks/member#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.
+      example: 813e50bd-4a7e-4517-b6bb-9eef65a68cbd
+      in: header
+      name: X-CALLBACK-PAYLOAD
+      schema: 
+        type: string
+    acceptLanguage:
+      description: The desired language of the widget.
+      example: en-US
+      in: header
+      name: Accept-Language
+      schema:
+        type: string
+    acceptHeader:
+      description: Specifies the media type expected in the response.
+      in: header
+      name: Accept
+      required: true
+      schema:
+        type: string
+        example: application/vnd.mx.api.v1+json
   securitySchemes:
     basicAuth:
       scheme: basic
@@ -5251,18 +5769,8 @@ paths:
         the same results. The different routes are provided for convenience.
       operationId: listDefaultCategories
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         "200":
           content:
@@ -5278,13 +5786,7 @@ paths:
       description: Use this endpoint to read the attributes of a default category.
       operationId: readDefaultCategory
       parameters:
-        - description: The unique id for a `category`.
-          example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
-          in: path
-          name: category_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/categoryGuid'
       responses:
         "200":
           content:
@@ -5300,13 +5802,7 @@ paths:
       description: This endpoint returns the specified `credit_card_product` according to the unique GUID.
       operationId: creditCard
       parameters:
-        - description: The required `credit_card_product_guid` can be found on the `account` object.
-          example: credit_card_product_guid
-          in: path
-          name: credit_card_product_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/creditCardProductGuid'
       responses:
         "200":
           content:
@@ -5324,50 +5820,13 @@ paths:
         search term or parameter.
       operationId: listInstitutions
       parameters:
-        - description:
-            This will list only institutions in which the appended string
-            appears.
-          example: chase
-          in: query
-          name: name
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: Filter only institutions which support account identification.
-          example: true
-          in: query
-          name: supports_account_identification
-          schema:
-            type: boolean
-        - description: Filter only institutions which support account statements.
-          example: true
-          in: query
-          name: supports_account_statement
-          schema:
-            type: boolean
-        - description: Filter only institutions which support account verification.
-          example: true
-          in: query
-          name: supports_account_verification
-          schema:
-            type: boolean
-        - description: Filter only institutions which support extended transaction history.
-          example: true
-          in: query
-          name: supports_transaction_history
-          schema:
-            type: boolean
+        - $ref: '#/components/parameters/institutionName'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/supportsAccountIdentification'
+        - $ref: '#/components/parameters/supportsAccountStatement'
+        - $ref: '#/components/parameters/supportsAccountVerification'
+        - $ref: '#/components/parameters/supportsTransactionHistory'
       responses:
         "200":
           content:
@@ -5386,18 +5845,8 @@ paths:
         contact MX to set a list of favorites.
       operationId: listFavoriteInstitutions
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         "200":
           content:
@@ -5415,13 +5864,7 @@ paths:
         by `institution_code`.
       operationId: readInstitution
       parameters:
-        - description: The institution_code of the institution.
-          example: chase
-          in: path
-          name: institution_code
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/institutionCode'
       responses:
         "200":
           content:
@@ -5439,25 +5882,9 @@ paths:
         a member for a specific institution.
       operationId: listInstitutionCredentials
       parameters:
-        - description: The institution_code of the institution.
-          example: chase
-          in: path
-          name: institution_code
-          required: true
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
+        - $ref: '#/components/parameters/institutionCode'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         "200":
           content:
@@ -5475,18 +5902,8 @@ paths:
         to create partner-managed members.
       operationId: listManagedInstitutions
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         "200":
           content:
@@ -5502,13 +5919,7 @@ paths:
       description: This endpoint returns the specified merchant_location resource.
       operationId: readMerchantLocation
       parameters:
-        - description: The unique id for a `merchant_location`.
-          example: MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621
-          in: path
-          name: merchant_location_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/merchantLocationGuid'
       responses:
         "200":
           content:
@@ -5526,18 +5937,8 @@ paths:
         the MX system.
       operationId: listMerchants
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         "200":
           content:
@@ -5555,13 +5956,7 @@ paths:
         name, and website.
       operationId: readMerchant
       parameters:
-        - description: The unique id for a `merchant`.
-          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
-          in: path
-          name: merchant_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/merchantGuid'
       responses:
         "200":
           content:
@@ -5629,36 +6024,11 @@ paths:
         API.
       operationId: listUsers
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The user `id` to search for.
-          example: u-12324-abdc
-          in: query
-          name: id
-          schema:
-            type: string
-        - description: The user `email` to search for.
-          example: example@example.com
-          in: query
-          name: email
-          schema:
-            type: string
-        - description: Search for users that are diabled.
-          example: true
-          in: query
-          name: is_disabled
-          schema:
-            type: boolean
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userId'
+        - $ref: '#/components/parameters/userEmail'
+        - $ref: '#/components/parameters/userIsDisabled'
       responses:
         "200":
           content:
@@ -5703,13 +6073,7 @@ paths:
         will have a status of `204 No Content` without an object.
       operationId: deleteUser
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No Content
@@ -5720,13 +6084,7 @@ paths:
       description: Use this endpoint to read the attributes of a specific user.
       operationId: readUser
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -5741,13 +6099,7 @@ paths:
       description: Use this endpoint to update the attributes of the specified user.
       operationId: updateUser
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -5774,37 +6126,11 @@ paths:
         the specified `user`.
       operationId: listUserAccounts
       parameters:
-        - description: List only accounts whose member is managed by the user.
-          example: true
-          in: query
-          name: member_is_managed_by_user
-          schema:
-            type: boolean
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: List only accounts that were manually created.
-          example: true
-          in: query
-          name: is_manual
-          schema:
-            type: boolean
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberIsManagedByUser'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/accountIsManual'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -5819,13 +6145,7 @@ paths:
       description: This endpoint can only be used to create manual accounts. Creating a manual account will automatically create it under the Manual Institution member. Since a manual account has no credentials tied to the member, the account will never aggregate or include data from a data feed.
       operationId: createManualAccount
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -5849,20 +6169,8 @@ paths:
         API will respond with an empty object and a status of `204 No Content`.
       operationId: deleteManualAccount
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No content.
@@ -5874,20 +6182,8 @@ paths:
         This endpoint returns the specified `account` resource.
       operationId: readAccount
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -5905,32 +6201,10 @@ paths:
         the specified `account`.
       operationId: listAccountNumbersByAccount
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -5948,44 +6222,12 @@ paths:
         `account`.
       operationId: listHoldingsByAccount
       parameters:
-        - description: The unique id for the `account`.
-          example: ACT-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: Filter holdings from this date.
-          example: "2015-09-20"
-          in: query
-          name: from_date
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: Filter holdings to this date.
-          example: "2019-10-20"
-          in: query
-          name: to_date
-          schema:
-            type: string
-        - description: The unique id for the `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/fromDate'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/toDate'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -6044,18 +6286,8 @@ paths:
       summary: Create manual transaction
       description: This endpoint can only be used to create manual transactions that are under a manual account. This endpoint accepts the optional MX-Skip-Webhook header and skip_webhook parameter.
       parameters:
-        - name: user_guid
-          description: The unique identifier for the user.
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: account_guid
-          description: The unique identifier for the account.
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/accountGuid'
       requestBody:
         required: true
         content:
@@ -6075,44 +6307,12 @@ paths:
         associated with the specified account.
       operationId: listTransactionsByAccount
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: Filter transactions from this date.
-          example: "2015-09-20"
-          in: query
-          name: from_date
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: Filter transactions to this date.
-          example: "2019-10-20"
-          in: query
-          name: to_date
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/fromDate'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/toDate'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -6129,12 +6329,7 @@ paths:
         - budgets
       summary: Auto-generate budgets
       parameters:
-        - name: user_guid
-          description: The unique identifier for the user. Defined by MX.
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       description: This endpoint will automatically create budgets for several categories based on existing transactions; these budgets are returned as an array. Specifically, budgets will only be generated if the `user` has at least one `transaction` in a given category during each of the two previous calendar months. For example, if the request is made on March 6, and there is at least one "Bills & Utilities" `transaction` in both January and February, a budget will be generated for "Bills & Utilities." If there are two "Bills & Utilities" transactions in February but none in January, no budget will be generated for that category. If budgets already exist for particular categories, new budgets will be generated and returned based on the available transactions. If one or more budgets remain unchanged, they will nevertheless be returned in the response. If no transaction data for the `user` meet the above criteria, a `422 Unprocessable Entity` error will be returned with status code 4221 along with the message, `There aren't enough transactions to automatically create any budgets`.
       responses:
         '200':
@@ -6149,12 +6344,7 @@ paths:
         - budgets
       summary: Create a budget
       parameters:
-        - name: user_guid
-          description: The unique identifier for the user. Defined by MX.
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       description: Create a budget. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter. You cannot create a duplicate budget. For example, if you attempt to create a budget for "Gas", but that budget already exist, the request will fail. You can retrieve a list of all existing categories by using the List Categories endpoint.
       requestBody:
         required: true
@@ -6175,12 +6365,7 @@ paths:
       summary: List all budgets
       description: List all budgets
       parameters:
-        - name: user_guid
-          description: The unique identifier for the user. Defined by MX.
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       responses:
         '200':
           description: OK
@@ -6195,18 +6380,8 @@ paths:
       summary: Read a specific budget
       description: Read a specific budget.
       parameters:
-        - name: budget_guid
-          description: The unique identifier for the budget. Defined by MX.
-          required: true
-          in: path
-          schema:
-            type: string
-        - name: user_guid
-          description: The unique identifier for the budget. Defined by MX.
-          required: true
-          in: path
-          schema:
-            type: string
+        - $ref: '#/components/parameters/budgetGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         '200':
           description: OK
@@ -6220,18 +6395,8 @@ paths:
       summary: Update a specific budget
       description: Update a specific budget.
       parameters:
-        - name: user_guid
-          description: The unique identifier for the budget. Defined by MX.
-          required: true
-          in: path
-          schema:
-            type: string
-        - name: budget_guid
-          description: The unique identifier for the budget. Defined by MX.
-          required: true
-          in: path
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/budgetGuid'
       requestBody:
         required: false
         content:
@@ -6251,18 +6416,8 @@ paths:
       summary: Delete a budget
       description: Delete a budget.
       parameters:
-        - name: user_guid
-          description: The unique identifier for the budget. Defined by MX.
-          required: true
-          in: path
-          schema:
-            type: string
-        - name: budget_guid
-          description: The unique identifier for the budget. Defined by MX.
-          required: true
-          in: path
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/budgetGuid'
       responses:
         "204":
           description: No content
@@ -6273,25 +6428,9 @@ paths:
         including both default and custom categories.
       operationId: listCategories
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -6308,13 +6447,7 @@ paths:
         `user`.
       operationId: createCategory
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -6343,25 +6476,9 @@ paths:
         return the same results. The different routes are provided for convenience.
       operationId: listDefaultCategoriesByUser
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -6380,20 +6497,8 @@ paths:
         of `204 No Content`.
       operationId: deleteCategory
       parameters:
-        - description: The unique id for a `category`.
-          example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
-          in: path
-          name: category_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/categoryGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No Content
@@ -6406,20 +6511,8 @@ paths:
         or a custom category.
       operationId: readCategory
       parameters:
-        - description: The unique id for a `category`.
-          example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
-          in: path
-          name: category_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/categoryGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -6436,20 +6529,8 @@ paths:
         according to its unique GUID.
       operationId: updateCategory
       parameters:
-        - description: The unique id for a `category`.
-          example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
-          in: path
-          name: category_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/categoryGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -6476,13 +6557,7 @@ paths:
         Connect.
       operationId: requestConnectWidgetURL
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -6509,12 +6584,7 @@ paths:
       summary: Create a goal
       description: Create a goal. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter.
       parameters:
-        - name: user_guid
-          description: The unique identifier for the user.
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         required: true
         content:
@@ -6534,20 +6604,9 @@ paths:
       summary: List goals
       description: List all goals a user can set.
       parameters:
-        - name: user_guid
-          description: The unique identifier for the user.
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: page
-          description: Results are returned in paginated sets, this is the page of the results you would like to view. Defaults to page 1 if no page is specified.
-          example:
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: records_per_age
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/page'
+        - name: records_per_page
           description:  The supported range is from 10 to 1000. If the records_per_page parameter is not specified or is outside this range, a default of 25 records per page will be used.
           example:
           in: query
@@ -6568,18 +6627,8 @@ paths:
       summary: Delete a goal
       description: Delete a goal.
       parameters:
-        - name: goal_guid
-          description: The unique identifier for a goal. Defined by MX.
-          required: true
-          in: path
-          schema:
-            type: string
-        - name: user_guid
-          description: The unique identifier for a user.
-          required: true
-          in: path
-          schema:
-            type: string
+        - $ref: '#/components/parameters/goalGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No content
@@ -6589,18 +6638,8 @@ paths:
       summary: Read a goal
       description: Read a specific goal.
       parameters:
-        - name: goal_guid
-          description: The unique identifier for a goal. Defined by MX.
-          required: true
-          in: path
-          schema:
-            type: string
-        - name: user_guid
-          description: The unique identifier for a user.
-          required: true
-          in: path
-          schema:
-            type: string
+        - $ref: '#/components/parameters/goalGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         '200':
           description: OK
@@ -6614,18 +6653,8 @@ paths:
       summary: Update a goal
       description: This endpoint updates a specific goal.
       parameters:
-        - name: goal_guid
-          description: The unique identifier for a goal. Defined by MX.
-          required: true
-          in: path
-          schema:
-            type: string
-        - name: user_guid
-          description: The unique identifier for a user.
-          required: true
-          in: path
-          schema:
-            type: string
+        - $ref: '#/components/parameters/goalGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         required: true
         content:
@@ -6646,12 +6675,7 @@ paths:
       summary: Reposition goals
       description: This endpoint repositions goal priority levels. If one goal is set to a lower priority, then any other goals need to be adjusted accordingly.
       parameters:
-        - name: user_guid
-          description: The unique identifier for the user.
-          required: true
-          in: path
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         required: true
         content:
@@ -6672,37 +6696,11 @@ paths:
         `user` across all accounts and members.
       operationId: listHoldings
       parameters:
-        - description: Filter holdings from this date.
-          example: "2015-09-20"
-          in: query
-          name: from_date
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: Filter holdings to this date.
-          example: "2019-10-20"
-          in: query
-          name: to_date
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/fromDate'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/toDate'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -6718,20 +6716,8 @@ paths:
       description: Use this endpoint to read the attributes of a specific `holding`.
       operationId: readHolding
       parameters:
-        - description: The unique id for a `holding`.
-          example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
-          in: path
-          name: holding_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/holdingGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -7059,25 +7045,9 @@ paths:
         associated with the specified `user`.
       operationId: listManagedMembers
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -7092,13 +7062,7 @@ paths:
       description: Use this endpoint to create a new partner-managed `member`.
       operationId: createManagedMember
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -7123,20 +7087,8 @@ paths:
         The endpoint will respond with a status of `204 No Content` without a resource.
       operationId: deleteManagedMember
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No Content
@@ -7149,20 +7101,8 @@ paths:
         `member`.
       operationId: readManagedMember
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -7179,20 +7119,8 @@ paths:
         `member`.
       operationId: updateManagedMember
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -7219,32 +7147,10 @@ paths:
         accounts associated with the given partner-manage member.
       operationId: listManagedAccounts
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -7259,20 +7165,8 @@ paths:
       description: Use this endpoint to create a partner-managed account.
       operationId: createManagedAccount
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -7298,27 +7192,9 @@ paths:
         No Content`.
       operationId: deleteManagedAccount
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No Content
@@ -7331,27 +7207,9 @@ paths:
         according to its unique guid.
       operationId: readManagedAccount
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -7368,27 +7226,9 @@ paths:
         account according to its unique GUID.
       operationId: updateManagedAccount
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -7415,39 +7255,11 @@ paths:
         associated with the specified `account`, scoped through a `user` and a `member`.
       operationId: listManagedTransactions
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -7462,27 +7274,9 @@ paths:
       description: Use this endpoint to create a new partner-managed `transaction`.
       operationId: createManagedTransaction
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -7507,34 +7301,10 @@ paths:
         The endpoint will respond with a status of `204 No Content` without a resource.
       operationId: deleteManagedTransaction
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `transaction`.
-          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-          in: path
-          name: transaction_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/transactionGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No Content
@@ -7547,34 +7317,10 @@ paths:
         partner-managed `transaction`.
       operationId: readManagedTransaction
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `transaction`.
-          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-          in: path
-          name: transaction_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/transactionGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -7591,34 +7337,10 @@ paths:
         `transaction`.
       operationId: updateManagedTransaction
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `transaction`.
-          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-          in: path
-          name: transaction_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/transactionGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -7645,25 +7367,9 @@ paths:
         member associated with a specific user.
       operationId: listMembers
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -7687,13 +7393,7 @@ paths:
         and transactions.
       operationId: createMember
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -7724,20 +7424,8 @@ paths:
       description: Accessing this endpoint will permanently delete a member.
       operationId: deleteMember
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No Content
@@ -7748,20 +7436,8 @@ paths:
       description: Use this endpoint to read the attributes of a specific member.
       operationId: readMember
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -7779,20 +7455,8 @@ paths:
         credentials for the member, use the list member credentials endpoint.
       operationId: updateMember
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -7819,32 +7483,10 @@ paths:
         the specified `member`.
       operationId: listAccountNumbersByMember
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -7862,32 +7504,10 @@ paths:
         associated with a particular member.
       operationId: listAccountOwnersByMember
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -7905,38 +7525,11 @@ paths:
         the specified `member`.
       operationId: listMemberAccounts
       parameters:
-        - description: List only accounts whose member is managed by the user.
-          example: true
-          in: query
-          name: member_is_managed_by_user
-          schema:
-            type: boolean
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberIsManagedByUser'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/memberGuid'
       responses:
         "200":
           content:
@@ -7954,27 +7547,9 @@ paths:
         resource.
       operationId: readAccountByMember
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -7990,27 +7565,9 @@ paths:
         This endpoint allows you to update certain attributes of an `account` resource, including manual accounts. For manual accounts, you can update every field listed. For aggregated accounts, you can only update `is_business`, `is_hidden` and `metadata`.
       operationId: updateAccountByMember
       parameters:
-        - description: The unique id for an `account`.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: account_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -8036,34 +7593,10 @@ paths:
         aggregation event.
       operationId: aggregateMember
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: When set to `false`, the aggregation will not gather holdings data. Defaults to `true`. 
-          example: false
-          in: query
-          name: include_holdings
-          required: false
-          schema: 
-            type: boolean
-        - description: When set to `false`, the aggregation will not gather transactions data. Defaults to `true`. 
-          example: false
-          in: query
-          name: include_transactions
-          required: false
-          schema: 
-            type: boolean
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/include_holdings'
+        - $ref: '#/components/parameters/include_transactions'
       responses:
         "202":
           content:
@@ -8085,32 +7618,10 @@ paths:
         `200 OK` will be returned - along with the corresponding credentials.
       operationId: listMemberChallenges
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -8129,20 +7640,8 @@ paths:
         any transaction data.
       operationId: checkBalances
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "202":
           content:
@@ -8160,32 +7659,10 @@ paths:
         non-MFA credential associated with a specific member.
       operationId: listMemberCredentials
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -8205,20 +7682,8 @@ paths:
         is much like standard aggregation, and it may trigger multi-factor authentication.
       operationId: extendHistory
       parameters:
-        - description: The unique identifier for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique identifier for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "202":
           content:
@@ -8234,20 +7699,8 @@ paths:
       description: Calling this endpoint initiates an aggregation-type event which will gather the member's rewards information, as well as account and transaction information. Rewards data is also gathered with daily background aggregations.
       operationId: fetchRewards
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique identifier for the member. Defined by MX.
-          example: MBR-fa7537f3-48aa-a683-a02a-b18345562f54
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/memberGuid'
       responses:
         "200":
           content:
@@ -8265,20 +7718,8 @@ paths:
         member.
       operationId: fetchStatements
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "202":
           content:
@@ -8301,20 +7742,8 @@ paths:
         a specific process for answering authentication challenges.
       operationId: fetchTaxDocuments
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "202":
           content:
@@ -8332,44 +7761,12 @@ paths:
         `member` across all accounts.
       operationId: listHoldingsByMember
       parameters:
-        - description: Filter holdings from this date.
-          example: "2015-09-20"
-          in: query
-          name: from_date
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: Filter holdings to this date.
-          example: "2019-10-20"
-          in: query
-          name: to_date
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/fromDate'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/toDate'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -8387,20 +7784,8 @@ paths:
         member.
       operationId: identifyMember
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "202":
           content:
@@ -8418,59 +7803,13 @@ paths:
         `member`.
       operationId: requestOAuthWindowURI
       parameters:
-        - description:
-            A URL that MX will redirect to at the end of OAuth with additional
-            query parameters. Only available with `referral_source=APP`.
-          example: https://mx.com
-          in: query
-          name: client_redirect_url
-          schema:
-            type: string
-        - description: This indicates whether OAuth app2app behavior is enabled for institutions that support it. Defaults to `true`. This setting is not persistent.
-          example: false
-          in: query
-          name: enable_app2app
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description:
-            Must be either `BROWSER` or `APP` depending on the implementation.
-            Defaults to `BROWSER`.
-          example: APP
-          in: query
-          name: referral_source
-          schema:
-            type: string
-        - description:
-            Setting this parameter to `true` will prevent the member from
-            automatically aggregating after being redirected from the authorization
-            page.
-          example: false
-          in: query
-          name: skip_aggregation
-          schema:
-            type: boolean
-        - description:
-            A scheme for routing the user back to the application state they
-            were previously in. Only available with `referral_source=APP`.
-          example: mx
-          in: query
-          name: ui_message_webview_url_scheme
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/clientRedirectUrl'
+        - $ref: '#/components/parameters/enableApp2app'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/referralSource'
+        - $ref: '#/components/parameters/skipAggregation'
+        - $ref: '#/components/parameters/uiMessageWebviewUrlScheme'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -8488,20 +7827,8 @@ paths:
         challenged by multi-factor authentication.
       operationId: resumeAggregation
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -8524,20 +7851,8 @@ paths:
       description: Use this endpoint to list all the `rewards` associated with a specified `member`.
       operationId: listRewards
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique identifier for the member. Defined by MX.
-          example: MBR-fa7537f3-48aa-a683-a02a-b18345562f54
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/memberGuid'
       responses:
         "200":
           content:
@@ -8553,27 +7868,9 @@ paths:
       description: Use this endpoint to read a specific `reward` based on its unique GUID..
       operationId: readRewards
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique identifier for the member. Defined by MX.
-          example: MBR-fa7537f3-48aa-a683-a02a-b18345562f54
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique identifier for the rewards. Defined by MX.
-          example: RWD-fa7537f3-48aa-a683-a02a-b324322f54
-          in: path
-          name: reward_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/rewardGuid'
       responses:
         "200":
           content:
@@ -8589,32 +7886,10 @@ paths:
       description: Use this endpoint to get an array of available statements.
       operationId: listStatementsByMember
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -8630,27 +7905,9 @@ paths:
       description: Use this endpoint to read a JSON representation of the statement.
       operationId: readStatementByMember
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `statement`.
-          example: STA-737a344b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: statement_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/statementGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -8666,27 +7923,9 @@ paths:
       description: Use this endpoint to download a specified statement PDF.
       operationId: downloadStatementPDF
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `statement`.
-          example: STA-737a344b-caae-0f6e-1384-01f52e75dcb1
-          in: path
-          name: statement_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/statementGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -8712,20 +7951,8 @@ paths:
         being.
       operationId: readMemberStatus
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -8741,32 +7968,10 @@ paths:
       description: Use this endpoint to get a paginated list of tax documents.
       operationId: listTaxDocuments
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -8789,20 +7994,8 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -8827,20 +8020,8 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -8859,44 +8040,12 @@ paths:
         with the specified `member`, accross all accounts associated with that `member`.
       operationId: listTransactionsByMember
       parameters:
-        - description: Filter transactions from this date.
-          example: "2015-09-20"
-          in: query
-          name: from_date
-          schema:
-            type: string
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: Filter transactions to this date.
-          example: "2019-10-20"
-          in: query
-          name: to_date
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/fromDate'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/toDate'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -8912,20 +8061,8 @@ paths:
       description: The verify endpoint begins a verification process for a member.
       operationId: verifyMember
       parameters:
-        - description: The unique id for a `member`.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: member_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -8943,12 +8080,7 @@ paths:
       summary: List all microdeposits for a user
       description: Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID.
       parameters:
-        - name: user_guid
-          description: The unique identifier for the user. Defined by MX.
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       responses:
         '200':
           description: OK
@@ -8962,12 +8094,7 @@ paths:
       summary: Create a microdeposit
       description: Use this endpoint to create a microdeposit. The response will include the new microdeposit record with a status of INITIATED.
       parameters:
-        - name: user_guid
-          description: The unique identifier for the user. Defined by MX.
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -8989,20 +8116,8 @@ paths:
       description:
         Use this endpoint to delete the specified microdeposit.
       parameters:
-        - name: micro_deposit_guid
-          description: The unique identifier for the microdeposit. Defined by MX.
-          in: path
-          required: true
-          example: MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/microDepositGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No Content
@@ -9012,18 +8127,8 @@ paths:
       summary: Read a microdeposit for a user
       description: Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID. <br></br> Webhooks for microdeposit status changes are triggered when a status changes. The actual status of the microdeposit guid updates every minute. You may force a status update by calling the read microdeposit endpoint.
       parameters:
-        - name: user_guid
-          description: The unique identifier for the user. Defined by MX.
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: micro_deposit_guid
-          description: The unique identifier for the microdeposit. Defined by MX.
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/microDepositGuid'
       responses:
         '200':
           description: OK
@@ -9038,7 +8143,7 @@ paths:
       summary: Verify a Microdeposit
       description: Use this endpoint to verify the amounts deposited into the account during a microdeposit verification. The verification has not successfully completed until the `status` is `VERIFIED`. Poll the `/users/{user_guid}/micro_deposits/{micro_deposit_guid}` (read microdeposit) endpoint until you see this status or an error state.
       parameters:
-        - name: microdeposit_guid
+        - name: micro_deposit_guid
           description: The unique identifier for the microdeposit. Defined by MX.
           in: path
           required: true
@@ -9059,12 +8164,7 @@ paths:
   "/users/{user_guid}/monthly_cash_flow_profile":
     get:
       parameters:
-        - name: user_guid
-          description: The unique identifier for the user.
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       responses:
         '200':
           description: OK
@@ -9078,12 +8178,7 @@ paths:
     put:
       description: Use this endpoint to update the attributes of a `monthly_cash_flow_profile`.
       parameters:
-        - name: user_guid
-          description: The unique identifier for the user.
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         required: true
         content:
@@ -9105,20 +8200,8 @@ paths:
       description: This endpoint creates a new `spending_plan_iteration_item`.
       operationId: createSpendingPlanIterationItem
       parameters:
-        - description: The unique ID for the `spending_plan`.
-          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
-          in: path
-          name: spending_plan_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/spendingPlanGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -9140,32 +8223,10 @@ paths:
       description: Use this endpoint to list all the spending plan `iteration_items` associated with the `iteration`.
       operationId: listSpendingPlanIterationItems
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `spending_plan`.
-          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
-          in: path
-          name: spending_plan_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/spendingPlanGuid'
       responses:
         "200":
           content:
@@ -9181,13 +8242,7 @@ paths:
       description: This endpoint creates a new `spending_plan` for the user.
       operationId: createSpendingPlan
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -9202,25 +8257,9 @@ paths:
       description: Use this endpoint to list all the spending plans associated with the user.
       operationId: listSpendingPlans
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -9236,27 +8275,9 @@ paths:
       description: Use this endpoint to delete a `spending_plan_account`.
       operationId: deleteSpendingPlanAccount
       parameters:
-        - description: The unique ID for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `spending_plan`.
-          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
-          in: path
-          name: spending_plan_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the specified account.
-          example: ACT-e9f80fee-84da-7s7r-9a5e-0346g4279b4c
-          in: path
-          name: spending_plan_account_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/spendingPlanGuid'
+        - $ref: '#/components/parameters/spendingPlanAccountGuid'
       responses:
         "204":
           description: No Content
@@ -9267,39 +8288,11 @@ paths:
       description: Use this endpoint to read the attributes of a specific spending plan account according to its unique GUID.
       operationId: readSpendingPlanAccount
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `spending_plan`.
-          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
-          in: path
-          name: spending_plan_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the specified account.
-          example: ACT-e9f80fee-84da-7s7r-9a5e-0346g4279b4c
-          in: path
-          name: spending_plan_account_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/spendingPlanGuid'
+        - $ref: '#/components/parameters/spendingPlanAccountGuid'
       responses:
         "200":
           content:
@@ -9315,27 +8308,9 @@ paths:
       description: Use this endpoint to delete a spending plan `iteration_item`.
       operationId: deleteSpendingPlanIterationItem
       parameters:
-        - description: The unique ID for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `spending_plan`.
-          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
-          in: path
-          name: spending_plan_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `iteration_item`.
-          example: SII-a4dc1549-da28-1245-9c9c-53eee4cdfbe3
-          in: path
-          name: iteration_item_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/spendingPlanGuid'
+        - $ref: '#/components/parameters/iterationItemGuid'
       responses:
         "204":
           description: No Content
@@ -9346,39 +8321,11 @@ paths:
       description: Use this endpoint to read the attributes of a specific spending plan `iteration_item` according to its unique GUID.
       operationId: readSpendingPlanIterationItem
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `spending_plan`.
-          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
-          in: path
-          name: spending_plan_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `iteration_item`.
-          example: SII-a4dc1549-da28-1245-9c9c-53eee4cdfbe3
-          in: path
-          name: iteration_item_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/spendingPlanGuid'
+        - $ref: '#/components/parameters/iterationItemGuid'
       responses:
         "200":
           content:
@@ -9393,27 +8340,9 @@ paths:
       description: Use this endpoint to update an existing `spending_plan_iteration_item`.
       operationId: updateSpendingPlanIterationItem
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `spending_plan`.
-          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
-          in: path
-          name: spending_plan_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `iteration_item`.
-          example: SII-a4dc1549-da28-1245-9c9c-53eee4cdfbe3
-          in: path
-          name: iteration_item_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/spendingPlanGuid'
+        - $ref: '#/components/parameters/iterationItemGuid'
       requestBody:
         content:
           application/json:
@@ -9436,20 +8365,8 @@ paths:
       description: Use this endpoint to delete a user's `spending_plan`.
       operationId: deleteSpendingPlan
       parameters:
-        - description: The unique ID for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `spending_plan`.
-          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
-          in: path
-          name: spending_plan_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/spendingPlanGuid'
       responses:
         "204":
           description: No Content
@@ -9460,32 +8377,10 @@ paths:
       description: Use this endpoint to read the attributes of a specific spending plan according to its unique GUID.
       operationId: readSpendingPlanUser
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `spending_plan`.
-          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
-          in: path
-          name: spending_plan_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/spendingPlanGuid'
       responses:
         "200":
           content:
@@ -9501,32 +8396,10 @@ paths:
       description: Use this endpoint to list all the spending plan accounts associated with the spending plan.
       operationId: listSpendingPlanAccounts
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `spending_plan`.
-          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
-          in: path
-          name: spending_plan_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/spendingPlanGuid'
       responses:
         "200":
           content:
@@ -9542,32 +8415,10 @@ paths:
       description: Use this endpoint to list all the spending plan `iterations` associated with the `spending_plan`.
       operationId: listSpendingPlanIterations
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `spending_plan`.
-          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
-          in: path
-          name: spending_plan_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/spendingPlanGuid'
       responses:
         "200":
           content:
@@ -9583,39 +8434,11 @@ paths:
       description: Use this endpoint to read the attributes of a specific spending plan `iteration` according to its `iteration_number`.
       operationId: readSpendingPlanIteration
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique ID for the `spending_plan`.
-          example: SPL-e5f9a5bd-c5b3-4901-bdc0-62119b9db262
-          in: path
-          name: spending_plan_guid
-          required: true
-          schema:
-            type: string
-        - description: The current iteration number for the spending plan `iteration``.
-          example: 1
-          in: path
-          name: iteration_number
-          required: true
-          schema:
-            type: integer
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/spendingPlanGuid'
+        - $ref: '#/components/parameters/iterationNumber'
       responses:
         "200":
           content:
@@ -9633,25 +8456,9 @@ paths:
         with a specific user.
       operationId: listTaggings
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -9668,13 +8475,7 @@ paths:
         a particular transaction, according to their unique GUIDs.
       operationId: createTagging
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -9702,20 +8503,8 @@ paths:
         NO Content.
       operationId: deleteTagging
       parameters:
-        - description: The unique id for a `tagging`.
-          example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
-          in: path
-          name: tagging_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/taggingGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No Content
@@ -9728,20 +8517,8 @@ paths:
         to its unique GUID.
       operationId: readTagging
       parameters:
-        - description: The unique id for a `tagging`.
-          example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
-          in: path
-          name: tagging_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/taggingGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -9756,20 +8533,8 @@ paths:
       description: Use this endpoint to update a tagging.
       operationId: updateTagging
       parameters:
-        - description: The unique id for a `tagging`.
-          example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
-          in: path
-          name: tagging_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/taggingGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -9794,25 +8559,9 @@ paths:
         `user`. Each user includes the `Business` tag by default.
       operationId: listTags
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -9827,13 +8576,7 @@ paths:
       description: Use this endpoint to create a new custom tag.
       operationId: createTag
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -9859,20 +8602,8 @@ paths:
         Content`.
       operationId: deleteTag
       parameters:
-        - description: The unique id for a `tag`.
-          example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
-          in: path
-          name: tag_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/tagGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No Content
@@ -9885,20 +8616,8 @@ paths:
         to its unique GUID.
       operationId: readTag
       parameters:
-        - description: The unique id for a `tag`.
-          example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
-          in: path
-          name: tag_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/tagGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -9915,20 +8634,8 @@ paths:
         to its unique GUID.
       operationId: updateTag
       parameters:
-        - description: The unique id for a `tag`.
-          example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
-          in: path
-          name: tag_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/tagGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -9955,44 +8662,12 @@ paths:
         the create a tagging endpoint.
       operationId: listTransactionsByTag
       parameters:
-        - description: Filter transactions from this date.
-          example: "2015-09-20"
-          in: query
-          name: from_date
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `tag`.
-          example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
-          in: path
-          name: tag_guid
-          required: true
-          schema:
-            type: string
-        - description: Filter transactions to this date.
-          example: "2019-10-20"
-          in: query
-          name: to_date
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/fromDate'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/tagGuid'
+        - $ref: '#/components/parameters/toDate'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -10010,25 +8685,9 @@ paths:
         rules belonging to the user.
       operationId: listTransactionRules
       parameters:
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -10045,13 +8704,7 @@ paths:
         `transaction_rule` object will be returned if successful.
       operationId: createTransactionRule
       parameters:
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -10078,20 +8731,8 @@ paths:
         on its unique GUID.
       operationId: deleteTransactionRule
       parameters:
-        - description: The unique id for a `transaction_rule`.
-          example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
-          in: path
-          name: transaction_rule_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/transactionRuleGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No Content
@@ -10104,20 +8745,8 @@ paths:
         rule based on the rule’s unique GUID.
       operationId: readTransactionRule
       parameters:
-        - description: The unique id for a `transaction_rule`.
-          example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
-          in: path
-          name: transaction_rule_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/transactionRuleGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -10135,20 +8764,8 @@ paths:
         object. Any attributes not provided will be left unchanged.
       operationId: updateTransactionRule
       parameters:
-        - description: The unique id for a `transaction_rule`.
-          example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
-          in: path
-          name: transaction_rule_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/transactionRuleGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -10174,37 +8791,11 @@ paths:
         that `user`.
       operationId: listTransactions
       parameters:
-        - description: Filter transactions from this date.
-          example: "2015-09-20"
-          in: query
-          name: from_date
-          schema:
-            type: string
-        - description: Specify current page.
-          example: 1
-          in: query
-          name: page
-          schema:
-            type: integer
-        - description: Specify records per page.
-          example: 10
-          in: query
-          name: records_per_page
-          schema:
-            type: integer
-        - description: Filter transactions to this date.
-          example: "2019-10-20"
-          in: query
-          name: to_date
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/fromDate'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/toDate'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -10222,20 +8813,8 @@ paths:
         `transaction`.
       operationId: readTransaction
       parameters:
-        - description: The unique id for a `transaction`.
-          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-          in: path
-          name: transaction_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/transactionGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "200":
           content:
@@ -10252,20 +8831,8 @@ paths:
         according to its unique GUID.
       operationId: updateTransaction
       parameters:
-        - description: The unique id for a `transaction`.
-          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-          in: path
-          name: transaction_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/transactionGuid'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
@@ -10287,20 +8854,8 @@ paths:
     delete:
       description: This endpoint deletes all split transactions linked to a parent transaction, but it leaves the parent transaction active. This request will also update the parent transaction's has_been_split field to false. This endpoint accepts the optional MX-Skip-Webhook header.
       parameters:
-        - description: The unique id for a `transaction`.
-          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-          in: path
-          name: transaction_guid
-          required: true
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-85628b0-5210-4878-9bd3-f4ce154f90c4
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/transactionGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No content
@@ -10310,18 +8865,8 @@ paths:
     post:
       description: This endpoint creates two or more child transactions that are branched from a previous transaction. This endpoint allows you to link multiple categories, descriptions, and amounts to a parent transaction.  When a split transaction is created, the parent transaction's `has_been_split` field will automatically be updated to true and the child transactions' `parent_guid` will have the transaction guid of the parent. The total amount of the child transactions must equal the amount of the parent transaction. Once a transaction has been split it can't be split again.    In order to re-split a transaction, it must first be un-split. This can be done by calling the Delete Split Transactions endpoint. Calling this endpoint will delete the existing child transactions and update the parent transaction's `has_been_split` field to false. You can then re-split the parent transaction by calling Create Split Transaction again.
       parameters:
-        - name: user_guid
-          description: The unique identifier for the user. Defined by MX.
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: transaction_guid
-          description: The unique identifier for the transaction. Defined by MX.
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/transactionGuid'
       requestBody:
         content:
           application/json:
@@ -10347,19 +8892,8 @@ paths:
         of configuration options. Note that this is a `POST` request.
       operationId: requestWidgetURL
       parameters:
-        - description: The desired language of the widget.
-          example: en-US
-          in: header
-          name: Accept-Language
-          schema:
-            type: string
-        - description: The unique id for a `user`.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          in: path
-          name: user_guid
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/acceptLanguage'
+        - $ref: '#/components/parameters/userGuid'
       requestBody:
         content:
           application/json:
