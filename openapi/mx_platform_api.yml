@@ -4152,6 +4152,1008 @@ components:
         widget_url:
           "$ref": "#/components/schemas/WidgetResponse"
       type: object
+    ACHResponse:
+      properties:
+        account_guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: false
+          type: string
+        account_number_last_four:
+          example: "1234"
+          nullable: true
+          type: string
+        account_type:
+          type: string
+          nullable: true
+          example: "CREDIT"
+        ach_initiated_at:
+          example: "2025-02-13T18:08:00+00:00"
+          nullable: true
+          type: string
+        client_guid:
+          example: CLT-abcd-1234
+          nullable: false
+          type: string
+        corrected_account_number:
+          example: null
+          nullable: true
+          type: string
+        corrected_routing_number:
+          example: null
+          nullable: true
+          type: string
+        created_at:
+          example: null
+          nullable: false
+          type: string
+        guid:
+          example: ACH-d74cb14f-fd0a-449f-991b-e0362a63d9c6
+          nullable: false
+          type: string
+        id:
+          example: client_ach_return_id_1234
+          nullable: false
+          type: string
+        institution_guid:
+          example: INS-34r4f44b-cfge-0f6e-3484-21f47e45tfv7
+          nullable: false
+          type: string
+        investigation_notes:
+          example: null
+          nullable: true
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: false
+          type: string
+        processing_errors:
+          example: null
+          nullable: true
+          type: string
+        resolution_code:
+          example: null
+          nullable: true
+          type: string
+        resolution_detail:
+          example: null
+          nullable: true
+          type: string
+        resolved_status_at:
+          example: null
+          nullable: true
+          type: string
+        return_code:
+          example: "R01"
+          nullable: false
+          type: string
+        return_notes:
+          example: null
+          nullable: true
+          type: string
+        return_account_number:
+          example: null
+          nullable: true
+          type: string
+        return_routing_number:
+          example: null
+          nullable: true
+          type: string
+        return_status:
+          example: "SUBMITTED"
+          nullable: true
+          type: string
+        returned_at:
+          example: "2025-02-13T18:09:00+00:00"
+          nullable: true
+          type: string
+        sec_code:
+          example: "PPD"
+          nullable: true
+          type: string
+        started_processing_at:
+          example: null
+          nullable: true
+          type: string
+        submitted_at:
+          example: null
+          nullable: true
+          type: string
+        transaction_amount:
+          example: 225.84
+          format: double
+          nullable: true
+          type: number
+        updated_at:
+          example: null
+          nullable: false
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: false
+          type: string
+      type: object
+    ACHReturnCreateRequest:
+      properties:
+        account_guid:
+          description: The unique identifier for the account associated with the transaction. Defined by MX.
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: false
+          type: string
+        account_number_last_four:
+          description: The last 4 digits of the account number used for the transaction by the Originating Depository Financial Institution (ODFI).
+          example: "1234"
+          type: string
+        ach_initiated_at:
+          description: The date and time when the transaction was initiated by the Originating Depository Financial Institution (ODFI) in ISO 8601 format without timestamp.
+          example: "2025-02-13T18:08:00+00:00"
+          type: string
+        corrected_account_number:
+          description:  The account number correction reported by the RDFI. Populate only if the `resolution_code` is `NOTICE_OF_CHANGE`.
+          example: null
+          type: string
+        corrected_routing_number:
+          description: The routing number correction reported by the RDFI. Populate only if the `resolution_code` is `NOTICE_OF_CHANGE`. Must be a valid 9-digit routing number format.
+          example: null
+          type: string
+        id:
+          description: Client-defined identifier for this specific return submission. Allows you to track and reference you requests.
+          example: client_ach_id_1234
+          nullable: false
+          type: string
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          description: The unique identifier for the member associated with the transaction. Defined by MX.
+          nullable: false
+          type: string
+        return_account_number:
+          description: Incorrect account number used in the ACH transaction.
+          example: null
+          type: string
+        return_code:
+          description: The associated ACH return code and notice of change code (for example, R02, R03, R04, R05, R20, NOC). See [Return Codes](/api-reference/platform-api/reference/ach-return-fields#return-codes) for a complete list.
+          example: "R01"
+          nullable: false
+          type: string
+        return_notes:
+          description: Notes that you set to inform MX on internal ACH processing.
+          example: null
+          type: string
+        return_routing_number:
+          description: Incorrect routing number used in the ACH transaction.
+          example: null
+          type: string
+        returned_at:
+          description: The date and time when the return was reported by the Receiving Financial Depository Institution (RDFI) in ISO 8601 format without timestamp.
+          example: "2025-02-13T18:09:00+00:00"
+          type: string
+        sec_code:
+          description: The SEC code (Standard Entry Class Code)–a three-letter code describing how a payment was authorized (for example, `WEB`). See [SEC Codes](/api-reference/platform-api/reference/ach-return-fields#sec-codes) for a complete list.
+          example: "PPD"
+          type: string
+        transaction_amount:
+          description: The amount of the transaction.
+          example: 225.84
+          type: number
+        transaction_amount_range:
+          description: The transaction amount range, used for impact assessment.
+          example: null
+          type: number
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          description: MX-defined identifier for the user associated with the ACH return.
+          nullable: false
+          type: string
+      required:
+        - member_guid
+        - account_guid
+        - id
+        - user_guid
+        - return_code
+    ACHReturnCreateRequestBody:
+      properties:
+        ach_return:
+          $ref: '#/components/schemas/ACHReturnCreateRequest'
+      type: object
+    ACHReturnResponseBody:
+      properties:
+        ach_return:
+          $ref: '#/components/schemas/ACHResponse'
+      type: object
+    ACHReturnsResponseBody:
+      properties:
+        ach_returns:
+          items:
+            $ref: '#/components/schemas/ACHResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    AllVerifications:
+      properties:
+        account_name:
+          type: string
+          example: My test account
+        account_number:
+          type: string
+          example: 3331261
+        account_type:
+          type: string
+          example: CHECKING
+        account_number_guid:
+          type: string
+          example: null
+        created_at:
+          type: string
+          example: null
+        routing_number: 
+          type: string
+          example: 091000019
+        error_message:
+          type: string
+          example: null
+        micro_deposit_guid:
+          type: string
+          example: MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb
+        institution_code:
+          example: mxbank
+          type: string
+        institution_name:
+          example: MX Bank
+          type: string
+        status:
+          example: INITIATED
+          type: string
+        updated_at:
+          example: 2023-06-01T19:18:06Z
+          type: string
+        verification_method:
+          type: string
+          example: MICRO_DEPOSIT
+        verified_at:
+          example: null
+          type: string
+    AllVerificationsResponse:
+      properties:
+        account_verifications:
+          $ref: '#/components/schemas/AllVerifications'
+      type: object
+    InsightUpdateRequestBody:
+      properties:
+        insight:
+          $ref: '#/components/schemas/InsightUpdateRequest'
+      type: object
+    InvestmentHoldingResponse:
+      properties:
+        account_guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
+          type: string
+        cost_basis:
+          example: 827.0
+          nullable: true
+          type: number
+        coupon_yield:
+          example: null
+          nullable: true
+          type: string
+        currency_code:
+          example: USD
+          nullable: true
+          type: string
+        current_price: 
+          example: 15
+          nullable: true
+          type: number
+        daily_change:
+          example: 2.5
+          nullable: true
+          type: number
+        description:
+          example: Guggenheim Defensive Equity ETF
+          nullable: true
+          type: string
+        expiration:
+          example: null
+          nullable: true
+          type: string
+        face_value:
+          example: null
+          nullable: true
+          type: number
+        frequency:
+          example: null
+          nullable: true
+          type: string
+        guid:
+          example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
+          nullable: true
+          type: string
+        market_value:
+          example: 989.5
+          nullable: true
+          type: number
+        maturity_date:
+          example: null
+          nullable: true
+          type: string
+        percentage_change:
+          example: 0.2
+          nullable: true
+          type: number
+        purchase_price:
+          example: 26.3
+          nullable: true
+          type: number
+        quantity:
+          example: '5000.0'
+          nullable: true
+          type: string
+        rate:  
+          example: null
+          nullable: true
+          type: number
+        strike_price:
+          example: null
+          nullable: true
+          type: number
+        symbol:
+          example: DEF
+          nullable: true
+          type: string
+        term: 
+          example: null
+          nullable: true
+          type: string
+        today_ugl_amount:
+          example: 200.0
+          nullable: true
+          type: number
+        today_ugl_percentage: 
+          example: 0.27
+          nullable: true
+          type: number
+        total_ugl_amount:
+          example: 20000.0
+          nullable: true
+          type: number
+        total_ugl_percentage:
+          example: 26.67
+          nullable: true
+          type: number
+        unvested_quantity:
+          example: null
+          nullable: true
+          type: number
+        unvested_value:
+          example: null
+          nullable: true
+          type: number
+        user_guid:
+          example: USR-743e5d7f-1116-28fa-5de1-d3ba02e41d8d
+          nullable: true
+          type: string
+        vested_quantity:
+          example: null
+          nullable: true
+          type: number
+        vested_value:
+          example: null
+          nullable: true
+          type: number
+        created_at:
+          example: '2015-04-13T18:01:23.000Z'
+          nullable: true
+          type: string
+        current_price_as_of:
+          example: '2023-11-06T00:00:00Z'
+          nullable: true
+          type: string
+        issue_date:
+          example: '2015-08-15'
+          nullable: true
+          type: string 
+        vesting_start_date: 
+          example: null
+          nullable: true
+          type: string
+        vesting_end_date:
+          example: null
+          nullable: true
+          type: string
+        put_or_call: 
+          example: null
+          nullable: true
+          type: string
+        holding_type: 
+          example: MUTUAL_FUND
+          nullable: true
+          type: string
+        term_unit:
+          example: null
+          nullable: true
+          type: string
+      type: object
+    InvestmentHoldingResponseBody:
+      properties:
+        investment_holding:
+          $ref: '#/components/schemas/InvestmentHoldingResponse'
+      type: object
+    InvestmentHoldingsDeactivation:
+      properties:
+        message:
+          example: 'Successfully deactivated user from billing'
+        status: 
+          example: 200
+    InvestmentHoldingsResponseBody:
+      properties:
+        investment_holdings:
+          items:
+            $ref: '#/components/schemas/InvestmentHoldingResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    MemberElements:
+      properties:
+        account_guid:
+          example: ACT-283132a4-1401-486a-909e-1605f1623d11
+          type: string
+        member_guid:
+          example: MBR-54feffb9-8474-47bd-8442-de003910113a
+          type: string
+        user_guid:
+          example: USR-101ad774-288b-44ed-ad16-da87d522ea20
+          type: string 
+    MicrodepositElements:
+      properties:
+        account_name:
+          example: My test account
+          type: string
+        account_number:
+          example: '3331261'
+          type: string
+        account_type:
+          example: CHECKING
+          type: string
+        email: 
+          example: joshyboy2@example.com
+          type: string
+        first_name:
+          example: Joshy
+          type: string
+        last_name: 
+          example: Grobanne
+          type: string
+        routing_number:
+          example: '091000019' 
+          type: string
+      required:
+        - account_number
+        - account_type
+        - routing_number
+    NotificationResponse:
+      properties:
+        guid:
+          example: TF-b53294f5-2356-4782-9f81-ae064c42b40a
+        content: 
+          example: The content related to the notification. 
+        deep_link_guid:
+          example: BGT-e386a323-e452-47f2-b2fd-1ac3c18533de
+        delivered_at:
+          example: null
+        entity_guid:
+          example: BGT-e386a323-e452-47f2-b2fd-1ac3c18533de
+        has_been_delivered:
+          example: true
+        has_been_viewed:
+          example: false
+        notification_type:
+          example: 2
+        subject:
+          example: You're projected to spend $1,920.07 more than you've budgeted for Fees & Charges. You've already spent $65.67 of $316.00.
+        channel:
+          example: push 
+    NotificationResponseBody:
+      properties: 
+        notification:
+          $ref: '#/components/schemas/NotificationResponse'
+      type: object
+    NotificationsResponseBody:
+      properties: 
+        notifications:
+          items:
+            $ref: '#/components/schemas/NotificationResponse'
+      type: object
+    PaymentAccount:
+      properties:
+        account_name:
+          example: MX Bank Checking
+        account_number:
+          example: 6366816006
+        account_type:
+          example: CHECKING
+        available_balance:
+          example: 1000
+        balance: 
+          example: 1000
+        created_at:
+          example: 2022-03-17T20:38:58Z
+        routing_number: 
+          example: 242722023
+        transit_number: 
+          example: null
+        updated_at: 
+          example: 2022-11-29T08:02:07Z
+    PaymentAccountBody:
+      properties:
+        payment_account:
+            allOf:
+              - $ref: '#/components/schemas/MemberElements'
+              - $ref: '#/components/schemas/PaymentAccount'
+      type: object
+    PreInitiateMicrodeposit:
+      properties:
+        email:  
+          type: string
+          example: john.doe@mx.com
+        first_name: 
+          type: string
+          example: John
+        last_name:
+          type: string
+          example: Doe
+      required:
+        - email
+        - first_name
+        - last_name
+    ProcessorAccountNumber:
+      properties:
+        account_number:
+          example: 6366816006
+          type: integer
+        guid:
+          example: ACN-68c0b681-78c2-4731-9b41-d6e8ae2846cf
+          type: string
+        institution_number:
+          example: null
+        loan_guarantor:
+          example: null
+        loan_reference_number:
+          example: null
+        passed_validation:
+          example: true
+        routing_number:
+          example: 242564563
+          type: integer
+        sequence_number:
+          example: null
+        transit_number:
+          example: null
+    ProcessorAccountNumberBody:
+      properties:
+        account_numbers:
+          items:
+            allOf:
+              - $ref: '#/components/schemas/MemberElements'
+              - $ref: '#/components/schemas/ProcessorAccountNumber'
+      type: object
+    ProcessorOwner:
+      properties:
+        guid:
+          example: ACO-a06b74ec-6a58-4c0b-b437-8de5e03194ac
+        owner_name:
+          example: Janita Pollich
+        address: 
+          example: 3541 Adrian Street
+        city: 
+          example: North Kishaberg
+        state:
+          example: Maine
+        postal_code:
+          example: 45054-7764
+        country:
+          example: null
+        email:
+          example: janita.pollich823@beerpowlowski.ca
+        phone:
+          example: 676-932-5861
+    ProcessorOwnerBody:
+      properties:
+        account_owners:
+          items:
+            allOf:
+              - $ref: '#/components/schemas/MemberElements'
+              - $ref: '#/components/schemas/ProcessorOwner'
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    ProcessorTransaction:
+      properties: 
+        account_guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
+          type: string
+        account_id:
+          example: account123
+          nullable: true
+          type: string
+        amount:
+          example: 61.11
+          nullable: true
+          type: number
+        category:
+          example: Groceries
+          nullable: true
+          type: string
+        category_guid:
+          example: CAT-9588eaad-90a4-bb5c-66c8-1812503d0db8
+          nullable: true
+          type: string
+        check_number_string:
+          example: '6812'
+          nullable: true
+          type: string
+        created_at:
+          example: '2016-10-06T09:43:42.000Z'
+          nullable: true
+          type: string
+        currency_code:
+          example: USD
+          nullable: true
+          type: string
+        date:
+          example: '2013-09-23T00:00:00.000Z'
+          nullable: true
+          type: string
+        description:
+          example: Whole foods
+          nullable: true
+          type: string
+        extended_transaction_type:
+          example: partner_transaction_type
+          nullable: true
+          type: string
+        guid:
+          example: TRN-265abee9-889b-af6a-c69b-25157db2bdd9
+          nullable: true
+          type: string
+        id:
+          example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
+          nullable: true
+          type: string
+        is_bill_pay:
+          example: false
+          nullable: true
+          type: boolean
+        is_direct_deposit:
+          example: false
+          nullable: true
+          type: boolean
+        is_expense:
+          example: true
+          nullable: true
+          type: boolean
+        is_fee:
+          example: false
+          nullable: true
+          type: boolean
+        is_income:
+          example: false
+          nullable: true
+          type: boolean
+        is_international:
+          example: false
+          nullable: true
+          type: boolean
+        is_overdraft_fee:
+          example: false
+          nullable: true
+          type: boolean
+        is_payroll_advance:
+          example: false
+          nullable: true
+          type: boolean
+        is_recurring:
+          example: false
+          nullable: true
+          type: boolean
+        is_subscription:
+          example: false
+          nullable: true
+          type: boolean
+        latitude:
+          example: -43.2075
+          nullable: true
+          type: number
+        localized_description:
+          example: This is a localized_description
+          nullable: true
+          type: string
+        localized_memo:
+          example: This is a localized_memo
+          nullable: true
+          type: string
+        longitude:
+          example: 139.691706
+          nullable: true
+          type: number
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
+          type: string
+        member_is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        memo:
+          example: This is a memo
+          nullable: true
+          type: string
+        merchant_category_code:
+          example: 5411
+          nullable: true
+          type: integer
+        merchant_guid:
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          nullable: true
+          type: string
+        merchant_location_guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          nullable: true
+          type: string
+        metadata:
+          example: some metadata
+          nullable: true
+          type: string
+        original_description:
+          example: WHOLEFDS TSQ 102
+          nullable: true
+          type: string
+        posted_at:
+          example: '2016-10-07T06:00:00.000Z'
+          nullable: true
+          type: string
+        status:
+          example: POSTED
+          nullable: true
+          type: string
+        top_level_category:
+          example: Food & Dining
+          nullable: true
+          type: string
+        transacted_at:
+          example: '2016-10-06T13:00:00.000Z'
+          nullable: true
+          type: string
+        type:
+          example: DEBIT
+          nullable: true
+          type: string
+        updated_at:
+          example: '2016-10-07T05:49:12.000Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
+          type: string
+        user_id:
+          example: user123
+          nullable: true
+          type: string
+      type: object
+    ProcessorTransactionBody:
+      properties:
+        transactions:
+          items:
+            $ref: '#/components/schemas/ProcessorTransaction'
+      type: object
+    RepeatingTransactionResponse:
+      properties:
+        account_guid:
+          example: ACT-0af29528-bb91-447f-b5de-85c1c42593e5
+          nullable: true
+          type: string
+        amount:
+          example: 107.4
+          type: number
+        description:
+          type: string
+          example: Dominion Energy
+        guid:
+          type: string
+          example: RPT-a2264e1a-d2e6-41d9-88d2-2cfdf1143959
+        member_guid:
+          type: string
+          example: MBR-78b14c5f-7297-4fb5-a966-65ac45f74d83
+        merchant_guid:
+          type: string
+          example: MCH-1b5d7e4d-fa29-95d1-fd0f-540b6f17d986
+        last_posted_date:
+          type: string
+          example: 2024-12-09
+        predicted_occurs_on:
+          type: string
+          example: 2025-01-09
+        recurrence_type:
+          type: string
+          example: EVERY_MONTH
+        user_guid:
+          type: string
+        repeating_transaction_type:
+          type: string
+          enum:
+            - BILL
+            - SUBSCRIPTION
+            - INCOME
+            - UNKNOWN
+        transaction_type:
+          type: string
+          enum:
+            - DEBIT
+            - CREDIT
+
+    RepeatingTransactionsResponseBody:
+      properties:
+        repeating_transactions:
+          items:
+            $ref: '#/components/schemas/RepeatingTransactionResponse'
+          type: array
+      type: object
+
+    TokenResponse:
+      properties:
+        payment_processor_guid:
+          example: PPR-084aa709-8218-4b5a-b3ab-70ffc7483daf
+          type: string
+        expires_at:
+          example: 2023-04-19T15:38:2800:00
+          type: string
+        access_token:
+          example: i8FnF...
+          type: string
+        active:
+          example: true
+          type: boolean 
+
+    TokenResponseBody:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/TokenResponse'
+      type: object
+
+    TransactionIncludesResponse:
+      allOf:
+        - $ref: '#/components/schemas/TransactionResponse'
+        - properties:
+            classification:
+              type: object
+              nullable: true
+              properties:
+                parent_class:
+                  example: 'Deposit'
+                  type: string
+                  enum:
+                    - Payroll
+                    - Deposit
+                    - Savings
+                    - Transfer
+                    - Refunds
+                    - Spend
+                    - Investment
+                    - Buy
+                    - Sell
+                    - Income
+                    - Fees
+                    - Expenses
+                    - 'Corporate Actions'
+                    - Other
+                guid:
+                  example: 'MNC-3ad50f86-60d0-4545-a1f9-e66c2ac40f69'
+                  type: string
+            geolocation:
+              nullable: true
+              type: object
+              properties:
+                country:
+                  example: 'us'
+                  type: string
+                state:
+                  example: 'UT'
+                  type: string
+                city:
+                  example: 'lehi'
+                  type: string
+                postal code:
+                  example: '84043'
+                  type: string
+            merchant:
+              type: object
+              nullable: true
+              properties:
+                name:
+                  example: 'MX'
+                  type: string
+                guid:
+                  example: 'MCH-0c25f895-393c-42a4-9c18-95a0b26d4d84'
+                  type: string
+                logo_url: 
+                  type: string
+                  example: 'https://content.mx.com/logos/merchants/MCH-0c25f895-393c-42a4-9c18-95a0b26d4d84.png'
+                website_url: 
+                  type: string
+                  example: 'https://www.mx.com'
+            repeating_transaction:
+              nullable: true
+              type: object
+              properties:
+                repeating_transaction_type:
+                  type: string
+                  enum:
+                    - BILL
+                    - SUBSCRIPTION
+                    - INCOME
+                    - UNKNOWN
+                recurrence_type:
+                  type: string
+                  enum:
+                    - EVERY_OTHER_WEEK
+                guid:
+                  type: string
+                  example: 'RPT-065b8b1d-826a-45ce-8487-60ca1510e72a'
+      type: object
+
+    TransactionsResponseBodyIncludes:
+      properties:
+        transactions:
+          items:
+            $ref: '#/components/schemas/TransactionIncludesResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+
+    VCResponse:
+      properties:
+        verifiableCredential:
+          example: 'feJgbGciOiJFZERTQSEsImtpFCI6ImRpZDpksHR6c4E6MTNkdzdqeWc0NGVqd2NkZjhpcWNzZWg3amN6NTF3ajZmanhib29qNDFpcGVnNzZlbyMwIiwidHlwIjoiSldUIn0.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvMjAxOC9jcmVkZW50aWFscy92MSJdLCJpZCI6Imh0dHBzOi8vYXBpLnNhbmQuaW50ZXJuYWwubXgvdmMvdXNlcnMvVVNSLTNlYTdjYzMxLWVkZDYtNDQxNy05YjM1LWRlZTZlMjQ4NDI1Yi9tZW1iZXJzL01CUi1jYzUxNDViZi02M2Q5LTQ5OGYtODc3Mi1lNGVmMzI0MWNjYjYvYWNjb3VudHMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRmluYW5jaWFsQWNjb3VudENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiZGlkOmRodDpzYTcxM2R3N2p5ZzQ0ZWp3Y2RmOGlxY3NlaDdqY3o1MXdqNmZqeGJvb2o0MWlwZWc3NmVvIiwiaXNzdWFuY2VEYXRlIjoiMjAyNC0wMy0wMVQxODo0MjoxOVoiLCJjcmVkZW50aWFsU3ViamVjdCI6eyJhY2NvdW50cyI6W3sibG9jQWNjb3VudCI6eyJhY2NvdW52SWQiOeABQ1RtODRhMDEyNjgtNTdkMC00YTI4LWEwYzEtZTcyYWRyNDA5NbJkIiwiYWNjb3VudFR5cFUiOiJDUkVESVRDQVJEIiwiYWNjb3VudE51bWJlciI6IjM0OTcyNTM0NCIsImFjY291bnROdW1iZXJEaXNwbGF5IjoiKioqKjUzNDQiLCJwcm9kdWN0TmFtZSI6bnVsbCwibmlja25hbWUiOm51bGwsInN0YXR1cyI6Ik9QRU4iLCJhY2NvdW50T3BlbkRhdGUiOiIyMDIyLTA3LTExVDE1OjQwOjQwWiIsImFjY291bnRDbG9zZWREYXRlIjpudWxsLCJjdXJyZW5jeSI6eyJjdXJyZW5jeVJhdGUiOm51bGwsImN1cnJlbmN5Q29kZSI6bnVsbCwib3JpZ2luYWxDdXJyZW5jeUNvZGUiOm51bGx9LCJmaUF0dHJpYnV0ZXMiOlt7Im5hbWUiOiJtZW1iZXJfZ3VpZCIsInZhbHVlIjoiTUJSLWNjNTE0NWJmLTYzZDktNDk4Zi04NzcyLWU0ZWYzMjQxY2NiNiJ9LHsibmFtZSI6Imluc3RpdHV0aW9uX2d1aWQiLCJ2YWx1ZSI6IklOUy1mMWEzMjg1ZC1lODU1LWI2OGYtNmFhNy04YWU3NzVjMGUwZTkifSx7Im5hbWUiOiJleHRlcm5hbF9ndWlkIiwidmFsdWUiOiJhY2NvdW50LWY3ZTg3ZWZmLTA2YzAtNDZhMS1iODAwLTUxOTI3ODM2MjFhOSJ9XSwicm91dGluZ1RyYW5zaXROdW1iZXIiOm51bGwsImJhbGFuY2VUeXBlIjoiTElBQklMSVRZIiwiaW50ZXJlc3RSYXRlIjpudWxsLCJsYXN0QWN0aXZpdHlEYXRlIjoiMjAyMi0wNy0xMVQxNTo0MDo0MFoiLCJiYWxhbmNlQXNPZiI6IjIwMjItMDctMTFUMTU6NDA6NDBaIiwiY3JlZGl0TGluZSI6bnVsbCwiYXZhaWxhYmxlQ3JlZGl0IjoxMzAwMC4wLCJuZXh0UGF5bWVudERhdGUiOm51bGwsInByaW5jaXBhbEJhbGFuY2UiOm51bGwsImN1cnJlbnRCYWxhbmNlIjoxMDAwLjAsIm1pbmltdW1QYXltZW50QW1vdW50IjpudWxsLCJwdXJjaGFzZXNBcHIiOm51bGx9fSx7ImRlcG9zaXRBY2NvdW50Ijp7ImFjY291bnRJZCI6IkFDVC05NmYzMGQ2Ny0xZTA1LTRhNGItOWZkNS01NzFlYmUzZGU5NWMiLCJhY2NvdW50VHlwZSI6IkNIRUNLSU5HIiwiYWNjb3VudE51bWJlciI6Ijg0NTUzNTE2MSIsImFjY291bnROdW1iZXJEaXNwbGF5IjoiKioqKjUxNjEiLCJwcm9kdWN0TmFtZSI6bnVsbCwibmlja25hbWUiOm51bGwsInN0YXR1cyI6Ik9QRU4iLCJhY2NvdW50T3BlbkRhdGUiOiIyMDIyLTA3LTExVDE1OjQwOjQwWiIsImFjY291bnRDbG9zZWREYXRlIjpudWxsLCJjdXJyZW5jeSI6eyJjdXJyZW5jeVJhdGUiOm51bGwsImN1cnJlbmN5Q29kZSI6bnVsbCwib3JpZ2luYWxDdXJyZW5jeUNvZGUiOm51bGx9LCJmaUF0dHJpYnV0ZXMiOlt7Im5hbWUiOiJtZW1iZXJfZ3VpZCIsInZhbHVlIjoiTUJSLWNjNTE0NWJmLTYzZDktNDk4Zi04NzcyLWU0ZWYzMjQxY2NiNiJ9LHsibmFtZSI6Imluc3RpdHV0aW9uX2d1aWQiLCJ2YWx1ZSI6IklOUy1mMWEzMjg1ZC1lODU1LWI2OGYtNmFhNy04YWU3NzVjMGUwZTkifSx7Im5hbWUiOiJleHRlcm5hbF9ndWlkIiwidmFsdWUiOiJhY2NvdW50LWM2ZTc2MjQ0LTg4NjAtNDY0OS05ZDg1LTY1MGQzYWY5ZmViZSJ9XSwicm91dGluZ1RyYW5zaXROdW1iZXIiOm51bGwsImJhbGFuY2VUeXBlIjoiQVNTRVQiLCJpbnRlcmVzdFJhdGUiOm51bGwsImxhc3RBY3Rpdml0eURhdGUiOiIyMDIyLTA3LTExVDE1OjQwOjQwWiIsImJhbGFuY2VBc09mIjoiMjAyMi0wNy0xMVQxNTo0MDo0MFoiLCJjdXJyZW50QmFsYW5jZSI6MTAwMC4wLCJvcGVuaW5nRGF5QmFsYW5jZSI6bnVsbCwiYXZhaWxhYmxlQmFsYW5jZSI6MTAwMC4wLCJhbm51YWxQZXJjZW50YWdlWWllbGQiOm51bGwsIm1hdHVyaXR5RGF0ZSI6bnVsbH19LHsiZGVwb3NpdEFjY291bnQiOnsiYWNjb3VudElkIjoiQUNULWI4MjZlNGMyLTZkNjktNDVkNy1hMTM5LWJlNTY0NDFkNmE1OCIsImFjY291bnRUeXBlIjoiU0FWSU5HUyIsImFjY291bnROdW1iZXIiOiI1OTE4NzE2NjgiLCJhY2NvdW50TnVtYmVyRGlzcGxheSI6IioqKioxNjY4IiwicHJvZHVjdE5hbWUiOm51bGwsIm5pY2tuYW1lIjpudWxsLCJzdGF0dXMiOiJPUEVOIiwiYWNjb3VudE9wZW5EYXRlIjoiMjAyMi0wNy0xMVQxNTo0MDo0MFoiLCJhY2NvdW50Q2xvc2VkRGF0ZSI6bnVsbCwiY3VycmVuY3kiOnsiY3VycmVuY3lSYXRlIjpudWxsLCJjdXJyZW5jeUNvZGUiOm51bGwsIm9yaWdpbmFsQ3VycmVuY3lDb2RlIjpudWxsfSwiZmlBdHRyaWJ1dGVzIjpbeyJuYW1lIjoibWVtYmVyX2d1aWQiLCJ2YWx1ZSI6Ik1CUi1jYzUxNDViZi02M2Q5LTQ5OGYtODc3Mi1lNGVmMzI0MWNjYjYifSx7Im5hbWUiOiJpbnN0aXR1dGlvbl9ndWlkIiwidmFsdWUiOiJJTlMtZjFhMzI4NWQtZTg1NS1iNjhmLTZhYTctOGFlNzc1YzBlMGU5In0seyJuYW1lIjoiZXh0ZXJuYWxfZ3VpZCIsInZhbHVlIjoiYWNjb3VudC1kOTIyNTA4OC1hOTM2LTRkNjctOGQyYy0wY2EyYzgwOGYxMTYifV0sInJvdXRpbmdUcmFuc2l0TnVtYmVyIjpudWxsLCJiYWxhbmNlVHlwZSI6IkFTU0VUIiwiaW50ZXJlc3RSYXRlIjpudWxsLCJsYXN0QWN0aXZpdHlEYXRlIjoiMjAyMi0wNy0xMVQxNTo0MDo0MFoiLCJiYWxhbmNlQXNPZiI6IjIwMjItMDctMTFUMTU6NDA6NDBaIiwiY3VycmVudEJhbGFuY2UiOjEwMDAuMCwib3BlbmluZ0RheUJhbGFuY2UiOm51bGwsImF2YWlsYWJsZUJhbGFuY2UiOjEwMDAuMCwiYW5udWFsUGVyY2VudGFnZVlpZWxkIjpudWxsLCJtYXR1cml0eURhdGUiOm51bGx9fV0sImlkIjoiVVNSLTNlYTdjYzMxLWVkZDYtNDQxNy05YjM1LWRlZTZlMjQ4NDI1YiJ9fSwiaXNzIjoiZGlkOmRodDpzYTcxM2R3N2p5ZzQ0ZWp3Y2RmOGlxY3NlaDdqY3o1MXdqNmZqeGJvb2o0MWlwZWc3NmVvIiwiaWF0IjoxNzA5MzE4NTM5LCJqdGkiOiJodHRwczovL2FwaS5zYW5kLmludGVybmFsLm14L3ZjL3VzZXJzL1VTUi0zZWE3Y2MzMS1lZGQ2LTQ0MTctOWIzNS1kZWU2ZTI0ODQyNWIvbWVtYmVycy9NQlItY2M1MTQ1YmYtNjNkOS00OThmLTg3NzItZTRlZjMyNDFjY2I2L2FjY291bnRzIiwic3ViIjoiVVNSLTNlYTdjYzMxLWVkZDYtNDQxNy05YjM1LWRlZTZlMjQ4NDI1YiJ9._CiFkwbuhKxwwIehEQ1opsi-9NSoIwDqD2HFMw1ROKNuJPdepTXFEd_RDFbbg7lFj05vBXPUL7y9eVVgZXTvDw'
+          type: string
+      type: object
+
+    RewardElements:
+      properties:
+        balance_type: 
+          example: EXPIRING_BALANCE
+          type: string
+        balance: 
+          example: 102
+          type: integer
+        created_at:
+          example: 2020-01-28T21:09:01+0000
+          type: string
+        description: 
+          example: A description of the reward.
+          type: string 
+        expires_on: 
+          example: 2020-02-28
+          type: string
+        guid: 
+          example: RWD-1234
+          type: string
+        unit_type:
+          example: POINTS
+          type: string
+        updated_at:
+          example: 2023-06-01T19:18:06Z
+          type: string
+
+    TokenRequestBody:
+      properties:
+        scope:
+          $ref: '#/components/schemas/MemberElements'
+      type: object
+
   securitySchemes:
     basicAuth:
       scheme: basic
