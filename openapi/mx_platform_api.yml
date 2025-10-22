@@ -1099,6 +1099,11 @@ components:
         update_credentials:
           example: false
           type: boolean
+        enable_app2app:
+          example: false
+          type: boolean
+          description: |
+            This indicates whether OAuth app2app behavior is enabled for institutions that support it. Defaults to `true`. When set to `false`, the widget will **not** direct the end user to the institution's mobile application. This setting is not persistent. This setting currently only affects Chase institutions.
       type: object
     ConnectWidgetRequestBody:
       properties:
@@ -1651,10 +1656,6 @@ components:
           example: data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...
           nullable: true
           type: string
-        guid:
-          example: CRO-e7ecc864-61fd-47a6-a122-3cbc9016660d
-          nullable: true
-          type: string
         label:
           example: IMAGE_1
           nullable: true
@@ -1744,6 +1745,10 @@ components:
           type: string
         user_id:
           example: user-partner-defined-1234
+        has_associated_categories:
+          example: false
+          nullable: true
+          type: boolean  
       type: object
     InsightUpdateRequest:
       properties:
@@ -1833,6 +1838,20 @@ components:
         url:
           example: https://www.chase.com
           nullable: true
+          type: string
+        instructional_text_steps:
+          type: array
+          items:
+            type: string
+          description: An array of instructional steps that may contain html elements.
+          example: [ "Step 1: Do this.", "Step 2: Do that." ]
+          nullable: true
+        is_disabled_by_client:
+          example: false
+          nullable: true
+          type: boolean
+        iso_country_code:
+          example: US
           type: string
       type: object
     InstitutionResponseBody:
@@ -2260,6 +2279,16 @@ components:
         skip_aggregation:
           example: false
           type: boolean
+        use_cases:
+          type: array
+          description: The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`. Only set this if you've met with MX and have opted in to using this field.
+          items:
+            type: string
+            enum:
+              - MONEY_MOVEMENT
+              - PFM
+          example:
+            - "PFM"
       required:
         - credentials
         - institution_code
@@ -2296,10 +2325,6 @@ components:
           type: string
         connection_status_message:
           example: 'Connected to MX Bank'
-          nullable: true
-          type: string
-        error:
-          example: '{\"error_type\": \"MEMBER\", \"error_code\": 1000, \"error_message\": \"This Member has no eligible checking, savings, or money market accounts.\", \"user_message\": \"We could not find any accounts eligible for transfers. Please link a checking or savings account.\", \"locale\": \"en\"}'
           nullable: true
           type: string
         guid:
@@ -2468,6 +2493,16 @@ components:
         skip_aggregation:
           example: false
           type: boolean
+        use_cases:
+          type: array
+          description: The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`. Only set this if you've met with MX and have opted in to using this field.
+          items:
+            type: string
+            enum:
+              - MONEY_MOVEMENT
+              - PFM
+          example:
+            - "PFM"
       type: object
     MemberUpdateRequestBody:
       properties:
@@ -2627,27 +2662,6 @@ components:
       type: object
     MicrodepositResponse:
       properties:
-        account_name:
-          type: string
-          example: My test account
-        account_number:
-          type: string
-          example: 3331261
-        account_type:
-          type: string
-          example: CHECKING
-        email:
-          type: string
-          example: joshyboy2@example.com
-        first_name:
-          type: string
-          example: Joshy
-        last_name:
-          type: string
-          example: Grobanne
-        routing_number:
-          type: string
-          example: 091000019
         error_message:
           type: string
           example: null
@@ -2750,10 +2764,6 @@ components:
       type: object
     OptionResponse:
       properties:
-        guid:
-          example: CRO-6d64cc9a-0998-461d-a072-78801143337e
-          nullable: true
-          type: string
         label:
           example: IMAGE_1
           nullable: true
@@ -3829,6 +3839,10 @@ components:
           example: user123
           nullable: true
           type: string
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
       type: object
     TransactionResponseBody:
       properties:
@@ -3921,6 +3935,12 @@ components:
       properties:
         description:
           example: new description
+          type: string
+        date:
+          type: string
+        memo: 
+          type: string
+        category_guid:
           type: string
       required:
         - description
@@ -4124,6 +4144,30 @@ components:
         widget_type:
           example: connect_widget
           type: string
+        connections_use_case_filter:
+          example: false
+          type: boolean
+          description: To use this parameter, you must also set `use_cases` in the same request. If `connections_use_case_filter` is set to `true`, the Connections Widget will only show connections (members) with the `use_cases` you set in the same request. For some examples, see [Filter Connections](/products/experience/pfm/widget-overviews/connections-widget#example-1).
+        enable_app2app:
+          example: false
+          type: boolean
+          description: |
+            Only use this option if the `widget_type` is set to `connect_widget`. This indicates whether OAuth app2app behavior is enabled for institutions that support it. Defaults to `true`. When set to `false`, the widget will **not** direct the end user to the institution's mobile application. This setting is not persistent. This setting currently only affects Chase institutions.
+        iso_country_code:
+          example: ["US", "CA"]
+          type: array
+          description: | 
+            An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico).
+        use_cases:
+          type: array
+          description: The use case that will be associated with any members created through the widget. Valid values are `PFM` and/or `MONEY_MOVEMENT`. This is **required** if you've met with MX, opted in to using this field, and are requesting a widget with a `widget_type` of `connect_widget` or `connections_widget`.
+          items:
+            type: string
+            enum:
+              - MONEY_MOVEMENT
+              - PFM
+          example:
+            - "PFM"
       required:
         - widget_type
       type: object
