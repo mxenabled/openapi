@@ -1,4 +1,3 @@
----
 components:
   schemas:
     AccountCreateRequest:
@@ -567,7 +566,7 @@ components:
         minimum_payment_set_by:
           example: 1
           nullable: true
-          type: integer      
+          type: integer
         name:
           example: "Test account 2"
           nullable: true
@@ -575,7 +574,7 @@ components:
         name_set_by:
           example: 1
           nullable: true
-          type: integer 
+          type: integer
         nickname:
           example: "My Checking"
           nullable: true
@@ -583,7 +582,7 @@ components:
         nickname_set_by:
           example: 1
           nullable: true
-          type: integer 
+          type: integer
         original_balance:
           example: 10.0
           nullable: true
@@ -667,7 +666,7 @@ components:
         total_account_value_ugl:
           example: 1.0
           nullable: true
-          type: number  
+          type: number
         type:
           example: "SAVINGS"
           nullable: true
@@ -786,9 +785,7 @@ components:
     AuthorizationCodeRequest:
       properties:
         scope:
-          example:
-            user-guid:USR-101ad774-288b-44ed-ad16-da87d522ea20 member-guid:MBR-54feffb9-8474-47bd-8442-de003910113a
-            account-guid:ACT-32a64160-582a-4f00-ab34-5f49cc35ed35 read-protected
+          example: user-guid:USR-101ad774-288b-44ed-ad16-da87d522ea20 member-guid:MBR-54feffb9-8474-47bd-8442-de003910113a account-guid:ACT-32a64160-582a-4f00-ab34-5f49cc35ed35 read-protected
           nullable: true
           type: string
       type: object
@@ -931,7 +928,7 @@ components:
     BudgetResponseBody:
       properties:
         budget:
-            "$ref": "#/components/schemas/BudgetResponse"
+          "$ref": "#/components/schemas/BudgetResponse"
       type: object
     CategoriesResponseBody:
       properties:
@@ -1684,8 +1681,7 @@ components:
           nullable: true
           type: string
         description:
-          example: Gold's Gym charged you $36.71 more this month than normal. Did
-            you upgrade your service?
+          example: Gold's Gym charged you $36.71 more this month than normal. Did you upgrade your service?
           nullable: true
           type: string
         guid:
@@ -1748,7 +1744,7 @@ components:
         has_associated_categories:
           example: false
           nullable: true
-          type: boolean  
+          type: boolean
       type: object
     InsightUpdateRequest:
       properties:
@@ -1790,9 +1786,7 @@ components:
           nullable: true
           type: string
         instructional_text:
-          example:
-            Some instructional text <a href="https://example.url.chase.com/instructions"
-            id="instructional_text">for end users</a>.
+          example: Some instructional text <a href="https://example.url.chase.com/instructions" id="instructional_text">for end users</a>.
           nullable: true
           type: string
         medium_logo_url:
@@ -1844,7 +1838,7 @@ components:
           items:
             type: string
           description: An array of instructional steps that may contain html elements.
-          example: [ "Step 1: Do this.", "Step 2: Do that." ]
+          example: ["Step 1: Do this.", "Step 2: Do that."]
           nullable: true
         is_disabled_by_client:
           example: false
@@ -3938,7 +3932,7 @@ components:
           type: string
         date:
           type: string
-        memo: 
+        memo:
           type: string
         category_guid:
           type: string
@@ -4156,7 +4150,7 @@ components:
         iso_country_code:
           example: ["US", "CA"]
           type: array
-          description: | 
+          description: |
             An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico).
         use_cases:
           type: array
@@ -4332,7 +4326,7 @@ components:
           example: "2025-02-13T18:08:00+00:00"
           type: string
         corrected_account_number:
-          description:  The account number correction reported by the RDFI. Populate only if the `resolution_code` is `NOTICE_OF_CHANGE`.
+          description: The account number correction reported by the RDFI. Populate only if the `resolution_code` is `NOTICE_OF_CHANGE`.
           example: null
           type: string
         corrected_routing_number:
@@ -4429,7 +4423,7 @@ components:
         created_at:
           type: string
           example: null
-        routing_number: 
+        routing_number:
           type: string
           example: 091000019
         error_message:
@@ -4484,7 +4478,7 @@ components:
           example: USD
           nullable: true
           type: string
-        current_price: 
+        current_price:
           example: 15
           nullable: true
           type: number
@@ -4532,7 +4526,7 @@ components:
           example: '5000.0'
           nullable: true
           type: string
-        rate:  
+        rate:
           example: null
           nullable: true
           type: number
@@ -4544,7 +4538,7 @@ components:
           example: DEF
           nullable: true
           type: string
-        term: 
+        term:
           example: null
           nullable: true
           type: string
@@ -4552,7 +4546,7 @@ components:
           example: 200.0
           nullable: true
           type: number
-        today_ugl_percentage: 
+        today_ugl_percentage:
           example: 0.27
           nullable: true
           type: number
@@ -4595,8 +4589,8 @@ components:
         issue_date:
           example: '2015-08-15'
           nullable: true
-          type: string 
-        vesting_start_date: 
+          type: string
+        vesting_start_date:
           example: null
           nullable: true
           type: string
@@ -4604,11 +4598,11 @@ components:
           example: null
           nullable: true
           type: string
-        put_or_call: 
+        put_or_call:
           example: null
           nullable: true
           type: string
-        holding_type: 
+        holding_type:
           example: MUTUAL_FUND
           nullable: true
           type: string
@@ -4626,7 +4620,7 @@ components:
       properties:
         message:
           example: 'Successfully deactivated user from billing'
-        status: 
+        status:
           example: 200
     InvestmentHoldingsResponseBody:
       properties:
@@ -4647,7 +4641,7 @@ components:
           type: string
         user_guid:
           example: USR-101ad774-288b-44ed-ad16-da87d522ea20
-          type: string 
+          type: string
     MicrodepositElements:
       properties:
         account_name:
@@ -4659,17 +4653,17 @@ components:
         account_type:
           example: CHECKING
           type: string
-        email: 
+        email:
           example: joshyboy2@example.com
           type: string
         first_name:
           example: Joshy
           type: string
-        last_name: 
+        last_name:
           example: Grobanne
           type: string
         routing_number:
-          example: '091000019' 
+          example: '091000019'
           type: string
       required:
         - account_number
@@ -4679,8 +4673,8 @@ components:
       properties:
         guid:
           example: TF-b53294f5-2356-4782-9f81-ae064c42b40a
-        content: 
-          example: The content related to the notification. 
+        content:
+          example: The content related to the notification.
         deep_link_guid:
           example: BGT-e386a323-e452-47f2-b2fd-1ac3c18533de
         delivered_at:
@@ -4696,14 +4690,14 @@ components:
         subject:
           example: You're projected to spend $1,920.07 more than you've budgeted for Fees & Charges. You've already spent $65.67 of $316.00.
         channel:
-          example: push 
+          example: push
     NotificationResponseBody:
-      properties: 
+      properties:
         notification:
           $ref: '#/components/schemas/NotificationResponse'
       type: object
     NotificationsResponseBody:
-      properties: 
+      properties:
         notifications:
           items:
             $ref: '#/components/schemas/NotificationResponse'
@@ -4718,29 +4712,29 @@ components:
           example: CHECKING
         available_balance:
           example: 1000
-        balance: 
+        balance:
           example: 1000
         created_at:
           example: 2022-03-17T20:38:58Z
-        routing_number: 
+        routing_number:
           example: 242722023
-        transit_number: 
+        transit_number:
           example: null
-        updated_at: 
+        updated_at:
           example: 2022-11-29T08:02:07Z
     PaymentAccountBody:
       properties:
         payment_account:
-            allOf:
-              - $ref: '#/components/schemas/MemberElements'
-              - $ref: '#/components/schemas/PaymentAccount'
+          allOf:
+            - $ref: '#/components/schemas/MemberElements'
+            - $ref: '#/components/schemas/PaymentAccount'
       type: object
     PreInitiateMicrodeposit:
       properties:
-        email:  
+        email:
           type: string
           example: john.doe@mx.com
-        first_name: 
+        first_name:
           type: string
           example: John
         last_name:
@@ -4787,9 +4781,9 @@ components:
           example: ACO-a06b74ec-6a58-4c0b-b437-8de5e03194ac
         owner_name:
           example: Janita Pollich
-        address: 
+        address:
           example: 3541 Adrian Street
-        city: 
+        city:
           example: North Kishaberg
         state:
           example: Maine
@@ -4812,7 +4806,7 @@ components:
           $ref: '#/components/schemas/PaginationResponse'
       type: object
     ProcessorTransaction:
-      properties: 
+      properties:
         account_guid:
           example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
           nullable: true
@@ -5036,7 +5030,6 @@ components:
           enum:
             - DEBIT
             - CREDIT
-
     RepeatingTransactionsResponseBody:
       properties:
         repeating_transactions:
@@ -5044,7 +5037,6 @@ components:
             $ref: '#/components/schemas/RepeatingTransactionResponse'
           type: array
       type: object
-
     TokenResponse:
       properties:
         payment_processor_guid:
@@ -5058,15 +5050,13 @@ components:
           type: string
         active:
           example: true
-          type: boolean 
-
+          type: boolean
     TokenResponseBody:
       properties:
         tokens:
           items:
             $ref: '#/components/schemas/TokenResponse'
       type: object
-
     TransactionIncludesResponse:
       allOf:
         - $ref: '#/components/schemas/TransactionResponse'
@@ -5122,10 +5112,10 @@ components:
                 guid:
                   example: 'MCH-0c25f895-393c-42a4-9c18-95a0b26d4d84'
                   type: string
-                logo_url: 
+                logo_url:
                   type: string
                   example: 'https://content.mx.com/logos/merchants/MCH-0c25f895-393c-42a4-9c18-95a0b26d4d84.png'
-                website_url: 
+                website_url:
                   type: string
                   example: 'https://www.mx.com'
             repeating_transaction:
@@ -5147,7 +5137,6 @@ components:
                   type: string
                   example: 'RPT-065b8b1d-826a-45ce-8487-60ca1510e72a'
       type: object
-
     TransactionsResponseBodyIncludes:
       properties:
         transactions:
@@ -5157,32 +5146,30 @@ components:
         pagination:
           $ref: '#/components/schemas/PaginationResponse'
       type: object
-
     VCResponse:
       properties:
         verifiableCredential:
           example: 'feJgbGciOiJFZERTQSEsImtpFCI6ImRpZDpksHR6c4E6MTNkdzdqeWc0NGVqd2NkZjhpcWNzZWg3amN6NTF3ajZmanhib29qNDFpcGVnNzZlbyMwIiwidHlwIjoiSldUIn0.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvMjAxOC9jcmVkZW50aWFscy92MSJdLCJpZCI6Imh0dHBzOi8vYXBpLnNhbmQuaW50ZXJuYWwubXgvdmMvdXNlcnMvVVNSLTNlYTdjYzMxLWVkZDYtNDQxNy05YjM1LWRlZTZlMjQ4NDI1Yi9tZW1iZXJzL01CUi1jYzUxNDViZi02M2Q5LTQ5OGYtODc3Mi1lNGVmMzI0MWNjYjYvYWNjb3VudHMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRmluYW5jaWFsQWNjb3VudENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiZGlkOmRodDpzYTcxM2R3N2p5ZzQ0ZWp3Y2RmOGlxY3NlaDdqY3o1MXdqNmZqeGJvb2o0MWlwZWc3NmVvIiwiaXNzdWFuY2VEYXRlIjoiMjAyNC0wMy0wMVQxODo0MjoxOVoiLCJjcmVkZW50aWFsU3ViamVjdCI6eyJhY2NvdW50cyI6W3sibG9jQWNjb3VudCI6eyJhY2NvdW52SWQiOeABQ1RtODRhMDEyNjgtNTdkMC00YTI4LWEwYzEtZTcyYWRyNDA5NbJkIiwiYWNjb3VudFR5cFUiOiJDUkVESVRDQVJEIiwiYWNjb3VudE51bWJlciI6IjM0OTcyNTM0NCIsImFjY291bnROdW1iZXJEaXNwbGF5IjoiKioqKjUzNDQiLCJwcm9kdWN0TmFtZSI6bnVsbCwibmlja25hbWUiOm51bGwsInN0YXR1cyI6Ik9QRU4iLCJhY2NvdW50T3BlbkRhdGUiOiIyMDIyLTA3LTExVDE1OjQwOjQwWiIsImFjY291bnRDbG9zZWREYXRlIjpudWxsLCJjdXJyZW5jeSI6eyJjdXJyZW5jeVJhdGUiOm51bGwsImN1cnJlbmN5Q29kZSI6bnVsbCwib3JpZ2luYWxDdXJyZW5jeUNvZGUiOm51bGx9LCJmaUF0dHJpYnV0ZXMiOlt7Im5hbWUiOiJtZW1iZXJfZ3VpZCIsInZhbHVlIjoiTUJSLWNjNTE0NWJmLTYzZDktNDk4Zi04NzcyLWU0ZWYzMjQxY2NiNiJ9LHsibmFtZSI6Imluc3RpdHV0aW9uX2d1aWQiLCJ2YWx1ZSI6IklOUy1mMWEzMjg1ZC1lODU1LWI2OGYtNmFhNy04YWU3NzVjMGUwZTkifSx7Im5hbWUiOiJleHRlcm5hbF9ndWlkIiwidmFsdWUiOiJhY2NvdW50LWY3ZTg3ZWZmLTA2YzAtNDZhMS1iODAwLTUxOTI3ODM2MjFhOSJ9XSwicm91dGluZ1RyYW5zaXROdW1iZXIiOm51bGwsImJhbGFuY2VUeXBlIjoiTElBQklMSVRZIiwiaW50ZXJlc3RSYXRlIjpudWxsLCJsYXN0QWN0aXZpdHlEYXRlIjoiMjAyMi0wNy0xMVQxNTo0MDo0MFoiLCJiYWxhbmNlQXNPZiI6IjIwMjItMDctMTFUMTU6NDA6NDBaIiwiY3JlZGl0TGluZSI6bnVsbCwiYXZhaWxhYmxlQ3JlZGl0IjoxMzAwMC4wLCJuZXh0UGF5bWVudERhdGUiOm51bGwsInByaW5jaXBhbEJhbGFuY2UiOm51bGwsImN1cnJlbnRCYWxhbmNlIjoxMDAwLjAsIm1pbmltdW1QYXltZW50QW1vdW50IjpudWxsLCJwdXJjaGFzZXNBcHIiOm51bGx9fSx7ImRlcG9zaXRBY2NvdW50Ijp7ImFjY291bnRJZCI6IkFDVC05NmYzMGQ2Ny0xZTA1LTRhNGItOWZkNS01NzFlYmUzZGU5NWMiLCJhY2NvdW50VHlwZSI6IkNIRUNLSU5HIiwiYWNjb3VudE51bWJlciI6Ijg0NTUzNTE2MSIsImFjY291bnROdW1iZXJEaXNwbGF5IjoiKioqKjUxNjEiLCJwcm9kdWN0TmFtZSI6bnVsbCwibmlja25hbWUiOm51bGwsInN0YXR1cyI6Ik9QRU4iLCJhY2NvdW50T3BlbkRhdGUiOiIyMDIyLTA3LTExVDE1OjQwOjQwWiIsImFjY291bnRDbG9zZWREYXRlIjpudWxsLCJjdXJyZW5jeSI6eyJjdXJyZW5jeVJhdGUiOm51bGwsImN1cnJlbmN5Q29kZSI6bnVsbCwib3JpZ2luYWxDdXJyZW5jeUNvZGUiOm51bGx9LCJmaUF0dHJpYnV0ZXMiOlt7Im5hbWUiOiJtZW1iZXJfZ3VpZCIsInZhbHVlIjoiTUJSLWNjNTE0NWJmLTYzZDktNDk4Zi04NzcyLWU0ZWYzMjQxY2NiNiJ9LHsibmFtZSI6Imluc3RpdHV0aW9uX2d1aWQiLCJ2YWx1ZSI6IklOUy1mMWEzMjg1ZC1lODU1LWI2OGYtNmFhNy04YWU3NzVjMGUwZTkifSx7Im5hbWUiOiJleHRlcm5hbF9ndWlkIiwidmFsdWUiOiJhY2NvdW50LWM2ZTc2MjQ0LTg4NjAtNDY0OS05ZDg1LTY1MGQzYWY5ZmViZSJ9XSwicm91dGluZ1RyYW5zaXROdW1iZXIiOm51bGwsImJhbGFuY2VUeXBlIjoiQVNTRVQiLCJpbnRlcmVzdFJhdGUiOm51bGwsImxhc3RBY3Rpdml0eURhdGUiOiIyMDIyLTA3LTExVDE1OjQwOjQwWiIsImJhbGFuY2VBc09mIjoiMjAyMi0wNy0xMVQxNTo0MDo0MFoiLCJjdXJyZW50QmFsYW5jZSI6MTAwMC4wLCJvcGVuaW5nRGF5QmFsYW5jZSI6bnVsbCwiYXZhaWxhYmxlQmFsYW5jZSI6MTAwMC4wLCJhbm51YWxQZXJjZW50YWdlWWllbGQiOm51bGwsIm1hdHVyaXR5RGF0ZSI6bnVsbH19LHsiZGVwb3NpdEFjY291bnQiOnsiYWNjb3VudElkIjoiQUNULWI4MjZlNGMyLTZkNjktNDVkNy1hMTM5LWJlNTY0NDFkNmE1OCIsImFjY291bnRUeXBlIjoiU0FWSU5HUyIsImFjY291bnROdW1iZXIiOiI1OTE4NzE2NjgiLCJhY2NvdW50TnVtYmVyRGlzcGxheSI6IioqKioxNjY4IiwicHJvZHVjdE5hbWUiOm51bGwsIm5pY2tuYW1lIjpudWxsLCJzdGF0dXMiOiJPUEVOIiwiYWNjb3VudE9wZW5EYXRlIjoiMjAyMi0wNy0xMVQxNTo0MDo0MFoiLCJhY2NvdW50Q2xvc2VkRGF0ZSI6bnVsbCwiY3VycmVuY3kiOnsiY3VycmVuY3lSYXRlIjpudWxsLCJjdXJyZW5jeUNvZGUiOm51bGwsIm9yaWdpbmFsQ3VycmVuY3lDb2RlIjpudWxsfSwiZmlBdHRyaWJ1dGVzIjpbeyJuYW1lIjoibWVtYmVyX2d1aWQiLCJ2YWx1ZSI6Ik1CUi1jYzUxNDViZi02M2Q5LTQ5OGYtODc3Mi1lNGVmMzI0MWNjYjYifSx7Im5hbWUiOiJpbnN0aXR1dGlvbl9ndWlkIiwidmFsdWUiOiJJTlMtZjFhMzI4NWQtZTg1NS1iNjhmLTZhYTctOGFlNzc1YzBlMGU5In0seyJuYW1lIjoiZXh0ZXJuYWxfZ3VpZCIsInZhbHVlIjoiYWNjb3VudC1kOTIyNTA4OC1hOTM2LTRkNjctOGQyYy0wY2EyYzgwOGYxMTYifV0sInJvdXRpbmdUcmFuc2l0TnVtYmVyIjpudWxsLCJiYWxhbmNlVHlwZSI6IkFTU0VUIiwiaW50ZXJlc3RSYXRlIjpudWxsLCJsYXN0QWN0aXZpdHlEYXRlIjoiMjAyMi0wNy0xMVQxNTo0MDo0MFoiLCJiYWxhbmNlQXNPZiI6IjIwMjItMDctMTFUMTU6NDA6NDBaIiwiY3VycmVudEJhbGFuY2UiOjEwMDAuMCwib3BlbmluZ0RheUJhbGFuY2UiOm51bGwsImF2YWlsYWJsZUJhbGFuY2UiOjEwMDAuMCwiYW5udWFsUGVyY2VudGFnZVlpZWxkIjpudWxsLCJtYXR1cml0eURhdGUiOm51bGx9fV0sImlkIjoiVVNSLTNlYTdjYzMxLWVkZDYtNDQxNy05YjM1LWRlZTZlMjQ4NDI1YiJ9fSwiaXNzIjoiZGlkOmRodDpzYTcxM2R3N2p5ZzQ0ZWp3Y2RmOGlxY3NlaDdqY3o1MXdqNmZqeGJvb2o0MWlwZWc3NmVvIiwiaWF0IjoxNzA5MzE4NTM5LCJqdGkiOiJodHRwczovL2FwaS5zYW5kLmludGVybmFsLm14L3ZjL3VzZXJzL1VTUi0zZWE3Y2MzMS1lZGQ2LTQ0MTctOWIzNS1kZWU2ZTI0ODQyNWIvbWVtYmVycy9NQlItY2M1MTQ1YmYtNjNkOS00OThmLTg3NzItZTRlZjMyNDFjY2I2L2FjY291bnRzIiwic3ViIjoiVVNSLTNlYTdjYzMxLWVkZDYtNDQxNy05YjM1LWRlZTZlMjQ4NDI1YiJ9._CiFkwbuhKxwwIehEQ1opsi-9NSoIwDqD2HFMw1ROKNuJPdepTXFEd_RDFbbg7lFj05vBXPUL7y9eVVgZXTvDw'
           type: string
       type: object
-
     RewardElements:
       properties:
-        balance_type: 
+        balance_type:
           example: EXPIRING_BALANCE
           type: string
-        balance: 
+        balance:
           example: 102
           type: integer
         created_at:
           example: 2020-01-28T21:09:01+0000
           type: string
-        description: 
+        description:
           example: A description of the reward.
-          type: string 
-        expires_on: 
+          type: string
+        expires_on:
           example: 2020-02-28
           type: string
-        guid: 
+        guid:
           example: RWD-1234
           type: string
         unit_type:
@@ -5191,13 +5178,11 @@ components:
         updated_at:
           example: 2023-06-01T19:18:06Z
           type: string
-
     TokenRequestBody:
       properties:
         scope:
           $ref: '#/components/schemas/MemberElements'
       type: object
-
   parameters:
     userIsDisabled:
       description: Search for users that are diabled.
@@ -5276,7 +5261,7 @@ components:
       in: query
       name: to_date
       schema:
-        type: string    
+        type: string
     toCreatedAt:
       name: to_created_at
       description: Filter transaction to the date in which the transaction was created. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Maximum date range limit is 6 months.
@@ -5344,7 +5329,7 @@ components:
       schema:
         type: string
     startTime:
-      description: Filter transactions from this date. Must be in the format YYYY-MM-DD. The range is limited to 1 year. 
+      description: Filter transactions from this date. Must be in the format YYYY-MM-DD. The range is limited to 1 year.
       example: 2015-09-20
       in: query
       name: startTime
@@ -5365,7 +5350,7 @@ components:
       name: spending_plan_account_guid
       required: true
       schema:
-        type: string    
+        type: string
     skipAggregation:
       description: Setting this parameter to `true` will prevent the member from automatically aggregating after being redirected from the authorization page.
       example: false
@@ -5374,7 +5359,7 @@ components:
       schema:
         type: boolean
     rewardGuid:
-      description: The unique identifier for the rewards. Defined by MX. 
+      description: The unique identifier for the rewards. Defined by MX.
       example: RWD-fa7537f3-48aa-a683-a02a-b324322f54
       in: path
       name: reward_guid
@@ -5450,23 +5435,22 @@ components:
         type: integer
     notificationGuid:
       name: notification_guid
-      description: The unique identifier for notifications. Defined by MX. 
+      description: The unique identifier for notifications. Defined by MX.
       example: NTF-b53294f5-2356-4782-9f81-ae064c42b40a
       in: path
       required: true
-      schema: 
+      schema:
         type: string
     microDepositGuid:
       name: micro_deposit_guid
-      description: The unique identifier for the microdeposit. Defined by MX. 
+      description: The unique identifier for the microdeposit. Defined by MX.
       in: path
       required: true
       example: MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb
       schema:
         type: string
     merchantName:
-      description:
-        This will list only merchants in which the appended string appears.
+      description: This will list only merchants in which the appended string appears.
       example: Comcast
       in: query
       name: name
@@ -5530,8 +5514,7 @@ components:
         items:
           type: string
     institutionName:
-      description:
-        This will list only institutions in which the appended string appears.
+      description: This will list only institutions in which the appended string appears.
       example: mxbank
       in: query
       name: name
@@ -5589,10 +5572,10 @@ components:
         type: string
     goalGuid:
       name: goal_guid
-      description: The unique identifier for a goal. Defined by MX. 
+      description: The unique identifier for a goal. Defined by MX.
       required: true
-      in: path 
-      schema: 
+      in: path
+      schema:
         type: string
     fromUpdatedAt:
       name: from_updated_at
@@ -5616,12 +5599,12 @@ components:
       schema:
         type: string
     endTime:
-      description: Filter transactions to this date. Must be in the format YYYY-MM-DD. The range is limited to 1 year. 
+      description: Filter transactions to this date. Must be in the format YYYY-MM-DD. The range is limited to 1 year.
       example: 2015-09-20
       in: query
       name: endTime
       schema:
-        type: string    
+        type: string
     enableApp2app:
       description: This indicates whether OAuth app2app behavior is enabled for institutions that support it. Defaults to `true`. When set to `false`, any `oauth_window_uri` generated will **not** direct the end user to the institution's mobile application. This setting is not persistent. This setting currently only affects Chase institutions.
       example: 'false'
@@ -5637,7 +5620,7 @@ components:
       required: true
       schema:
         type: string
-    content: 
+    content:
       name: content
       description: The information related to the notification.
       required: true
@@ -5667,17 +5650,17 @@ components:
         example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
     budgetGuid:
       name: budget_guid
-      description: The unique identifier for the budget. Defined by MX. 
+      description: The unique identifier for the budget. Defined by MX.
       required: true
-      in: path 
-      schema: 
+      in: path
+      schema:
         type: string
     achReturnGuid:
       name: ach_return_guid
       description: The unique identifier (`guid`) for the ACH return. Defined by MX.
       required: true
-      in: path 
-      schema: 
+      in: path
+      schema:
         type: string
     accountIsManual:
       description: List only accounts that were manually created.
@@ -5699,7 +5682,7 @@ components:
       example: 813e50bd-4a7e-4517-b6bb-9eef65a68cbd
       in: header
       name: X-CALLBACK-PAYLOAD
-      schema: 
+      schema:
         type: string
     acceptLanguage:
       description: The desired language of the widget.
@@ -5724,22 +5707,14 @@ info:
   contact:
     name: MX Platform API
     url: https://www.mx.com/products/platform-api
-  description:
-    The MX Platform API is a powerful, fully-featured API designed to make
-    aggregating and enhancing financial data easy and reliable. It can seamlessly
-    connect your app or website to tens of thousands of financial institutions.
+  description: The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
   title: MX Platform API
   version: 0.1.0
 openapi: 3.0.0
 paths:
   "/authorization_code":
     post:
-      description:
-        Clients use this endpoint to request an authorization code according
-        to the parameters specified in the scope. Clients then pass this code to processors.
-        Processor access is scoped only to the GUIDs and features specified in this
-        request. Before requesting an authorization code which includes a member in
-        the scope, clients must have verified that member.
+      description: Clients use this endpoint to request an authorization code according to the parameters specified in the scope. Clients then pass this code to processors. Processor access is scoped only to the GUIDs and features specified in this request. Before requesting an authorization code which includes a member in the scope, clients must have verified that member.
       operationId: requestAuthorizationCode
       requestBody:
         content:
@@ -5760,13 +5735,7 @@ paths:
         - mx_platform
   "/categories/default":
     get:
-      description:
-        Use this endpoint to retrieve a list of all the default categories
-        and subcategories offered within the MX Platform API. In other words, each
-        item in the returned list will have its `is_default` field set to `true`.
-        There are currently 119 default categories and subcategories. Both the _list
-        default categories_ and _list default categories by user_ endpoints return
-        the same results. The different routes are provided for convenience.
+      description: Use this endpoint to retrieve a list of all the default categories and subcategories offered within the MX Platform API. In other words, each item in the returned list will have its `is_default` field set to `true`. There are currently 119 default categories and subcategories. Both the _list default categories_ and _list default categories by user_ endpoints return the same results. The different routes are provided for convenience.
       operationId: listDefaultCategories
       parameters:
         - $ref: '#/components/parameters/page'
@@ -5815,9 +5784,7 @@ paths:
         - mx_platform
   "/institutions":
     get:
-      description:
-        This endpoint returns a list of institutions based on the specified
-        search term or parameter.
+      description: This endpoint returns a list of institutions based on the specified search term or parameter.
       operationId: listInstitutions
       parameters:
         - $ref: '#/components/parameters/institutionName'
@@ -5839,10 +5806,7 @@ paths:
         - mx_platform
   "/institutions/favorites":
     get:
-      description:
-        This endpoint returns a paginated list containing institutions
-        that have been set as the partner’s favorites, sorted by popularity. Please
-        contact MX to set a list of favorites.
+      description: This endpoint returns a paginated list containing institutions that have been set as the partner’s favorites, sorted by popularity. Please contact MX to set a list of favorites.
       operationId: listFavoriteInstitutions
       parameters:
         - $ref: '#/components/parameters/page'
@@ -5859,9 +5823,7 @@ paths:
         - mx_platform
   "/institutions/{institution_code}":
     get:
-      description:
-        This endpoint returns information about the institution specified
-        by `institution_code`.
+      description: This endpoint returns information about the institution specified by `institution_code`.
       operationId: readInstitution
       parameters:
         - $ref: '#/components/parameters/institutionCode'
@@ -5877,9 +5839,7 @@ paths:
         - mx_platform
   "/institutions/{institution_code}/credentials":
     get:
-      description:
-        Use this endpoint to see which credentials will be needed to create
-        a member for a specific institution.
+      description: Use this endpoint to see which credentials will be needed to create a member for a specific institution.
       operationId: listInstitutionCredentials
       parameters:
         - $ref: '#/components/parameters/institutionCode'
@@ -5897,9 +5857,7 @@ paths:
         - mx_platform
   "/managed_institutions":
     get:
-      description:
-        This endpoint returns a list of institutions which can be used
-        to create partner-managed members.
+      description: This endpoint returns a list of institutions which can be used to create partner-managed members.
       operationId: listManagedInstitutions
       parameters:
         - $ref: '#/components/parameters/page'
@@ -5932,9 +5890,7 @@ paths:
         - mx_platform
   "/merchants":
     get:
-      description:
-        This endpoint returns a paginated list of all the merchants in
-        the MX system.
+      description: This endpoint returns a paginated list of all the merchants in the MX system.
       operationId: listMerchants
       parameters:
         - $ref: '#/components/parameters/page'
@@ -5951,9 +5907,7 @@ paths:
         - mx_platform
   "/merchants/{merchant_guid}":
     get:
-      description:
-        Returns information about a particular merchant, such as a logo,
-        name, and website.
+      description: Returns information about a particular merchant, such as a logo, name, and website.
       operationId: readMerchant
       parameters:
         - $ref: '#/components/parameters/merchantGuid'
@@ -5969,13 +5923,7 @@ paths:
         - mx_platform
   "/payment_processor_authorization_code":
     post:
-      description:
-        "(This endpoint is deprecated. Clients should use `/authorization_code`.)
-        Clients use this endpoint to request an authorization_code according to a
-        user, member, and account specified in the request body. Clients then pass
-        this code to processors. Processor access is scoped only to the user/member/account
-        specified in this request. Before requesting an authorization_code, clients
-        must have verified the specified member."
+      description: "(This endpoint is deprecated. Clients should use `/authorization_code`.) Clients use this endpoint to request an authorization_code according to a user, member, and account specified in the request body. Clients then pass this code to processors. Processor access is scoped only to the user/member/account specified in this request. Before requesting an authorization_code, clients must have verified the specified member."
       operationId: deprecatedRequestPaymentProcessorAuthorizationCode
       requestBody:
         content:
@@ -5996,9 +5944,7 @@ paths:
         - mx_platform
   "/transactions/enhance":
     post:
-      description:
-        Use this endpoint to categorize, cleanse, and classify transactions.
-        These transactions are not persisted or stored on the MX platform.
+      description: Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform.
       operationId: enhanceTransactions
       requestBody:
         content:
@@ -6019,9 +5965,7 @@ paths:
         - mx_platform
   "/users":
     get:
-      description:
-        Use this endpoint to list every user you've created in the MX Platform
-        API.
+      description: Use this endpoint to list every user you've created in the MX Platform API.
       operationId: listUsers
       parameters:
         - $ref: '#/components/parameters/page'
@@ -6040,21 +5984,14 @@ paths:
       tags:
         - mx_platform
     post:
-      description:
-        Use this endpoint to create a new user. The API will respond with
-        the newly-created user object if successful. Disabling a user means that accounts
-        and transactions associated with it will not be updated in the background
-        by MX. It will also restrict access to that user’s data until they are no
-        longer disabled.
+      description: Use this endpoint to create a new user. The API will respond with the newly-created user object if successful. Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX. It will also restrict access to that user’s data until they are no longer disabled.
       operationId: createUser
       requestBody:
         content:
           application/json:
             schema:
               "$ref": "#/components/schemas/UserCreateRequestBody"
-        description:
-          User object to be created. (None of these parameters are required,
-          but the user object cannot be empty)
+        description: User object to be created. (None of these parameters are required, but the user object cannot be empty)
         required: true
       responses:
         "200":
@@ -6068,9 +6005,7 @@ paths:
         - mx_platform
   "/users/{user_guid}":
     delete:
-      description:
-        Use this endpoint to delete the specified `user`. The response
-        will have a status of `204 No Content` without an object.
+      description: Use this endpoint to delete the specified `user`. The response will have a status of `204 No Content` without an object.
       operationId: deleteUser
       parameters:
         - $ref: '#/components/parameters/userGuid'
@@ -6105,9 +6040,7 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/UserUpdateRequestBody"
-        description:
-          User object to be updated (None of these parameters are required,
-          but the user object cannot be empty.)
+        description: User object to be updated (None of these parameters are required, but the user object cannot be empty.)
         required: true
       responses:
         "200":
@@ -6121,9 +6054,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/accounts":
     get:
-      description:
-        This endpoint returns a list of all the accounts associated with
-        the specified `user`.
+      description: This endpoint returns a list of all the accounts associated with the specified `user`.
       operationId: listUserAccounts
       parameters:
         - $ref: '#/components/parameters/memberIsManagedByUser'
@@ -6165,8 +6096,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/accounts/{account_guid}":
     delete:
-      description: This endpoint deletes accounts that were manually created. The
-        API will respond with an empty object and a status of `204 No Content`.
+      description: This endpoint deletes accounts that were manually created. The API will respond with an empty object and a status of `204 No Content`.
       operationId: deleteManualAccount
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -6178,8 +6108,7 @@ paths:
       tags:
         - mx_platform
     get:
-      description:
-        This endpoint returns the specified `account` resource.
+      description: This endpoint returns the specified `account` resource.
       operationId: readAccount
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -6196,9 +6125,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/accounts/{account_guid}/account_numbers":
     get:
-      description:
-        This endpoint returns a list of account numbers associated with
-        the specified `account`.
+      description: This endpoint returns a list of account numbers associated with the specified `account`.
       operationId: listAccountNumbersByAccount
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -6215,60 +6142,37 @@ paths:
       summary: List account numbers by account
       tags:
         - mx_platform
-  "/users/{user_guid}/accounts/{account_guid}/holdings":
-    get:
-      description:
-        This endpoint returns all holdings associated with the specified
-        `account`.
-      operationId: listHoldingsByAccount
-      parameters:
-        - $ref: '#/components/parameters/accountGuid'
-        - $ref: '#/components/parameters/fromDate'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
-        - $ref: '#/components/parameters/toDate'
-        - $ref: '#/components/parameters/userGuid'
-      responses:
-        "200":
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/HoldingsResponseBody"
-          description: OK
-      summary: List holdings by account
-      tags:
-        - mx_platform
   "/users/{user_guid}/accounts/{account_guid}/insights":
     get:
       description: Use this endpoint to list all insights associated with a specified account GUID.
       operationId: listInsightsByAccount
       parameters:
-      - description: The unique id for the `account`.
-        example: ACT-7c6f361b-e582-15b6-60c0-358f12466b4b
-        in: path
-        name: account_guid
-        required: true
-        schema:
-          type: string
-      - description: Specify current page.
-        example: 1
-        in: query
-        name: page
-        schema:
-          type: integer
-      - description: Specify records per page.
-        example: 10
-        in: query
-        name: records_per_page
-        schema:
-          type: integer
-      - description: The unique id for the `user`.
-        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
+        - description: The unique id for the `account`.
+          example: ACT-7c6f361b-e582-15b6-60c0-358f12466b4b
+          in: path
+          name: account_guid
+          required: true
+          schema:
+            type: string
+        - description: Specify current page.
+          example: 1
+          in: query
+          name: page
+          schema:
+            type: integer
+        - description: Specify records per page.
+          example: 10
+          in: query
+          name: records_per_page
+          schema:
+            type: integer
+        - description: The unique id for the `user`.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           content:
@@ -6278,7 +6182,7 @@ paths:
           description: OK
       summary: List insights by account
       tags:
-      - insights
+        - insights
   "/users/{user_guid}/accounts/{account_guid}/transactions":
     post:
       tags:
@@ -6302,9 +6206,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransactionCreateResponseBody'
     get:
-      description:
-        This endpoint returns a list of the last 90 days of transactions
-        associated with the specified account.
+      description: This endpoint returns a list of the last 90 days of transactions associated with the specified account.
       operationId: listTransactionsByAccount
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -6423,9 +6325,7 @@ paths:
           description: No content
   "/users/{user_guid}/categories":
     get:
-      description:
-        Use this endpoint to list all categories associated with a `user`,
-        including both default and custom categories.
+      description: Use this endpoint to list all categories associated with a `user`, including both default and custom categories.
       operationId: listCategories
       parameters:
         - $ref: '#/components/parameters/page'
@@ -6442,9 +6342,7 @@ paths:
       tags:
         - mx_platform
     post:
-      description:
-        Use this endpoint to create a new custom category for a specific
-        `user`.
+      description: Use this endpoint to create a new custom category for a specific `user`.
       operationId: createCategory
       parameters:
         - $ref: '#/components/parameters/userGuid'
@@ -6467,13 +6365,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/categories/default":
     get:
-      description:
-        Use this endpoint to retrieve a list of all the default categories
-        and subcategories, scoped by user, offered within the MX Platform API. In
-        other words, each item in the returned list will have its `is_default` field
-        set to `true`. There are currently 119 default categories and subcategories.
-        Both the _list default categories_ and _list default categories by user_ endpoints
-        return the same results. The different routes are provided for convenience.
+      description: Use this endpoint to retrieve a list of all the default categories and subcategories, scoped by user, offered within the MX Platform API. In other words, each item in the returned list will have its `is_default` field set to `true`. There are currently 119 default categories and subcategories. Both the _list default categories_ and _list default categories by user_ endpoints return the same results. The different routes are provided for convenience.
       operationId: listDefaultCategoriesByUser
       parameters:
         - $ref: '#/components/parameters/page'
@@ -6491,10 +6383,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/categories/{category_guid}":
     delete:
-      description:
-        Use this endpoint to delete a specific custom category according
-        to its unique GUID. The API will respond with an empty object and a status
-        of `204 No Content`.
+      description: Use this endpoint to delete a specific custom category according to its unique GUID. The API will respond with an empty object and a status of `204 No Content`.
       operationId: deleteCategory
       parameters:
         - $ref: '#/components/parameters/categoryGuid'
@@ -6506,9 +6395,7 @@ paths:
       tags:
         - mx_platform
     get:
-      description:
-        Use this endpoint to read the attributes of either a default category
-        or a custom category.
+      description: Use this endpoint to read the attributes of either a default category or a custom category.
       operationId: readCategory
       parameters:
         - $ref: '#/components/parameters/categoryGuid'
@@ -6524,9 +6411,7 @@ paths:
       tags:
         - mx_platform
     put:
-      description:
-        Use this endpoint to update the attributes of a custom category
-        according to its unique GUID.
+      description: Use this endpoint to update the attributes of a custom category according to its unique GUID.
       operationId: updateCategory
       parameters:
         - $ref: '#/components/parameters/categoryGuid'
@@ -6536,9 +6421,7 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/CategoryUpdateRequestBody"
-        description:
-          Category object to be updated (While no single parameter is required,
-          the `category` object cannot be empty)
+        description: Category object to be updated (While no single parameter is required, the `category` object cannot be empty)
         required: true
       responses:
         "200":
@@ -6552,9 +6435,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/connect_widget_url":
     post:
-      description:
-        This endpoint will return a URL for an embeddable version of MX
-        Connect.
+      description: This endpoint will return a URL for an embeddable version of MX Connect.
       operationId: requestConnectWidgetURL
       parameters:
         - $ref: '#/components/parameters/userGuid'
@@ -6563,9 +6444,7 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/ConnectWidgetRequestBody"
-        description:
-          Optional config options for WebView (is_mobile_webview, current_institution_code,
-          current_member_guid, update_credentials)
+        description: Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials)
         required: true
       responses:
         "200":
@@ -6607,7 +6486,7 @@ paths:
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/page'
         - name: records_per_page
-          description:  The supported range is from 10 to 1000. If the records_per_page parameter is not specified or is outside this range, a default of 25 records per page will be used.
+          description: The supported range is from 10 to 1000. If the records_per_page parameter is not specified or is outside this range, a default of 25 records per page will be used.
           example:
           in: query
           required: false
@@ -6689,70 +6568,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RepositionResponseBody'
-  "/users/{user_guid}/holdings":
-    get:
-      description:
-        This endpoint returns all holdings associated with the specified
-        `user` across all accounts and members.
-      operationId: listHoldings
-      parameters:
-        - $ref: '#/components/parameters/fromDate'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
-        - $ref: '#/components/parameters/toDate'
-        - $ref: '#/components/parameters/userGuid'
-      responses:
-        "200":
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/HoldingsResponseBody"
-          description: OK
-      summary: List holdings
-      tags:
-        - mx_platform
-  "/users/{user_guid}/holdings/{holding_guid}":
-    get:
-      description: Use this endpoint to read the attributes of a specific `holding`.
-      operationId: readHolding
-      parameters:
-        - $ref: '#/components/parameters/holdingGuid'
-        - $ref: '#/components/parameters/userGuid'
-      responses:
-        "200":
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/HoldingResponseBody"
-          description: OK
-      summary: Read holding
-      tags:
-        - mx_platform
   "/users/{user_guid}/insights":
     get:
-      description: Use this endpoint to list all the insights associated with the
-        user.
+      description: Use this endpoint to list all the insights associated with the user.
       operationId: listInsightsUser
       parameters:
-      - description: The unique identifier for the user. Defined by MX.
-        example: USR-1234-abcd
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
-      - description: Specify current page.
-        example: 1
-        in: query
-        name: page
-        schema:
-          type: integer
-      - description: Specify records per page.
-        example: 10
-        in: query
-        name: records_per_page
-        schema:
-          type: integer
+        - description: The unique identifier for the user. Defined by MX.
+          example: USR-1234-abcd
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: Specify current page.
+          example: 1
+          in: query
+          name: page
+          schema:
+            type: integer
+        - description: Specify records per page.
+          example: 10
+          in: query
+          name: records_per_page
+          schema:
+            type: integer
       responses:
         '200':
           content:
@@ -6762,38 +6601,38 @@ paths:
           description: OK
       summary: List all insights for a user.
       tags:
-      - insights
+        - insights
   "/users/{user_guid}/insights/{insight_guid}/categories":
     get:
       description: Use this endpoint to list all the categories associated with the insight.
       operationId: listCategoriesInsight
       parameters:
-      - description: The unique identifier for the user. Defined by MX.
-        example: USR-1234-abcd
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
-      - description: The unique identifier for the insight. Defined by MX.
-        example: BET-1234-abcd
-        in: path
-        name: insight_guid
-        required: true
-        schema:
-          type: string
-      - description: Specify current page.
-        example: 1
-        in: query
-        name: page
-        schema:
-          type: integer
-      - description: Specify records per page.
-        example: 10
-        in: query
-        name: records_per_page
-        schema:
-          type: integer
+        - description: The unique identifier for the user. Defined by MX.
+          example: USR-1234-abcd
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the insight. Defined by MX.
+          example: BET-1234-abcd
+          in: path
+          name: insight_guid
+          required: true
+          schema:
+            type: string
+        - description: Specify current page.
+          example: 1
+          in: query
+          name: page
+          schema:
+            type: integer
+        - description: Specify records per page.
+          example: 10
+          in: query
+          name: records_per_page
+          schema:
+            type: integer
       responses:
         '200':
           content:
@@ -6803,39 +6642,38 @@ paths:
           description: OK
       summary: List all categories associated with an insight.
       tags:
-      - insights
+        - insights
   "/users/{user_guid}/insights/{insight_guid}/accounts":
     get:
-      description: Use this endpoint to list all the accounts associated with the
-        insight.
+      description: Use this endpoint to list all the accounts associated with the insight.
       operationId: listAccountsInsight
       parameters:
-      - description: The unique identifier for the user. Defined by MX.
-        example: USR-1234-abcd
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
-      - description: The unique identifier for the insight. Defined by MX.
-        example: BET-1234-abcd
-        in: path
-        name: insight_guid
-        required: true
-        schema:
-          type: string
-      - description: Specify current page.
-        example: 1
-        in: query
-        name: page
-        schema:
-          type: integer
-      - description: Specify records per page.
-        example: 10
-        in: query
-        name: records_per_page
-        schema:
-          type: integer
+        - description: The unique identifier for the user. Defined by MX.
+          example: USR-1234-abcd
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the insight. Defined by MX.
+          example: BET-1234-abcd
+          in: path
+          name: insight_guid
+          required: true
+          schema:
+            type: string
+        - description: Specify current page.
+          example: 1
+          in: query
+          name: page
+          schema:
+            type: integer
+        - description: Specify records per page.
+          example: 10
+          in: query
+          name: records_per_page
+          schema:
+            type: integer
       responses:
         '200':
           content:
@@ -6845,39 +6683,38 @@ paths:
           description: OK
       summary: List all accounts associated with an insight.
       tags:
-      - insights
+        - insights
   "/users/{user_guid}/insights/{insight_guid}/merchants":
     get:
-      description: Use this endpoint to list all the merchants associated with the
-        insight.
+      description: Use this endpoint to list all the merchants associated with the insight.
       operationId: listMerchantsInsight
       parameters:
-      - description: The unique identifier for the user. Defined by MX.
-        example: USR-1234-abcd
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
-      - description: The unique identifier for the insight. Defined by MX.
-        example: BET-1234-abcd
-        in: path
-        name: insight_guid
-        required: true
-        schema:
-          type: string
-      - description: Specify current page.
-        example: 1
-        in: query
-        name: page
-        schema:
-          type: integer
-      - description: Specify records per page.
-        example: 10
-        in: query
-        name: records_per_page
-        schema:
-          type: integer
+        - description: The unique identifier for the user. Defined by MX.
+          example: USR-1234-abcd
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the insight. Defined by MX.
+          example: BET-1234-abcd
+          in: path
+          name: insight_guid
+          required: true
+          schema:
+            type: string
+        - description: Specify current page.
+          example: 1
+          in: query
+          name: page
+          schema:
+            type: integer
+        - description: Specify records per page.
+          example: 10
+          in: query
+          name: records_per_page
+          schema:
+            type: integer
       responses:
         '200':
           content:
@@ -6887,38 +6724,38 @@ paths:
           description: OK
       summary: List all merchants associated with an insight.
       tags:
-      - insights
+        - insights
   "/users/{user_guid}/insights/{insight_guid}/scheduled_payments":
     get:
       description: Use this endpoint to list all the scheduled payments associated with the insight.
       operationId: listScheduledPaymentsInsight
       parameters:
-      - description: The unique identifier for the user. Defined by MX.
-        example: USR-1234-abcd
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
-      - description: The unique identifier for the insight. Defined by MX.
-        example: BET-1234-abcd
-        in: path
-        name: insight_guid
-        required: true
-        schema:
-          type: string
-      - description: Specify current page.
-        example: 1
-        in: query
-        name: page
-        schema:
-          type: integer
-      - description: Specify records per page.
-        example: 10
-        in: query
-        name: records_per_page
-        schema:
-          type: integer
+        - description: The unique identifier for the user. Defined by MX.
+          example: USR-1234-abcd
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the insight. Defined by MX.
+          example: BET-1234-abcd
+          in: path
+          name: insight_guid
+          required: true
+          schema:
+            type: string
+        - description: Specify current page.
+          example: 1
+          in: query
+          name: page
+          schema:
+            type: integer
+        - description: Specify records per page.
+          example: 10
+          in: query
+          name: records_per_page
+          schema:
+            type: integer
       responses:
         '200':
           content:
@@ -6928,39 +6765,38 @@ paths:
           description: OK
       summary: List all scheduled payments associated with an insight
       tags:
-      - insights
+        - insights
   "/users/{user_guid}/insights/{insight_guid}/transactions":
     get:
-      description: Use this endpoint to list all the transactions associated with
-        the insight.
+      description: Use this endpoint to list all the transactions associated with the insight.
       operationId: listTransactionsInsight
       parameters:
-      - description: The unique identifier for the user. Defined by MX.
-        example: USR-1234-abcd
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
-      - description: The unique identifier for the insight. Defined by MX.
-        example: BET-1234-abcd
-        in: path
-        name: insight_guid
-        required: true
-        schema:
-          type: string
-      - description: Specify current page.
-        example: 1
-        in: query
-        name: page
-        schema:
-          type: integer
-      - description: Specify records per page.
-        example: 10
-        in: query
-        name: records_per_page
-        schema:
-          type: integer
+        - description: The unique identifier for the user. Defined by MX.
+          example: USR-1234-abcd
+          in: path
+          name: user_guid
+          required: true
+          schema:
+            type: string
+        - description: The unique identifier for the insight. Defined by MX.
+          example: BET-1234-abcd
+          in: path
+          name: insight_guid
+          required: true
+          schema:
+            type: string
+        - description: Specify current page.
+          example: 1
+          in: query
+          name: page
+          schema:
+            type: integer
+        - description: Specify records per page.
+          example: 10
+          in: query
+          name: records_per_page
+          schema:
+            type: integer
       responses:
         '200':
           content:
@@ -6970,79 +6806,10 @@ paths:
           description: OK
       summary: List all transactions associated with an insight.
       tags:
-      - insights
-  "/users/{user_guid}/insights{insight_guid}":
-    get:
-      description: Use this endpoint to read the attributes of a specific insight
-        according to its unique GUID.
-      operationId: readInsightsUser
-      parameters:
-      - description: The unique identifier for the user. Defined by MX.
-        example: USR-1234-abcd
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
-      - description: The unique identifier for the insight. Defined by MX.
-        example: BET-1234-abcd
-        in: path
-        name: insight_guid
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/InsightResponseBody"
-          description: OK
-      summary: Read a specific insight.
-      tags:
-      - insights
-    put:
-      description: Use this endpoint to update the attributes of a particular insight
-        according to its unique GUID.
-      operationId: updateInsight
-      parameters:
-      - description: The unique identifier for the user. Defined by MX.
-        example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-        in: path
-        name: user_guid
-        required: true
-        schema:
-          type: string
-      - description: The unique identifier for the insight. Defined by MX.
-        example: BET-1234-abcd
-        in: path
-        name: insight_guid
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/InsightUpdateRequest"
-        description: The insight to be updated (None of these parameters are required,
-          but the user object cannot be empty.)
-        required: true
-      responses:
-        '200':
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/InsightResponse"
-          description: OK
-      summary: Update insight
-      tags:
-      - insights
+        - insights
   "/users/{user_guid}/managed_members":
     get:
-      description:
-        This endpoint returns a list of all the partner-managed members
-        associated with the specified `user`.
+      description: This endpoint returns a list of all the partner-managed members associated with the specified `user`.
       operationId: listManagedMembers
       parameters:
         - $ref: '#/components/parameters/page'
@@ -7082,9 +6849,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/managed_members/{member_guid}":
     delete:
-      description:
-        Use this endpoint to delete the specified partner-managed `member`.
-        The endpoint will respond with a status of `204 No Content` without a resource.
+      description: Use this endpoint to delete the specified partner-managed `member`. The endpoint will respond with a status of `204 No Content` without a resource.
       operationId: deleteManagedMember
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7096,9 +6861,7 @@ paths:
       tags:
         - mx_platform
     get:
-      description:
-        This endpoint returns the attributes of the specified partner-managed
-        `member`.
+      description: This endpoint returns the attributes of the specified partner-managed `member`.
       operationId: readManagedMember
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7114,9 +6877,7 @@ paths:
       tags:
         - mx_platform
     put:
-      description:
-        Use this endpoint to update the attributes of the specified partner_managed
-        `member`.
+      description: Use this endpoint to update the attributes of the specified partner_managed `member`.
       operationId: updateManagedMember
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7126,9 +6887,7 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/ManagedMemberUpdateRequestBody"
-        description:
-          Managed member object to be updated (While no single parameter
-          is required, the request body can't be empty)
+        description: Managed member object to be updated (While no single parameter is required, the request body can't be empty)
         required: true
       responses:
         "200":
@@ -7142,9 +6901,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/managed_members/{member_guid}/accounts":
     get:
-      description:
-        Use this endpoint to retrieve a list of all the partner-managed
-        accounts associated with the given partner-manage member.
+      description: Use this endpoint to retrieve a list of all the partner-managed accounts associated with the given partner-manage member.
       operationId: listManagedAccounts
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7186,10 +6943,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}":
     delete:
-      description:
-        Use this endpoint to delete a partner-managed account according
-        to its unique GUID. If successful, the API will respond with a status of `204
-        No Content`.
+      description: Use this endpoint to delete a partner-managed account according to its unique GUID. If successful, the API will respond with a status of `204 No Content`.
       operationId: deleteManagedAccount
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -7202,9 +6956,7 @@ paths:
       tags:
         - mx_platform
     get:
-      description:
-        Use this endpoint to read the attributes of a partner-managed account
-        according to its unique guid.
+      description: Use this endpoint to read the attributes of a partner-managed account according to its unique guid.
       operationId: readManagedAccount
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -7221,9 +6973,7 @@ paths:
       tags:
         - mx_platform
     put:
-      description:
-        Use this endpoint to update the attributes of a partner-managed
-        account according to its unique GUID.
+      description: Use this endpoint to update the attributes of a partner-managed account according to its unique GUID.
       operationId: updateManagedAccount
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -7234,9 +6984,7 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/ManagedAccountUpdateRequestBody"
-        description:
-          Managed account object to be updated (While no single parameter
-          is required, the request body can't be empty)
+        description: Managed account object to be updated (While no single parameter is required, the request body can't be empty)
         required: true
       responses:
         "200":
@@ -7248,11 +6996,9 @@ paths:
       summary: Update managed account
       tags:
         - mx_platform
-  ? "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions"
-  : get:
-      description:
-        This endpoint returns a list of all the partner-managed transactions
-        associated with the specified `account`, scoped through a `user` and a `member`.
+  "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions":
+    get:
+      description: This endpoint returns a list of all the partner-managed transactions associated with the specified `account`, scoped through a `user` and a `member`.
       operationId: listManagedTransactions
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -7294,11 +7040,9 @@ paths:
       summary: Create managed transaction
       tags:
         - mx_platform
-  ? "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid}"
-  : delete:
-      description:
-        Use this endpoint to delete the specified partner-managed `transaction`.
-        The endpoint will respond with a status of `204 No Content` without a resource.
+  "/users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid}":
+    delete:
+      description: Use this endpoint to delete the specified partner-managed `transaction`. The endpoint will respond with a status of `204 No Content` without a resource.
       operationId: deleteManagedTransaction
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -7312,9 +7056,7 @@ paths:
       tags:
         - mx_platform
     get:
-      description:
-        Requests to this endpoint will return the attributes of the specified
-        partner-managed `transaction`.
+      description: Requests to this endpoint will return the attributes of the specified partner-managed `transaction`.
       operationId: readManagedTransaction
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -7332,9 +7074,7 @@ paths:
       tags:
         - mx_platform
     put:
-      description:
-        Use this endpoint to update the attributes of the specified partner_managed
-        `transaction`.
+      description: Use this endpoint to update the attributes of the specified partner_managed `transaction`.
       operationId: updateManagedTransaction
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -7346,9 +7086,7 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/ManagedTransactionUpdateRequestBody"
-        description:
-          Managed transaction object to be updated (While no single parameter
-          is required, the request body can't be empty)
+        description: Managed transaction object to be updated (While no single parameter is required, the request body can't be empty)
         required: true
       responses:
         "200":
@@ -7362,9 +7100,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members":
     get:
-      description:
-        This endpoint returns an array which contains information on every
-        member associated with a specific user.
+      description: This endpoint returns an array which contains information on every member associated with a specific user.
       operationId: listMembers
       parameters:
         - $ref: '#/components/parameters/page'
@@ -7381,16 +7117,7 @@ paths:
       tags:
         - mx_platform
     post:
-      description:
-        This endpoint allows you to create a new member. Members are created
-        with the required parameters credentials and institution_code, and the optional
-        parameters id and metadata. When creating a member, youll need to include
-        the correct type of credential required by the financial institution and provided
-        by the user. You can find out which credential type is required with the `/institutions/{institution_code}/credentials`
-        endpoint. If successful, the MX Platform API will respond with the newly-created
-        member object. Once you successfully create a member, MX will immediately
-        validate the provided credentials and attempt to aggregate data for accounts
-        and transactions.
+      description: This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters id and metadata. When creating a member, youll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the `/institutions/{institution_code}/credentials` endpoint. If successful, the MX Platform API will respond with the newly-created member object. Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions.
       operationId: createMember
       parameters:
         - $ref: '#/components/parameters/userGuid'
@@ -7399,9 +7126,7 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/MemberCreateRequestBody"
-        description:
-          Member object to be created with optional parameters (id and
-          metadata) and required parameters (credentials and institution_code)
+        description: Member object to be created with optional parameters (id and metadata) and required parameters (credentials and institution_code)
         required: true
       responses:
         "200":
@@ -7449,10 +7174,7 @@ paths:
       tags:
         - mx_platform
     put:
-      description:
-        Use this endpoint to update a members attributes. Only the credentials,
-        id, and metadata parameters can be updated. To get a list of the required
-        credentials for the member, use the list member credentials endpoint.
+      description: Use this endpoint to update a members attributes. Only the credentials, id, and metadata parameters can be updated. To get a list of the required credentials for the member, use the list member credentials endpoint.
       operationId: updateMember
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7462,9 +7184,7 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/MemberUpdateRequestBody"
-        description:
-          Member object to be updated (While no single parameter is required,
-          the request body can't be empty)
+        description: Member object to be updated (While no single parameter is required, the request body can't be empty)
         required: true
       responses:
         "200":
@@ -7478,9 +7198,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/account_numbers":
     get:
-      description:
-        This endpoint returns a list of account numbers associated with
-        the specified `member`.
+      description: This endpoint returns a list of account numbers associated with the specified `member`.
       operationId: listAccountNumbersByMember
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7499,9 +7217,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/account_owners":
     get:
-      description:
-        This endpoint returns an array with information about every account
-        associated with a particular member.
+      description: This endpoint returns an array with information about every account associated with a particular member.
       operationId: listAccountOwnersByMember
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7520,9 +7236,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/accounts":
     get:
-      description:
-        This endpoint returns a list of all the accounts associated with
-        the specified `member`.
+      description: This endpoint returns a list of all the accounts associated with the specified `member`.
       operationId: listMemberAccounts
       parameters:
         - $ref: '#/components/parameters/memberIsManagedByUser'
@@ -7542,9 +7256,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/accounts/{account_guid}":
     get:
-      description:
-        This endpoint allows you to read the attributes of an `account`
-        resource.
+      description: This endpoint allows you to read the attributes of an `account` resource.
       operationId: readAccountByMember
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -7561,8 +7273,7 @@ paths:
       tags:
         - mx_platform
     put:
-      description:
-        This endpoint allows you to update certain attributes of an `account` resource, including manual accounts. For manual accounts, you can update every field listed. For aggregated accounts, you can only update `is_business`, `is_hidden` and `metadata`.
+      description: This endpoint allows you to update certain attributes of an `account` resource, including manual accounts. For manual accounts, you can update every field listed. For aggregated accounts, you can only update `is_business`, `is_hidden` and `metadata`.
       operationId: updateAccountByMember
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -7586,11 +7297,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/aggregate":
     post:
-      description:
-        Calling this endpoint initiates an aggregation event for the member.
-        This brings in the latest account and transaction data from the connected
-        institution. If this data has recently been updated, MX may not initiate an
-        aggregation event.
+      description: Calling this endpoint initiates an aggregation event for the member. This brings in the latest account and transaction data from the connected institution. If this data has recently been updated, MX may not initiate an aggregation event.
       operationId: aggregateMember
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7609,13 +7316,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/challenges":
     get:
-      description:
-        Use this endpoint for information on what multi-factor authentication
-        challenges need to be answered in order to aggregate a member. If the aggregation
-        is not challenged, i.e., the member does not have a connection status of `CHALLENGED`,
-        then code `204 No Content` will be returned. If the aggregation has been challenged,
-        i.e., the member does have a connection status of `CHALLENGED`, then code
-        `200 OK` will be returned - along with the corresponding credentials.
+      description: Use this endpoint for information on what multi-factor authentication challenges need to be answered in order to aggregate a member. If the aggregation is not challenged, i.e., the member does not have a connection status of `CHALLENGED`, then code `204 No Content` will be returned. If the aggregation has been challenged, i.e., the member does have a connection status of `CHALLENGED`, then code `200 OK` will be returned - along with the corresponding credentials.
       operationId: listMemberChallenges
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7634,10 +7335,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/check_balance":
     post:
-      description:
-        This endpoint operates much like the aggregate member endpoint
-        except that it gathers only account balance information; it does not gather
-        any transaction data.
+      description: This endpoint operates much like the aggregate member endpoint except that it gathers only account balance information; it does not gather any transaction data.
       operationId: checkBalances
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7654,9 +7352,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/credentials":
     get:
-      description:
-        This endpoint returns an array which contains information on every
-        non-MFA credential associated with a specific member.
+      description: This endpoint returns an array which contains information on every non-MFA credential associated with a specific member.
       operationId: listMemberCredentials
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7675,11 +7371,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/extend_history":
     post:
-      description:
-        Some institutions allow developers to access an extended transaction
-        history with up to 24 months of data associated with a particular member.
-        The process for fetching and then reading this extended transaction history
-        is much like standard aggregation, and it may trigger multi-factor authentication.
+      description: Some institutions allow developers to access an extended transaction history with up to 24 months of data associated with a particular member. The process for fetching and then reading this extended transaction history is much like standard aggregation, and it may trigger multi-factor authentication.
       operationId: extendHistory
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7713,9 +7405,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/fetch_statements":
     post:
-      description:
-        Use this endpoint to fetch the statements associated with a particular
-        member.
+      description: Use this endpoint to fetch the statements associated with a particular member.
       operationId: fetchStatements
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7730,58 +7420,9 @@ paths:
       summary: Fetch statements
       tags:
         - mx_platform
-  "/users/{user_guid}/members/{member_guid}/fetch_tax_documents":
-    post:
-      description:
-        Use this endpoint to fetch (aggregate) the tax documents associated
-        with the specified member. This request **does not** return the latest tax
-        documents. It just starts the document aggregation process and returns the
-        initial state of the process. You must interact with the newly aggregated
-        data using the other document endpoints in this reference. This request may
-        also trigger multi-factor authentication which requires end-user input and
-        a specific process for answering authentication challenges.
-      operationId: fetchTaxDocuments
-      parameters:
-        - $ref: '#/components/parameters/memberGuid'
-        - $ref: '#/components/parameters/userGuid'
-      responses:
-        "202":
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/MemberResponseBody"
-          description: Accepted
-      summary: Fetch Tax Documents
-      tags:
-        - mx_platform
-  "/users/{user_guid}/members/{member_guid}/holdings":
-    get:
-      description:
-        This endpoint returns all holdings associated with the specified
-        `member` across all accounts.
-      operationId: listHoldingsByMember
-      parameters:
-        - $ref: '#/components/parameters/fromDate'
-        - $ref: '#/components/parameters/memberGuid'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
-        - $ref: '#/components/parameters/toDate'
-        - $ref: '#/components/parameters/userGuid'
-      responses:
-        "200":
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/HoldingsResponseBody"
-          description: OK
-      summary: List holdings by member
-      tags:
-        - mx_platform
   "/users/{user_guid}/members/{member_guid}/identify":
     post:
-      description:
-        The identify endpoint begins an identification process for an already-existing
-        member.
+      description: The identify endpoint begins an identification process for an already-existing member.
       operationId: identifyMember
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7798,9 +7439,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/oauth_window_uri":
     get:
-      description:
-        This endpoint will generate an `oauth_window_uri` for the specified
-        `member`.
+      description: This endpoint will generate an `oauth_window_uri` for the specified `member`.
       operationId: requestOAuthWindowURI
       parameters:
         - $ref: '#/components/parameters/clientRedirectUrl'
@@ -7822,9 +7461,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/resume":
     put:
-      description:
-        This endpoint answers the challenges needed when a member has been
-        challenged by multi-factor authentication.
+      description: This endpoint answers the challenges needed when a member has been challenged by multi-factor authentication.
       operationId: resumeAggregation
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7939,16 +7576,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/members/{member_guid}/status":
     get:
-      description:
-        This endpoint provides the status of the members most recent aggregation
-        event. This is an important step in the aggregation process, and the results
-        returned by this endpoint should determine what you do next in order to successfully
-        aggregate a member. MX has introduced new, more detailed information on the
-        current status of a members connection to a financial institution and the
-        state of its aggregation - the connection_status field. These are intended
-        to replace and expand upon the information provided in the status field, which
-        will soon be deprecated; support for the status field remains for the time
-        being.
+      description: This endpoint provides the status of the members most recent aggregation event. This is an important step in the aggregation process, and the results returned by this endpoint should determine what you do next in order to successfully aggregate a member. MX has introduced new, more detailed information on the current status of a members connection to a financial institution and the state of its aggregation - the connection_status field. These are intended to replace and expand upon the information provided in the status field, which will soon be deprecated; support for the status field remains for the time being.
       operationId: readMemberStatus
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -7963,81 +7591,9 @@ paths:
       summary: Read member status
       tags:
         - mx_platform
-  "/users/{user_guid}/members/{member_guid}/tax_documents":
-    get:
-      description: Use this endpoint to get a paginated list of tax documents.
-      operationId: listTaxDocuments
-      parameters:
-        - $ref: '#/components/parameters/memberGuid'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
-        - $ref: '#/components/parameters/userGuid'
-      responses:
-        "200":
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/TaxDocumentsResponseBody"
-          description: OK
-      summary: List Tax Documents
-      tags:
-        - mx_platform
-  "/users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}":
-    get:
-      description: Use this endpoint to read the attributes of the specified tax document.
-      operationId: readTaxDocument
-      parameters:
-        - description: The unique id for a `tax_document`.
-          example: TAX-987dfds1b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: tax_document_guid
-          required: true
-          schema:
-            type: string
-        - $ref: '#/components/parameters/memberGuid'
-        - $ref: '#/components/parameters/userGuid'
-      responses:
-        "200":
-          content:
-            application/vnd.mx.api.v1+json:
-              schema:
-                "$ref": "#/components/schemas/TaxDocumentResponseBody"
-          description: OK
-      summary: Read a Tax Document
-      tags:
-        - mx_platform
-  ? "/users/{user_guid}/members/{member_guid}/tax_documents/{tax_document_guid}.pdf"
-  : get:
-      description:
-        Use this endpoint to download a PDF version of the specified tax
-        document. The endpoint URL is the base URL appended with the uri of the tax_document.
-      operationId: downloadTaxDocument
-      parameters:
-        - description: The unique id for a `tax_document`.
-          example: TAX-987dfds1b-e582-15b6-60c0-358f12466b4b
-          in: path
-          name: tax_document_guid
-          required: true
-          schema:
-            type: string
-        - $ref: '#/components/parameters/memberGuid'
-        - $ref: '#/components/parameters/userGuid'
-      responses:
-        "200":
-          content:
-            application/vnd.mx.api.v1+pdf:
-              schema:
-                format: binary
-                type: string
-          description: OK
-      summary: Download a Tax Document PDF
-      tags:
-        - mx_platform
   "/users/{user_guid}/members/{member_guid}/transactions":
     get:
-      description:
-        Requests to this endpoint return a list of transactions associated
-        with the specified `member`, accross all accounts associated with that `member`.
+      description: Requests to this endpoint return a list of transactions associated with the specified `member`, accross all accounts associated with that `member`.
       operationId: listTransactionsByMember
       parameters:
         - $ref: '#/components/parameters/fromDate'
@@ -8113,8 +7669,7 @@ paths:
       tags:
         - microdeposits
       summary: Delete a microdeposit
-      description:
-        Use this endpoint to delete the specified microdeposit.
+      description: Use this endpoint to delete the specified microdeposit.
       parameters:
         - $ref: '#/components/parameters/microDepositGuid'
         - $ref: '#/components/parameters/userGuid'
@@ -8129,31 +7684,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/microDepositGuid'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MicrodepositResponseBody'
-  "/micro_deposits/{microdeposit_guid}/verify":
-    put:
-      tags:
-        - microdeposits
-      summary: Verify a Microdeposit
-      description: Use this endpoint to verify the amounts deposited into the account during a microdeposit verification. The verification has not successfully completed until the `status` is `VERIFIED`. Poll the `/users/{user_guid}/micro_deposits/{micro_deposit_guid}` (read microdeposit) endpoint until you see this status or an error state.
-      parameters:
-        - name: micro_deposit_guid
-          description: The unique identifier for the microdeposit. Defined by MX.
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/MicrodepositVerifyRequestBody"
       responses:
         '200':
           description: OK
@@ -8193,10 +7723,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/MonthlyCashFlowResponseBody'
       tags:
-      - mx_platform
+        - mx_platform
       summary: Update monthly cash flow profile
-  ? "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items"
-  : post:
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items":
+    post:
       description: This endpoint creates a new `spending_plan_iteration_item`.
       operationId: createSpendingPlanIterationItem
       parameters:
@@ -8270,8 +7800,8 @@ paths:
       summary: List spending plans
       tags:
         - spending plan
-  ? "/users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid}"
-  : delete:
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts/{spending_plan_account_guid}":
+    delete:
       description: Use this endpoint to delete a `spending_plan_account`.
       operationId: deleteSpendingPlanAccount
       parameters:
@@ -8303,8 +7833,8 @@ paths:
       summary: Read spending plan account
       tags:
         - spending plan
-  ? "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid}"
-  : delete:
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items/{iteration_item_guid}":
+    delete:
       description: Use this endpoint to delete a spending plan `iteration_item`.
       operationId: deleteSpendingPlanIterationItem
       parameters:
@@ -8391,8 +7921,8 @@ paths:
       summary: Read a spending plan for a user
       tags:
         - spending plan
-  ? "/users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts"
-  : get:
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/spending_plan_accounts":
+    get:
       description: Use this endpoint to list all the spending plan accounts associated with the spending plan.
       operationId: listSpendingPlanAccounts
       parameters:
@@ -8429,8 +7959,8 @@ paths:
       summary: List spending plan iterations
       tags:
         - spending plan
-  ? "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/{iteration_number}"
-  : get:
+  "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/{iteration_number}":
+    get:
       description: Use this endpoint to read the attributes of a specific spending plan `iteration` according to its `iteration_number`.
       operationId: readSpendingPlanIteration
       parameters:
@@ -8451,9 +7981,7 @@ paths:
         - spending plan
   "/users/{user_guid}/taggings":
     get:
-      description:
-        Use this endpoint to retrieve a list of all the taggings associated
-        with a specific user.
+      description: Use this endpoint to retrieve a list of all the taggings associated with a specific user.
       operationId: listTaggings
       parameters:
         - $ref: '#/components/parameters/page'
@@ -8470,9 +7998,7 @@ paths:
       tags:
         - mx_platform
     post:
-      description:
-        Use this endpoint to create a new association between a tag and
-        a particular transaction, according to their unique GUIDs.
+      description: Use this endpoint to create a new association between a tag and a particular transaction, according to their unique GUIDs.
       operationId: createTagging
       parameters:
         - $ref: '#/components/parameters/userGuid'
@@ -8481,9 +8007,7 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/TaggingCreateRequestBody"
-        description:
-          Tagging object to be created with required parameters (tag_guid
-          and transaction_guid)
+        description: Tagging object to be created with required parameters (tag_guid and transaction_guid)
         required: true
       responses:
         "200":
@@ -8497,10 +8021,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/taggings/{tagging_guid}":
     delete:
-      description:
-        Use this endpoint to delete a tagging according to its unique GUID.
-        If successful, the API will respond with an empty body and a status of 204
-        NO Content.
+      description: Use this endpoint to delete a tagging according to its unique GUID. If successful, the API will respond with an empty body and a status of 204 NO Content.
       operationId: deleteTagging
       parameters:
         - $ref: '#/components/parameters/taggingGuid'
@@ -8512,9 +8033,7 @@ paths:
       tags:
         - mx_platform
     get:
-      description:
-        Use this endpoint to read the attributes of a `tagging` according
-        to its unique GUID.
+      description: Use this endpoint to read the attributes of a `tagging` according to its unique GUID.
       operationId: readTagging
       parameters:
         - $ref: '#/components/parameters/taggingGuid'
@@ -8554,9 +8073,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/tags":
     get:
-      description:
-        Use this endpoint to list all tags associated with the specified
-        `user`. Each user includes the `Business` tag by default.
+      description: Use this endpoint to list all tags associated with the specified `user`. Each user includes the `Business` tag by default.
       operationId: listTags
       parameters:
         - $ref: '#/components/parameters/page'
@@ -8596,10 +8113,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/tags/{tag_guid}":
     delete:
-      description:
-        Use this endpoint to permanently delete a specific tag based on
-        its unique GUID. If successful, the API will respond with status of `204 No
-        Content`.
+      description: Use this endpoint to permanently delete a specific tag based on its unique GUID. If successful, the API will respond with status of `204 No Content`.
       operationId: deleteTag
       parameters:
         - $ref: '#/components/parameters/tagGuid'
@@ -8611,9 +8125,7 @@ paths:
       tags:
         - mx_platform
     get:
-      description:
-        Use this endpoint to read the attributes of a particular tag according
-        to its unique GUID.
+      description: Use this endpoint to read the attributes of a particular tag according to its unique GUID.
       operationId: readTag
       parameters:
         - $ref: '#/components/parameters/tagGuid'
@@ -8629,9 +8141,7 @@ paths:
       tags:
         - mx_platform
     put:
-      description:
-        Use this endpoint to update the name of a specific tag according
-        to its unique GUID.
+      description: Use this endpoint to update the name of a specific tag according to its unique GUID.
       operationId: updateTag
       parameters:
         - $ref: '#/components/parameters/tagGuid'
@@ -8655,11 +8165,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/tags/{tag_guid}/transactions":
     get:
-      description:
-        Use this endpoint to get a list of all transactions associated
-        with a particular tag according to the tag’s unique GUID. In other words,
-        a list of all transactions that have been assigned to a particular tag using
-        the create a tagging endpoint.
+      description: Use this endpoint to get a list of all transactions associated with a particular tag according to the tag’s unique GUID. In other words, a list of all transactions that have been assigned to a particular tag using the create a tagging endpoint.
       operationId: listTransactionsByTag
       parameters:
         - $ref: '#/components/parameters/fromDate'
@@ -8680,9 +8186,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/transaction_rules":
     get:
-      description:
-        Use this endpoint to read the attributes of all existing transaction
-        rules belonging to the user.
+      description: Use this endpoint to read the attributes of all existing transaction rules belonging to the user.
       operationId: listTransactionRules
       parameters:
         - $ref: '#/components/parameters/page'
@@ -8699,9 +8203,7 @@ paths:
       tags:
         - mx_platform
     post:
-      description:
-        Use this endpoint to create a new transaction rule. The newly-created
-        `transaction_rule` object will be returned if successful.
+      description: Use this endpoint to create a new transaction rule. The newly-created `transaction_rule` object will be returned if successful.
       operationId: createTransactionRule
       parameters:
         - $ref: '#/components/parameters/userGuid'
@@ -8710,9 +8212,7 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/TransactionRuleCreateRequestBody"
-        description:
-          TransactionRule object to be created with optional parameters
-          (description) and required parameters (category_guid and match_description)
+        description: TransactionRule object to be created with optional parameters (description) and required parameters (category_guid and match_description)
         required: true
       responses:
         "200":
@@ -8726,9 +8226,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/transaction_rules/{transaction_rule_guid}":
     delete:
-      description:
-        Use this endpoint to permanently delete a transaction rule based
-        on its unique GUID.
+      description: Use this endpoint to permanently delete a transaction rule based on its unique GUID.
       operationId: deleteTransactionRule
       parameters:
         - $ref: '#/components/parameters/transactionRuleGuid'
@@ -8740,9 +8238,7 @@ paths:
       tags:
         - mx_platform
     get:
-      description:
-        Use this endpoint to read the attributes of an existing transaction
-        rule based on the rule’s unique GUID.
+      description: Use this endpoint to read the attributes of an existing transaction rule based on the rule’s unique GUID.
       operationId: readTransactionRule
       parameters:
         - $ref: '#/components/parameters/transactionRuleGuid'
@@ -8758,10 +8254,7 @@ paths:
       tags:
         - mx_platform
     put:
-      description:
-        Use this endpoint to update the attributes of a specific transaction
-        rule based on its unique GUID. The API will respond with the updated transaction_rule
-        object. Any attributes not provided will be left unchanged.
+      description: Use this endpoint to update the attributes of a specific transaction rule based on its unique GUID. The API will respond with the updated transaction_rule object. Any attributes not provided will be left unchanged.
       operationId: updateTransactionRule
       parameters:
         - $ref: '#/components/parameters/transactionRuleGuid'
@@ -8785,10 +8278,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/transactions":
     get:
-      description:
-        Requests to this endpoint return a list of transactions associated
-        with the specified `user`, accross all members and accounts associated with
-        that `user`.
+      description: Requests to this endpoint return a list of transactions associated with the specified `user`, accross all members and accounts associated with that `user`.
       operationId: listTransactions
       parameters:
         - $ref: '#/components/parameters/fromDate'
@@ -8808,9 +8298,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/transactions/{transaction_guid}":
     get:
-      description:
-        Requests to this endpoint will return the attributes of the specified
-        `transaction`.
+      description: Requests to this endpoint will return the attributes of the specified `transaction`.
       operationId: readTransaction
       parameters:
         - $ref: '#/components/parameters/transactionGuid'
@@ -8826,9 +8314,7 @@ paths:
       tags:
         - mx_platform
     put:
-      description:
-        Use this endpoint to update the `description` of a specific transaction
-        according to its unique GUID.
+      description: Use this endpoint to update the `description` of a specific transaction according to its unique GUID.
       operationId: updateTransaction
       parameters:
         - $ref: '#/components/parameters/transactionGuid'
@@ -8849,7 +8335,7 @@ paths:
           description: OK
       summary: Update transaction
       tags:
-      - mx_platform
+        - mx_platform
   "/users/{user_guid}/transactions/{transaction_guid}/split":
     delete:
       description: This endpoint deletes all split transactions linked to a parent transaction, but it leaves the parent transaction active. This request will also update the parent transaction's has_been_split field to false. This endpoint accepts the optional MX-Skip-Webhook header.
@@ -8884,12 +8370,7 @@ paths:
         - mx_platform
   "/users/{user_guid}/widget_urls":
     post:
-      description:
-        This endpoint allows partners to get a URL by passing the `widget_type`
-        in the request body, as well as configuring it in several different ways.
-        In the case of Connect, that means setting the `widget_type` to `connect_widget`.
-        Partners may also pass an optional `Accept-Language` header as well as a number
-        of configuration options. Note that this is a `POST` request.
+      description: This endpoint allows partners to get a URL by passing the `widget_type` in the request body, as well as configuring it in several different ways. In the case of Connect, that means setting the `widget_type` to `connect_widget`. Partners may also pass an optional `Accept-Language` header as well as a number of configuration options. Note that this is a `POST` request.
       operationId: requestWidgetURL
       parameters:
         - $ref: '#/components/parameters/acceptLanguage'
@@ -8911,6 +8392,534 @@ paths:
       summary: Request widget url
       tags:
         - mx_platform
+  /account/account_numbers:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - processor token
+      operationId: requestAccountNumber
+      summary: Request an account number (Processors Only)
+      description: Get account information such as routing number and account number, scoped to your access token.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/models.yaml#/ProcessorAccountNumberBody'
+  /account/check_balance:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - processor token
+      operationId: checkRealTimeAccountBalance
+      summary: Check Real Time Account Balance (Processors Only)
+      description: Check the real-time account balance using your access token.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/models.yaml#/MemberResponseBody'
+  /account/transactions:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - processor token
+      operationId: getAccountOwnerInfo
+      summary: Get account owner information (Processors Only)
+      description: Get account owner information (Processors Only)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/models.yaml#/ProcessorOwnerBody'
+  /ach_returns:
+    get:
+      description: |
+        :::warning
+        The features documented here are in a beta state, and this documentation is considered draft material subject to frequent change.
+        :::
+
+        Use this endpoint to get all ACH returns.
+      operationId: listACHRetruns
+      parameters:
+        - $ref: './schemas/parameters.yaml#/institutionGuid'
+        - $ref: './schemas/parameters.yaml#/returnedAt'
+        - $ref: './schemas/parameters.yaml#/resolvedStatusAt'
+        - $ref: './schemas/parameters.yaml#/returnCode'
+        - $ref: './schemas/parameters.yaml#/returnStatus'
+        - $ref: './schemas/parameters.yaml#/page'
+        - $ref: './schemas/parameters.yaml#/recordsPerPage'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/ACHReturnsResponseBody'
+          description: OK
+      summary: List ACH Returns
+      tags:
+        - ach return
+    post:
+      description: |
+        :::warning
+        The features documented here are in a beta state, and this documentation is considered draft material subject to frequent change.
+        :::
+
+        Use this endpoint to create an ACH return in our system.
+      operationId: createACHReturn
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/models.yaml#/ACHReturnCreateRequestBody'
+        description: ACH return object to be created.
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/ACHReturnResponseBody'
+          description: OK
+      summary: Create ACH Return
+      tags:
+        - ach return
+  /ach_returns/{ach_return_guid}:
+    get:
+      description: |
+        :::warning
+        The features documented here are in a beta state, and this documentation is considered draft material subject to frequent change.
+        :::
+
+        Use this endpoint to get an ACH return by its `guid` or `id`.
+      operationId: readACHRetrun
+      parameters:
+        - $ref: './schemas/parameters.yaml#/achReturnGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/ACHReturnResponseBody'
+          description: OK
+      summary: Read ACH Return
+      tags:
+        - ach return
+  /micro_deposits/{micro_deposit_guid}/verify:
+    put:
+      tags:
+        - microdeposits
+      operationId: verifyMicrodeposit
+      summary: Verify a Microdeposit
+      description: Use this endpoint to verify the amounts deposited into the account during a microdeposit verification. The verification has not successfully completed until the `status` is `VERIFIED`. Poll the `/users/{user_guid}/micro_deposits/{micro_deposit_guid}` (read microdeposit) endpoint until you see this status or an error state.
+      parameters:
+        - $ref: './schemas/parameters.yaml#/microDepositGuid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/models.yaml#/MicrodepositVerifyRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/models.yaml#/MicrodepositResponseBody'
+  /payment_account:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - processor token
+      operationId: readAccountBalance
+      summary: Read the account balance (Processors Only)
+      description: Read the account balance (Processors Only)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/models.yaml#/PaymentAccountBody'
+  /tokens:
+    get:
+      tags:
+        - processor token
+      operationId: listTokens
+      summary: View a List of Tokens
+      description: View a list of tokens that exist for a user, member, or account.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/models.yaml#/TokenRequestBody'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/TokenResponseBody'
+          description: OK
+  /users/{user_guid}/account_verifications:
+    get:
+      tags:
+        - microdeposits
+      operationId: listUserVerifications
+      summary: List all verifications for a user
+      description: |
+        This endpoint returns a list of the account verifications associated with the user, as well as the status of those verifications.
+      parameters:
+        - $ref: './schemas/parameters.yaml#/userGuid'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/models.yaml#/MicrodepositResponseBody'
+  /users/{user_guid}/accounts/{account_guid}/investment_holdings:
+    get:
+      description: This endpoint lists all holdings associated with the particular account defined.
+      operationId: listHoldingsByAccount
+      parameters:
+        - $ref: './schemas/parameters.yaml#/accountGuid'
+        - $ref: './schemas/parameters.yaml#/page'
+        - $ref: './schemas/parameters.yaml#/recordsPerPageMax1000'
+        - $ref: './schemas/parameters.yaml#/userGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/InvestmentHoldingsResponseBody'
+          description: OK
+      summary: List holdings by account
+      tags:
+        - investment holdings
+  /users/{user_guid}/insights/{insight_guid}:
+    get:
+      description: Use this endpoint to read the attributes of an insight according to its unique GUID.
+      operationId: readInsightUser
+      parameters:
+        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: './schemas/parameters.yaml#/insightGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/InsightResponseBody'
+          description: OK
+      summary: Read insight
+      tags:
+        - insights
+    put:
+      description: Use this endpoint to update the attributes of an insight according to its unique GUID.
+      operationId: updateInsight
+      parameters:
+        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: './schemas/parameters.yaml#/insightGuid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/models.yaml#/InsightUpdateRequestBody'
+        description: The insight to be updated (None of these parameters are required, but the user object cannot be empty.)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/InsightResponse'
+          description: OK
+      summary: Update insight
+      tags:
+        - insights
+  /users/{user_guid}/investment_holdings:
+    get:
+      description: This endpoint lists all holdings associated with the user across all accounts.
+      operationId: listHoldings
+      parameters:
+        - $ref: './schemas/parameters.yaml#/page'
+        - $ref: './schemas/parameters.yaml#/recordsPerPageMax1000'
+        - $ref: './schemas/parameters.yaml#/userGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/InvestmentHoldingsResponseBody'
+          description: OK
+      summary: List holdings by user
+      tags:
+        - investment holdings
+  /users/{user_guid}/investment_holdings/{holding_guid}:
+    get:
+      description: Use this endpoint to read the attributes of a specific `holding`.
+      operationId: readHolding
+      parameters:
+        - $ref: './schemas/parameters.yaml#/holdingGuid'
+        - $ref: './schemas/parameters.yaml#/userGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/InvestmentHoldingResponseBody'
+          description: OK
+      summary: Read holding
+      tags:
+        - investment holdings
+  /users/{user_guid}/investment_holdings_deactivate:
+    get:
+      description: This endpoint deactivates the specific user from the `/investment_holdings` product. To reactivate a user, use any of the current `/investment_holding` endpoints.
+      operationId: deactivateUser
+      parameters:
+        - $ref: './schemas/parameters.yaml#/userGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/InvestmentHoldingsDeactivation'
+          description: OK
+      summary: Deactivate user from Investment Holdings
+      tags:
+        - investment holdings
+  /users/{user_guid}/members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid}:
+    put:
+      description: Use this endpoint to update a specific transaction according to its unique GUID.
+      operationId: updateTransactionByAccount
+      parameters:
+        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: './schemas/parameters.yaml#/memberGuid'
+        - $ref: './schemas/parameters.yaml#/accountGuid'
+        - $ref: './schemas/parameters.yaml#/transactionGuid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/models.yaml#/TransactionUpdateRequestBody'
+        description: Transaction object to be updated
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/models.yaml#/TransactionResponseBody'
+          description: OK
+      summary: Update Transaction by Account
+      tags:
+        - transactions
+  /users/{user_guid}/members/{member_guid}/investment_holdings:
+    get:
+      description: This endpoint lists all holdings associated with the specified member.
+      operationId: listHoldingsByMember
+      parameters:
+        - $ref: './schemas/parameters.yaml#/memberGuid'
+        - $ref: './schemas/parameters.yaml#/page'
+        - $ref: './schemas/parameters.yaml#/recordsPerPageMax1000'
+        - $ref: './schemas/parameters.yaml#/userGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/InvestmentHoldingsResponseBody'
+          description: OK
+      summary: List holdings by member
+      tags:
+        - investment holdings
+  /users/{user_guid}/notifications:
+    parameters:
+      - $ref: './schemas/parameters.yaml#/userGuid'
+    post:
+      tags:
+        - notifications
+      operationId: createNotification
+      summary: Create a notification
+      description: All notifications created through the API will be of notification type `API_NOTIFICATION`, channel `PUSH`, and will not be associated to an entity.  No other channels are supported.  This will only have an effect for clients using an MX mobile application.
+      parameters:
+        - $ref: './schemas/parameters.yaml#/content'
+        - $ref: './schemas/parameters.yaml#/subject'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/models.yaml#/NotificationResponseBody'
+    get:
+      tags:
+        - notifications
+      operationId: listNotifications
+      summary: List notifications
+      description: All notifications for the user can be listed, including notifications created by MX for other channels besides `PUSH`.
+      parameters:
+        - $ref: './schemas/parameters.yaml#/fromDate'
+        - $ref: './schemas/parameters.yaml#/toDate'
+        - $ref: './schemas/parameters.yaml#/page'
+        - $ref: './schemas/parameters.yaml#/recordsPerPageMax1000'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/models.yaml#/NotificationsResponseBody'
+  /users/{user_guid}/notifications/{notification_guid}:
+    get:
+      tags:
+        - notifications
+      operationId: readNotifications
+      summary: Read notifications
+      description: |
+        Can pull up any notification associated with the user, including notifications created by MX for other channels besides `PUSH`.
+      parameters:
+        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: './schemas/parameters.yaml#/notificationGuid'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/models.yaml#/NotificationResponseBody'
+  /users/{user_guid}/repeating_transactions:
+    get:
+      description: Retrieve a list of all recurring transactions for a user. <br /><br />For more see the [Repeating Transactions guide](repeating-transactions-overview.mdx).
+      operationId: repeatingTransactions
+      parameters:
+        - $ref: './schemas/parameters.yaml#/userGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/RepeatingTransactionsResponseBody'
+          description: OK
+      summary: List Repeating Transactions
+      tags:
+        - transactions
+  /users/{user_guid}/repeating_transactions/{repeating_transaction_guid}:
+    get:
+      description: Get a Specific Repeating Transaction. <br /><br />List For more see the [Repeating Transactions guide](repeating-transactions-overview.mdx)
+      operationId: specificRepeatingTransaction
+      parameters:
+        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: './schemas/parameters.yaml#/repeatingTransactionGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/RepeatingTransactionsResponseBody'
+          description: OK
+      summary: Get a Repeating Transaction
+      tags:
+        - transactions
+  /users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current:
+    get:
+      description: Use this endpoint to read the attributes of the current spending plan `iteration`.
+      operationId: readCurrentSpendingPlanIteration
+      parameters:
+        - $ref: './schemas/parameters.yaml#/page'
+        - $ref: './schemas/parameters.yaml#/recordsPerPageMax1000'
+        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: './schemas/parameters.yaml#/spendingPlanGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/SpendingPlanIterationResponse'
+          description: OK
+      summary: Read current spending plan iteration
+      tags:
+        - spending plan
+  /users/{user_guid}/transactions/{transaction_guid}/insights:
+    get:
+      description: Use this endpoint to list all insights associated with a transaction GUID.
+      operationId: listInsightsByTransaction
+      parameters:
+        - $ref: './schemas/parameters.yaml#/transactionGuid'
+        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: './schemas/parameters.yaml#/page'
+        - $ref: './schemas/parameters.yaml#/recordsPerPage'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: './schemas/models.yaml#/InsightsResponseBody'
+          description: OK
+      summary: List insights by transaction
+      tags:
+        - insights
+  /vc/users/{user_guid}/accounts/{account_guid}/transactions:
+    get:
+      description: Get an MX-issued verifiable credential of a user's transaction data.
+      operationId: getTransactionsData
+      parameters:
+        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: './schemas/parameters.yaml#/accountGuid'
+        - $ref: './schemas/parameters.yaml#/startTime'
+        - $ref: './schemas/parameters.yaml#/endTime'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v2beta+json:
+              schema:
+                $ref: './schemas/models.yaml#/VCResponse'
+          description: OK
+      summary: Get Transactions Data
+      tags:
+        - verifiable credentials
+  /vc/users/{user_guid}/members/{member_guid}/accounts:
+    get:
+      description: Get an MX-issued verifiable credential of a user's accounts data.
+      operationId: getAccountsData
+      parameters:
+        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: './schemas/parameters.yaml#/memberGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v2beta+json:
+              schema:
+                $ref: './schemas/models.yaml#/VCResponse'
+          description: OK
+      summary: Get Accounts Data
+      tags:
+        - verifiable credentials
+  /vc/users/{user_guid}/members/{member_guid}/customers:
+    get:
+      description: Get an MX-issued verifiable credential of a user's identity data.
+      operationId: getIdentityData
+      parameters:
+        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: './schemas/parameters.yaml#/memberGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v2beta+json:
+              schema:
+                $ref: './schemas/models.yaml#/VCResponse'
+          description: OK
+      summary: Get Identity Data
+      tags:
+        - verifiable credentials
 security:
   - basicAuth: []
 servers:
