@@ -1554,99 +1554,6 @@ components:
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
       type: object
-    HoldingResponse:
-      properties:
-        account_guid:
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          nullable: true
-          type: string
-        cost_basis:
-          example: 827.0
-          nullable: true
-          type: number
-        created_at:
-          example: "2015-04-13T18:01:23.000Z"
-          nullable: true
-          type: string
-        currency_code:
-          example: USD
-          nullable: true
-          type: string
-        cusip:
-          example: 18383M878
-          nullable: true
-          type: string
-        daily_change:
-          example: 2.5
-          nullable: true
-          type: number
-        description:
-          example: Guggenheim Defensive Equity ETF
-          nullable: true
-          type: string
-        guid:
-          example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
-          nullable: true
-          type: string
-        holding_type:
-          example: MONEY_MARKET
-          nullable: true
-          type: string
-        holding_type_id:
-          example: 1
-          nullable: true
-          type: integer
-        id:
-          example: ID-123
-          nullable: true
-          type: string
-        market_value:
-          example: 989.5
-          nullable: true
-          type: number
-        member_guid:
-          example: MBR-d65683e8-9eab-26bb-bcfd-ced159c9abe
-          nullable: true
-          type: string
-        metadata:
-          example: metadata
-          nullable: true
-          type: string
-        purchase_price:
-          example: 26.3
-          nullable: true
-          type: number
-        shares:
-          example: 6.0
-          nullable: true
-          type: number
-        symbol:
-          example: DEF
-          nullable: true
-          type: string
-        updated_at:
-          example: "2015-04-13T18:01:23.000Z"
-          nullable: true
-          type: string
-        user_guid:
-          example: USR-743e5d7f-1116-28fa-5de1-d3ba02e41d8d
-          nullable: true
-          type: string
-      type: object
-    HoldingResponseBody:
-      properties:
-        holding:
-          "$ref": "#/components/schemas/HoldingResponse"
-      type: object
-    HoldingsResponseBody:
-      properties:
-        holdings:
-          items:
-            "$ref": "#/components/schemas/HoldingResponse"
-          type: array
-        pagination:
-          "$ref": "#/components/schemas/PaginationResponse"
-      type: object
     ImageOptionResponse:
       properties:
         data_uri:
@@ -2622,37 +2529,10 @@ components:
         micro_deposit:
           "$ref": "#/components/schemas/MicrodepositVerifyRequest"
       type: object
-    MicrodepositRequest:
-      properties:
-        account_number:
-          example: "3331261"
-          type: string
-        account_type:
-          example: CHECKING
-          type: string
-        routing_number:
-          example: "091000019"
-          type: string
-        account_name:
-          example: My test account
-          type: string
-        email:
-          example: joshyboy2@example.com
-          type: string
-        first_name:
-          example: Joshy
-          type: string
-        last_name:
-          example: Grobanne
-          type: string
-      required:
-        - account_number
-        - account_type
-        - routing_number
     MicrodepositRequestBody:
       properties:
         micro_deposit:
-          "$ref": "#/components/schemas/MicrodepositRequest"
+          $ref: '#/components/schemas/MicrodepositElements'
       type: object
     MicrodepositResponse:
       properties:
@@ -2841,89 +2721,23 @@ components:
             "$ref": "#/components/schemas/GoalsResponse"
           type: array
       type: object
-    RewardsResponse:
-      properties:
-        account_guid:
-          example: ACT-1234
-          type: string
-        balance_type:
-          example: EXPIRING_BALANCE
-          type: string
-        balance:
-          example: 102
-          type: integer
-        created_at:
-          example: 2020-01-28T21:09:01+0000
-          type: string
-        description:
-          example: A description of the reward.
-          type: string
-        expires_on:
-          example: 2020-02-28
-          type: string
-        guid:
-          example: RWD-1234
-          type: string
-        member_guid:
-          example: MBR-4567
-          type: string
-        unit_type:
-          example: POINTS
-          type: string
-        updated_at:
-          example: 2023-06-01T19:18:06Z
-          type: string
-        user_guid:
-          example: USR-1234
-          type: string
     RewardsResponseBody:
       properties:
         rewards:
           items:
-            "$ref": "#/components/schemas/RewardsResponse"
+            allOf:
+              - $ref: '#/components/schemas/MemberElements'
+              - $ref: '#/components/schemas/RewardElements'
           type: array
         pagination:
           "$ref": "#/components/schemas/PaginationResponse"
       type: object
-    RewardResponse:
-      properties:
-        account_guid:
-          example: ACT-1234
-          type: string
-        balance_type:
-          example: EXPIRING_BALANCE
-          type: string
-        balance:
-          example: 102
-          type: integer
-        created_at:
-          example: 2020-01-28T21:09:01+0000
-          type: string
-        description:
-          example: A description of the reward.
-          type: string
-        expires_on:
-          example: 2020-02-28
-          type: string
-        guid:
-          example: RWD-1234
-          type: string
-        member_guid:
-          example: MBR-4567
-          type: string
-        unit_type:
-          example: POINTS
-          type: string
-        updated_at:
-          example: 2023-06-01T19:18:06Z
-          type: string
-        user_guid:
-          example: USR-1234
-          type: string
     RewardResponseBody:
       properties:
         reward:
-          "$ref": "#/components/schemas/RewardResponse"
+          allOf:
+            - $ref: '#/components/schemas/MemberElements'
+            - $ref: '#/components/schemas/RewardElements'
       type: object
     ScheduledPaymentResponse:
       properties:
@@ -3370,63 +3184,6 @@ components:
         tags:
           items:
             "$ref": "#/components/schemas/TagResponse"
-          type: array
-      type: object
-    TaxDocumentResponse:
-      properties:
-        content_hash:
-          example: a16c580c4fcdfa8088edaa7b4d35b290
-          nullable: true
-          type: string
-        created_at:
-          example: "2022-10-18T19:23:16Z"
-          nullable: true
-          type: string
-        document_type:
-          example: TAX1099_C
-          nullable: true
-          type: string
-        guid:
-          example: TAX-ee8776ea-468b-4b02-b95d-743adf6ba50e
-          nullable: true
-          type: string
-        issued_on:
-          example: "2022-03-31"
-          nullable: true
-          type: string
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          nullable: true
-          type: string
-        tax_year:
-          example: "2023"
-          nullable: true
-          type: string
-        updated_at:
-          example: "2022-10-18T19:23:16Z"
-          nullable: true
-          type: string
-        uri:
-          example: "/users/USR-11141024-90b3-1bce-cac9-c06ced52ab4c/members/MBR-7c6f361b-e582-15b6-60c0-358f12466b4b/tax_documents/TAX-ee8776ea-468b-4b02-b95d-743adf6ba50e.pdf"
-          nullable: true
-          type: string
-        user_guid:
-          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
-          nullable: true
-          type: string
-      type: object
-    TaxDocumentResponseBody:
-      properties:
-        tax_document:
-          "$ref": "#/components/schemas/TaxDocumentResponse"
-      type: object
-    TaxDocumentsResponseBody:
-      properties:
-        pagination:
-          "$ref": "#/components/schemas/PaginationResponse"
-        tax_documents:
-          items:
-            "$ref": "#/components/schemas/TaxDocumentResponse"
           type: array
       type: object
     TransactionCreateRequest:

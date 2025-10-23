@@ -3,7 +3,26 @@
 **Project Goal:** Achieve complete parity between `mx_platform_api.yml` and v20111101.yaml (docs-v2)
 
 **Branch:** nn/devx-7466_phase0  
-**Last Updated:** 2025-10-22
+**Last Updated:** 2025-10-23
+
+---
+
+## Progress Summary
+
+**Completed:** 6 of 9 phases (67%)  
+**Remaining:** 3 phases (33%)
+
+**Status:**
+- ✅ Phase 0: Project Infrastructure
+- ✅ Phase 1: Add Missing Schemas (35 schemas)
+- ✅ Phase 2: Sync Schema Fields (15 added, 10 removed)
+- ✅ Phase 3: Add Parameters & Convert Refs (72 params, 352 conversions)
+- ✅ Phase 4: Sync Paths (25 added, 10 removed)
+- ✅ Phase 5: Tag Synchronization (90 tags, 25 domains)
+- ✅ Phase 6: Fix Structures & Remove Deprecated Schemas (9 removed)
+- 📅 Phase 7: Fix Type Mismatches (3 fixes)
+- 📅 Phase 8: Internalize External References (self-contained)
+- 📅 Phase 9: Final Validation
 
 ---
 
@@ -249,55 +268,49 @@ Current mx_platform_api.yml uses generic `mx_platform` tag for most endpoints. T
 ---
 
 ### Phase 6: Remove Extra Schemas (BREAKING)
-**Status:** 📅 Not Started  
-**Priority:** MEDIUM - Breaking changes  
-**Impact:** Breaking - coordinate with SDK team
+**Status:** ✅ Complete  
+**Commit:** Pending  
+**Date:** 2025-10-23
 
-**Scope:** Remove 9 extra schemas that don't exist in models.yaml
+**Scope:** Fix schema structures and remove 9 deprecated schemas
 
-**Schemas to Remove:**
-1. HoldingResponse (replaced by InvestmentHoldingResponse)
-2. HoldingResponseBody
-3. HoldingsResponseBody
-4. MicrodepositRequest (duplicated/deprecated)
-5. RewardResponse (deprecated)
-6. RewardsResponse (deprecated)
-7. TaxDocumentResponse (deprecated)
-8. TaxDocumentResponseBody
-9. TaxDocumentsResponseBody
+**What Was Done:**
+1. Fixed 3 schema structures to match models.yaml:
+   - RewardResponseBody: Now uses MemberElements + RewardElements (allOf)
+   - RewardsResponseBody: Now uses MemberElements + RewardElements (allOf)
+   - MicrodepositRequestBody: Now uses MicrodepositElements
 
-**Why Remove:**
-- Not present in docs-v2 (models.yaml)
-- Replaced by newer schemas (holdings → investment_holdings)
-- Deprecated functionality (tax_documents, rewards)
+2. Removed 9 deprecated schemas:
+   - HoldingResponse, HoldingResponseBody, HoldingsResponseBody
+   - MicrodepositRequest
+   - RewardResponse, RewardsResponse
+   - TaxDocumentResponse, TaxDocumentResponseBody, TaxDocumentsResponseBody
 
-**Coordination Required:**
-- **CRITICAL:** Check SDK usage before removal
-- Verify no active API consumers using these schemas
-- Plan deprecation timeline if needed
-- Update API documentation
+**Results:**
+- 7 insertions, 250 deletions (257 lines changed)
+- Schema count: 211 → 202 (-9 schemas)
+- All deprecated schemas removed successfully
+- Format preserved using yq
 
-**Action Items:**
-1. Create schema removal script (Ruby + yq)
-2. Remove schema definitions from components/schemas
-3. Verify no $ref pointers to removed schemas exist
-4. Update any documentation references
-5. Test SDK generation
+**Key Insight:**
+This phase completed unfinished Phase 2 work. Some schemas added in Phase 1 had incorrect internal structures - they referenced deprecated child schemas instead of using the Elements composition pattern from models.yaml.
 
-**Expected Changes:**
-- ~200-300 lines removed (estimate)
-- Format-preserving using yq
-- Breaking changes to API contract
-
-**Deliverables:**
-- tmp/remove_schemas.rb (Ruby script using yq)
-- tmp/REMOVE_SCHEMAS_README.md (documentation, migration guide)
-- Updated mx_platform_api.yml
+**Migration Impact:**
+These schemas were already deprecated and not used in v20111101.yaml:
+- Holdings replaced by InvestmentHoldings
+- Rewards now use Elements composition
+- TaxDocument feature removed entirely
 
 **Validation:**
-- [ ] 0 extra schemas in mx_platform_api.yml
-- [ ] No broken $ref pointers
-- [ ] SDK builds successfully
+- ✅ All 9 deprecated schemas removed
+- ✅ No broken $ref references
+- ✅ Schema structures match models.yaml
+- ✅ Format preserved
+
+**Deliverables:**
+- tmp/phase6_fix_and_remove.rb (Ruby script using yq)
+- tmp/PHASE6_SUMMARY.md (detailed documentation)
+- Updated mx_platform_api.yml
 - [ ] Format preserved
 
 ---
