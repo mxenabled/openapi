@@ -8093,6 +8093,15 @@ paths:
       summary: Update transaction
       tags:
         - transactions
+    delete:
+      tags:
+        - transactions
+      operationId: deleteManualTransactions
+      summary: Delete manual transactions
+      description: Delete a manual transaction. In the path, use the manual transaction guid as the `transaction_guid`, such as `MAN-810828b0-5210-4878-9bd3-f4ce514f90c4`.
+      responses:
+        "204":
+          description: No content
   "/users/{user_guid}/transactions/{transaction_guid}/split":
     delete:
       description: This endpoint deletes all split transactions linked to a parent transaction, but it leaves the parent transaction active. This request will also update the parent transaction's has_been_split field to false. This endpoint accepts the optional MX-Skip-Webhook header.
