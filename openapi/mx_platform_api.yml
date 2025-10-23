@@ -2519,10 +2519,10 @@ components:
     MicrodepositVerifyRequest:
       properties:
         deposit_amount_1:
-          type: integer
+          type: number
           example: 0.09
         deposit_amount_2:
-          type: integer
+          type: number
           example: 0.09
     MicrodepositVerifyRequestBody:
       properties:
@@ -2595,7 +2595,7 @@ components:
           description: The monthly dollar amount allocated for goals.
         estimated_goals_contribution:
           example: null
-          type: integer
+          type: number
           description: The estimated monthly dollar amount allocated for goals calculated from income and budgets.
         uses_estimated_goals_contribution:
           example: false
