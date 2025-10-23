@@ -8164,7 +8164,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './schemas/models.yaml#/ProcessorAccountNumberBody'
+                $ref: '#/components/schemas/ProcessorAccountNumberBody'
   /account/check_balance:
     post:
       security:
@@ -8180,7 +8180,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './schemas/models.yaml#/MemberResponseBody'
+                $ref: '#/components/schemas/MemberResponseBody'
   /account/transactions:
     get:
       security:
@@ -8196,7 +8196,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './schemas/models.yaml#/ProcessorOwnerBody'
+                $ref: '#/components/schemas/ProcessorOwnerBody'
   /ach_returns:
     get:
       description: |
@@ -8207,19 +8207,19 @@ paths:
         Use this endpoint to get all ACH returns.
       operationId: listACHRetruns
       parameters:
-        - $ref: './schemas/parameters.yaml#/institutionGuid'
-        - $ref: './schemas/parameters.yaml#/returnedAt'
-        - $ref: './schemas/parameters.yaml#/resolvedStatusAt'
-        - $ref: './schemas/parameters.yaml#/returnCode'
-        - $ref: './schemas/parameters.yaml#/returnStatus'
-        - $ref: './schemas/parameters.yaml#/page'
-        - $ref: './schemas/parameters.yaml#/recordsPerPage'
+        - $ref: '#/components/parameters/institutionGuid'
+        - $ref: '#/components/parameters/returnedAt'
+        - $ref: '#/components/parameters/resolvedStatusAt'
+        - $ref: '#/components/parameters/returnCode'
+        - $ref: '#/components/parameters/returnStatus'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/ACHReturnsResponseBody'
+                $ref: '#/components/schemas/ACHReturnsResponseBody'
           description: OK
       summary: List ACH Returns
       tags:
@@ -8236,7 +8236,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './schemas/models.yaml#/ACHReturnCreateRequestBody'
+              $ref: '#/components/schemas/ACHReturnCreateRequestBody'
         description: ACH return object to be created.
         required: true
       responses:
@@ -8244,7 +8244,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/ACHReturnResponseBody'
+                $ref: '#/components/schemas/ACHReturnResponseBody'
           description: OK
       summary: Create ACH Return
       tags:
@@ -8259,13 +8259,13 @@ paths:
         Use this endpoint to get an ACH return by its `guid` or `id`.
       operationId: readACHRetrun
       parameters:
-        - $ref: './schemas/parameters.yaml#/achReturnGuid'
+        - $ref: '#/components/parameters/achReturnGuid'
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/ACHReturnResponseBody'
+                $ref: '#/components/schemas/ACHReturnResponseBody'
           description: OK
       summary: Read ACH Return
       tags:
@@ -8278,19 +8278,19 @@ paths:
       summary: Verify a Microdeposit
       description: Use this endpoint to verify the amounts deposited into the account during a microdeposit verification. The verification has not successfully completed until the `status` is `VERIFIED`. Poll the `/users/{user_guid}/micro_deposits/{micro_deposit_guid}` (read microdeposit) endpoint until you see this status or an error state.
       parameters:
-        - $ref: './schemas/parameters.yaml#/microDepositGuid'
+        - $ref: '#/components/parameters/microDepositGuid'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: './schemas/models.yaml#/MicrodepositVerifyRequestBody'
+              $ref: '#/components/schemas/MicrodepositVerifyRequestBody'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: './schemas/models.yaml#/MicrodepositResponseBody'
+                $ref: '#/components/schemas/MicrodepositResponseBody'
   /payment_account:
     get:
       security:
@@ -8306,7 +8306,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './schemas/models.yaml#/PaymentAccountBody'
+                $ref: '#/components/schemas/PaymentAccountBody'
   /tokens:
     get:
       tags:
@@ -8318,13 +8318,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './schemas/models.yaml#/TokenRequestBody'
+              $ref: '#/components/schemas/TokenRequestBody'
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/TokenResponseBody'
+                $ref: '#/components/schemas/TokenResponseBody'
           description: OK
   /users/{user_guid}/account_verifications:
     get:
@@ -8335,29 +8335,29 @@ paths:
       description: |
         This endpoint returns a list of the account verifications associated with the user, as well as the status of those verifications.
       parameters:
-        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: './schemas/models.yaml#/MicrodepositResponseBody'
+                $ref: '#/components/schemas/MicrodepositResponseBody'
   /users/{user_guid}/accounts/{account_guid}/investment_holdings:
     get:
       description: This endpoint lists all holdings associated with the particular account defined.
       operationId: listHoldingsByAccount
       parameters:
-        - $ref: './schemas/parameters.yaml#/accountGuid'
-        - $ref: './schemas/parameters.yaml#/page'
-        - $ref: './schemas/parameters.yaml#/recordsPerPageMax1000'
-        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/InvestmentHoldingsResponseBody'
+                $ref: '#/components/schemas/InvestmentHoldingsResponseBody'
           description: OK
       summary: List holdings by account
       tags:
@@ -8367,14 +8367,14 @@ paths:
       description: Use this endpoint to read the attributes of an insight according to its unique GUID.
       operationId: readInsightUser
       parameters:
-        - $ref: './schemas/parameters.yaml#/userGuid'
-        - $ref: './schemas/parameters.yaml#/insightGuid'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/insightGuid'
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/InsightResponseBody'
+                $ref: '#/components/schemas/InsightResponseBody'
           description: OK
       summary: Read insight
       tags:
@@ -8383,13 +8383,13 @@ paths:
       description: Use this endpoint to update the attributes of an insight according to its unique GUID.
       operationId: updateInsight
       parameters:
-        - $ref: './schemas/parameters.yaml#/userGuid'
-        - $ref: './schemas/parameters.yaml#/insightGuid'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/insightGuid'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: './schemas/models.yaml#/InsightUpdateRequestBody'
+              $ref: '#/components/schemas/InsightUpdateRequestBody'
         description: The insight to be updated (None of these parameters are required, but the user object cannot be empty.)
         required: true
       responses:
@@ -8397,7 +8397,7 @@ paths:
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/InsightResponse'
+                $ref: '#/components/schemas/InsightResponse'
           description: OK
       summary: Update insight
       tags:
@@ -8407,15 +8407,15 @@ paths:
       description: This endpoint lists all holdings associated with the user across all accounts.
       operationId: listHoldings
       parameters:
-        - $ref: './schemas/parameters.yaml#/page'
-        - $ref: './schemas/parameters.yaml#/recordsPerPageMax1000'
-        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/InvestmentHoldingsResponseBody'
+                $ref: '#/components/schemas/InvestmentHoldingsResponseBody'
           description: OK
       summary: List holdings by user
       tags:
@@ -8425,14 +8425,14 @@ paths:
       description: Use this endpoint to read the attributes of a specific `holding`.
       operationId: readHolding
       parameters:
-        - $ref: './schemas/parameters.yaml#/holdingGuid'
-        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: '#/components/parameters/holdingGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/InvestmentHoldingResponseBody'
+                $ref: '#/components/schemas/InvestmentHoldingResponseBody'
           description: OK
       summary: Read holding
       tags:
@@ -8442,13 +8442,13 @@ paths:
       description: This endpoint deactivates the specific user from the `/investment_holdings` product. To reactivate a user, use any of the current `/investment_holding` endpoints.
       operationId: deactivateUser
       parameters:
-        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/InvestmentHoldingsDeactivation'
+                $ref: '#/components/schemas/InvestmentHoldingsDeactivation'
           description: OK
       summary: Deactivate user from Investment Holdings
       tags:
@@ -8458,15 +8458,15 @@ paths:
       description: Use this endpoint to update a specific transaction according to its unique GUID.
       operationId: updateTransactionByAccount
       parameters:
-        - $ref: './schemas/parameters.yaml#/userGuid'
-        - $ref: './schemas/parameters.yaml#/memberGuid'
-        - $ref: './schemas/parameters.yaml#/accountGuid'
-        - $ref: './schemas/parameters.yaml#/transactionGuid'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/transactionGuid'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: './schemas/models.yaml#/TransactionUpdateRequestBody'
+              $ref: '#/components/schemas/TransactionUpdateRequestBody'
         description: Transaction object to be updated
         required: true
       responses:
@@ -8474,7 +8474,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './schemas/models.yaml#/TransactionResponseBody'
+                $ref: '#/components/schemas/TransactionResponseBody'
           description: OK
       summary: Update Transaction by Account
       tags:
@@ -8484,23 +8484,23 @@ paths:
       description: This endpoint lists all holdings associated with the specified member.
       operationId: listHoldingsByMember
       parameters:
-        - $ref: './schemas/parameters.yaml#/memberGuid'
-        - $ref: './schemas/parameters.yaml#/page'
-        - $ref: './schemas/parameters.yaml#/recordsPerPageMax1000'
-        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/InvestmentHoldingsResponseBody'
+                $ref: '#/components/schemas/InvestmentHoldingsResponseBody'
           description: OK
       summary: List holdings by member
       tags:
         - investment holdings
   /users/{user_guid}/notifications:
     parameters:
-      - $ref: './schemas/parameters.yaml#/userGuid'
+      - $ref: '#/components/parameters/userGuid'
     post:
       tags:
         - notifications
@@ -8508,15 +8508,15 @@ paths:
       summary: Create a notification
       description: All notifications created through the API will be of notification type `API_NOTIFICATION`, channel `PUSH`, and will not be associated to an entity.  No other channels are supported.  This will only have an effect for clients using an MX mobile application.
       parameters:
-        - $ref: './schemas/parameters.yaml#/content'
-        - $ref: './schemas/parameters.yaml#/subject'
+        - $ref: '#/components/parameters/content'
+        - $ref: '#/components/parameters/subject'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: './schemas/models.yaml#/NotificationResponseBody'
+                $ref: '#/components/schemas/NotificationResponseBody'
     get:
       tags:
         - notifications
@@ -8524,17 +8524,17 @@ paths:
       summary: List notifications
       description: All notifications for the user can be listed, including notifications created by MX for other channels besides `PUSH`.
       parameters:
-        - $ref: './schemas/parameters.yaml#/fromDate'
-        - $ref: './schemas/parameters.yaml#/toDate'
-        - $ref: './schemas/parameters.yaml#/page'
-        - $ref: './schemas/parameters.yaml#/recordsPerPageMax1000'
+        - $ref: '#/components/parameters/fromDate'
+        - $ref: '#/components/parameters/toDate'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: './schemas/models.yaml#/NotificationsResponseBody'
+                $ref: '#/components/schemas/NotificationsResponseBody'
   /users/{user_guid}/notifications/{notification_guid}:
     get:
       tags:
@@ -8544,27 +8544,27 @@ paths:
       description: |
         Can pull up any notification associated with the user, including notifications created by MX for other channels besides `PUSH`.
       parameters:
-        - $ref: './schemas/parameters.yaml#/userGuid'
-        - $ref: './schemas/parameters.yaml#/notificationGuid'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/notificationGuid'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: './schemas/models.yaml#/NotificationResponseBody'
+                $ref: '#/components/schemas/NotificationResponseBody'
   /users/{user_guid}/repeating_transactions:
     get:
       description: Retrieve a list of all recurring transactions for a user. <br /><br />For more see the [Repeating Transactions guide](repeating-transactions-overview.mdx).
       operationId: repeatingTransactions
       parameters:
-        - $ref: './schemas/parameters.yaml#/userGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/RepeatingTransactionsResponseBody'
+                $ref: '#/components/schemas/RepeatingTransactionsResponseBody'
           description: OK
       summary: List Repeating Transactions
       tags:
@@ -8574,14 +8574,14 @@ paths:
       description: Get a Specific Repeating Transaction. <br /><br />List For more see the [Repeating Transactions guide](repeating-transactions-overview.mdx)
       operationId: specificRepeatingTransaction
       parameters:
-        - $ref: './schemas/parameters.yaml#/userGuid'
-        - $ref: './schemas/parameters.yaml#/repeatingTransactionGuid'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/repeatingTransactionGuid'
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/RepeatingTransactionsResponseBody'
+                $ref: '#/components/schemas/RepeatingTransactionsResponseBody'
           description: OK
       summary: Get a Repeating Transaction
       tags:
@@ -8591,16 +8591,16 @@ paths:
       description: Use this endpoint to read the attributes of the current spending plan `iteration`.
       operationId: readCurrentSpendingPlanIteration
       parameters:
-        - $ref: './schemas/parameters.yaml#/page'
-        - $ref: './schemas/parameters.yaml#/recordsPerPageMax1000'
-        - $ref: './schemas/parameters.yaml#/userGuid'
-        - $ref: './schemas/parameters.yaml#/spendingPlanGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/spendingPlanGuid'
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/SpendingPlanIterationResponse'
+                $ref: '#/components/schemas/SpendingPlanIterationResponse'
           description: OK
       summary: Read current spending plan iteration
       tags:
@@ -8610,16 +8610,16 @@ paths:
       description: Use this endpoint to list all insights associated with a transaction GUID.
       operationId: listInsightsByTransaction
       parameters:
-        - $ref: './schemas/parameters.yaml#/transactionGuid'
-        - $ref: './schemas/parameters.yaml#/userGuid'
-        - $ref: './schemas/parameters.yaml#/page'
-        - $ref: './schemas/parameters.yaml#/recordsPerPage'
+        - $ref: '#/components/parameters/transactionGuid'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                $ref: './schemas/models.yaml#/InsightsResponseBody'
+                $ref: '#/components/schemas/InsightsResponseBody'
           description: OK
       summary: List insights by transaction
       tags:
@@ -8629,16 +8629,16 @@ paths:
       description: Get an MX-issued verifiable credential of a user's transaction data.
       operationId: getTransactionsData
       parameters:
-        - $ref: './schemas/parameters.yaml#/userGuid'
-        - $ref: './schemas/parameters.yaml#/accountGuid'
-        - $ref: './schemas/parameters.yaml#/startTime'
-        - $ref: './schemas/parameters.yaml#/endTime'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
       responses:
         '200':
           content:
             application/vnd.mx.api.v2beta+json:
               schema:
-                $ref: './schemas/models.yaml#/VCResponse'
+                $ref: '#/components/schemas/VCResponse'
           description: OK
       summary: Get Transactions Data
       tags:
@@ -8648,14 +8648,14 @@ paths:
       description: Get an MX-issued verifiable credential of a user's accounts data.
       operationId: getAccountsData
       parameters:
-        - $ref: './schemas/parameters.yaml#/userGuid'
-        - $ref: './schemas/parameters.yaml#/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/memberGuid'
       responses:
         '200':
           content:
             application/vnd.mx.api.v2beta+json:
               schema:
-                $ref: './schemas/models.yaml#/VCResponse'
+                $ref: '#/components/schemas/VCResponse'
           description: OK
       summary: Get Accounts Data
       tags:
@@ -8665,14 +8665,14 @@ paths:
       description: Get an MX-issued verifiable credential of a user's identity data.
       operationId: getIdentityData
       parameters:
-        - $ref: './schemas/parameters.yaml#/userGuid'
-        - $ref: './schemas/parameters.yaml#/memberGuid'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/memberGuid'
       responses:
         '200':
           content:
             application/vnd.mx.api.v2beta+json:
               schema:
-                $ref: './schemas/models.yaml#/VCResponse'
+                $ref: '#/components/schemas/VCResponse'
           description: OK
       summary: Get Identity Data
       tags:
