@@ -16,7 +16,7 @@ jobs:
         id: changed-files-specific
         uses: tj-actions/changed-files@v41
         with:
-          files: openapi/v20111101.yaml
+          files: openapi/mx_platform_api.yml
 
       - name: Require version label if openapi spec changed
         if: steps.changed-files-specific.outputs.any_changed == 'true'
