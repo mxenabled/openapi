@@ -10,9 +10,9 @@ jobs:
     - name: Validate OpenAPI Schema
       uses: thiyagu06/openapi-validator-action@v1
       with:
-        filepath: 'openapi/mx_platform_api.yml'
+        filepath: 'openapi/v20111101.yml'
     - name: Validate OpenAPI YAML
       uses: ibiqlik/action-yamllint@v3
       with:
-        file_or_dir: openapi/mx_platform_api.yml
+        file_or_dir: openapi/v20111101.yml
         config_file: .yamllint.yml

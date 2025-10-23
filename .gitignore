@@ -5,6 +5,8 @@
 .mcp.json
 .cursor/*
 .gemini/*
-.github/*
+.github/instructions/*
+.github/chatmodes/*
+.github/prompts/*
 .vscode/mcp.json
 # === End AI Toolkit ===
