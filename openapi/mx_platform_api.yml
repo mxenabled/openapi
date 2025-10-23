@@ -8588,6 +8588,9 @@ components:
       schema:
         type: string
       in: query
+      name: includes
+      example: repeating_transactions,merchants,classifications,geolocations
+      required: false
     holdingGuid:
       description: The unique id for a `holding`.
       example: HOL-d65683e8-9eab-26bb-bcfd-ced159c9abe2
