@@ -172,7 +172,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/institutionCode'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
@@ -190,7 +189,6 @@ paths:
       operationId: listManagedInstitutions
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
@@ -224,7 +222,6 @@ paths:
       operationId: listMerchants
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/merchantName'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -301,7 +298,6 @@ paths:
       operationId: listUsers
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userId'
         - $ref: '#/components/parameters/userEmail'
         - $ref: '#/components/parameters/userIsDisabled'
@@ -394,7 +390,6 @@ paths:
         - $ref: '#/components/parameters/memberIsManagedByUser'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/accountIsManual'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
         - $ref: '#/components/parameters/useCase'
@@ -467,7 +462,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/accountGuid'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -511,10 +505,6 @@ paths:
           required: true
           schema:
             type: string
-        - $ref: '#/components/parameters/accountGuid'
-        - $ref: '#/components/parameters/userGuid'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -555,7 +545,6 @@ paths:
         - $ref: '#/components/parameters/accountGuid'
         - $ref: '#/components/parameters/fromDate'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/toDate'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
@@ -688,7 +677,6 @@ paths:
       operationId: listCategories
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -729,7 +717,6 @@ paths:
       operationId: listDefaultCategoriesByUser
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -855,7 +842,6 @@ paths:
           schema:
             type: string
         - $ref: '#/components/parameters/acceptHeader'
-        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         '200':
           description: OK
@@ -962,9 +948,6 @@ paths:
           name: records_per_page
           schema:
             type: integer
-        - $ref: '#/components/parameters/userGuid'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -1006,10 +989,6 @@ paths:
           name: records_per_page
           schema:
             type: integer
-        - $ref: '#/components/parameters/userGuid'
-        - $ref: '#/components/parameters/insightGuid'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -1051,10 +1030,6 @@ paths:
           name: records_per_page
           schema:
             type: integer
-        - $ref: '#/components/parameters/userGuid'
-        - $ref: '#/components/parameters/insightGuid'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -1096,10 +1071,6 @@ paths:
           name: records_per_page
           schema:
             type: integer
-        - $ref: '#/components/parameters/userGuid'
-        - $ref: '#/components/parameters/insightGuid'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -1141,10 +1112,6 @@ paths:
           name: records_per_page
           schema:
             type: integer
-        - $ref: '#/components/parameters/userGuid'
-        - $ref: '#/components/parameters/insightGuid'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -1186,10 +1153,6 @@ paths:
           name: records_per_page
           schema:
             type: integer
-        - $ref: '#/components/parameters/userGuid'
-        - $ref: '#/components/parameters/insightGuid'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -1206,7 +1169,6 @@ paths:
       operationId: listManagedMembers
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -1301,7 +1263,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/memberGuid'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -1400,7 +1361,6 @@ paths:
         - $ref: '#/components/parameters/accountGuid'
         - $ref: '#/components/parameters/memberGuid'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/fromDate'
         - $ref: '#/components/parameters/toDate'
@@ -1503,7 +1463,6 @@ paths:
       operationId: listMembers
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
         - $ref: '#/components/parameters/useCase'
@@ -1606,7 +1565,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/memberGuid'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -1626,7 +1584,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/memberGuid'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -1646,7 +1603,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/memberIsManagedByUser'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/memberGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
@@ -1728,7 +1684,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/memberGuid'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -1765,7 +1720,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/memberGuid'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -1934,7 +1888,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/memberGuid'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -2009,7 +1962,6 @@ paths:
         - $ref: '#/components/parameters/fromDate'
         - $ref: '#/components/parameters/memberGuid'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/toDate'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
@@ -2181,7 +2133,6 @@ paths:
       operationId: listSpendingPlanIterationItems
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
@@ -2216,7 +2167,6 @@ paths:
       operationId: listSpendingPlans
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -2248,7 +2198,6 @@ paths:
       operationId: readSpendingPlanAccount
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
         - $ref: '#/components/parameters/spendingPlanAccountGuid'
@@ -2282,7 +2231,6 @@ paths:
       operationId: readSpendingPlanIterationItem
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
         - $ref: '#/components/parameters/iterationItemGuid'
@@ -2339,7 +2287,6 @@ paths:
       operationId: readSpendingPlanUser
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
@@ -2359,7 +2306,6 @@ paths:
       operationId: listSpendingPlanAccounts
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
@@ -2379,7 +2325,6 @@ paths:
       operationId: listSpendingPlanIterations
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
@@ -2399,7 +2344,6 @@ paths:
       operationId: readSpendingPlanIteration
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
         - $ref: '#/components/parameters/iterationNumber'
@@ -2420,7 +2364,6 @@ paths:
       operationId: listTaggings
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -2513,7 +2456,6 @@ paths:
       operationId: listTags
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -2608,7 +2550,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/fromDate'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/tagGuid'
         - $ref: '#/components/parameters/toDate'
         - $ref: '#/components/parameters/userGuid'
@@ -2639,7 +2580,6 @@ paths:
       operationId: listTransactionRules
       parameters:
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
@@ -2733,7 +2673,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/fromDate'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/toDate'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
@@ -5064,9 +5003,7 @@ components:
     InsightResponseBody:
       properties:
         insight:
-          items:
-            "$ref": "#/components/schemas/InsightResponse"
-          type: object
+          $ref: '#/components/schemas/InsightResponse'
       type: object
     InsightsResponseBody:
       properties:
