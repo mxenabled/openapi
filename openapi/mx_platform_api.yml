@@ -120,6 +120,7 @@ paths:
         - $ref: '#/components/parameters/supportsAccountStatement'
         - $ref: '#/components/parameters/supportsAccountVerification'
         - $ref: '#/components/parameters/supportsTransactionHistory'
+        - $ref: '#/components/parameters/isoCountryCode'
       responses:
         "200":
           content:
@@ -137,6 +138,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/isoCountryCode'
       responses:
         "200":
           content:
@@ -171,6 +173,7 @@ paths:
         - $ref: '#/components/parameters/institutionCode'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -188,6 +191,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -221,6 +225,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/merchantName'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -299,6 +305,7 @@ paths:
         - $ref: '#/components/parameters/userId'
         - $ref: '#/components/parameters/userEmail'
         - $ref: '#/components/parameters/userIsDisabled'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -335,6 +342,7 @@ paths:
       operationId: deleteUser
       parameters:
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/acceptHeader'
       responses:
         "204":
           description: No Content
@@ -388,6 +396,8 @@ paths:
         - $ref: '#/components/parameters/accountIsManual'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
+        - $ref: '#/components/parameters/useCase'
       responses:
         "200":
           content:
@@ -427,6 +437,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/accountGuid'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/acceptHeader'
       responses:
         "204":
           description: No content.
@@ -458,6 +469,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -499,6 +511,10 @@ paths:
           required: true
           schema:
             type: string
+        - $ref: '#/components/parameters/accountGuid'
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -542,12 +558,22 @@ paths:
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/toDate'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
+        - $ref: '#/components/parameters/fromCreatedAt'
+        - $ref: '#/components/parameters/toCreatedAt'
+        - $ref: '#/components/parameters/fromUpdatedAt'
+        - $ref: '#/components/parameters/toUpdatedAt'
+        - $ref: '#/components/parameters/categoryGuidQuery'
+        - $ref: '#/components/parameters/categoryGuidQueryArray'
+        - $ref: '#/components/parameters/topLevelCategoryGuid'
+        - $ref: '#/components/parameters/topLevelCategoryGuidArray'
+        - $ref: '#/components/parameters/includes'
       responses:
         "200":
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TransactionsResponseBody"
+                "$ref": "#/components/schemas/TransactionsResponseBodyIncludes"
           description: OK
       summary: List transactions by account
       tags:
@@ -664,6 +690,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -704,6 +731,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -826,6 +854,8 @@ paths:
           required: false
           schema:
             type: string
+        - $ref: '#/components/parameters/acceptHeader'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         '200':
           description: OK
@@ -843,6 +873,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/goalGuid'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/acceptHeader'
       responses:
         "204":
           description: No content
@@ -931,6 +962,9 @@ paths:
           name: records_per_page
           schema:
             type: integer
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -972,6 +1006,10 @@ paths:
           name: records_per_page
           schema:
             type: integer
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/insightGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -1013,6 +1051,10 @@ paths:
           name: records_per_page
           schema:
             type: integer
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/insightGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -1054,6 +1096,10 @@ paths:
           name: records_per_page
           schema:
             type: integer
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/insightGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -1095,6 +1141,10 @@ paths:
           name: records_per_page
           schema:
             type: integer
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/insightGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -1136,6 +1186,10 @@ paths:
           name: records_per_page
           schema:
             type: integer
+        - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/insightGuid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/recordsPerPage'
       responses:
         '200':
           content:
@@ -1154,6 +1208,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -1193,6 +1248,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/memberGuid'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/acceptHeader'
       responses:
         "204":
           description: No Content
@@ -1247,6 +1303,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -1345,6 +1402,9 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/fromDate'
+        - $ref: '#/components/parameters/toDate'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -1445,6 +1505,8 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
+        - $ref: '#/components/parameters/useCase'
       responses:
         "200":
           content:
@@ -1460,6 +1522,7 @@ paths:
       operationId: createMember
       parameters:
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/xCallback'
       requestBody:
         content:
           application/json:
@@ -1518,6 +1581,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/memberGuid'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/xCallback'
       requestBody:
         content:
           application/json:
@@ -1544,6 +1608,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -1563,6 +1628,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -1583,6 +1649,7 @@ paths:
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/memberGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -1643,6 +1710,7 @@ paths:
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/include_holdings'
         - $ref: '#/components/parameters/include_transactions'
+        - $ref: '#/components/parameters/xCallback'
       responses:
         "202":
           content:
@@ -1662,6 +1730,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -1698,6 +1767,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -1866,6 +1936,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -1941,12 +2012,22 @@ paths:
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/toDate'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
+        - $ref: '#/components/parameters/fromCreatedAt'
+        - $ref: '#/components/parameters/toCreatedAt'
+        - $ref: '#/components/parameters/fromUpdatedAt'
+        - $ref: '#/components/parameters/toUpdatedAt'
+        - $ref: '#/components/parameters/categoryGuidQuery'
+        - $ref: '#/components/parameters/categoryGuidQueryArray'
+        - $ref: '#/components/parameters/topLevelCategoryGuid'
+        - $ref: '#/components/parameters/topLevelCategoryGuidArray'
+        - $ref: '#/components/parameters/includes'
       responses:
         "200":
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TransactionsResponseBody"
+                "$ref": "#/components/schemas/TransactionsResponseBodyIncludes"
           description: OK
       summary: List transactions by member
       tags:
@@ -1958,6 +2039,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/memberGuid'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/xCallback'
       responses:
         "200":
           content:
@@ -2102,6 +2184,7 @@ paths:
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -2135,6 +2218,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -2168,6 +2252,7 @@ paths:
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
         - $ref: '#/components/parameters/spendingPlanAccountGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -2201,6 +2286,7 @@ paths:
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
         - $ref: '#/components/parameters/iterationItemGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -2256,6 +2342,7 @@ paths:
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -2275,6 +2362,7 @@ paths:
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -2294,6 +2382,7 @@ paths:
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -2314,6 +2403,7 @@ paths:
         - $ref: '#/components/parameters/userGuid'
         - $ref: '#/components/parameters/spendingPlanGuid'
         - $ref: '#/components/parameters/iterationNumber'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -2332,6 +2422,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -2424,6 +2515,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -2463,6 +2555,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/tagGuid'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/acceptHeader'
       responses:
         "204":
           description: No Content
@@ -2519,12 +2612,23 @@ paths:
         - $ref: '#/components/parameters/tagGuid'
         - $ref: '#/components/parameters/toDate'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
+        - $ref: '#/components/parameters/fromCreatedAt'
+        - $ref: '#/components/parameters/toCreatedAt'
+        - $ref: '#/components/parameters/fromUpdatedAt'
+        - $ref: '#/components/parameters/toUpdatedAt'
+        - $ref: '#/components/parameters/categoryGuidQuery'
+        - $ref: '#/components/parameters/categoryGuidQueryArray'
+        - $ref: '#/components/parameters/topLevelCategoryGuid'
+        - $ref: '#/components/parameters/topLevelCategoryGuidArray'
+        - $ref: '#/components/parameters/useCase'
+        - $ref: '#/components/parameters/includes'
       responses:
         "200":
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TransactionsResponseBody"
+                "$ref": "#/components/schemas/TransactionsResponseBodyIncludes"
           description: OK
       summary: List transactions by tag
       tags:
@@ -2537,6 +2641,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         "200":
           content:
@@ -2631,12 +2736,23 @@ paths:
         - $ref: '#/components/parameters/recordsPerPage'
         - $ref: '#/components/parameters/toDate'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
+        - $ref: '#/components/parameters/fromCreatedAt'
+        - $ref: '#/components/parameters/toCreatedAt'
+        - $ref: '#/components/parameters/fromUpdatedAt'
+        - $ref: '#/components/parameters/toUpdatedAt'
+        - $ref: '#/components/parameters/categoryGuidQuery'
+        - $ref: '#/components/parameters/categoryGuidQueryArray'
+        - $ref: '#/components/parameters/topLevelCategoryGuid'
+        - $ref: '#/components/parameters/topLevelCategoryGuidArray'
+        - $ref: '#/components/parameters/useCase'
+        - $ref: '#/components/parameters/includes'
       responses:
         "200":
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TransactionsResponseBody"
+                "$ref": "#/components/schemas/TransactionsResponseBodyIncludes"
           description: OK
       summary: List transactions
       tags:
@@ -2648,12 +2764,13 @@ paths:
       parameters:
         - $ref: '#/components/parameters/transactionGuid'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/includes'
       responses:
         "200":
           content:
             application/vnd.mx.api.v1+json:
               schema:
-                "$ref": "#/components/schemas/TransactionResponseBody"
+                "$ref": "#/components/schemas/TransactionsResponseBodyIncludes"
           description: OK
       summary: Read transaction
       tags:
@@ -2734,6 +2851,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/acceptLanguage'
         - $ref: '#/components/parameters/userGuid'
+        - $ref: '#/components/parameters/xCallback'
       requestBody:
         content:
           application/json:
