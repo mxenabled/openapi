@@ -531,6 +531,7 @@ paths:
             application/vnd.mx.api.v1+json:
               schema:
                 $ref: '#/components/schemas/TransactionCreateResponseBody'
+      operationId: createManualTransaction
     get:
       description: This endpoint returns a list of the last 90 days of transactions associated with the specified account.
       operationId: listTransactionsByAccount
@@ -566,6 +567,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BudgetResponseBody'
+      operationId: autoGenerateBudgets
   "/users/{user_guid}/budgets":
     post:
       tags:
@@ -587,6 +589,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BudgetResponseBody'
+      operationId: createBudget
     get:
       tags:
         - budgets
@@ -601,6 +604,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BudgetResponseBody'
+      operationId: listAllBudgets
   "/users/{user_guid}/budgets/{budget_guid}":
     get:
       tags:
@@ -617,6 +621,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BudgetResponseBody'
+      operationId: readSpecificBudget
     put:
       tags:
         - budgets
@@ -638,6 +643,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BudgetResponseBody'
+      operationId: updateSpecificBudget
     delete:
       tags:
         - budgets
@@ -649,6 +655,7 @@ paths:
       responses:
         "204":
           description: No content
+      operationId: deleteBudget
   "/users/{user_guid}/categories":
     get:
       description: Use this endpoint to list all categories associated with a `user`, including both default and custom categories.
@@ -803,6 +810,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GoalResponseBody'
+      operationId: createGoal
     get:
       tags:
         - goals
@@ -825,6 +833,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GoalsResponseBody'
+      operationId: listGoals
   "/users/{user_guid}/goals/{goal_guid}":
     delete:
       tags:
@@ -837,6 +846,7 @@ paths:
       responses:
         "204":
           description: No content
+      operationId: deleteGoal
     get:
       tags:
         - goals
@@ -852,6 +862,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GoalResponseBody'
+      operationId: readGoal
     put:
       tags:
         - goals
@@ -873,6 +884,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GoalResponseBody'
+      operationId: updateGoal
   "/users/{user_guid}/goals/reposition":
     put:
       tags:
@@ -894,6 +906,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RepositionResponseBody'
+      operationId: repositionGoals
   "/users/{user_guid}/insights":
     get:
       description: Use this endpoint to list all the insights associated with the user.
@@ -1970,6 +1983,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MicrodepositsResponseBody'
+      operationId: listUserMicrodeposits
     post:
       tags:
         - microdeposits
@@ -1990,6 +2004,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MicrodepositResponseBody'
+      operationId: createMicrodeposit
   "/users/{user_guid}/micro_deposits/{micro_deposit_guid}":
     delete:
       tags:
@@ -2002,6 +2017,7 @@ paths:
       responses:
         "204":
           description: No Content
+      operationId: deleteMicrodeposit
     get:
       tags:
         - microdeposits
@@ -2017,6 +2033,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MicrodepositResponseBody'
+      operationId: readUserMicrodeposit
   "/users/{user_guid}/monthly_cash_flow_profile":
     get:
       parameters:
@@ -2031,6 +2048,7 @@ paths:
       tags:
         - monthly cash flow profile
       summary: Read monthly cash flow profile
+      operationId: readMonthlyCashFlowProfile
     put:
       description: Use this endpoint to update the attributes of a `monthly_cash_flow_profile`.
       parameters:
@@ -2051,6 +2069,7 @@ paths:
       tags:
         - monthly cash flow profile
       summary: Update monthly cash flow profile
+      operationId: updateMonthlyCashFlowProfile
   "/users/{user_guid}/spending_plans/{spending_plan_guid}/iterations/current/iteration_items":
     post:
       description: This endpoint creates a new `spending_plan_iteration_item`.
@@ -2686,6 +2705,7 @@ paths:
       summary: Delete split transactions
       tags:
         - transactions
+      operationId: deleteSplitTransactions
     post:
       description: This endpoint creates two or more child transactions that are branched from a previous transaction. This endpoint allows you to link multiple categories, descriptions, and amounts to a parent transaction.  When a split transaction is created, the parent transaction's `has_been_split` field will automatically be updated to true and the child transactions' `parent_guid` will have the transaction guid of the parent. The total amount of the child transactions must equal the amount of the parent transaction. Once a transaction has been split it can't be split again.    In order to re-split a transaction, it must first be un-split. This can be done by calling the Delete Split Transactions endpoint. Calling this endpoint will delete the existing child transactions and update the parent transaction's `has_been_split` field to false. You can then re-split the parent transaction by calling Create Split Transaction again.
       parameters:
@@ -2706,6 +2726,7 @@ paths:
       summary: Create split transactions
       tags:
         - transactions
+      operationId: createSplitTransactions
   "/users/{user_guid}/widget_urls":
     post:
       description: This endpoint allows partners to get a URL by passing the `widget_type` in the request body, as well as configuring it in several different ways. In the case of Connect, that means setting the `widget_type` to `connect_widget`. Partners may also pass an optional `Accept-Language` header as well as a number of configuration options. Note that this is a `POST` request.
