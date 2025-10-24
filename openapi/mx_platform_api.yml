@@ -2668,6 +2668,9 @@ paths:
       operationId: deleteManualTransactions
       summary: Delete manual transactions
       description: Delete a manual transaction. In the path, use the manual transaction guid as the `transaction_guid`, such as `MAN-810828b0-5210-4878-9bd3-f4ce514f90c4`.
+      parameters:
+        - $ref: '#/components/parameters/transactionGuid'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         "204":
           description: No content
@@ -8739,4 +8742,7 @@ components:
   securitySchemes:
     basicAuth:
       scheme: basic
+      type: http
+    bearerAuth:
+      scheme: bearer
       type: http
