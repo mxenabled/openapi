@@ -7241,8 +7241,10 @@ components:
           description: |
             Only use this option if the `widget_type` is set to `connect_widget`. This indicates whether OAuth app2app behavior is enabled for institutions that support it. Defaults to `true`. When set to `false`, the widget will **not** direct the end user to the institution's mobile application. This setting is not persistent. This setting currently only affects Chase institutions.
         iso_country_code:
-          example: ["US", "CA"]
           type: array
+          items:
+            type: string
+          example: ["US", "CA"]
           description: |
             An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico).
         use_cases:
