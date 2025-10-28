@@ -5,7 +5,7 @@ info:
     url: https://www.mx.com/products/platform-api
   description: The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
   title: MX Platform API
-  version: 0.1.0
+  version: '20111101'
 servers:
   - url: https://api.mx.com
   - url: https://int-api.mx.com
@@ -254,6 +254,7 @@ paths:
     post:
       description: "(This endpoint is deprecated. Clients should use `/authorization_code`.) Clients use this endpoint to request an authorization_code according to a user, member, and account specified in the request body. Clients then pass this code to processors. Processor access is scoped only to the user/member/account specified in this request. Before requesting an authorization_code, clients must have verified the specified member."
       operationId: deprecatedRequestPaymentProcessorAuthorizationCode
+      deprecated: true
       requestBody:
         content:
           application/json:
