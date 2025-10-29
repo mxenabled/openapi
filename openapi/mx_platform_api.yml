@@ -14,8 +14,10 @@ security:
 tags:
   - name: ach return
   - name: accounts
+  - name: authorization
   - name: budgets
   - name: categories
+  - name: deprecated
   - name: goals
   - name: insights
   - name: institutions
