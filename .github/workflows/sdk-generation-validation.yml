@@ -17,10 +17,10 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
           
@@ -28,7 +28,7 @@ jobs:
         run: npm install -g @openapitools/openapi-generator-cli
         
       - name: Set up Java (required for OpenAPI Generator)
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '11'
@@ -155,7 +155,7 @@ jobs:
           
       - name: Upload generation artifacts (on failure)
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: failed-sdk-${{ matrix.language }}
           path: ./sdk-output/${{ matrix.language }}
