@@ -116,36 +116,18 @@ jobs:
               ;;
           esac
           
-      - name: Basic syntax validation
+      - name: Validate SDK completeness
         run: |
           cd ./sdk-output/${{ matrix.language }}
-          case "${{ matrix.language }}" in
-            "java")
-              # Check if Java files compile
-              find . -name "*.java" | head -5 | xargs javac -cp ".:*" 2>/dev/null || echo "Java syntax validation completed (some errors expected in isolated compilation)"
-              ;;
-            "ruby")
-              # Check Ruby syntax
-              find . -name "*.rb" | head -5 | xargs -I {} ruby -c {} || echo "Ruby syntax validation completed"
-              ;;
-            "python")
-              # Check Python syntax
-              find . -name "*.py" | head -5 | xargs python -m py_compile || echo "Python syntax validation completed"
-              ;;
-            "javascript")
-              # Check JavaScript syntax
-              find . -name "*.js" | head -5 | xargs -I {} node --check {} || echo "JavaScript syntax validation completed"
-              ;;
-            "csharp")
-              # Basic C# file existence check (compilation requires full dependencies)
-              find . -name "*.cs" | wc -l
-              echo "C# files found and validated"
-              ;;
-            "go")
-              # Check Go formatting
-              find . -name "*.go" | head -5 | xargs gofmt -l || echo "Go syntax validation completed"
-              ;;
-          esac
+          
+          SOURCE_FILES=$(find . -name "*.java" -o -name "*.rb" -o -name "*.py" -o -name "*.js" -o -name "*.cs" -o -name "*.go" | wc -l)
+          
+          if [ "$SOURCE_FILES" -eq 0 ]; then
+            echo "❌ FAILED: No source files generated for ${{ matrix.language }}"
+            exit 1
+          fi
+          
+          echo "✅ Validation passed: $SOURCE_FILES source files generated for ${{ matrix.language }}"
           
       - name: Generate validation report
         if: always()
@@ -181,9 +163,7 @@ jobs:
             echo "❌ SDK Generation Validation: FAILED"
             echo "One or more SDK generations failed. Check individual language job logs for detailed error messages."
             echo "## ❌ SDK Generation Validation: FAILED" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
             echo "**One or more SDK languages failed to generate.**" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
             echo "Check the individual language job logs above for detailed error messages." >> $GITHUB_STEP_SUMMARY
             exit 1
           fi
