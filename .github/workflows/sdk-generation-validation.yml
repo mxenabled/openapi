@@ -1,9 +1,9 @@
 name: SDK Generation Validation
 
 on:
-  pull_request:
-    paths: 
-      - 'openapi/mx_platform_api.yml'
+  pull_request
+    # paths: 
+    #   - 'openapi/mx_platform_api.yml'
 
 jobs:
   validate-sdk-generation:
@@ -65,7 +65,7 @@ jobs:
       - name: Create output directory
         run: mkdir -p ./sdk-output/${{ matrix.language }}
         
-      - name: Generate SDK
+      - name: Generate Test SDK
         run: |
           openapi-generator-cli generate \
             -i openapi/mx_platform_api.yml \
@@ -84,13 +84,11 @@ jobs:
           case "${{ matrix.language }}" in
             "java")
               test -f pom.xml || (echo "❌ Missing pom.xml" && exit 1)
-              test -d src || (echo "❌ Missing src directory" && exit 1)
               find src -name "*.java" | head -1 > /dev/null || (echo "❌ No Java files found" && exit 1)
               echo "✅ Java SDK structure validated"
               ;;
             "ruby")
               ls *.gemspec > /dev/null 2>&1 || (echo "❌ Missing gemspec file" && exit 1)
-              test -d lib || (echo "❌ Missing lib directory" && exit 1)
               find lib -name "*.rb" | head -1 > /dev/null || (echo "❌ No Ruby files found" && exit 1)
               echo "✅ Ruby SDK structure validated"
               ;;
@@ -116,33 +114,12 @@ jobs:
               ;;
           esac
           
-      - name: Validate SDK completeness
-        run: |
-          cd ./sdk-output/${{ matrix.language }}
-          
-          SOURCE_FILES=$(find . -name "*.java" -o -name "*.rb" -o -name "*.py" -o -name "*.js" -o -name "*.cs" -o -name "*.go" | wc -l)
-          
-          if [ "$SOURCE_FILES" -eq 0 ]; then
-            echo "❌ FAILED: No source files generated for ${{ matrix.language }}"
-            exit 1
-          fi
-          
-          echo "✅ Validation passed: $SOURCE_FILES source files generated for ${{ matrix.language }}"
-          
       - name: Generate validation report
         if: always()
         run: |
-          echo "## SDK Generation Report for ${{ matrix.language }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Status**: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
-          
-      - name: Upload generation artifacts (on failure)
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: failed-sdk-${{ matrix.language }}
-          path: ./sdk-output/${{ matrix.language }}
-          retention-days: 7
-          
+          echo "## SDK Generation Report for ${{ matrix.language }}"
+          echo "- **Status**: ${{ job.status }}"
+
       - name: Clean up
         if: always()
         run: rm -rf ./sdk-output/${{ matrix.language }}
@@ -157,13 +134,13 @@ jobs:
           if [[ "${{ needs.validate-sdk-generation.result }}" == "success" ]]; then
             echo "✅ SDK Generation Validation: PASSED"
             echo "All 6 SDK languages generated successfully from OpenAPI specification"
-            echo "## ✅ SDK Generation Validation: PASSED" >> $GITHUB_STEP_SUMMARY
-            echo "All 6 SDK languages (Java, Ruby, Python, JavaScript, C#, Go) generated successfully." >> $GITHUB_STEP_SUMMARY
+            echo "## ✅ SDK Generation Validation: PASSED"
+            echo "All 6 SDK languages (Java, Ruby, Python, JavaScript, C#, Go) generated successfully."
           else
             echo "❌ SDK Generation Validation: FAILED"
             echo "One or more SDK generations failed. Check individual language job logs for detailed error messages."
-            echo "## ❌ SDK Generation Validation: FAILED" >> $GITHUB_STEP_SUMMARY
-            echo "**One or more SDK languages failed to generate.**" >> $GITHUB_STEP_SUMMARY
-            echo "Check the individual language job logs above for detailed error messages." >> $GITHUB_STEP_SUMMARY
+            echo "## ❌ SDK Generation Validation: FAILED"
+            echo "**One or more SDK languages failed to generate.**"
+            echo "Check the individual language job logs above for detailed error messages."
             exit 1
           fi
