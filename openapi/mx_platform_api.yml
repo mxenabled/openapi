@@ -7004,6 +7004,8 @@ components:
             - US
             - CA
           type: array
+          items:
+            type: string
           description: |
             An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico).
         is_mobile_webview:
