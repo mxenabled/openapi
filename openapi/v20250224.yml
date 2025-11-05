@@ -610,10 +610,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/AccountsResponseBody'
           description: OK
-          headers:
-            acceptVersion:
-              schema:
-                $ref: '#/components/schemas/acceptVersion'
       summary: List accounts
       tags:
         - accounts
@@ -3127,6 +3123,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/recordsPerPageMax1000'
         - $ref: '#/components/parameters/acceptVersion'
+        - $ref: '#/components/parameters/userGuid'
       responses:
         '200':
           description: OK
@@ -5138,15 +5135,6 @@ components:
         user:
           $ref: '#/components/schemas/UserUpdateRequest'
       type: object
-    acceptVersion:
-      name: Accept-Version
-      in: header
-      required: true
-      schema:
-        type: string
-        default: v20250224
-        example: v20250224
-      description: MX Platform API version.
     AccountResponse:
       properties:
         account_number:
