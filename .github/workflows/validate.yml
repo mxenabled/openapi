@@ -3,16 +3,33 @@ name: Validate
 on: [push]
 
 jobs:
-  Test:
+  discover-files:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Discover OpenAPI files
+      id: set-matrix
+      run: |
+        files=$(find openapi/ -name "*.yml" -o -name "*.yaml" | jq -R -s -c 'split("\n")[:-1]')
+        echo "matrix=${files}" >> $GITHUB_OUTPUT
+        echo "Found files: ${files}"
+
+  validate:
+    needs: discover-files
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        openapi_file: ${{ fromJson(needs.discover-files.outputs.matrix) }}
     steps:
     - uses: actions/checkout@v3
     - name: Validate OpenAPI Schema
       uses: thiyagu06/openapi-validator-action@v1
       with:
-        filepath: 'openapi/mx_platform_api.yml'
+        filepath: ${{ matrix.openapi_file }}
     - name: Validate OpenAPI YAML
       uses: ibiqlik/action-yamllint@v3
       with:
-        file_or_dir: openapi/mx_platform_api.yml
+        file_or_dir: ${{ matrix.openapi_file }}
         config_file: .yamllint.yml
