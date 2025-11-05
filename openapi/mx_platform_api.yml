@@ -6187,6 +6187,10 @@ components:
           example: data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...
           nullable: true
           type: string
+        guid:
+          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
+          nullable: true
+          type: string
         label:
           example: IMAGE_1
           nullable: true
@@ -6198,6 +6202,10 @@ components:
       type: object
     OptionResponse:
       properties:
+        guid:
+          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
+          nullable: true
+          type: string
         label:
           example: IMAGE_1
           nullable: true
