@@ -23,7 +23,7 @@ jobs:
           - language: go
             generator: go
 
-    name: Validate ${{ matrix.language }} SDK Generation
+    name: ${{ matrix.language }} SDK Generation
     
     steps:
       - name: Checkout repository
@@ -42,36 +42,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '11'
-          
-      - name: Set up language-specific environment
-        run: |
-          case "${{ matrix.language }}" in
-            "java")
-              echo "Java already set up"
-              ;;
-            "ruby")
-              sudo apt-get update
-              sudo apt-get install -y ruby-full
-              ;;
-            "python")
-              python -m pip install --upgrade pip
-              ;;
-            "node")
-              echo "Node.js already set up"
-              ;;
-            "csharp")
-              wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-              sudo dpkg -i packages-microsoft-prod.deb
-              sudo apt-get update
-              sudo apt-get install -y dotnet-sdk-6.0
-              ;;
-            "go")
-              wget -c https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
-              sudo tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
-              echo 'export PATH=$PATH:/usr/local/go/bin' >> $GITHUB_ENV
-              ;;
-          esac
-          
+  
       - name: Create output directory
         run: mkdir -p ./sdk-output/${{ matrix.language }}
         
