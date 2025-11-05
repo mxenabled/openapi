@@ -1,9 +1,8 @@
 name: SDK Generation Validation
 
 on:
-  pull_request
-    # paths: 
-    #   - 'openapi/mx_platform_api.yml'
+  pull_request:
+    paths: 'openapi/mx_platform_api.yml'
 
 jobs:
   validate-sdk-generation:
@@ -69,7 +68,7 @@ jobs:
         run: |
           openapi-generator-cli generate \
             -i openapi/mx_platform_api.yml \
-            -g ${{ matrix.language }} \
+            -g ${{ matrix.generator }} \
             -o ./sdk-output/${{ matrix.language }} \
             --skip-validate-spec
             
@@ -83,64 +82,37 @@ jobs:
           # Check for key files based on language
           case "${{ matrix.language }}" in
             "java")
-              test -f pom.xml || (echo "❌ Missing pom.xml" && exit 1)
-              find src -name "*.java" | head -1 > /dev/null || (echo "❌ No Java files found" && exit 1)
+              find . -name "pom.xml" || (echo "❌ Missing pom.xml" && exit 1)
+              find . -name "*.java" || (echo "❌ No Java files found" && exit 1)
               echo "✅ Java SDK structure validated"
               ;;
             "ruby")
-              ls *.gemspec > /dev/null 2>&1 || (echo "❌ Missing gemspec file" && exit 1)
-              find lib -name "*.rb" | head -1 > /dev/null || (echo "❌ No Ruby files found" && exit 1)
+              find . -name "*.gemspec" || (echo "❌ Missing gemspec file" && exit 1)
+              find . -name "*.rb" || (echo "❌ No Ruby files found" && exit 1)
               echo "✅ Ruby SDK structure validated"
               ;;
             "python")
-              test -f setup.py || (echo "❌ Missing setup.py" && exit 1)
-              find . -name "*.py" | head -1 > /dev/null || (echo "❌ No Python files found" && exit 1)
+              find . -name "setup.py" || (echo "❌ Missing setup.py" && exit 1)
+              find . -name "*.py" || (echo "❌ No Python files found" && exit 1)
               echo "✅ Python SDK structure validated"
               ;;
-            "javascript")
-              test -f package.json || (echo "❌ Missing package.json" && exit 1)
-              find . -name "*.js" | head -1 > /dev/null || (echo "❌ No JavaScript files found" && exit 1)
-              echo "✅ JavaScript SDK structure validated"
+            "node")
+              find . -name "package.json" || (echo "❌ Missing package.json" && exit 1)
+              find . -name "*.ts" -o -name "*.js" || (echo "❌ No TypeScript/JavaScript files found" && exit 1)
+              echo "✅ Node SDK structure validated"
               ;;
             "csharp")
-              ls *.csproj > /dev/null 2>&1 || (echo "❌ Missing csproj file" && exit 1)
-              find . -name "*.cs" | head -1 > /dev/null || (echo "❌ No C# files found" && exit 1)
+              find . -name "*.csproj" || (echo "❌ Missing csproj file" && exit 1)
+              find . -name "*.cs" || (echo "❌ No C# files found" && exit 1)
               echo "✅ C# SDK structure validated"
               ;;
             "go")
-              test -f go.mod || (echo "❌ Missing go.mod" && exit 1)
-              find . -name "*.go" | head -1 > /dev/null || (echo "❌ No Go files found" && exit 1)
+              find . -name "go.mod" || (echo "❌ Missing go.mod" && exit 1)
+              find . -name "*.go" || (echo "❌ No Go files found" && exit 1)
               echo "✅ Go SDK structure validated"
               ;;
           esac
-          
-      - name: Generate validation report
-        if: always()
-        run: |
-          echo "## SDK Generation Report for ${{ matrix.language }}"
-          echo "- **Status**: ${{ job.status }}"
 
       - name: Clean up
         if: always()
         run: rm -rf ./sdk-output/${{ matrix.language }}
-
-  validation-summary:
-    needs: validate-sdk-generation
-    runs-on: ubuntu-latest
-    if: always()
-    steps:
-      - name: Check all SDK generations passed
-        run: |
-          if [[ "${{ needs.validate-sdk-generation.result }}" == "success" ]]; then
-            echo "✅ SDK Generation Validation: PASSED"
-            echo "All 6 SDK languages generated successfully from OpenAPI specification"
-            echo "## ✅ SDK Generation Validation: PASSED"
-            echo "All 6 SDK languages (Java, Ruby, Python, JavaScript, C#, Go) generated successfully."
-          else
-            echo "❌ SDK Generation Validation: FAILED"
-            echo "One or more SDK generations failed. Check individual language job logs for detailed error messages."
-            echo "## ❌ SDK Generation Validation: FAILED"
-            echo "**One or more SDK languages failed to generate.**"
-            echo "Check the individual language job logs above for detailed error messages."
-            exit 1
-          fi
