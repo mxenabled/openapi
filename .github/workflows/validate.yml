@@ -13,16 +13,25 @@ jobs:
     - name: Discover OpenAPI files
       id: set-matrix
       run: |
-        files=$(find openapi/ -name "*.yml" -o -name "*.yaml" | jq -R -s -c 'split("\n")[:-1]')
-        echo "matrix=${files}" >> $GITHUB_OUTPUT
-        echo "Found files: ${files}"
+        files=$(find openapi/ -name "*.yml" -o -name "*.yaml")
+        matrix_json=$(echo "$files" | jq -R -s -c '
+          split("\n")[:-1] | 
+          map(select(length > 0)) | 
+          map({
+            openapi_file: ., 
+            filename: (. | split("/")[-1])
+          })
+        ')
+        echo "matrix=${matrix_json}" >> $GITHUB_OUTPUT
+        echo "Found files matrix: ${matrix_json}"
 
   validate-openapi:
+    name: Validate ${{ matrix.filename }}
     needs: discover-files
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        openapi_file: ${{ fromJson(needs.discover-files.outputs.matrix) }}
+        include: ${{ fromJson(needs.discover-files.outputs.matrix) }}
     steps:
     - uses: actions/checkout@v3
     - name: Validate Schema for ${{ matrix.openapi_file }}
