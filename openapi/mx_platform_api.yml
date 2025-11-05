@@ -8247,7 +8247,7 @@ components:
       description: |-
         Filter transactions belonging to any specified `category_guid[]` in url.
 
-        For example, `?category_guid[]=CAT-7829f71c-2e8c-afa5-2f55-fa3634b8987`.
+        For example, `?category_guid[]=CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874`.
       in: query
       schema:
         type: array
