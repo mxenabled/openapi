@@ -1,4 +1,5 @@
 openapi: 3.0.0
+# Test change to trigger SDK validation workflow
 info:
   contact:
     name: MX Platform API

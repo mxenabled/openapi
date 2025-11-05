@@ -2,6 +2,8 @@ name: SDK Generation Validation
 
 on:
   pull_request:
+    paths: 
+      - 'openapi/mx_platform_api.yml'
 
 jobs:
   validate-sdk-generation:
@@ -12,18 +14,24 @@ jobs:
         include:
           - language: java
             generator: java
+            display_name: Java
           - language: ruby
             generator: ruby
+            display_name: Ruby
           - language: python
             generator: python
+            display_name: Python
           - language: node
             generator: typescript-axios
+            display_name: Node
           - language: csharp
             generator: csharp
+            display_name: C#
           - language: go
             generator: go
+            display_name: Go
 
-    name: ${{ matrix.language }} SDK Generation
+    name: ${{ matrix.display_name }} SDK Generation
     
     steps:
       - name: Checkout repository
