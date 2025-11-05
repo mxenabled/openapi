@@ -1,0 +1,12 @@
+# === AI Toolkit ===
+# Private Mode - All AI files ignored
+.ai/*
+.claude/*
+.mcp.json
+.cursor/*
+.gemini/*
+.github/instructions/*
+.github/chatmodes/*
+.github/prompts/*
+.vscode/mcp.json
+# === End AI Toolkit ===

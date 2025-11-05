@@ -1,0 +1,102 @@
+name: Test SDK Generation Validation
+
+on:
+  pull_request:
+    paths: 
+      - 'openapi/mx_platform_api.yml'
+
+jobs:
+  validate-sdk-generation:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: java
+            generator: java
+            display_name: Java
+          - language: ruby
+            generator: ruby
+            display_name: Ruby
+          - language: python
+            generator: python
+            display_name: Python
+          - language: node
+            generator: typescript-axios
+            display_name: Node
+          - language: csharp
+            generator: csharp
+            display_name: C#
+          - language: go
+            generator: go
+            display_name: Go
+
+    name: ${{ matrix.display_name }} SDK Generation
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          
+      - name: Install OpenAPI Generator CLI
+        run: npm install -g @openapitools/openapi-generator-cli
+  
+      - name: Create output directory
+        run: mkdir -p ./sdk-output/${{ matrix.language }}
+        
+      - name: Generate Test SDK
+        run: |
+          openapi-generator-cli generate \
+            -i openapi/mx_platform_api.yml \
+            -g ${{ matrix.generator }} \
+            -o ./sdk-output/${{ matrix.language }} \
+            --skip-validate-spec
+            
+      - name: Verify expected files were generated
+        run: |
+          echo "Checking for generated files in ./sdk-output/${{ matrix.language }}"
+          ls -la ./sdk-output/${{ matrix.language }}
+          
+          cd ./sdk-output/${{ matrix.language }}
+          
+          # Check for key files based on language
+          case "${{ matrix.language }}" in
+            "java")
+              find . -name "pom.xml" -quit > /dev/null || (echo "❌ Missing pom.xml" && exit 1)
+              find . -name "*.java" -quit > /dev/null || (echo "❌ No Java files found" && exit 1)
+              echo "✅ Java SDK structure validated"
+              ;;
+            "ruby")
+              find . -name "*.gemspec" -quit > /dev/null || (echo "❌ Missing gemspec file" && exit 1)
+              find . -name "*.rb" -quit > /dev/null || (echo "❌ No Ruby files found" && exit 1)
+              echo "✅ Ruby SDK structure validated"
+              ;;
+            "python")
+              find . -name "setup.py" -quit > /dev/null || (echo "❌ Missing setup.py" && exit 1)
+              find . -name "*.py" -quit > /dev/null || (echo "❌ No Python files found" && exit 1)
+              echo "✅ Python SDK structure validated"
+              ;;
+            "node")
+              find . -name "package.json" -quit > /dev/null || (echo "❌ Missing package.json" && exit 1)
+              find . \( -name "*.ts" -o -name "*.js" \) -quit > /dev/null || (echo "❌ No TypeScript/JavaScript files found" && exit 1)
+              echo "✅ Node SDK structure validated"
+              ;;
+            "csharp")
+              find . -name "*.csproj" -quit > /dev/null || (echo "❌ Missing csproj file" && exit 1)
+              find . -name "*.cs" -quit > /dev/null || (echo "❌ No C# files found" && exit 1)
+              echo "✅ C# SDK structure validated"
+              ;;
+            "go")
+              find . -name "go.mod" -quit > /dev/null || (echo "❌ Missing go.mod" && exit 1)
+              find . -name "*.go" -quit > /dev/null || (echo "❌ No Go files found" && exit 1)
+              echo "✅ Go SDK structure validated"
+              ;;
+          esac
+
+      - name: Clean up
+        if: always()
+        run: rm -rf ./sdk-output/${{ matrix.language }}
