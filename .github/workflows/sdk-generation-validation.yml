@@ -2,8 +2,6 @@ name: SDK Generation Validation
 
 on:
   pull_request:
-    paths: 
-      - 'openapi/mx_platform_api.yml'
 
 jobs:
   validate-sdk-generation:
