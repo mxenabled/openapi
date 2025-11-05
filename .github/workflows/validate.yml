@@ -1,9 +1,10 @@
-name: Validate
+name: Validate OAS Files
 
 on: [push]
 
 jobs:
   discover-files:
+    name: Discover OpenAPI Files
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
@@ -16,7 +17,7 @@ jobs:
         echo "matrix=${files}" >> $GITHUB_OUTPUT
         echo "Found files: ${files}"
 
-  validate:
+  validate-openapi:
     needs: discover-files
     runs-on: ubuntu-latest
     strategy:
@@ -24,11 +25,11 @@ jobs:
         openapi_file: ${{ fromJson(needs.discover-files.outputs.matrix) }}
     steps:
     - uses: actions/checkout@v3
-    - name: Validate OpenAPI Schema
+    - name: Validate Schema for ${{ matrix.openapi_file }}
       uses: thiyagu06/openapi-validator-action@v1
       with:
         filepath: ${{ matrix.openapi_file }}
-    - name: Validate OpenAPI YAML
+    - name: Validate YAML for ${{ matrix.openapi_file }}
       uses: ibiqlik/action-yamllint@v3
       with:
         file_or_dir: ${{ matrix.openapi_file }}
