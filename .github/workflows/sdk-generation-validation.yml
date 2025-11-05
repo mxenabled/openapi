@@ -11,7 +11,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ["java", "ruby", "python", "javascript", "csharp", "go"]
+        include:
+          - language: java
+            generator: java
+          - language: ruby
+            generator: ruby
+          - language: python
+            generator: python
+          - language: node
+            generator: typescript-axios
+          - language: csharp
+            generator: csharp
+          - language: go
+            generator: go
 
     name: Validate ${{ matrix.language }} SDK Generation
     
@@ -46,7 +58,7 @@ jobs:
             "python")
               python -m pip install --upgrade pip
               ;;
-            "javascript")
+            "node")
               echo "Node.js already set up"
               ;;
             "csharp")
