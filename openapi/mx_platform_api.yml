@@ -7000,10 +7000,12 @@ components:
           description: |
             Only use this option if the `widget_type` is set to `pulse_widget`. Set this to the insight guid you want to appear at the top of the insights feed.
         iso_country_code:
+          example:
+            - US
+            - CA
           type: array
           items:
             type: string
-            example: ["US", "CA"]
           description: |
             An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico).
         is_mobile_webview:
@@ -8247,7 +8249,7 @@ components:
       description: |-
         Filter transactions belonging to any specified `category_guid[]` in url.
 
-        For example, `?category_guid[]=CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874`.
+        For example, `?category_guid[]=CAT-7829f71c-2e8c-afa5-2f55-fa3634b8987`.
       in: query
       schema:
         type: array
