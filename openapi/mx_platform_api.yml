@@ -339,7 +339,7 @@ paths:
         - processor token
   /transactions/enhance:
     post:
-      description: Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform. <br /><br />For more information on returned data, please see the [Enhanced Transactions fields guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions).
+      description: Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform. &lt;br /&gt;&lt;br /&gt;For more information on returned data, please see the [Enhanced Transactions fields guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions).
       operationId: enhanceTransactions
       requestBody:
         content:
@@ -594,7 +594,7 @@ paths:
                 $ref: '#/components/schemas/TransactionCreateResponseBody'
     get:
       description: |
-        Requests to this endpoint return a list of transactions associated with the specified account. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. 
+        Requests to this endpoint return a list of transactions associated with the specified account. &lt;br /&gt;&lt;br /&gt;Enhanced transaction data may be requested using the `includes` parameter. 
         To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`.
         For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
       operationId: listTransactionsByAccount
@@ -1767,7 +1767,7 @@ paths:
         - members
   /users/{user_guid}/members/{member_guid}/transactions:
     get:
-      description: Requests to this endpoint return a list of transactions associated with the specified `member`, across all accounts associated with that `member`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
+      description: Requests to this endpoint return a list of transactions associated with the specified `member`, across all accounts associated with that `member`. &lt;br /&gt;&lt;br /&gt;Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
       operationId: listTransactionsByMember
       parameters:
         - $ref: '#/components/parameters/memberGuid'
@@ -2273,7 +2273,7 @@ paths:
         - tags
   /users/{user_guid}/tags/{tag_guid}/transactions:
     get:
-      description: Use this endpoint to get a list of all transactions associated with a particular tag according to the tag's unique GUID. This lists all transactions that have been assigned to a particular tag using the create tagging endpoint. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
+      description: Use this endpoint to get a list of all transactions associated with a particular tag according to the tag's unique GUID. This lists all transactions that have been assigned to a particular tag using the create tagging endpoint. &lt;br /&gt;&lt;br /&gt;Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
       operationId: listTransactionsByTag
       parameters:
         - $ref: '#/components/parameters/userGuid'
@@ -2396,7 +2396,7 @@ paths:
         - transaction rules
   /users/{user_guid}/transactions:
     get:
-      description: Requests to this endpoint return a list of transactions associated with the specified `user`, across all members and accounts associated with that `user`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
+      description: Requests to this endpoint return a list of transactions associated with the specified `user`, across all members and accounts associated with that `user`. &lt;br /&gt;&lt;br /&gt;Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
       operationId: listTransactions
       parameters:
         - $ref: '#/components/parameters/userGuid'
@@ -2429,7 +2429,7 @@ paths:
       - $ref: '#/components/parameters/userGuid'
       - $ref: '#/components/parameters/transactionGuid'
     get:
-      description: Requests to this endpoint will return the attributes of the specified `transaction`. To read a manual transaction, use the manual transaction guid in the path as the `transactionGuid`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
+      description: Requests to this endpoint will return the attributes of the specified `transaction`. To read a manual transaction, use the manual transaction guid in the path as the `transactionGuid`. &lt;br /&gt;&lt;br /&gt;Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
       operationId: readTransaction
       responses:
         '200':
@@ -2766,7 +2766,7 @@ paths:
                 $ref: '#/components/schemas/NotificationResponseBody'
   /users/{user_guid}/repeating_transactions:
     get:
-      description: Retrieve a list of all recurring transactions for a user. <br /><br />For more see the [Repeating Transactions guide](repeating-transactions-overview.mdx).
+      description: Retrieve a list of all recurring transactions for a user. &lt;br /&gt;&lt;br /&gt;For more see the [Repeating Transactions guide](repeating-transactions-overview.mdx).
       operationId: repeatingTransactions
       parameters:
         - $ref: '#/components/parameters/userGuid'
@@ -2782,7 +2782,7 @@ paths:
         - transactions
   /users/{user_guid}/repeating_transactions/{repeating_transaction_guid}:
     get:
-      description: Get a Specific Repeating Transaction. <br /><br />List For more see the [Repeating Transactions guide](repeating-transactions-overview.mdx)
+      description: Get a Specific Repeating Transaction. &lt;br /&gt;&lt;br /&gt;List For more see the [Repeating Transactions guide](repeating-transactions-overview.mdx)
       operationId: specificRepeatingTransaction
       parameters:
         - $ref: '#/components/parameters/userGuid'
@@ -3027,7 +3027,7 @@ paths:
       operationId: readUserMicrodeposit
       summary: Read a microdeposit for a user
       description: |
-        Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID. <br></br> Webhooks for microdeposit status changes are triggered when a status changes. The actual status of the microdeposit guid updates every minute. You may force a status update by calling the read microdeposit endpoint.
+        Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID. &lt;br /&gt;&lt;br /&gt; Webhooks for microdeposit status changes are triggered when a status changes. The actual status of the microdeposit guid updates every minute. You may force a status update by calling the read microdeposit endpoint.
       responses:
         '200':
           description: OK
@@ -3524,8 +3524,8 @@ components:
           type: string
         instructional_text:
           example: |
-            Some instructional text <a href="https://example.url.mxbank.com/instructions"
-            id="instructional_text">for end users</a>.
+            Some instructional text &lt;a href="https://example.url.mxbank.com/instructions"
+            id="instructional_text"&gt;for end users&lt;/a&gt;.
           nullable: true
           type: string
         instructional_text_steps:
