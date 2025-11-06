@@ -1,18 +1,45 @@
-name: Validate
+name: Validate OAS Files
 
 on: [push]
 
 jobs:
-  Test:
+  discover-files:
+    name: Discover OpenAPI Files
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
     - uses: actions/checkout@v3
-    - name: Validate OpenAPI Schema
+    - name: Discover OpenAPI files
+      id: set-matrix
+      run: |
+        files=$(find openapi/ -name "*.yml" -o -name "*.yaml")
+        matrix_json=$(echo "$files" | jq -R -s -c '
+          split("\n")[:-1] | 
+          map(select(length > 0)) | 
+          map({
+            openapi_file: ., 
+            filename: (. | split("/")[-1])
+          })
+        ')
+        echo "matrix=${matrix_json}" >> $GITHUB_OUTPUT
+        echo "Found files matrix: ${matrix_json}"
+
+  validate-openapi:
+    name: Validate ${{ matrix.filename }}
+    needs: discover-files
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include: ${{ fromJson(needs.discover-files.outputs.matrix) }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Validate Schema for ${{ matrix.openapi_file }}
       uses: thiyagu06/openapi-validator-action@v1
       with:
-        filepath: 'openapi/mx_platform_api.yml'
-    - name: Validate OpenAPI YAML
+        filepath: ${{ matrix.openapi_file }}
+    - name: Validate YAML for ${{ matrix.openapi_file }}
       uses: ibiqlik/action-yamllint@v3
       with:
-        file_or_dir: openapi/mx_platform_api.yml
+        file_or_dir: ${{ matrix.openapi_file }}
         config_file: .yamllint.yml
