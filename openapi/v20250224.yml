@@ -464,7 +464,7 @@ paths:
         - merchants
   /transactions/enhance:
     post:
-      description: Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform. <br /><br />For more information on returned data, please see the [Enhanced Transactions guide](https://docs.mx.com/api-reference/platform-api/reference/transactions-overview#enhanced-transactions).
+      description: "Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform. <br /><br />For more information on returned data, please see the [Enhanced Transactions guide](https://docs.mx.com/api-reference/platform-api/reference/transactions-overview#enhanced-transactions)."
       operationId: enhanceTransactions
       parameters:
         - $ref: '#/components/parameters/acceptVersion'
@@ -769,10 +769,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransactionCreateResponseBody'
     get:
-      description: |
-        Requests to this endpoint return a list of transactions associated with the specified account. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. 
-        To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`.
-        For more information, see the Optional Enhancement Query Parameter guide.
+      description: "Requests to this endpoint return a list of transactions associated with the specified account. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide."
       operationId: listTransactionsByAccount
       parameters:
         - $ref: '#/components/parameters/acceptVersion'
@@ -799,10 +796,7 @@ paths:
         - transactions
   /users/{user_guid}/members/{member_guid}/accounts/{account_guid}/transactions:
     get:
-      description: |
-        Requests to this endpoint return a list of transactions associated with the specified account. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. 
-        To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`.
-        For more information, see the Optional Enhancement Query Parameter guide.
+      description: "Requests to this endpoint return a list of transactions associated with the specified account. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide."
       operationId: listTransactionsByAccountPerMember
       parameters:
         - $ref: '#/components/parameters/acceptVersion'
@@ -2056,7 +2050,7 @@ paths:
         - members
   /users/{user_identifier}/members/{member_identifier}/transactions:
     get:
-      description: Requests to this endpoint return a list of transactions associated with the specified `member`, across all accounts associated with that `member`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.
+      description: "Requests to this endpoint return a list of transactions associated with the specified `member`, across all accounts associated with that `member`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide."
       operationId: listTransactionsByMember
       parameters:
         - $ref: '#/components/parameters/acceptVersion'
@@ -2587,7 +2581,7 @@ paths:
         - tags
   /users/{user_identifier}/tags/{tag_guid}/transactions:
     get:
-      description: Use this endpoint to get a list of all transactions associated with a particular tag according to the tag's unique GUID. This lists all transactions that have been assigned to a particular tag using the create tagging endpoint. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.
+      description: "Use this endpoint to get a list of all transactions associated with a particular tag according to the tag's unique GUID. This lists all transactions that have been assigned to a particular tag using the create tagging endpoint. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide."
       operationId: listTransactionsByTag
       parameters:
         - $ref: '#/components/parameters/acceptVersion'
@@ -2717,7 +2711,7 @@ paths:
         - transaction rules
   /users/{user_identifier}/transactions:
     get:
-      description: Requests to this endpoint return a list of transactions associated with the specified `user`, across all members and accounts associated with that `user`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.
+      description: "Requests to this endpoint return a list of transactions associated with the specified `user`, across all members and accounts associated with that `user`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide."
       operationId: listTransactions
       parameters:
         - $ref: '#/components/parameters/acceptVersion'
@@ -2748,7 +2742,7 @@ paths:
       - $ref: '#/components/parameters/userGuid'
       - $ref: '#/components/parameters/transactionGuid'
     get:
-      description: Requests to this endpoint will return the attributes of the specified `transaction`. To read a manual transaction, use the manual transaction guid in the path as the `transactionGuid`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.
+      description: "Requests to this endpoint will return the attributes of the specified `transaction`. To read a manual transaction, use the manual transaction guid in the path as the `transactionGuid`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide."
       operationId: readTransaction
       responses:
         '200':
@@ -2804,7 +2798,7 @@ paths:
       - $ref: '#/components/parameters/accountIdentifier'
       - $ref: '#/components/parameters/transactionIdentifier'
     get:
-      description: Requests to this endpoint will return the attributes of the specified `transaction`. To read a manual transaction, use the manual transaction guid in the path as the `transactionGuid`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.
+      description: "Requests to this endpoint will return the attributes of the specified `transaction`. To read a manual transaction, use the manual transaction guid in the path as the `transactionGuid`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide."
       operationId: readTransactionByAccount
       responses:
         '200':
@@ -3152,7 +3146,7 @@ paths:
                 $ref: '#/components/schemas/NotificationResponseBody'
   /users/{user_guid}/repeating_transactions:
     get:
-      description: Retrieve a list of all recurring transactions for a user. <br /><br />For more see the [Repeating Transactions guide](https://docs.mx.com/api-reference/platform-api/reference/repeating-transactions-overview).
+      description: "Retrieve a list of all recurring transactions for a user. <br /><br />For more see the [Repeating Transactions guide](https://docs.mx.com/api-reference/platform-api/reference/repeating-transactions-overview)."
       operationId: repeatingTransactions
       parameters:
         - $ref: '#/components/parameters/acceptVersion'
@@ -3169,7 +3163,7 @@ paths:
         - transactions
   /users/{user_guid}/repeating_transactions/{repeating_transaction_guid}:
     get:
-      description: Get a Specific Repeating Transaction. <br /><br />List For more see the [Repeating Transactions guide](https://docs.mx.com/api-reference/platform-api/reference/repeating-transactions-overview)
+      description: "Get a Specific Repeating Transaction. <br /><br />List For more see the [Repeating Transactions guide](https://docs.mx.com/api-reference/platform-api/reference/repeating-transactions-overview)"
       operationId: specificRepeatingTransaction
       parameters:
         - $ref: '#/components/parameters/acceptVersion'
@@ -3465,8 +3459,7 @@ paths:
         - microdeposits
       operationId: readUserMicrodeposit
       summary: Read a microdeposit for a user
-      description: |
-        Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID. <br></br> Webhooks for microdeposit status changes are triggered when a status changes. The actual status of the microdeposit guid updates every minute. You may force a status update by calling the read microdeposit endpoint.
+      description: "Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID. <br></br> Webhooks for microdeposit status changes are triggered when a status changes. The actual status of the microdeposit guid updates every minute. You may force a status update by calling the read microdeposit endpoint."
       responses:
         '200':
           description: OK
