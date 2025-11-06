@@ -3879,7 +3879,7 @@ components:
       in: query
       name: use_case
       schema:
-        type: array
+        type: string
     accountGuid:
       description: The unique id for an `account`.
       example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
@@ -4623,9 +4623,7 @@ components:
           type: string
         instructional_text:
           description: Render this text when end users are asked for their credentials, as it helps end users provide the correct credentials when creating a new member. May contain `<a></a>` tags to link to explanatory material.
-          example: |
-            Some instructional text <a href="https://example.url.mxbank.com/instructions"
-            id="instructional_text">for end users</a>.
+          example: "Some instructional text <a href=\"https://example.url.mxbank.com/instructions\" id=\"instructional_text\">for end users</a>."
           nullable: true
           type: string
         instructional_text_steps:
@@ -8737,6 +8735,8 @@ components:
             - US
             - CA
           type: array
+          items:
+            type: string
           description: |
             An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico).
         is_mobile_webview:

@@ -3523,9 +3523,7 @@ components:
           nullable: true
           type: string
         instructional_text:
-          example: |
-            Some instructional text <a href="https://example.url.mxbank.com/instructions"
-            id="instructional_text">for end users</a>.
+          example: "Some instructional text <a href=\"https://example.url.mxbank.com/instructions\" id=\"instructional_text\">for end users</a>."
           nullable: true
           type: string
         instructional_text_steps:
@@ -6187,6 +6185,10 @@ components:
           example: data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...
           nullable: true
           type: string
+        guid:
+          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
+          nullable: true
+          type: string
         label:
           example: IMAGE_1
           nullable: true
@@ -6198,6 +6200,10 @@ components:
       type: object
     OptionResponse:
       properties:
+        guid:
+          example: CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5
+          nullable: true
+          type: string
         label:
           example: IMAGE_1
           nullable: true
@@ -7004,6 +7010,8 @@ components:
             - US
             - CA
           type: array
+          items:
+            type: string
           description: |
             An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico).
         is_mobile_webview:
