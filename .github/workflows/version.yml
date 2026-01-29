@@ -24,6 +24,6 @@ jobs:
         with:
           mode: exactly
           count: 1
-          labels: "major, minor, patch"
+          labels: "minor, patch"
           add_comment: true
           message: "This PR is blocked until you add one of the following labels: {{ provided }}. Once added you can merge."
