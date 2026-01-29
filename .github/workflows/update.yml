@@ -11,7 +11,6 @@ on:
         default: "patch"
         type: choice
         options:
-        - major
         - minor
         - patch
 
@@ -39,13 +38,13 @@ jobs:
       - name: Update libraries
         env:
           LABEL: ${{ github.event.pull_request.labels[0].name }}
-        if: env.LABEL == 'major' || env.LABEL == 'minor' || env.LABEL == 'patch' && steps.changed-files-specific.outputs.any_changed == true
+        if: env.LABEL == 'minor' || env.LABEL == 'patch' && steps.changed-files-specific.outputs.any_changed == true
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ steps.generate_token.outputs.token }}
           repository: ${{ matrix.repo }}
           event-type: generate_publish_release
-          client-payload: '{"version":"${{ env.LABEL }}"}'
+          client-payload: '{"version":"${{ env.LABEL }}","commit_sha":"${{ github.sha }}"}'
       - name: Slack notification
         uses: ravsamhq/notify-slack-action@v2
         if: always()
@@ -79,7 +78,7 @@ jobs:
           token: ${{ steps.generate_token.outputs.token }}
           repository: ${{ matrix.repo }}
           event-type: generate_publish_release
-          client-payload: '{"version":"${{ github.event.inputs.version_level }}"}'
+          client-payload: '{"version":"${{ github.event.inputs.version_level }}","commit_sha":"${{ github.sha }}"}'
       - name: Slack notification
         uses: ravsamhq/notify-slack-action@v2
         if: always()

@@ -178,7 +178,7 @@ paths:
         - $ref: '#/components/parameters/institutionName'
         - $ref: '#/components/parameters/isoCountryCode'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
         - $ref: '#/components/parameters/supportsAccountIdentification'
         - $ref: '#/components/parameters/supportsAccountStatement'
         - $ref: '#/components/parameters/supportsAccountVerification'
@@ -200,7 +200,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/isoCountryCode'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/recordsPerPage'
+        - $ref: '#/components/parameters/recordsPerPageMax1000'
       responses:
         '200':
           content:
@@ -404,7 +404,7 @@ paths:
         Use this endpoint to delete the specified `user`. The response will have a status of `204 No Content` without an object.
 
         :::warning
-        Deleting a user is permanent. Deleted users can never be restored. For more info, see [Deleting Objects](https://docs.mx.com/api-reference/platform-api/overview/deleting-objects).
+        Deleting a user is permanent. Deleted users can never be restored. For more info, see [Deleting Objects](/api-reference/platform-api/overview/deleting-objects).
         :::
       operationId: deleteUser
       parameters:
@@ -459,7 +459,7 @@ paths:
         This endpoint returns a list of all the accounts associated with the specified `user`.
 
         :::warning
-        This request will not return the full account number. It may return the last four digits of the account number if that information has been provided during aggregation. If you need the full account number, please refer to [List account numbers by member](https://docs.mx.com/api-reference/platform-api/reference/list-account-numbers-by-member/), [List account numbers by account](https://docs.mx.com/api-reference/platform-api/reference/list-account-numbers-by-account/), or the [Fetch Account and Routing Numbers](https://docs.mx.com/products/connectivity/instant-account-verification/fetch-account-routing-number-api/#4-read-the-account-numbers) guide.
+        This request will not return the full account number. It may return the last four digits of the account number if that information has been provided during aggregation. If you need the full account number, please refer to [List account numbers by member](/api-reference/platform-api/reference/list-account-numbers-by-member/) or [List account numbers by account](/api-reference/platform-api/reference/list-account-numbers-by-account/).
         :::
       operationId: listUserAccounts
       parameters:
@@ -593,7 +593,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransactionCreateResponseBody'
     get:
-      description: "Requests to this endpoint return a list of transactions associated with the specified account. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter)."
+      description: "Requests to this endpoint return a list of transactions associated with the specified account. <br /><br /> Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter)."
       operationId: listTransactionsByAccount
       parameters:
         - $ref: '#/components/parameters/accountGuid'
@@ -2426,7 +2426,7 @@ paths:
       - $ref: '#/components/parameters/userGuid'
       - $ref: '#/components/parameters/transactionGuid'
     get:
-      description: "Requests to this endpoint will return the attributes of the specified `transaction`. To read a manual transaction, use the manual transaction guid in the path as the `transactionGuid`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter)."
+      description: "Requests to this endpoint will return the attributes of the specified `transaction`. To read a manual transaction, use the manual transaction guid in the path as the `transactionGuid`. <br /><br /> Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter)."
       operationId: readTransaction
       responses:
         '200':
@@ -2763,7 +2763,7 @@ paths:
                 $ref: '#/components/schemas/NotificationResponseBody'
   /users/{user_guid}/repeating_transactions:
     get:
-      description: "Retrieve a list of all recurring transactions for a user. <br /><br />For more see the [Repeating Transactions guide](repeating-transactions-overview.mdx)."
+      description: "Retrieve a list of all recurring transactions for a user. <br /><br />For more see the [Repeating Transactions guide](/api-reference/platform-api/v20111101/reference/transactions-overview#repeating-transactions)."
       operationId: repeatingTransactions
       parameters:
         - $ref: '#/components/parameters/userGuid'
@@ -2779,7 +2779,7 @@ paths:
         - transactions
   /users/{user_guid}/repeating_transactions/{repeating_transaction_guid}:
     get:
-      description: "Get a Specific Repeating Transaction. <br /><br />List For more see the [Repeating Transactions guide](repeating-transactions-overview.mdx)"
+      description: "Get a Specific Repeating Transaction. <br /><br />List For more see the  [Repeating Transactions guide](/api-reference/platform-api/v20111101/reference/transactions-overview#repeating-transactions)"
       operationId: specificRepeatingTransaction
       parameters:
         - $ref: '#/components/parameters/userGuid'
@@ -3023,7 +3023,7 @@ paths:
         - microdeposits
       operationId: readUserMicrodeposit
       summary: Read a microdeposit for a user
-      description: "Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID. <br /><br /> Webhooks for microdeposit status changes are triggered when a status changes. The actual status of the microdeposit guid updates every minute. You may force a status update by calling the read microdeposit endpoint."
+      description: "Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID. <br></br> Webhooks for microdeposit status changes are triggered when a status changes. The actual status of the microdeposit guid updates every minute. You may force a status update by calling the read microdeposit endpoint."
       responses:
         '200':
           description: OK
@@ -3519,6 +3519,7 @@ components:
           nullable: true
           type: string
         instructional_text:
+          description: "Render this text when end users are asked for their credentials, as it helps end users provide the correct credentials when creating a new member. May contain `<a></a>` tags to link to explanatory material."
           example: "Some instructional text <a href=\"https://example.url.mxbank.com/instructions\" id=\"instructional_text\">for end users</a>."
           nullable: true
           type: string
@@ -6979,7 +6980,7 @@ components:
           example: false
           type: boolean
           description: |
-            Only use this option if the `widget_type` is set to `connect_widget`. This determines whether the institution search is displayed within the Connect Widget. This option must be used with `current_institution_code`, `current_instituion_guid`, or `current_member_guid`. When set to `true`, the institution search feature will be disabled and end users will not be able to navigate to it. Defaults to `false`.
+            Only use this option if the `widget_type` is set to `connect_widget`. This determines whether the institution search is displayed within the Connect Widget. This option must be used with `current_institution_code`, `current_instituion_guid`, or `current_member_guid`. When set to `true`, the institution search feature will be disabled and end users will not be able to navigate to it. Defaults to `false`. If you set `disable_institution_search` to `true`, you must also listen for the [backToSearch event](/connect/guides/handling-events/#back-to-search) to intercept the user from navigating back to search during the flow. Don't listen for any Primary Action postMessages when you disable search.  All buttons that will take a user to the search institution page are still displayed in the Connect Widget experience and your user can still select them. This may trigger during several steps in the Connect Widget flow, such as Connected, MDV/Microdeposits Verified, Login Error, and Credentials/OAuth (back button).
         enable_app2app:
           example: false
           type: boolean
@@ -8062,6 +8063,13 @@ components:
         type: array
         items:
           type: string
+    recordsPerPageMax1000:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
     supportsAccountIdentification:
       description: Filter only institutions which support account identification.
       example: true
@@ -8098,13 +8106,6 @@ components:
       required: true
       schema:
         type: string
-    recordsPerPageMax1000:
-      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
-      example: 10
-      in: query
-      name: records_per_page
-      schema:
-        type: integer
     merchantLocationGuid:
       description: The unique id for a `merchant_location`.
       example: MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621
