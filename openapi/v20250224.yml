@@ -6675,6 +6675,9 @@ components:
           example: Connected to MX Bank
           nullable: true
           type: string
+        error:
+          nullable: true
+          type: object
         guid:
           description: The unique identifier for the member. Defined by MX.
           example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
