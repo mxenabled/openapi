@@ -1509,7 +1509,7 @@ paths:
       tags:
         - members
     post:
-      description: This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters id and metadata. When creating a member, you'll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the `/institutions/{institution_code}/credentials` endpoint. If successful, the MX Platform API will respond with the newly-created member object. Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions.
+      description: This endpoint allows you to create a new member using the required parameters `institution_code`, `credentials` (if creating a non-OAuth member), and `data_request.products`. When creating a non-OAuth member, include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the `/institutions/{institution_code}/credentials` endpoint. Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data. A status of 200 indicates the member was created successfully, and no aggregation was requested. A status of 201 indicates the member was created, but a product within `data_request` failed to aggregate. A status of 202 indicates the member was successfully created, and standard aggregation (no `data_request`) was requested (does not indicate success or failure).
       operationId: createMember
       parameters:
         - $ref: '#/components/parameters/acceptVersion'
@@ -1529,6 +1529,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/MemberResponseBody'
           description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponseWithJobErrorBody'
+          description: Created
         '202':
           content:
             application/json:
@@ -6770,6 +6776,29 @@ components:
           nullable: true
           type: string
       type: object
+    MemberResponseWithJobError:
+      allOf:
+        - $ref: '#/components/schemas/MemberResponse'
+        - type: object
+          properties:
+            error:
+              type: object
+              properties:
+                error_type:
+                  type: string
+                  example: "MEMBER"
+                error_code:
+                  type: integer
+                  example: 3003
+                error_message:
+                  type: string
+                  example: "There was an error attempting to process your request. The Member was created but we were unable to fulfill the data request."
+                user_message:
+                  type: string
+                  example: "We're having trouble connecting right now. Please try again later."
+                locale:
+                  type: string
+                  example: "en"
     MembersResponseBody:
       properties:
         members:
@@ -6809,6 +6838,11 @@ components:
       properties:
         member:
           $ref: '#/components/schemas/MemberResponse'
+      type: object
+    MemberResponseWithJobErrorBody:
+      properties:
+        member:
+          $ref: '#/components/schemas/MemberResponseWithJobError'
       type: object
     ManagedMemberUpdateRequest:
       properties:
