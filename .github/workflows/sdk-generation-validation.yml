@@ -2,101 +2,142 @@ name: Test SDK Generation Validation
 
 on:
   pull_request:
-    paths: 
-      - 'openapi/mx_platform_api.yml'
+    paths:
+      - 'openapi/v*.yml'
 
 jobs:
+  # ──────────────────────────────────────────────────
+  # Discover which versioned OAS files changed in this PR
+  # ──────────────────────────────────────────────────
+  discover-changed-files:
+    name: Discover Changed OAS Files
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.build-matrix.outputs.matrix }}
+      has_files: ${{ steps.build-matrix.outputs.has_files }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get changed versioned OAS files
+        id: changed-files
+        uses: tj-actions/changed-files@v41
+        with:
+          files: openapi/v*.yml
+
+      - name: Build matrix from changed files
+        id: build-matrix
+        run: |
+          CHANGED="${{ steps.changed-files.outputs.all_changed_files }}"
+          echo "Changed versioned OAS files: $CHANGED"
+
+          if [ -z "$CHANGED" ]; then
+            echo "has_files=false" >> $GITHUB_OUTPUT
+            echo "matrix=[]" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Build a JSON array of changed OAS files
+          MATRIX="["
+          FIRST=true
+          for file in $CHANGED; do
+            filename=$(basename "$file" .yml)
+            if [ "$FIRST" = true ]; then
+              FIRST=false
+            else
+              MATRIX="${MATRIX},"
+            fi
+            MATRIX="${MATRIX}{\"openapi_file\":\"${file}\",\"version_name\":\"${filename}\"}"
+          done
+          MATRIX="${MATRIX}]"
+
+          echo "matrix=${MATRIX}" >> $GITHUB_OUTPUT
+          echo "has_files=true" >> $GITHUB_OUTPUT
+          echo "Generated matrix: ${MATRIX}"
+
+  # ──────────────────────────────────────────────────
+  # Run SDK generation validation for each changed OAS file x each language
+  # ──────────────────────────────────────────────────
   validate-sdk-generation:
+    name: "${{ matrix.lang.display_name }} (${{ matrix.version.version_name }})"
+    needs: discover-changed-files
+    if: needs.discover-changed-files.outputs.has_files == 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - language: java
-            generator: java
-            display_name: Java
-          - language: ruby
-            generator: ruby
-            display_name: Ruby
-          - language: python
-            generator: python
-            display_name: Python
-          - language: node
-            generator: typescript-axios
-            display_name: Node
-          - language: csharp
-            generator: csharp
-            display_name: C#
-          - language: go
-            generator: go
-            display_name: Go
+        version: ${{ fromJson(needs.discover-changed-files.outputs.matrix) }}
+        lang:
+          - { language: java, generator: java, display_name: Java }
+          - { language: ruby, generator: ruby, display_name: Ruby }
+          - { language: python, generator: python, display_name: Python }
+          - { language: node, generator: "typescript-axios", display_name: Node }
+          - { language: csharp, generator: csharp, display_name: "C#" }
+          - { language: go, generator: go, display_name: Go }
 
-    name: ${{ matrix.display_name }} SDK Generation
-    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-          
+
       - name: Install OpenAPI Generator CLI
         run: npm install -g @openapitools/openapi-generator-cli
-  
+
       - name: Create output directory
-        run: mkdir -p ./sdk-output/${{ matrix.language }}
-        
-      - name: Generate Test SDK
+        run: mkdir -p ./sdk-output/${{ matrix.lang.language }}
+
+      - name: Generate Test SDK from ${{ matrix.version.version_name }}
         run: |
           openapi-generator-cli generate \
-            -i openapi/mx_platform_api.yml \
-            -g ${{ matrix.generator }} \
-            -o ./sdk-output/${{ matrix.language }} \
+            -i ${{ matrix.version.openapi_file }} \
+            -g ${{ matrix.lang.generator }} \
+            -o ./sdk-output/${{ matrix.lang.language }} \
             --skip-validate-spec
-            
+
       - name: Verify expected files were generated
         run: |
-          echo "Checking for generated files in ./sdk-output/${{ matrix.language }}"
-          ls -la ./sdk-output/${{ matrix.language }}
-          
-          cd ./sdk-output/${{ matrix.language }}
-          
+          echo "Checking for generated files in ./sdk-output/${{ matrix.lang.language }}"
+          ls -la ./sdk-output/${{ matrix.lang.language }}
+
+          cd ./sdk-output/${{ matrix.lang.language }}
+
           # Check for key files based on language
-          case "${{ matrix.language }}" in
+          case "${{ matrix.lang.language }}" in
             "java")
               find . -name "pom.xml" -quit > /dev/null || (echo "❌ Missing pom.xml" && exit 1)
               find . -name "*.java" -quit > /dev/null || (echo "❌ No Java files found" && exit 1)
-              echo "✅ Java SDK structure validated"
+              echo "✅ Java SDK structure validated (${{ matrix.version.version_name }})"
               ;;
             "ruby")
               find . -name "*.gemspec" -quit > /dev/null || (echo "❌ Missing gemspec file" && exit 1)
               find . -name "*.rb" -quit > /dev/null || (echo "❌ No Ruby files found" && exit 1)
-              echo "✅ Ruby SDK structure validated"
+              echo "✅ Ruby SDK structure validated (${{ matrix.version.version_name }})"
               ;;
             "python")
               find . -name "setup.py" -quit > /dev/null || (echo "❌ Missing setup.py" && exit 1)
               find . -name "*.py" -quit > /dev/null || (echo "❌ No Python files found" && exit 1)
-              echo "✅ Python SDK structure validated"
+              echo "✅ Python SDK structure validated (${{ matrix.version.version_name }})"
               ;;
             "node")
               find . -name "package.json" -quit > /dev/null || (echo "❌ Missing package.json" && exit 1)
               find . \( -name "*.ts" -o -name "*.js" \) -quit > /dev/null || (echo "❌ No TypeScript/JavaScript files found" && exit 1)
-              echo "✅ Node SDK structure validated"
+              echo "✅ Node SDK structure validated (${{ matrix.version.version_name }})"
               ;;
             "csharp")
               find . -name "*.csproj" -quit > /dev/null || (echo "❌ Missing csproj file" && exit 1)
               find . -name "*.cs" -quit > /dev/null || (echo "❌ No C# files found" && exit 1)
-              echo "✅ C# SDK structure validated"
+              echo "✅ C# SDK structure validated (${{ matrix.version.version_name }})"
               ;;
             "go")
               find . -name "go.mod" -quit > /dev/null || (echo "❌ Missing go.mod" && exit 1)
               find . -name "*.go" -quit > /dev/null || (echo "❌ No Go files found" && exit 1)
-              echo "✅ Go SDK structure validated"
+              echo "✅ Go SDK structure validated (${{ matrix.version.version_name }})"
               ;;
           esac
 
       - name: Clean up
         if: always()
-        run: rm -rf ./sdk-output/${{ matrix.language }}
+        run: rm -rf ./sdk-output/${{ matrix.lang.language }}
