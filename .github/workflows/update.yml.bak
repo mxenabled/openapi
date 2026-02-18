@@ -1,4 +1,16 @@
-name: Update
+# ──────────────────────────────────────────────────────────────────────
+# DEPRECATED — February 18, 2026
+# Replaced by: versioned-sdk-dispatch.yml
+#
+# This workflow dispatched to ALL 6 SDK repos whenever mx_platform_api.yml
+# changed. It has been replaced by versioned-sdk-dispatch.yml which:
+#   - Detects changes to versioned OAS files (openapi/v*.yml)
+#   - Dispatches only to opted-in SDK repos
+#   - Passes api_versions in the payload
+#
+# Kept as .bak for reference. GitHub Actions ignores .bak files.
+# ──────────────────────────────────────────────────────────────────────
+name: "[DEPRECATED] Update"
 
 on:
   pull_request:
