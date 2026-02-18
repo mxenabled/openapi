@@ -7,7 +7,6 @@ info:
     The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
 
     Just getting started? See our [use case guides](/use-cases/).
-    Test
   title: MX Platform API
   version: '20111101'
 servers:
@@ -5453,11 +5452,11 @@ components:
         most_recent_job_detail_text:
           example: null
           nullable: true
-          type: boolean
+          type: string
         most_recent_job_guid:
           example: JOB-12345678-90ab-cdef-1234-567890abcdef
           nullable: true
-          type: boolean
+          type: string
         name:
           example: MX Bank
           nullable: true
