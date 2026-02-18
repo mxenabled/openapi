@@ -1,11 +1,11 @@
-name: Version
+name: Validate Version Label
 
 on:
   pull_request:
     types: [opened, labeled, unlabeled, synchronize]
 
 jobs:
-  Version:
+  ValidateVersionLabel:
     runs-on: ubuntu-latest
     permissions:
       issues: write
