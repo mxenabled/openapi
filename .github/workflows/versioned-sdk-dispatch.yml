@@ -1,0 +1,188 @@
+name: Versioned SDK Dispatch
+
+# Dispatches repository_dispatch to opted-in SDK repos when versioned OAS files change.
+# Currently in DRY RUN mode — logs what it would dispatch without sending anything.
+# See PR #XX for context. Replaces update.yml (now update.yml.bak).
+
+on:
+  pull_request:
+    types: [closed]
+    paths:
+      - 'openapi/v*.yml'
+  workflow_dispatch:
+    inputs:
+      version_level:
+        description: "Bump version"
+        required: true
+        default: "minor"
+        type: choice
+        options:
+          - minor
+          - patch
+      api_versions:
+        description: "Comma-separated API versions (e.g., v20111101,v20250224)"
+        required: true
+        type: string
+
+jobs:
+  # ──────────────────────────────────────────────────
+  # Job: Detect which versioned OAS files changed (PR merge only)
+  # ──────────────────────────────────────────────────
+  detect-changes:
+    name: Detect Changed OAS Files
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.pull_request.merged == true
+    outputs:
+      api_versions: ${{ steps.build-versions.outputs.api_versions }}
+      version: ${{ steps.read-label.outputs.version }}
+      has_changes: ${{ steps.build-versions.outputs.has_changes }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get changed versioned OAS files
+        id: changed-files
+        uses: tj-actions/changed-files@v41
+        with:
+          files: openapi/v*.yml
+
+      - name: Build api_versions from changed files
+        id: build-versions
+        run: |
+          CHANGED="${{ steps.changed-files.outputs.all_changed_files }}"
+          echo "Changed files: $CHANGED"
+
+          if [ -z "$CHANGED" ]; then
+            echo "No versioned OAS files changed"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "api_versions=" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Extract version names from filenames (e.g., openapi/v20111101.yml → v20111101)
+          API_VERSIONS=""
+          for file in $CHANGED; do
+            # Get filename without path and extension
+            basename=$(basename "$file" .yml)
+            if [ -n "$API_VERSIONS" ]; then
+              API_VERSIONS="${API_VERSIONS},${basename}"
+            else
+              API_VERSIONS="${basename}"
+            fi
+          done
+
+          echo "api_versions=$API_VERSIONS" >> $GITHUB_OUTPUT
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+          echo "Detected API versions: $API_VERSIONS"
+
+      - name: Read version label from PR
+        id: read-label
+        run: |
+          LABELS='${{ toJson(github.event.pull_request.labels.*.name) }}'
+          echo "PR labels: $LABELS"
+
+          if echo "$LABELS" | jq -e 'map(select(. == "patch")) | length > 0' > /dev/null 2>&1; then
+            echo "version=patch" >> $GITHUB_OUTPUT
+            echo "Version label: patch"
+          else
+            # Default to minor if no patch label found
+            echo "version=minor" >> $GITHUB_OUTPUT
+            echo "Version label: minor (default)"
+          fi
+
+  # ──────────────────────────────────────────────────
+  # Job: Dispatch to opted-in SDK repos (PR merge)
+  # ──────────────────────────────────────────────────
+  dispatch:
+    name: "[DRY RUN] Dispatch to ${{ matrix.repo }}"
+    needs: detect-changes
+    if: needs.detect-changes.outputs.has_changes == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo:
+          - mxenabled/mx-platform-node
+          # Add more repos here as they are migrated to multi-version support:
+          # - mxenabled/mx-platform-ruby
+          # - mxenabled/mx-platform-python
+          # - mxenabled/mx-platform-java
+          # - mxenabled/mx-platform-csharp
+          # - mxenabled/mx-platform-go
+    steps:
+      # ──────────────────────────────────────────────
+      # DRY RUN: Replace this step with actual repository_dispatch in PR 2
+      # ──────────────────────────────────────────────
+      - name: "[DRY RUN] Would dispatch to ${{ matrix.repo }}"
+        run: |
+          echo "============================================"
+          echo "  DRY RUN — No dispatch sent"
+          echo "============================================"
+          echo ""
+          echo "Repository:  ${{ matrix.repo }}"
+          echo "Event type:  automated_push_to_master"
+          echo "Version:     ${{ needs.detect-changes.outputs.version }}"
+          echo "Commit SHA:  ${{ github.sha }}"
+          echo "API versions: ${{ needs.detect-changes.outputs.api_versions }}"
+          echo ""
+          echo "Payload that would be sent:"
+          echo '  {"version":"${{ needs.detect-changes.outputs.version }}","commit_sha":"${{ github.sha }}","api_versions":"${{ needs.detect-changes.outputs.api_versions }}"}'
+          echo ""
+          echo "============================================"
+
+      - name: Slack notification
+        uses: ravsamhq/notify-slack-action@v2
+        if: failure()
+        with:
+          status: ${{ job.status }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          notification_title: "{repo}: {workflow} workflow"
+          message_format: "{emoji} *{workflow}* {status_message} in <{repo_url}|{repo}>"
+          footer: "<{workflow_url}|View Workflow>"
+          notify_when: "failure"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # ──────────────────────────────────────────────────
+  # Job: Manual dispatch (workflow_dispatch)
+  # ──────────────────────────────────────────────────
+  manual-dispatch:
+    name: "[DRY RUN] Manual dispatch to ${{ matrix.repo }}"
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    strategy:
+      matrix:
+        repo:
+          - mxenabled/mx-platform-node
+          # Add more repos here as they are migrated to multi-version support
+    steps:
+      # ──────────────────────────────────────────────
+      # DRY RUN: Replace this step with actual repository_dispatch in PR 2
+      # ──────────────────────────────────────────────
+      - name: "[DRY RUN] Would dispatch to ${{ matrix.repo }}"
+        run: |
+          echo "============================================"
+          echo "  DRY RUN — No dispatch sent (manual)"
+          echo "============================================"
+          echo ""
+          echo "Repository:  ${{ matrix.repo }}"
+          echo "Event type:  automated_push_to_master"
+          echo "Version:     ${{ github.event.inputs.version_level }}"
+          echo "Commit SHA:  ${{ github.sha }}"
+          echo "API versions: ${{ github.event.inputs.api_versions }}"
+          echo ""
+          echo "Payload that would be sent:"
+          echo '  {"version":"${{ github.event.inputs.version_level }}","commit_sha":"${{ github.sha }}","api_versions":"${{ github.event.inputs.api_versions }}"}'
+          echo ""
+          echo "============================================"
+
+      - name: Slack notification
+        uses: ravsamhq/notify-slack-action@v2
+        if: failure()
+        with:
+          status: ${{ job.status }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          notification_title: "{repo}: {workflow} workflow"
+          message_format: "{emoji} *{workflow}* {status_message} in <{repo_url}|{repo}>"
+          footer: "<{workflow_url}|View Workflow>"
+          notify_when: "failure"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
