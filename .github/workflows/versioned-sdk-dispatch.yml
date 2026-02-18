@@ -1,8 +1,6 @@
 name: Versioned SDK Dispatch
 
 # Dispatches repository_dispatch to opted-in SDK repos when versioned OAS files change.
-# Currently in DRY RUN mode — logs what it would dispatch without sending anything.
-# See PR #XX for context. Replaces update.yml (now update.yml.bak).
 
 on:
   pull_request:
@@ -93,7 +91,7 @@ jobs:
   # Job: Dispatch to opted-in SDK repos (PR merge)
   # ──────────────────────────────────────────────────
   dispatch:
-    name: "[DRY RUN] Dispatch to ${{ matrix.repo }}"
+    name: Dispatch to ${{ matrix.repo }}
     needs: detect-changes
     if: needs.detect-changes.outputs.has_changes == 'true'
     runs-on: ubuntu-latest
@@ -108,25 +106,20 @@ jobs:
           # - mxenabled/mx-platform-csharp
           # - mxenabled/mx-platform-go
     steps:
-      # ──────────────────────────────────────────────
-      # DRY RUN: Replace this step with actual repository_dispatch in PR 2
-      # ──────────────────────────────────────────────
-      - name: "[DRY RUN] Would dispatch to ${{ matrix.repo }}"
-        run: |
-          echo "============================================"
-          echo "  DRY RUN — No dispatch sent"
-          echo "============================================"
-          echo ""
-          echo "Repository:  ${{ matrix.repo }}"
-          echo "Event type:  automated_push_to_master"
-          echo "Version:     ${{ needs.detect-changes.outputs.version }}"
-          echo "Commit SHA:  ${{ github.sha }}"
-          echo "API versions: ${{ needs.detect-changes.outputs.api_versions }}"
-          echo ""
-          echo "Payload that would be sent:"
-          echo '  {"version":"${{ needs.detect-changes.outputs.version }}","commit_sha":"${{ github.sha }}","api_versions":"${{ needs.detect-changes.outputs.api_versions }}"}'
-          echo ""
-          echo "============================================"
+      - name: Generate GitHub App token
+        id: app-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Dispatch to ${{ matrix.repo }}
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          repository: ${{ matrix.repo }}
+          event-type: automated_push_to_master
+          client-payload: '{"version":"${{ needs.detect-changes.outputs.version }}","commit_sha":"${{ github.sha }}","api_versions":"${{ needs.detect-changes.outputs.api_versions }}"}'
 
       - name: Slack notification
         uses: ravsamhq/notify-slack-action@v2
@@ -145,7 +138,7 @@ jobs:
   # Job: Manual dispatch (workflow_dispatch)
   # ──────────────────────────────────────────────────
   manual-dispatch:
-    name: "[DRY RUN] Manual dispatch to ${{ matrix.repo }}"
+    name: Manual dispatch to ${{ matrix.repo }}
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'
     strategy:
@@ -154,25 +147,20 @@ jobs:
           - mxenabled/mx-platform-node
           # Add more repos here as they are migrated to multi-version support
     steps:
-      # ──────────────────────────────────────────────
-      # DRY RUN: Replace this step with actual repository_dispatch in PR 2
-      # ──────────────────────────────────────────────
-      - name: "[DRY RUN] Would dispatch to ${{ matrix.repo }}"
-        run: |
-          echo "============================================"
-          echo "  DRY RUN — No dispatch sent (manual)"
-          echo "============================================"
-          echo ""
-          echo "Repository:  ${{ matrix.repo }}"
-          echo "Event type:  automated_push_to_master"
-          echo "Version:     ${{ github.event.inputs.version_level }}"
-          echo "Commit SHA:  ${{ github.sha }}"
-          echo "API versions: ${{ github.event.inputs.api_versions }}"
-          echo ""
-          echo "Payload that would be sent:"
-          echo '  {"version":"${{ github.event.inputs.version_level }}","commit_sha":"${{ github.sha }}","api_versions":"${{ github.event.inputs.api_versions }}"}'
-          echo ""
-          echo "============================================"
+      - name: Generate GitHub App token
+        id: app-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Dispatch to ${{ matrix.repo }}
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          repository: ${{ matrix.repo }}
+          event-type: automated_push_to_master
+          client-payload: '{"version":"${{ github.event.inputs.version_level }}","commit_sha":"${{ github.sha }}","api_versions":"${{ github.event.inputs.api_versions }}"}'
 
       - name: Slack notification
         uses: ravsamhq/notify-slack-action@v2
