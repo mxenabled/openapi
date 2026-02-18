@@ -16,8 +16,8 @@ security:
   - basicAuth: []
 tags:
   - name: authorization
-  - name: widgets
   - name: users
+  - name: widgets
   - name: members
   - name: institutions
   - name: accounts

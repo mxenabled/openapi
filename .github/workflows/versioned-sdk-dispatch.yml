@@ -119,7 +119,7 @@ jobs:
         with:
           token: ${{ steps.app-token.outputs.token }}
           repository: ${{ matrix.repo }}
-          event-type: automated_push_to_master
+          event-type: generate_publish_release
           client-payload: '{"version":"${{ needs.detect-changes.outputs.version }}","commit_sha":"${{ github.sha }}","api_versions":"${{ needs.detect-changes.outputs.api_versions }}"}'
 
       - name: Slack notification
@@ -161,7 +161,7 @@ jobs:
         with:
           token: ${{ steps.app-token.outputs.token }}
           repository: ${{ matrix.repo }}
-          event-type: automated_push_to_master
+          event-type: generate_publish_release
           client-payload: '{"version":"${{ github.event.inputs.version_level }}","commit_sha":"${{ github.sha }}","api_versions":"${{ github.event.inputs.api_versions }}"}'
 
       - name: Slack notification
