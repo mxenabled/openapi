@@ -110,8 +110,9 @@ jobs:
         id: app-token
         uses: tibdex/github-app-token@v1
         with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          app_id: ${{ secrets.PAPI_SDK_APP_ID }}
+          installation_id: ${{ secrets.PAPI_SDK_INSTALLATION_ID }}
+          private_key: ${{ secrets.PAPI_SDK_PRIVATE_KEY }}
 
       - name: Dispatch to ${{ matrix.repo }}
         uses: peter-evans/repository-dispatch@v2
@@ -151,8 +152,9 @@ jobs:
         id: app-token
         uses: tibdex/github-app-token@v1
         with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          app_id: ${{ secrets.PAPI_SDK_APP_ID }}
+          installation_id: ${{ secrets.PAPI_SDK_INSTALLATION_ID }}
+          private_key: ${{ secrets.PAPI_SDK_PRIVATE_KEY }}
 
       - name: Dispatch to ${{ matrix.repo }}
         uses: peter-evans/repository-dispatch@v2
