@@ -5456,7 +5456,7 @@ components:
         most_recent_job_guid:
           example: JOB-12345678-90ab-cdef-1234-567890abcdef
           nullable: true
-          type: boolean
+          type: string
         name:
           example: MX Bank
           nullable: true
